@@ -26,8 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint --ext .tsx,.ts .",
-    "lint-fix": "npx eslint --fix --ext .tsx,.ts ."
+    "lint": "npx eslint src/*",
+    "lint-fix": "npx eslint src/* --fix"
   },
   "browserslist": {
     "production": [
