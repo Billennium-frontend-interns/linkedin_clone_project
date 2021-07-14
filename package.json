@@ -68,8 +68,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,tsx,ts}": [
-      "yarn lint-fix",
-      "yarn lint",
+      "npm run lint-fix",
+      "npm run lint",
       "prettier --write"
     ]
   }
