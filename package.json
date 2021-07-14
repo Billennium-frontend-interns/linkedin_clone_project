@@ -61,16 +61,16 @@
     "lint-staged": "^11.0.1",
     "prettier": "^2.3.2"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.{js,jsx,tsx,ts}": [
       "npx lint-fix",
       "npx lint",
       "prettier --write"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
