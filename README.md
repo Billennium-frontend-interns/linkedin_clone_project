@@ -14,6 +14,7 @@ Photos will appear in the future.
 # Technologies
 
 - React
+- React Hooks
 - Typescript
 - Context API
 - SCSS + BEM
