@@ -26,8 +26,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint src/*",
-    "lint-fix": "npx eslint src/* --fix"
+    "prepare": "husky install",
+    "lint": "npx eslint --ext .tsx,.ts .",
+    "lint-fix": "npx eslint --fix --ext .tsx,.ts ."
   },
   "browserslist": {
     "production": [
@@ -61,16 +62,16 @@
     "lint-staged": "^11.0.1",
     "prettier": "^2.3.2"
   },
+  "lint-staged": {
+    "*.{js,jsx,tsx,ts}": [
+      "npx lint-fix",
+      "npx lint",
+      "prettier --write"
+    ]
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,tsx,ts}": [
-      "npm run lint-fix",
-      "npm run lint",
-      "prettier --write"
-    ]
   }
 }

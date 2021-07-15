@@ -23,7 +23,6 @@ const App: React.FC = () => {
         type="button"
         onClick={() => {
           setIsCounter(!isCounter);
-          console.log('dupa');
         }}
       >
         Show counter
