@@ -1,9 +1,16 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "cypress/globals": true
   },
-  "extends": ["plugin:react/recommended", "airbnb", "plugin:@typescript-eslint/recommended", "prettier"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:cypress/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -12,7 +19,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "prettier", "cypress"],
   "rules": {
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
@@ -24,7 +31,6 @@
       "error",
       { "devDependencies": true, "optionalDependencies": false, "peerDependencies": false }
     ],
-    "jsx-quotes": ["error", "prefer-double"],
     "import/extensions": [
       "error",
       "ignorePackages",
