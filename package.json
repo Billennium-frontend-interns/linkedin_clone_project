@@ -28,7 +28,9 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "lint": "npx eslint --ext .tsx,.ts .",
-    "lint-fix": "npx eslint --fix --ext .tsx,.ts ."
+    "lint-fix": "npx eslint --fix --ext .tsx,.ts .",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "browserslist": {
     "production": [
@@ -45,6 +47,12 @@
   "devDependencies": {
     "@cypress/react": "^5.9.1",
     "@cypress/webpack-dev-server": "^1.4.0",
+    "@storybook/addon-actions": "^6.3.4",
+    "@storybook/addon-essentials": "^6.3.4",
+    "@storybook/addon-links": "^6.3.4",
+    "@storybook/node-logger": "^6.3.4",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.4",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
     "cypress": "^7.7.0",
@@ -64,8 +72,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,tsx,ts}": [
-      "npx lint-fix",
-      "npx lint",
+      "npm run lint-fix",
+      "npm run lint",
       "prettier --write"
     ]
   },
@@ -73,5 +81,17 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
   }
 }

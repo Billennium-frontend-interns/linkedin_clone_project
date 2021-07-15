@@ -1,34 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const App: React.FC = () => {
-  const [counter, setCounter] = useState(0);
-  const [isCounter, setIsCounter] = useState(false);
-
-  return (
-    <div className="App">
-      <h1>Hello World</h1>
-      <p>
-        Counter:
-        {counter}
-      </p>
-      <button
-        type="button"
-        onClick={() => {
-          setCounter(counter + 1);
-        }}
-      >
-        +
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          setIsCounter(!isCounter);
-        }}
-      >
-        Show counter
-      </button>
-    </div>
-  );
-};
-
+const App: React.FC = () => (
+  <div className="App">
+    <h1>Hello World</h1>
+  </div>
+);
 export default App;
