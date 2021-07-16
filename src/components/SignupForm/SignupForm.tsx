@@ -20,16 +20,30 @@ const SignupForm: React.FC = () => {
     repeatPassword: false
   });
 
-  const { error, validateForm } = useSignupFormValidation(formData);
+  const { error, setError, validateForm } = useSignupFormValidation(formData);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (validateForm()) console.log(formData);
+    if (validateForm()) {
+      const { email, password, name } = formData;
+      try {
+        await auth.createUserWithEmailAndPassword(email, password);
+        await auth.currentUser?.updateProfile({
+          displayName: name
+        });
+      } catch (err) {
+        setError({
+          isError: true,
+          errorText: err.message
+        });
+      }
+    }
+    console.log(auth.currentUser);
   };
 
   return (

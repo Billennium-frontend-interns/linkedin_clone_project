@@ -52,6 +52,7 @@ const useSignupFormValidation = (data: SignUpFormDataInterface): ValidationInter
 
   return {
     error,
+    setError,
     validateForm
   };
 };
