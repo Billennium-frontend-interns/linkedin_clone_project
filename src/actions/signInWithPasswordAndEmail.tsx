@@ -11,7 +11,7 @@ const signInWithPasswordAndEmail = ({ email, password, history }: SignInWithPass
   auth
     .signInWithEmailAndPassword(email, password)
     .then(() => history.push('/home'))
-    .catch(error => error);
+    .catch(error => console.log(error));
 };
 
 export default signInWithPasswordAndEmail;

@@ -9,7 +9,7 @@ const signInWithGooglePopup = ({ history }: SignInWithGoogle) => {
   auth
     .signInWithPopup(provider)
     .then(() => history.push('/home'))
-    .catch(error => error);
+    .catch(error => console.log(error));
 };
 
 export default signInWithGooglePopup;
