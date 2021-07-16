@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { Button, TextField } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import SignUpFormDataInterface from './interfaces/SignupFormDataInterface';
+import ErrorMessageVisibleInterface from './interfaces/ErrorMessageVisibleInterface';
 import useSignupFormValidation from './useSignupFormValidation';
+import useFormFieldsConfig from './useFormFieldsConfig';
+import FormField from './FormField';
 import { auth } from '../../firebase';
 
 const SignupForm: React.FC = () => {
@@ -12,15 +15,19 @@ const SignupForm: React.FC = () => {
     email: ''
   };
 
-  const [formData, setFormData] = useState(initialFormData);
-  const [errorMessageVisible, setErrorMessageVisible] = useState({
+  const initialErrorMessageVisible: ErrorMessageVisibleInterface = {
     name: false,
     email: false,
     password: false,
     repeatPassword: false
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
+  const [errorMessageVisible, setErrorMessageVisible] = useState(initialErrorMessageVisible);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { error, setError, validateForm } = useSignupFormValidation(formData);
+  const formFieldsConfig = useFormFieldsConfig(formData, errorMessageVisible);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,6 +39,7 @@ const SignupForm: React.FC = () => {
     if (validateForm()) {
       const { email, password, name } = formData;
       try {
+        setIsLoading(true);
         await auth.createUserWithEmailAndPassword(email, password);
         await auth.currentUser?.updateProfile({
           displayName: name
@@ -43,60 +51,33 @@ const SignupForm: React.FC = () => {
         });
       }
     }
-    console.log(auth.currentUser);
+    setIsLoading(false);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <TextField
-        label="Email"
-        type="email"
-        name="email"
-        error={formData.email === '' && errorMessageVisible.email}
-        helperText={formData.email === '' && errorMessageVisible.email ? "Field can't be empty" : ''}
-        onClick={() => {
-          setErrorMessageVisible({ ...errorMessageVisible, email: true });
-        }}
-        value={formData.email}
-        onChange={handleChange}
-      />
-      <TextField
-        label="Password"
-        type="password"
-        name="password"
-        error={formData.password === '' && errorMessageVisible.password}
-        helperText={formData.password === '' && errorMessageVisible.password ? "Field can't be empty" : ''}
-        onClick={() => {
-          setErrorMessageVisible({ ...errorMessageVisible, password: true });
-        }}
-        value={formData.password}
-        onChange={handleChange}
-      />
-      <TextField
-        label="Repeart password"
-        type="password"
-        name="repeatPassword"
-        error={formData.repeatPassword === '' && errorMessageVisible.repeatPassword}
-        helperText={formData.repeatPassword === '' && errorMessageVisible.repeatPassword ? "Field can't be empty" : ''}
-        onClick={() => {
-          setErrorMessageVisible({ ...errorMessageVisible, repeatPassword: true });
-        }}
-        value={formData.repeatPassword}
-        onChange={handleChange}
-      />
-      <TextField
-        label="Nickname"
-        type="text"
-        name="name"
-        error={formData.name === '' && errorMessageVisible.name}
-        helperText={formData.name === '' && errorMessageVisible.name ? "Field can't be empty" : ''}
-        onClick={() => {
-          setErrorMessageVisible({ ...errorMessageVisible, name: true });
-        }}
-        value={formData.name}
-        onChange={handleChange}
-      />
-      <Button variant="contained" color="primary" type="submit">
+      {formFieldsConfig.map(field => {
+        const { key, label, type, name, isError, helperText, value } = field;
+        return (
+          <FormField
+            key={key}
+            testId={key}
+            label={label}
+            type={type}
+            name={name}
+            isError={isError}
+            helperText={helperText}
+            // disabled because of unused vars, but i need to pass the e: React.MouseEvent<HTMLDivElement> otherwise typescript is complaining
+            // eslint-disable-next-line
+            onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+              setErrorMessageVisible({ ...errorMessageVisible, [name]: true });
+            }}
+            value={value}
+            onChange={handleChange}
+          />
+        );
+      })}
+      <Button variant="contained" color="primary" type="submit" disabled={isLoading}>
         Register
       </Button>
       {error.isError && <p>{error.errorText}</p>}

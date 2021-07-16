@@ -1,13 +1,14 @@
 import React from 'react';
 
 interface FormFieldInterface {
+  testId: string;
   label: string;
   type: string;
   name: string;
-  error: boolean;
+  isError: boolean;
   helperText: string;
-  onClick: () => void;
   value: string;
+  onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
