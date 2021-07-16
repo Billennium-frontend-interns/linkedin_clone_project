@@ -1,12 +1,11 @@
-import { useHistory } from 'react-router-dom';
+import { History, LocationState } from 'history';
 import { auth } from '../firebase';
 
-const history = useHistory();
-
-const logout = () =>
+const logout = (history: History<LocationState>) => {
   auth
     .signOut()
     .then(() => history.push('/'))
-    .catch(error => alert(error.message));
+    .catch(error => console.log(error.message));
+};
 
 export default logout;

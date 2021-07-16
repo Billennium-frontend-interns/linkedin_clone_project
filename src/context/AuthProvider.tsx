@@ -13,8 +13,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     auth.onAuthStateChanged(user => {
-      if (user) setCurrentUser(user);
-      else setCurrentUser(null);
+      if (user) {
+        setCurrentUser(user);
+      } else {
+        setCurrentUser(null);
+      }
     });
   }, []);
 
