@@ -31,10 +31,19 @@ const SignupForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <TextField label="Email" type="email" value={formData.email} onChange={handleChange} />
-      <TextField label="Password" type="password" value={formData.email} onChange={handleChange} />
-      <TextField label="Repeart password" type="password" value={formData.email} onChange={handleChange} />
-      <TextField label="Nickname" type="text" value={formData.email} onChange={handleChange} />
+      <TextField label="Email" type="email" name="email" value={formData.email} onChange={handleChange} />
+      <TextField label="Password" type="password" name="password" value={formData.password} onChange={handleChange} />
+      <TextField
+        label="Repeart password"
+        type="password"
+        name="repeatPassword"
+        value={formData.repeatPassword}
+        onChange={handleChange}
+      />
+      <TextField label="Nickname" type="text" name="name" value={formData.name} onChange={handleChange} />
+      <Button variant="contained" color="primary" type="submit">
+        Register
+      </Button>
     </form>
   );
 };
