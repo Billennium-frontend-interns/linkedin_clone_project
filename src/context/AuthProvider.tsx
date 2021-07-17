@@ -11,10 +11,13 @@ export const AuthContext = createContext<firebase.default.User | null>(null);
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<firebase.default.User | null>(null);
 
-  useEffect(() => {
+  useEffect(() => 
     const unsubscriber = auth.onAuthStateChanged(user => {
-      if (user) setCurrentUser(user);
-      else setCurrentUser(null);
+      if (user) {
+        setCurrentUser(user);
+      } else {
+        setCurrentUser(null);
+      }
     });
     return unsubscriber;
   }, []);
