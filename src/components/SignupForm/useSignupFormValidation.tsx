@@ -3,18 +3,45 @@ import SignUpFormDataInterface from './interfaces/SignupFormDataInterface';
 import ErrorInterface from './interfaces/ErrorInterface';
 import ValidationInterface from './interfaces/ValidationInterface';
 
-const useSignupFormValidation = (data: SignUpFormDataInterface): ValidationInterface => {
+const useSignupFormValidation = (signUpFormData: SignUpFormDataInterface): ValidationInterface => {
   const initialErrorData: ErrorInterface = {
     isError: false,
     errorText: ''
   };
-
   const [error, setError] = useState(initialErrorData);
 
   const validateForm = (): boolean => {
-    const { name, email, password, repeatPassword } = data;
+    const { name, email, password, repeatPassword } = signUpFormData;
 
-    if (name.trim() === '' || email.trim() === '' || password.trim() === '' || repeatPassword.trim() === '') {
+    const isAnyEmpty = () => {
+      if (name.trim() === '' || email.trim() === '' || password.trim() === '' || repeatPassword.trim() === '') {
+        return true;
+      }
+      return false;
+    };
+
+    const isNicknameValid = () => {
+      if (name.length < 3 || name.length > 30) {
+        return true;
+      }
+      return false;
+    };
+
+    const isPasswordValid = () => {
+      if (password.length < 8) {
+        return true;
+      }
+      return false;
+    };
+
+    const isPasswordMatch = () => {
+      if (password !== repeatPassword) {
+        return true;
+      }
+      return false;
+    };
+
+    if (isAnyEmpty()) {
       setError({
         isError: true,
         errorText: "Fields can't be empty"
@@ -22,7 +49,7 @@ const useSignupFormValidation = (data: SignUpFormDataInterface): ValidationInter
       return false;
     }
 
-    if (name.length < 3 || name.length > 30) {
+    if (isNicknameValid()) {
       setError({
         isError: true,
         errorText: 'Nickname must be longer than 3 characters and shorter than 30 characters'
@@ -30,7 +57,7 @@ const useSignupFormValidation = (data: SignUpFormDataInterface): ValidationInter
       return false;
     }
 
-    if (password.length < 8) {
+    if (isPasswordValid()) {
       setError({
         isError: true,
         errorText: 'Password must be at least 8 characters'
@@ -38,7 +65,7 @@ const useSignupFormValidation = (data: SignUpFormDataInterface): ValidationInter
       return false;
     }
 
-    if (password !== repeatPassword) {
+    if (isPasswordMatch()) {
       setError({
         isError: true,
         errorText: 'Passwords must match'
