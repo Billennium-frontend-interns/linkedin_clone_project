@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TextField } from '@material-ui/core';
-import FormFieldInterface from './interfaces/FormFieldPropsInterface';
+import { FormFieldInterface } from './interfaces/SignupFormInterfaces';
 
 const FormField: React.FC<FormFieldInterface> = ({
   label,
@@ -9,8 +9,8 @@ const FormField: React.FC<FormFieldInterface> = ({
   name,
   isError,
   errorText,
-  onClick,
   value,
+  onClick,
   onChange
 }: FormFieldInterface) => (
   <TextField

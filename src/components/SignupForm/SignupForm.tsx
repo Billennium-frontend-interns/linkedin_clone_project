@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Button } from '@material-ui/core';
-import SignUpFormDataInterface from './interfaces/SignupFormDataInterface';
-import ErrorMessageVisibleInterface from './interfaces/ErrorMessageVisibleInterface';
+import { SignUpFormDataInterface, ErrorMessageVisibleInterface } from './interfaces/SignupFormInterfaces';
 import useSignupFormValidation from './useSignupFormValidation';
 import useFormFieldsConfig from './useFormFieldsConfig';
 import FormField from './FormField';
@@ -52,7 +51,6 @@ const SignupForm: React.FC = () => {
       {formFieldsConfig.map(({ label, type, name, isError, errorText, value }) => (
         <FormField
           key={name}
-          testId={name}
           label={label}
           type={type}
           name={name}
