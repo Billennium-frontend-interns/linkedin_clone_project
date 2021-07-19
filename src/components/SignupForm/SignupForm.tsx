@@ -67,7 +67,6 @@ const SignupForm: React.FC = () => {
             name={name}
             isError={isError}
             helperText={helperText}
-            // disabled because of unused vars, but i need to pass the e: React.MouseEvent<HTMLDivElement> otherwise typescript is complaining
             // eslint-disable-next-line
             onClick={(e: React.MouseEvent<HTMLDivElement>) => {
               setErrorMessageVisible({ ...errorMessageVisible, [name]: true });
