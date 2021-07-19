@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TextField } from '@material-ui/core';
 
-interface FormFieldInterface {
+export interface FormFieldInterface {
   label: string;
   type: string;
   name: string;
