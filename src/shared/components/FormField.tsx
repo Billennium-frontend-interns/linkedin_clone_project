@@ -32,6 +32,9 @@ const FormField: React.FC<FormFieldInterface> = ({
     onClick={onClick}
     value={value}
     onChange={onChange}
+    inputProps={{
+      testId: name
+    }}
   />
 );
 
