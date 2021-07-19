@@ -3,7 +3,7 @@ import { Button } from '@material-ui/core';
 import { SignUpFormDataInterface, ErrorMessageVisibleInterface } from './interfaces/SignupFormInterfaces';
 import useSignupFormValidation from './useSignupFormValidation';
 import useFormFieldsConfig from './useFormFieldsConfig';
-import FormField from './FormField';
+import FormField from '../../shared/components/FormField';
 import { signUpWithEmailAndPassword } from '../../actions/signUpWithEmailAndPassword';
 
 const SignupForm: React.FC = () => {

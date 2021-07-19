@@ -1,7 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TextField } from '@material-ui/core';
-import { FormFieldInterface } from './interfaces/SignupFormInterfaces';
+
+interface FormFieldInterface {
+  label: string;
+  type: string;
+  name: string;
+  isError: boolean;
+  errorText: string;
+  value: string;
+  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
 const FormField: React.FC<FormFieldInterface> = ({
   label,
