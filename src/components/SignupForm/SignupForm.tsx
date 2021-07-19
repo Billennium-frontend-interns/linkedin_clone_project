@@ -14,6 +14,7 @@ const SignupForm: React.FC = () => {
     repeatPassword: '',
     email: ''
   };
+  const [formData, setFormData] = useState(initialFormData);
 
   const initialErrorMessageVisible: ErrorMessageVisibleInterface = {
     name: false,
@@ -21,21 +22,20 @@ const SignupForm: React.FC = () => {
     password: false,
     repeatPassword: false
   };
+  const [isErrorMessageVisible, setIsErrorMessageVisible] = useState(initialErrorMessageVisible);
 
-  const [formData, setFormData] = useState(initialFormData);
-  const [errorMessageVisible, setErrorMessageVisible] = useState(initialErrorMessageVisible);
   const [isLoading, setIsLoading] = useState(false);
 
   const { error, setError, validateForm } = useSignupFormValidation(formData);
-  const formFieldsConfig = useFormFieldsConfig(formData, errorMessageVisible);
+  const formFieldsConfig = useFormFieldsConfig(formData, isErrorMessageVisible);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (validateForm()) {
       const { email, password, name } = formData;
       try {
@@ -68,8 +68,8 @@ const SignupForm: React.FC = () => {
             isError={isError}
             helperText={helperText}
             // eslint-disable-next-line
-            onClick={(e: React.MouseEvent<HTMLDivElement>) => {
-              setErrorMessageVisible({ ...errorMessageVisible, [name]: true });
+            onClick={(event: React.MouseEvent<HTMLDivElement>) => {
+              setIsErrorMessageVisible({ ...isErrorMessageVisible, [name]: true });
             }}
             value={value}
             onChange={handleChange}
