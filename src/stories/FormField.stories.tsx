@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react';
-import { FormFieldInterface, FormField } from '../shared/components/FormField';
+import { FormFieldInterface, FormField } from '../shared/components/FormField/FormField';
 
 export default {
   component: FormField,
