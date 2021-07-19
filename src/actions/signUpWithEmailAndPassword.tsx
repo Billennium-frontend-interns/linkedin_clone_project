@@ -1,8 +1,8 @@
 // import { History, LocationState } from 'history';
 import { auth } from '../firebase';
-import ErrorInterface from '../components/SignupForm/interfaces/ErrorInterface';
+import { ErrorInterface } from '../components/SignupForm/interfaces/SignupFormInterfaces';
 
-interface SignUpWithEmailAndPassword {
+interface SignUpWithEmailAndPasswordAndName {
   email: string;
   password: string;
   name: string;
@@ -16,7 +16,7 @@ export const signUpWithEmailAndPassword = async ({
   name,
   //   history,
   setError
-}: SignUpWithEmailAndPassword): Promise<void> => {
+}: SignUpWithEmailAndPasswordAndName): Promise<void> => {
   try {
     await auth.createUserWithEmailAndPassword(email, password);
     await auth.currentUser?.updateProfile({
