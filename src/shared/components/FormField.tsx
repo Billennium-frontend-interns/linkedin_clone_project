@@ -13,7 +13,7 @@ interface FormFieldInterface {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const FormField: React.FC<FormFieldInterface> = ({
+export const FormField: React.FC<FormFieldInterface> = ({
   label,
   type,
   name,
@@ -48,5 +48,3 @@ FormField.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired
 };
-
-export default FormField;

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { SignUpFormDataInterface, ErrorInterface } from './interfaces/SignupFormInterfaces';
 import { ValidationInterface } from './interfaces/ValidationInterface';
 
-const useSignupFormValidation = (signUpFormData: SignUpFormDataInterface): ValidationInterface => {
+export const useSignupFormValidation = (signUpFormData: SignUpFormDataInterface): ValidationInterface => {
   const initialErrorData: ErrorInterface = {
     isError: false,
     errorText: ''
@@ -82,5 +82,3 @@ const useSignupFormValidation = (signUpFormData: SignUpFormDataInterface): Valid
     validateForm
   };
 };
-
-export default useSignupFormValidation;

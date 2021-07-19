@@ -1,12 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { Button } from '@material-ui/core';
 import { SignUpFormDataInterface, ErrorMessageVisibleInterface } from './interfaces/SignupFormInterfaces';
-import useSignupFormValidation from './useSignupFormValidation';
-import useFormFieldsConfig from './useFormFieldsConfig';
-import FormField from '../../shared/components/FormField';
+import { useSignupFormValidation } from './useSignupFormValidation';
+import { useFormFieldsConfig } from './useFormFieldsConfig';
+import { FormField } from '../../shared/components/FormField';
 import { signUpWithEmailAndPassword } from '../../actions/signUpWithEmailAndPassword';
 
-const SignupForm: React.FC = () => {
+export const SignupForm: React.FC = () => {
   const initialFormData: SignUpFormDataInterface = {
     name: '',
     password: '',
@@ -71,5 +71,3 @@ const SignupForm: React.FC = () => {
     </form>
   );
 };
-
-export default SignupForm;

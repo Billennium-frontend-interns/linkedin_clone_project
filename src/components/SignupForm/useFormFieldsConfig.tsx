@@ -1,6 +1,6 @@
 import { SignUpFormDataInterface, FormFieldConfigInterface } from './interfaces/SignupFormInterfaces';
 
-const useFormFieldsConfig = (
+export const useFormFieldsConfig = (
   formData: SignUpFormDataInterface,
   errorMessageVisible: {
     name: boolean;
@@ -43,5 +43,3 @@ const useFormFieldsConfig = (
     value: formData.name
   }
 ];
-
-export default useFormFieldsConfig;
