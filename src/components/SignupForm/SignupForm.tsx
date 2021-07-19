@@ -57,11 +57,11 @@ const SignupForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit}>
       {formFieldsConfig.map(field => {
-        const { key, label, type, name, isError, helperText, value } = field;
+        const { label, type, name, isError, helperText, value } = field;
         return (
           <FormField
-            key={key}
-            testId={key}
+            key={name}
+            testId={name}
             label={label}
             type={type}
             name={name}

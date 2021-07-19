@@ -12,7 +12,6 @@ const useFormFieldsConfig = (
 ): FormFieldConfigInterface[] => {
   const formFieldsConfig = [
     {
-      key: 'input1',
       label: 'Email',
       type: 'email',
       name: 'email',
@@ -21,7 +20,6 @@ const useFormFieldsConfig = (
       value: formData.email
     },
     {
-      key: 'input2',
       label: 'Password',
       type: 'password',
       name: 'password',
@@ -30,8 +28,7 @@ const useFormFieldsConfig = (
       value: formData.password
     },
     {
-      key: 'input3',
-      label: 'Repeart password',
+      label: 'Repeat password',
       type: 'password',
       name: 'repeatPassword',
       isError: formData.repeatPassword === '' && errorMessageVisible.repeatPassword,
@@ -40,7 +37,6 @@ const useFormFieldsConfig = (
       value: formData.repeatPassword
     },
     {
-      key: 'input4',
       label: 'Nickname',
       type: 'text',
       name: 'name',

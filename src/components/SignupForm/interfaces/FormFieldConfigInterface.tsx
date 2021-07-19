@@ -1,5 +1,4 @@
 interface FormFieldConfigInterface {
-  key: string;
   label: string;
   type: string;
   name: string;
