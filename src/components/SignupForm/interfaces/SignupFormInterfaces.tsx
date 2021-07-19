@@ -17,8 +17,8 @@ export interface FormFieldConfigInterface {
 }
 
 export type FormFieldInterface = {
-  onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 } & FormFieldConfigInterface;
 
 export interface ErrorInterface {
