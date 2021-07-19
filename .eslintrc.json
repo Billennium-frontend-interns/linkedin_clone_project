@@ -19,8 +19,9 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier", "cypress"],
+  "plugins": ["react", "@typescript-eslint", "prettier", "cypress", "unused-imports"],
   "rules": {
+    "unused-imports/no-unused-imports": "error",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
