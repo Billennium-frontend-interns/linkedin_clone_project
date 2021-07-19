@@ -1,5 +1,5 @@
 import React from 'react';
-import Welcome from './components/welcome-page/Welcome';
+import { Welcome } from './pages/Welcome';
 import './styles/App.scss';
 
 const App: React.FC = () => <Welcome />;
