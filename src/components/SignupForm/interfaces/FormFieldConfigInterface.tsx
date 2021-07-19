@@ -3,7 +3,7 @@ interface FormFieldConfigInterface {
   type: string;
   name: string;
   isError: boolean;
-  helperText: string;
+  errorText: string;
   value: string;
 }
 

@@ -6,7 +6,7 @@ interface FormFieldInterface {
   type: string;
   name: string;
   isError: boolean;
-  helperText: string;
+  errorText: string;
   value: string;
   onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

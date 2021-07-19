@@ -8,7 +8,7 @@ const FormField: React.FC<FormFieldInterface> = ({
   type,
   name,
   isError,
-  helperText,
+  errorText,
   onClick,
   value,
   onChange
@@ -18,7 +18,7 @@ const FormField: React.FC<FormFieldInterface> = ({
     type={type}
     name={name}
     error={isError}
-    helperText={helperText}
+    helperText={errorText}
     onClick={onClick}
     value={value}
     onChange={onChange}
@@ -30,7 +30,7 @@ FormField.propTypes = {
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   isError: PropTypes.bool.isRequired,
-  helperText: PropTypes.string.isRequired,
+  errorText: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired

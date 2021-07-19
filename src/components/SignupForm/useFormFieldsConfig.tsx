@@ -15,7 +15,7 @@ const useFormFieldsConfig = (
     type: 'email',
     name: 'email',
     isError: formData.email === '' && errorMessageVisible.email,
-    helperText: formData.email === '' && errorMessageVisible.email ? "Email can't be empty" : '',
+    errorText: formData.email === '' && errorMessageVisible.email ? "Email can't be empty" : '',
     value: formData.email
   },
   {
@@ -23,7 +23,7 @@ const useFormFieldsConfig = (
     type: 'password',
     name: 'password',
     isError: formData.password === '' && errorMessageVisible.password,
-    helperText: formData.password === '' && errorMessageVisible.password ? "Password can't be empty" : '',
+    errorText: formData.password === '' && errorMessageVisible.password ? "Password can't be empty" : '',
     value: formData.password
   },
   {
@@ -31,7 +31,7 @@ const useFormFieldsConfig = (
     type: 'password',
     name: 'repeatPassword',
     isError: formData.repeatPassword === '' && errorMessageVisible.repeatPassword,
-    helperText:
+    errorText:
       formData.repeatPassword === '' && errorMessageVisible.repeatPassword ? "Repeat Password can't be empty" : '',
     value: formData.repeatPassword
   },
@@ -40,7 +40,7 @@ const useFormFieldsConfig = (
     type: 'text',
     name: 'name',
     isError: formData.name === '' && errorMessageVisible.name,
-    helperText: formData.name === '' && errorMessageVisible.name ? "Nickname can't be empty" : '',
+    errorText: formData.name === '' && errorMessageVisible.name ? "Nickname can't be empty" : '',
     value: formData.name
   }
 ];
