@@ -4,12 +4,19 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  word-break: normal;
+  max-inline-size: 403px;
   .form__input {
-    width: 70%;
+    width: 100%;
     margin-bottom: 2rem;
   }
   .form__submit {
     margin: 1rem;
+  }
+  .form__error {
+    color: red;
+    padding: 1rem;
+    font-weight: 500;
   }
 }
 

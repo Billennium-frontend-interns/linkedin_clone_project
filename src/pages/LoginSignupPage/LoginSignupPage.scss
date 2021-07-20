@@ -1,4 +1,5 @@
 * {
+  // WILL REMOVE AFTER GLOBAL STYLES ARE APPLIED
   padding: 0;
   margin: 0;
   overflow: hidden;
@@ -24,7 +25,6 @@
   background: none;
   color: rgb(76, 76, 212);
   font-size: 1rem;
-  font-weight: bold;
   cursor: pointer;
   padding: 1em 1em 0 0;
   margin-left: 0.5em;
@@ -36,4 +36,24 @@
 }
 .loginSignupPage__logo {
   margin-bottom: 3rem;
+}
+
+.loginSignupPage__signInGoogleButton {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  &:hover {
+    color: rgb(76, 76, 212);
+    cursor: pointer;
+  }
+  .google__icon {
+    margin-left: 0.3rem;
+    font-size: 2rem;
+  }
 }

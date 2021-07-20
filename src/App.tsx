@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginSignupPage from './components/LoginSignupPage/LoginSignupPage';
+import LoginSignupPage from './pages/LoginSignupPage/LoginSignupPage';
 
-const App: React.FC = () => <LoginSignupPage isLoginPage={false} />;
+const App: React.FC = () => <LoginSignupPage isLoginPage />;
 
 export default App;
