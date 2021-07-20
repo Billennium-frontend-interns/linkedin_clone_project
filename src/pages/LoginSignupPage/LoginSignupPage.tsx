@@ -8,7 +8,7 @@ interface LoginSignupPageProps {
   isLoginPage: boolean;
 }
 
-const LoginSignupPage: React.FC<LoginSignupPageProps> = ({ isLoginPage }: LoginSignupPageProps) => (
+export const LoginSignupPage: React.FC<LoginSignupPageProps> = ({ isLoginPage }: LoginSignupPageProps) => (
   <div className="loginSignupPage__container">
     <span className="loginSignupPage__logo">
       <Logo variant="medium" />
@@ -32,5 +32,3 @@ const LoginSignupPage: React.FC<LoginSignupPageProps> = ({ isLoginPage }: LoginS
     )}
   </div>
 );
-
-export default LoginSignupPage;
