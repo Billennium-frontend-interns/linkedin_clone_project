@@ -1,0 +1,22 @@
+.form__wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .form__input {
+    width: 70%;
+    margin-bottom: 2rem;
+  }
+  .form__submit {
+    margin: 1rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .form__wrapper {
+    .form__input {
+      width: 403px;
+    }
+  }
+}
