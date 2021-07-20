@@ -15,11 +15,36 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+  padding: 5%;
   background: linear-gradient(0deg, rgba(40, 103, 178, 0.28895308123249297) 0%, rgba(255, 255, 255, 1) 71%);
   .loginSignupPage__signinText {
     margin-bottom: 1.5rem;
   }
 }
+
+.loginSignupPage__signInGoogleButton {
+  border: none;
+  background: none;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  &:hover {
+    color: rgb(76, 76, 212);
+    cursor: pointer;
+  }
+  .google__icon {
+    margin-left: 0.1rem;
+    font-size: 2rem;
+  }
+  .loginSignupPage__signinText {
+    margin-top: -0.5rem;
+  }
+}
+
 .cta__button {
   border: none;
   background: none;
@@ -55,5 +80,24 @@
   .google__icon {
     margin-left: 0.3rem;
     font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .hint {
+    font-size: 0.7rem;
+  }
+  .cta__button {
+    font-size: 0.7rem;
+  }
+
+  .loginSignupPage__signInGoogleButton {
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    .google__icon {
+      margin-left: 0.5rem;
+      font-size: 1rem;
+    }
   }
 }

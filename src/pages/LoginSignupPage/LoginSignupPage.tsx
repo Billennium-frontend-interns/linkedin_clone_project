@@ -11,10 +11,10 @@ interface LoginSignupPageProps {
   isLoginPage: boolean;
 }
 
-const LoginSignupPage: React.FC<LoginSignupPageProps> = ({ isLoginPage }: LoginSignupPageProps) => (
+export const LoginSignupPage: React.FC<LoginSignupPageProps> = ({ isLoginPage }: LoginSignupPageProps) => (
   <div className="loginSignupPage__container">
     <span className="loginSignupPage__logo">
-      <Logo variant="medium" />
+      <Logo variant={window.screen.width < 281 ? 'small' : 'medium'} />
     </span>
     <h1 className="loginSignupPage__signinText">{isLoginPage ? 'Sign in' : 'Sign up'}</h1>
     {isLoginPage ? <LoginForm /> : <SignupForm />}
@@ -28,14 +28,14 @@ const LoginSignupPage: React.FC<LoginSignupPageProps> = ({ isLoginPage }: LoginS
       Sign in with Google <GoogleIcon className="google__icon" />
     </button>
     {isLoginPage ? (
-      <h4>
+      <h4 className="hint">
         Don&apos;t have an account?
         <a href="http://localhost:3000/signup" className="cta__button">
           Sign up!
         </a>
       </h4>
     ) : (
-      <h4>
+      <h4 className="hint">
         Already have an account?{' '}
         <a className="cta__button" href="http://localhost:3000/signin">
           Sign in!
@@ -44,5 +44,3 @@ const LoginSignupPage: React.FC<LoginSignupPageProps> = ({ isLoginPage }: LoginS
     )}
   </div>
 );
-
-export default LoginSignupPage;
