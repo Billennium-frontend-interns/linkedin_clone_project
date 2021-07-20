@@ -8,10 +8,7 @@
   max-inline-size: 403px;
   .form__input {
     width: 100%;
-    margin-bottom: 2rem;
-  }
-  .form__submit {
-    margin: 1rem;
+    margin-bottom: 1rem;
   }
   .form__error {
     color: red;
@@ -19,11 +16,25 @@
     font-weight: 500;
   }
 }
-
 @media only screen and (min-width: 576px) {
   .form__wrapper {
     .form__input {
       width: 403px;
+    }
+  }
+}
+@media only screen and (max-width: 320px) {
+  .form__wrapper {
+    .form__input {
+      margin-bottom: 0.7rem;
+      & :last-child {
+        margin-bottom: 0;
+      }
+    }
+    .form__error {
+      color: red;
+      padding: 0.5rem;
+      font-weight: 500;
     }
   }
 }
