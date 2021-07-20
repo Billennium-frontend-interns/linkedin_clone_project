@@ -6,9 +6,10 @@ import Logo from '../../shared/components/Logo/Logo';
 
 interface LoginSignupPageProps {
   isLoginPage: boolean;
+  form: React.ReactElement;
 }
 
-const LoginSignupPage: React.FC<LoginSignupPageProps> = ({ isLoginPage }: LoginSignupPageProps) => {
+const LoginSignupPage: React.FC<LoginSignupPageProps> = ({ isLoginPage, form }: LoginSignupPageProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
