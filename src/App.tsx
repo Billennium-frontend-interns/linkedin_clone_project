@@ -1,41 +1,15 @@
-import React, { useContext } from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { AuthContext } from './context/AuthProvider';
-import ProtectedRoute from './ProtectedRoute';
+import React from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { protectedDefaultRoutes } from './routes/protectedDefaultRoutes';
+import { publicRoutes } from './routes/publicRoutes';
 
-const App: React.FC = () => {
-  const user = useContext(AuthContext);
-
-  return (
-    <div>
-      <Router>
-        <Switch>
-          <ProtectedRoute exact path="/feed" />
-
-          <Route exact path="/" />
-
-          <Route exact path="/signUp" />
-
-          <Route exact path="/signIn" />
-
-          <Route
-            path="/"
-            render={() => {
-              if (user === undefined) {
-                return <p>Loading...</p>;
-              }
-
-              if (user) {
-                return <Redirect to="/feed" />;
-              }
-
-              return <Redirect to="/" />;
-            }}
-          />
-        </Switch>
-      </Router>
-    </div>
-  );
-};
+const App: React.FC = () => (
+  <Router>
+    <Switch>
+      {publicRoutes}
+      {protectedDefaultRoutes}
+    </Switch>
+  </Router>
+);
 
 export default App;

@@ -8,4 +8,4 @@ const logout = (history: History<LocationState>) => {
     .catch(error => console.log(error.message));
 };
 
-export default logout;
+export { logout };

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Route, Redirect, RouteProps } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { AuthContext } from './context/AuthProvider';
+import { AuthContext } from '../context/AuthProvider';
 
 const ProtectedRoute: React.FC<RouteProps> = ({ exact, path, component }) => {
   const user = useContext(AuthContext);
@@ -27,4 +27,4 @@ ProtectedRoute.propTypes = {
   component: PropTypes.func.isRequired
 };
 
-export default ProtectedRoute;
+export { ProtectedRoute };
