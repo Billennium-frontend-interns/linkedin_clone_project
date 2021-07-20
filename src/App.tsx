@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { protectedDefaultRoutes } from './routes/protectedDefaultRoutes';
-import { publicRoutes } from './routes/publicRoutes';
+import { PrivateDefaultRoutes } from './routes/PrivateDefaultRoutes';
+import { PublicRoutes } from './routes/PublicRoutes';
 
 const App: React.FC = () => (
   <Router>
     <Switch>
-      {publicRoutes}
-      {protectedDefaultRoutes}
+      {PublicRoutes}
+      {PrivateDefaultRoutes}
     </Switch>
   </Router>
 );

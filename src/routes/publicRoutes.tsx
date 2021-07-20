@@ -1,6 +1,4 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-const publicRoutes = [<Route exact path="/" />, <Route exact path="/megaStrona" />, <Route exact path="/signIn" />];
-
-export { publicRoutes };
+export const PublicRoutes = [<Route exact path="/" />, <Route exact path="/signUp" />, <Route exact path="/signIn" />];
