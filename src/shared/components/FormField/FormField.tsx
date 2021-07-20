@@ -35,7 +35,9 @@ export const FormField: React.FC<FormFieldInterface> = ({
     className={className}
     onClick={onClick}
     onChange={onChange}
-    data-testId={name}
+    inputProps={{
+      'data-testid': name
+    }}
   />
 );
 

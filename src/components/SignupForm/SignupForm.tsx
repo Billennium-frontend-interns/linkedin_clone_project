@@ -47,7 +47,7 @@ export const SignupForm: React.FC = () => {
   };
 
   return (
-    <form className="form__wrapper" data-testId="signupForm" onSubmit={handleSubmit}>
+    <form className="form__wrapper" data-testid="signupForm" onSubmit={handleSubmit}>
       {formFieldsConfig.map(({ label, type, name, isError, errorText, value }) => (
         <FormField
           key={name}
