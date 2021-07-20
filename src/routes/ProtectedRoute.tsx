@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { Route, Redirect, RouteProps } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { CircularProgress } from '@material-ui/core';
 import { AuthContext } from '../context/AuthProvider';
 
 export const ProtectedRoute: React.FC<RouteProps> = ({ exact, path, component }) => {
   const user = useContext(AuthContext);
 
   if (user === undefined) {
-    return <p>Loading...</p>;
+    return <CircularProgress />;
   }
 
   if (user) {

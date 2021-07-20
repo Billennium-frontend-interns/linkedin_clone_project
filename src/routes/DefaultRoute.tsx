@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import { CircularProgress } from '@material-ui/core';
 import { AuthContext } from '../context/AuthProvider';
 
 export const DefaultRoute = () => {
@@ -10,7 +11,7 @@ export const DefaultRoute = () => {
       path="/"
       render={() => {
         if (user === undefined) {
-          return <p>Loading...</p>;
+          return <CircularProgress />;
         }
 
         if (user) {
