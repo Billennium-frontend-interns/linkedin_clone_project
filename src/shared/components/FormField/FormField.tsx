@@ -9,6 +9,7 @@ export interface FormFieldInterface {
   isError: boolean;
   errorText: string;
   value: string;
+  className?: string;
   onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -20,6 +21,7 @@ export const FormField: React.FC<FormFieldInterface> = ({
   isError,
   errorText,
   value,
+  className,
   onClick,
   onChange
 }: FormFieldInterface) => (
@@ -29,8 +31,9 @@ export const FormField: React.FC<FormFieldInterface> = ({
     name={name}
     error={isError}
     helperText={errorText}
-    onClick={onClick}
     value={value}
+    className={className}
+    onClick={onClick}
     onChange={onChange}
     inputProps={{
       testId: name
@@ -38,13 +41,18 @@ export const FormField: React.FC<FormFieldInterface> = ({
   />
 );
 
+FormField.defaultProps = {
+  className: ''
+};
+
 FormField.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   isError: PropTypes.bool.isRequired,
   errorText: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired
 };

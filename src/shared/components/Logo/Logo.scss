@@ -1,0 +1,28 @@
+.logo {
+  color: #2977c9;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  padding-right: 0;
+  margin-right: 0;
+  user-select: none;
+
+  &--small {
+    font-size: 1rem;
+    .logo__icon {
+      font-size: 3rem;
+    }
+  }
+  &--medium {
+    font-size: 2rem;
+    .logo__icon {
+      font-size: 6rem;
+    }
+  }
+  &--big {
+    font-size: 3rem;
+    .logo__icon {
+      font-size: 8rem;
+    }
+  }
+}

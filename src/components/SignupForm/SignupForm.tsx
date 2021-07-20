@@ -47,7 +47,7 @@ export const SignupForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form__wrapper" onSubmit={handleSubmit}>
       {formFieldsConfig.map(({ label, type, name, isError, errorText, value }) => (
         <FormField
           key={name}
@@ -56,18 +56,19 @@ export const SignupForm: React.FC = () => {
           name={name}
           isError={isError}
           errorText={errorText}
+          value={value}
+          className="form__input"
           // eslint-disable-next-line
           onClick={(event: React.MouseEvent<HTMLDivElement>) => {
             setIsErrorMessageVisible({ ...isErrorMessageVisible, [name]: true });
           }}
-          value={value}
           onChange={handleChange}
         />
       ))}
-      <Button variant="contained" color="primary" type="submit" disabled={isLoading}>
+      {error.isError && <p className="form__error">{error.errorText}</p>}
+      <Button variant="contained" color="primary" className="form__submit" type="submit" disabled={isLoading}>
         Register
       </Button>
-      {error.isError && <p>{error.errorText}</p>}
     </form>
   );
 };
