@@ -21,6 +21,7 @@
   },
   "plugins": ["react", "@typescript-eslint", "prettier", "cypress", "unused-imports"],
   "rules": {
+    "import/prefer-default-export": "off",
     "unused-imports/no-unused-imports": "error",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
@@ -28,7 +29,6 @@
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
     "react/react-in-jsx-scope": "off",
-    "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": [
       "error",
       { "devDependencies": true, "optionalDependencies": false, "peerDependencies": false }
