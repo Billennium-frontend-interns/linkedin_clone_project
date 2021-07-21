@@ -1,0 +1,46 @@
+a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.navigationIcon {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  color: grey;
+  cursor: pointer;
+
+  &--active {
+    color: black;
+    border-bottom: 1px solid black;
+  }
+
+  &__title {
+    display: none;
+  }
+
+  &__icon {
+    object-fit: contain;
+    width: 25px !important;
+    height: 25px !important;
+  }
+
+  &:hover {
+    color: black;
+  }
+}
+
+@media only screen and (min-width: 420px) {
+  .navigationIcon {
+    justify-content: center;
+    flex-direction: column;
+
+    &__title {
+      font-size: 12px;
+      font-weight: 400;
+      margin: 0;
+      display: block;
+    }
+  }
+}

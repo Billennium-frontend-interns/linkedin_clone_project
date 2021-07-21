@@ -1,0 +1,56 @@
+.header {
+  position: sticky;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 0.1px solid lightgray;
+  width: 100%;
+  top: 0;
+  padding: 10px 0;
+  z-index: 999;
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    font-size: 60px !important;
+  }
+
+  &__search {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    height: 22px;
+    color: gray;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__right {
+    display: flex;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .header {
+    &__search {
+      border-radius: 5px;
+      padding: 5px;
+      background-color: #eef3f8;
+    }
+
+    &__input {
+      display: block;
+      outline: none;
+      border: none;
+      background: none;
+    }
+
+    &__logo {
+      margin-right: 10px;
+    }
+  }
+}

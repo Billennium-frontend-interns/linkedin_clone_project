@@ -5,7 +5,7 @@ export default {
   title: 'Components/Button'
 };
 
-export const DefaultButton = () => <Button>deafult</Button>;
+export const DefaultButton = () => <Button>default</Button>;
 
 export const LogOutButton = () => <Button variant="outlined">log out</Button>;
 
