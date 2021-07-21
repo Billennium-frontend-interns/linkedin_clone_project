@@ -5,26 +5,44 @@
   display: flex;
   align-items: center;
   font-size: 2rem;
-  padding-right: 0;
-  margin-right: 0;
   user-select: none;
+  margin-bottom: 0;
+
+  .logo__text {
+    font-weight: bold;
+  }
+
+  .logo__text {
+    font-size: 3rem;
+  }
 
   &--small {
-    font-size: 1rem;
-    .logo__icon {
+    .logo__text {
       font-size: 3rem;
     }
-  }
-  &--medium {
-    font-size: 2rem;
+
     .logo__icon {
-      font-size: 6rem;
+      font-size: 4rem;
     }
   }
-  &--big {
-    font-size: 3rem;
+
+  &--medium {
+    .logo__text {
+      font-size: 4rem;
+    }
+
     .logo__icon {
-      font-size: 8rem;
+      font-size: 5rem;
+    }
+  }
+
+  &--big {
+    .logo__text {
+      font-size: 5rem;
+    }
+
+    .logo__icon {
+      font-size: 6rem;
     }
   }
 }

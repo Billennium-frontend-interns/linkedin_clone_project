@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Button } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { SignUpFormDataInterface, ErrorMessageVisibleInterface } from '../../shared/interfaces/FormInterfaces';
 import { useSignupFormValidation } from './useSignupFormValidation';
 import { useFormFieldsConfig } from './useFormFieldsConfig';
@@ -51,28 +51,37 @@ export const SignupForm: React.FC = () => {
   };
 
   return (
-    <form className="form__container" data-testid="signupForm" onSubmit={handleSubmit}>
-      {formFieldsConfig.map(({ label, type, name, isError, errorText, value }) => (
-        <FormField
-          key={name}
-          label={label}
-          type={type}
-          name={name}
-          isError={isError}
-          errorText={errorText}
-          value={value}
-          className="form__input"
-          // eslint-disable-next-line
-          onClick={(event: React.MouseEvent<HTMLDivElement>) =>
-            setIsErrorMessageVisible({ ...isErrorMessageVisible, [name]: true })
-          }
-          onChange={handleChange}
-        />
-      ))}
-      {error.isError && <p className="form__error">{error.errorText}</p>}
-      <Button variant="contained" color="primary" className="form__submit" type="submit" disabled={isLoading}>
-        Register
-      </Button>
-    </form>
+    <div className="FormLayout__formcontainer">
+      <h1 className="FormLayout__signinText">Sign up</h1>
+      <form className="form__container" data-testid="signupForm" onSubmit={handleSubmit}>
+        {formFieldsConfig.map(({ label, type, name, isError, errorText, value }) => (
+          <FormField
+            key={name}
+            label={label}
+            type={type}
+            name={name}
+            isError={isError}
+            errorText={errorText}
+            value={value}
+            className="form__input"
+            // eslint-disable-next-line
+            onClick={(event: React.MouseEvent<HTMLDivElement>) =>
+              setIsErrorMessageVisible({ ...isErrorMessageVisible, [name]: true })
+            }
+            onChange={handleChange}
+          />
+        ))}
+        {error.isError && <p className="form__error">{error.errorText}</p>}
+        <Button variant="contained" color="primary" className="form__submit" type="submit" disabled={isLoading}>
+          Register
+        </Button>
+      </form>
+      <h4 className="hint">
+        Already have an account?{' '}
+        <Link className="cta__button" to="/signIn">
+          Sign in!
+        </Link>
+      </h4>
+    </div>
   );
 };

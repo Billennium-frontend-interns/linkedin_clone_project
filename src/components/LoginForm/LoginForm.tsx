@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import { LoginFormDataInterface, ErrorMessageLoginVisibleInterface } from '../../shared/interfaces/FormInterfaces';
 import { useLoginFormValidation } from './useLoginFormValidation';
@@ -44,35 +44,44 @@ export const LoginForm: React.FC = () => {
   };
 
   return (
-    <form className="form__container" onSubmit={handleSubmit}>
-      {formFieldsConfig.map(({ label, type, name, isError, errorText, value }) => (
-        <FormField
-          key={name}
-          label={label}
-          type={type}
-          name={name}
-          isError={isError}
-          errorText={errorText}
-          className="form__input"
-          // eslint-disable-next-line
-          onClick={(event: React.MouseEvent<HTMLDivElement>) => {
-            setIsErrorMessageVisible({ ...isErrorMessageVisible, [name]: true });
-          }}
-          value={value}
-          onChange={handleChange}
-        />
-      ))}
-      {error.isError && <p className="form__error">{error.errorText}</p>}
-      <Button
-        data-testid="signin_button"
-        className="form__submit"
-        variant="contained"
-        color="primary"
-        disabled={isLoading}
-        type="submit"
-      >
-        Sign in
-      </Button>
-    </form>
+    <div className="FormLayout__formcontainer">
+      <h1 className="FormLayout__signinText">Sign in</h1>
+      <form className="form__container" onSubmit={handleSubmit}>
+        {formFieldsConfig.map(({ label, type, name, isError, errorText, value }) => (
+          <FormField
+            key={name}
+            label={label}
+            type={type}
+            name={name}
+            isError={isError}
+            errorText={errorText}
+            className="form__input"
+            // eslint-disable-next-line
+            onClick={(event: React.MouseEvent<HTMLDivElement>) => {
+              setIsErrorMessageVisible({ ...isErrorMessageVisible, [name]: true });
+            }}
+            value={value}
+            onChange={handleChange}
+          />
+        ))}
+        {error.isError && <p className="form__error">{error.errorText}</p>}
+        <Button
+          data-testid="signin_button"
+          className="form__submit"
+          variant="contained"
+          color="primary"
+          disabled={isLoading}
+          type="submit"
+        >
+          Sign in
+        </Button>
+      </form>
+      <h4 className="hint">
+        Don&apos;t have an account?
+        <Link to="/signUp" className="cta__button">
+          Sign up!
+        </Link>
+      </h4>
+    </div>
   );
 };
