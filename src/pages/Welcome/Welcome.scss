@@ -1,0 +1,47 @@
+@import "../../styles/Colors.scss";
+@import "..//../styles/Mixins.scss";
+@import "../../styles/Fonts.scss";
+
+.welcomePage {
+    height: 100vh;
+    @include flexCenter;
+    font-size: $smallFont;
+    color: $darkBlue;
+    background-color: $lightBlue;
+    background: $gradientBlue;
+
+    .container {
+        @include flexColumn;
+        margin: 30px;
+
+        .hero {
+            @include flexCenter;
+            &__h1 {
+                margin: 0;
+                font-size: 1.75em;
+                font-weight: 600;
+            }
+                &__icon {
+                font-size: 2em;
+            }
+        }
+
+        .welcomeTxt {
+            font-size: .9em;
+            letter-spacing: 1px;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .btns {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            width: 300px;
+            margin-bottom: 30px;
+            &__item {
+                text-decoration: none;
+            }
+        }
+    }
+}
