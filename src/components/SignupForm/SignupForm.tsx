@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-import { SignUpFormDataInterface, ErrorMessageVisibleInterface } from './interfaces/SignupFormInterfaces';
+import { SignUpFormDataInterface, ErrorMessageVisibleInterface } from '../../shared/interfaces/SignupFormInterfaces';
 import { useSignupFormValidation } from './useSignupFormValidation';
 import { useFormFieldsConfig } from './useFormFieldsConfig';
 import { FormField } from '../../shared/components/FormField/FormField';
-import { signWithCredentails } from '../../actions/signUpWithEmailAndPassword';
+import { signUpWithCredentails } from '../../actions/signUpWithCredentails';
 
 export const SignupForm: React.FC = () => {
   const history = useHistory();
@@ -45,7 +45,7 @@ export const SignupForm: React.FC = () => {
 
     if (validateForm()) {
       const { email, password, name } = formData;
-      await signWithCredentails({ email, password, name, history, setError });
+      await signUpWithCredentails({ email, password, name, history, setError });
     }
 
     setIsLoading(false);

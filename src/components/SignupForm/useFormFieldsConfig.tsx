@@ -1,4 +1,4 @@
-import { SignUpFormDataInterface, FormFieldConfigInterface } from './interfaces/SignupFormInterfaces';
+import { SignUpFormDataInterface, FormFieldConfigInterface } from '../../shared/interfaces/SignupFormInterfaces';
 
 export const useFormFieldsConfig = (
   formData: SignUpFormDataInterface,

@@ -1,8 +1,8 @@
 import { History, LocationState } from 'history';
 import { auth } from '../firebase';
-import { ErrorInterface } from '../components/SignupForm/interfaces/SignupFormInterfaces';
+import { ErrorInterface } from '../shared/interfaces/SignupFormInterfaces';
 
-interface SignWithCredentailsInterface {
+interface SignUpWithCredentailsInterface {
   email: string;
   password: string;
   name: string;
@@ -10,13 +10,13 @@ interface SignWithCredentailsInterface {
   setError: React.Dispatch<React.SetStateAction<ErrorInterface>>;
 }
 
-export const signWithCredentails = async ({
+export const signUpWithCredentails = async ({
   email,
   password,
   name,
   history,
   setError
-}: SignWithCredentailsInterface): Promise<void> => {
+}: SignUpWithCredentailsInterface): Promise<void> => {
   try {
     await auth.createUserWithEmailAndPassword(email, password);
     await auth.currentUser?.updateProfile({
