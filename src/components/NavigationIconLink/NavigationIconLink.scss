@@ -1,13 +1,19 @@
 @import '../../styles/Mixins.scss';
+@import '../../styles/Colors.scss';
 @import '../../styles/Breakpoints.scss';
 
-.navigationIcon {
+.navigationIconLink {
   text-decoration: none;
   @include navigationIcon-mobile;
+
+  &--active {
+    color: $headerColor;
+    text-decoration: none;
+  }
 }
 
 @media only screen and (min-width: $mobileDevices) {
-  .navigationIcon {
+  .navigationIconLink {
     @include navigationIcon;
   }
 }

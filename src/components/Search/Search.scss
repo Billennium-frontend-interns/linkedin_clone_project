@@ -1,0 +1,26 @@
+@import '../../styles//Mixins.scss';
+@import '../../styles//Breakpoints.scss';
+
+.search {
+  @include flexAlignItemsCenter;
+  padding: 10px;
+  height: 22px;
+  color: gray;
+
+  &__input {
+    display: none;
+  }
+
+  @media only screen and (min-width: $mediumBreakpoint) {
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #eef3f8;
+
+    &__input {
+      display: block;
+      outline: none;
+      border: none;
+      background: none;
+    }
+  }
+}

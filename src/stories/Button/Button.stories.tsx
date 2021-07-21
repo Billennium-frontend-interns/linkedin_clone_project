@@ -5,11 +5,11 @@ export default {
   title: 'Components/Button'
 };
 
-export const DefaultButton = () => <Button>default</Button>;
+export const Default = () => <Button>default</Button>;
 
-export const LogOutButton = () => <Button variant="outlined">log out</Button>;
+export const Outlined = () => <Button variant="outlined">log out</Button>;
 
-export const ViewProfileButton = () => (
+export const PrimaryOutlined = () => (
   <Button variant="outlined" color="primary">
     view profile
   </Button>

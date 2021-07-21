@@ -1,54 +1,27 @@
+@import '../../styles/Mixins.scss';
+@import '../../styles/Breakpoints.scss';
+@import '../../styles/ZIndexs.scss';
+@import '../../styles/Fonts.scss';
+@import '../../styles/Global.scss';
+
 .header {
   position: sticky;
-  display: flex;
-  justify-content: space-around;
+  @include FlexJustifyContentSpaceAround;
   border-bottom: 0.1px solid lightgray;
   width: 100%;
   top: 0;
   padding: 10px 0;
-  z-index: 999;
+  z-index: $maxZIndex;
 
-  &__left {
-    display: flex;
-    align-items: center;
+  &__search {
+    @include flexAlignItemsCenter;
   }
 
   &__logo {
-    font-size: 60px !important;
+    font-size: $bigFont !important;
   }
 
-  &__search {
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    height: 22px;
-    color: gray;
-  }
-
-  &__input {
-    display: none;
-  }
-
-  &__right {
-    display: flex;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .header {
-    &__search {
-      border-radius: 5px;
-      padding: 5px;
-      background-color: #eef3f8;
-    }
-
-    &__input {
-      display: block;
-      outline: none;
-      border: none;
-      background: none;
-    }
-
+  @media only screen and (min-width: $mobileDevices) {
     &__logo {
       margin-right: 10px;
     }

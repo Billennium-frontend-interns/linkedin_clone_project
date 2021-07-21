@@ -1,10 +1,9 @@
-import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { Header } from '../../components/Header/Header';
+import { Navigation } from '../../components/Navigation/Navigation';
 
 export default {
-  component: Header,
-  title: 'Components/Header',
+  component: Navigation,
+  title: 'Components/Navigation',
   decorators: [
     (Story: React.FC) => (
       <MemoryRouter>
@@ -14,4 +13,4 @@ export default {
   ]
 };
 
-export const Default = () => <Header />;
+export const Default = () => <Navigation />;
