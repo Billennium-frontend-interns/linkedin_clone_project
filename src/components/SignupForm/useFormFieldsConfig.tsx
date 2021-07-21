@@ -1,7 +1,7 @@
-import { SignUpFormDataInterface, FormFieldConfigInterface } from '../../shared/interfaces/FormInterfaces';
+import { SignUpCredentialsInterface, FormFieldConfigInterface } from '../../shared/interfaces/FormInterfaces';
 
 export const useFormFieldsConfig = (
-  formData: SignUpFormDataInterface,
+  formData: SignUpCredentialsInterface,
   errorMessageVisible: {
     name: boolean;
     email: boolean;

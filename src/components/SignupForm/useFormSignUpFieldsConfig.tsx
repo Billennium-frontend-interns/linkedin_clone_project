@@ -1,11 +1,11 @@
 import {
-  SignUpFormDataInterface,
+  SignUpCredentialsInterface,
   FormFieldConfigInterface,
   ErrorMessageVisibleInterface
 } from '../../shared/interfaces/FormInterfaces';
 
 export const useFormSignUpFieldsConfig = (
-  formData: SignUpFormDataInterface,
+  formData: SignUpCredentialsInterface,
   errorMessageVisible: ErrorMessageVisibleInterface
 ): FormFieldConfigInterface[] => [
   {

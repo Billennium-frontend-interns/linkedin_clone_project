@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { SignUpFormDataInterface, ErrorInterface } from '../../shared/interfaces/FormInterfaces';
+import { SignUpCredentialsInterface, ErrorInterface } from '../../shared/interfaces/FormInterfaces';
 import { ValidationInterface } from '../../shared/interfaces/ValidationInterfaces';
 
-export const useSignupFormValidation = (signUpFormData: SignUpFormDataInterface): ValidationInterface => {
+export const useSignupFormValidation = (signUpFormData: SignUpCredentialsInterface): ValidationInterface => {
   const initialErrorData: ErrorInterface = {
     isError: false,
     errorText: ''
