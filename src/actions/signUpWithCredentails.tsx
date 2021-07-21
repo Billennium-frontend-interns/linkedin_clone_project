@@ -1,14 +1,11 @@
 import { History, LocationState } from 'history';
 import { auth } from '../firebase';
-import { ErrorInterface } from '../shared/interfaces/SignupFormInterfaces';
+import { ErrorInterface, Credentials } from '../shared/interfaces/FormInterfaces';
 
-interface SignUpWithCredentailsInterface {
-  email: string;
-  password: string;
-  name: string;
+type SignUpWithCredentailsInterface = Credentials & {
   history: History<LocationState>;
   setError: React.Dispatch<React.SetStateAction<ErrorInterface>>;
-}
+};
 
 export const signUpWithCredentails = async ({
   email,

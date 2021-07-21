@@ -1,26 +1,44 @@
-.form__wrapper {
+.form__container {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  word-break: normal;
+  max-inline-size: 403px;
   .form__input {
-    width: 70%;
-    margin-bottom: 2rem;
+    width: 100%;
+    margin-bottom: 1rem;
   }
-  .form__submit {
-    margin: 1rem;
+  .form__error {
+    color: red;
+    padding: 1rem;
+    font-weight: 500;
   }
 
   .form__error {
     font-weight: bold;
   }
 }
-
 @media only screen and (min-width: 576px) {
   .form__wrapper {
     .form__input {
       width: 403px;
+    }
+  }
+}
+@media only screen and (max-width: 320px) {
+  .form__wrapper {
+    .form__input {
+      margin-bottom: 0.7rem;
+      & :last-child {
+        margin-bottom: 0;
+      }
+    }
+    .form__error {
+      color: red;
+      padding: 0.5rem;
+      font-weight: 500;
     }
   }
 }

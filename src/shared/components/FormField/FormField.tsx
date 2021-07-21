@@ -1,18 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TextField } from '@material-ui/core';
+import { FormFieldConfigInterface } from '../../interfaces/FormInterfaces';
 
-export interface FormFieldInterface {
-  label: string;
-  type: string;
-  name: string;
-  isError: boolean;
-  errorText: string;
-  value: string;
+export type FormFieldInterface = FormFieldConfigInterface & {
   className?: string;
   onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+};
 
 export const FormField: React.FC<FormFieldInterface> = ({
   label,
@@ -26,6 +21,7 @@ export const FormField: React.FC<FormFieldInterface> = ({
   onChange
 }: FormFieldInterface) => (
   <TextField
+    variant="standard"
     label={label}
     type={type}
     name={name}
