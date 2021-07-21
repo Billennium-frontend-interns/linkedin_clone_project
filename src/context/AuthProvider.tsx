@@ -6,10 +6,10 @@ interface AuthProviderProps {
   children: React.ReactNode;
 }
 
-export const AuthContext = createContext<firebase.default.User | null>(null);
+export const AuthContext = createContext<firebase.default.User | undefined | null>(undefined);
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<firebase.default.User | null>(null);
+  const [currentUser, setCurrentUser] = useState<firebase.default.User | undefined | null>();
 
   useEffect(() => {
     const unsubscriber = auth.onAuthStateChanged(user => {

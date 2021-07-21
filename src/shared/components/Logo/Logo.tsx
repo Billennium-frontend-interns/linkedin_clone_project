@@ -1,6 +1,6 @@
 import React from 'react';
-import './Logo.scss';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import './Logo.scss';
 
 export interface LogoProps {
   variant: 'small' | 'medium' | 'big';

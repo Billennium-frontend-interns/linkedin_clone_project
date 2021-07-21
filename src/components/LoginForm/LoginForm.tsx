@@ -1,12 +1,15 @@
 import React, { useState, useMemo } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import { LoginFormDataInterface, ErrorMessageLoginVisibleInterface } from '../../shared/interfaces/FormInterfaces';
 import { useLoginFormValidation } from './useLoginFormValidation';
 import { useFormLoginFieldsConfig } from './useFormLoginFieldsConfig';
 import { FormField } from '../../shared/components/FormField/FormField';
-import { signInWithPasswordAndEmail } from '../../actions/signInWithPasswordAndEmail';
+import { signInWithCredentials } from '../../actions/signInWithCredentials';
 
 export const LoginForm: React.FC = () => {
+  const history = useHistory();
+
   const initialFormData: LoginFormDataInterface = {
     password: '',
     email: ''
@@ -35,7 +38,7 @@ export const LoginForm: React.FC = () => {
     setIsLoading(true);
     if (validateForm()) {
       const { email, password } = formData;
-      await signInWithPasswordAndEmail({ email, password, setError });
+      await signInWithCredentials({ email, password, setError, history });
     }
     setIsLoading(false);
   };

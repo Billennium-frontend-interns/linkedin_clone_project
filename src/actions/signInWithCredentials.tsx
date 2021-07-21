@@ -1,18 +1,18 @@
-// import { History, LocationState } from 'history';
+import { History, LocationState } from 'history';
 import { auth } from '../firebase';
 import { ErrorInterface } from '../shared/interfaces/FormInterfaces';
 
-interface SignInWithPasswordAndEmail {
+interface signInWithCredentials {
   email: string;
   password: string;
   setError: React.Dispatch<React.SetStateAction<ErrorInterface>>;
-  // history: History<LocationState>;
+  history: History<LocationState>;
 }
 
-export const signInWithPasswordAndEmail = ({ email, password, setError }: SignInWithPasswordAndEmail): void => {
+export const signInWithCredentials = ({ email, password, setError, history }: signInWithCredentials): void => {
   auth
     .signInWithEmailAndPassword(email, password)
-    .then(() => alert('push home')) //  redirect when router implemented
+    .then(() => history.push('/feed'))
     .catch(error =>
       setError({
         isError: true,
@@ -20,5 +20,3 @@ export const signInWithPasswordAndEmail = ({ email, password, setError }: SignIn
       })
     );
 };
-
-export default signInWithPasswordAndEmail;

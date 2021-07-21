@@ -1,15 +1,13 @@
-// import { History, LocationState } from 'history';
+import { History, LocationState } from 'history';
 import { auth, provider } from '../firebase';
 
-// interface SignInWithGoogle {
-// history: History<LocationState>;
-// }
+interface SignInWithGoogle {
+  history: History<LocationState>;
+}
 
-// const signInWithGooglePopup = ({ history }: SignInWithGoogle) => when router implemented
-
-export const signInWithGooglePopup = (): void => {
+export const signInWithGooglePopup = ({ history }: SignInWithGoogle) => {
   auth
     .signInWithPopup(provider)
-    .then(res => /* redirect */ console.log(res))
+    .then(() => history.push('/feed'))
     .catch(error => console.error(error));
 };
