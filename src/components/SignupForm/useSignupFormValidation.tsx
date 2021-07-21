@@ -19,21 +19,21 @@ export const useSignupFormValidation = (signUpFormData: SignUpFormDataInterface)
       return false;
     };
 
-    const isNicknameValid = () => {
+    const isNicknameNotValid = () => {
       if (name.length < 3 || name.length > 30) {
         return true;
       }
       return false;
     };
 
-    const isPasswordValid = () => {
+    const isPasswordNotValid = () => {
       if (password.length < 8) {
         return true;
       }
       return false;
     };
 
-    const isPasswordMatch = () => {
+    const isPasswordNotMatch = () => {
       if (password !== repeatPassword) {
         return true;
       }
@@ -48,7 +48,7 @@ export const useSignupFormValidation = (signUpFormData: SignUpFormDataInterface)
       return false;
     }
 
-    if (isNicknameValid()) {
+    if (isNicknameNotValid()) {
       setError({
         isError: true,
         errorText: 'Nickname must be longer than 3 characters and shorter than 30 characters'
@@ -56,7 +56,7 @@ export const useSignupFormValidation = (signUpFormData: SignUpFormDataInterface)
       return false;
     }
 
-    if (isPasswordValid()) {
+    if (isPasswordNotValid()) {
       setError({
         isError: true,
         errorText: 'Password must be at least 8 characters'
@@ -64,7 +64,7 @@ export const useSignupFormValidation = (signUpFormData: SignUpFormDataInterface)
       return false;
     }
 
-    if (isPasswordMatch()) {
+    if (isPasswordNotMatch()) {
       setError({
         isError: true,
         errorText: 'Passwords must match'

@@ -1,4 +1,4 @@
-.form__wrapper {
+.form__container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -14,6 +14,10 @@
     color: red;
     padding: 1rem;
     font-weight: 500;
+  }
+
+  .form__error {
+    font-weight: bold;
   }
 }
 @media only screen and (min-width: 576px) {

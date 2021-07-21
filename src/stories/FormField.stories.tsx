@@ -7,7 +7,7 @@ export default {
 };
 
 export const Template: Story<FormFieldInterface> = (args: FormFieldInterface) => {
-  const { label, type, name, isError, errorText, className, value, onClick, onChange } = args;
+  const { label, type, name, isError, errorText, value, onClick, onChange } = args;
   return (
     <FormField
       label={label}
@@ -18,7 +18,6 @@ export const Template: Story<FormFieldInterface> = (args: FormFieldInterface) =>
       value={value}
       onClick={onClick}
       onChange={onChange}
-      className={className}
     />
   );
 };

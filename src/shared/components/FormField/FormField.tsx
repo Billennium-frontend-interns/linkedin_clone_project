@@ -21,9 +21,9 @@ export const FormField: React.FC<FormFieldInterface> = ({
   isError,
   errorText,
   value,
+  className,
   onClick,
-  onChange,
-  className
+  onChange
 }: FormFieldInterface) => (
   <TextField
     variant="standard"
@@ -32,9 +32,9 @@ export const FormField: React.FC<FormFieldInterface> = ({
     name={name}
     error={isError}
     helperText={errorText}
-    onClick={onClick}
     value={value}
     className={className}
+    onClick={onClick}
     onChange={onChange}
     inputProps={{
       'data-testid': name
@@ -52,8 +52,8 @@ FormField.propTypes = {
   name: PropTypes.string.isRequired,
   isError: PropTypes.bool.isRequired,
   errorText: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  className: PropTypes.string,
   value: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired
 };

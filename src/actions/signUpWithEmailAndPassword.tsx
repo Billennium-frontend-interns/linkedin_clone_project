@@ -1,28 +1,28 @@
-// import { History, LocationState } from 'history';
+import { History, LocationState } from 'history';
 import { auth } from '../firebase';
 import { ErrorInterface } from '../shared/interfaces/FormInterfaces';
 
-interface SignUpWithEmailAndPasswordAndName {
+interface SignWithCredentailsInterface {
   email: string;
   password: string;
   name: string;
-  //   history: History<LocationState>;
+  history: History<LocationState>;
   setError: React.Dispatch<React.SetStateAction<ErrorInterface>>;
 }
 
-export const signUpWithEmailAndPassword = async ({
+export const signWithCredentails = async ({
   email,
   password,
   name,
-  //   history,
+  history,
   setError
-}: SignUpWithEmailAndPasswordAndName): Promise<void> => {
+}: SignWithCredentailsInterface): Promise<void> => {
   try {
     await auth.createUserWithEmailAndPassword(email, password);
     await auth.currentUser?.updateProfile({
       displayName: name
     });
-    // history.push('/home');
+    history.push('/home');
   } catch (err) {
     setError({
       isError: true,

@@ -44,7 +44,7 @@ export const LoginForm: React.FC = () => {
   };
 
   return (
-    <form className="form__wrapper" onSubmit={handleSubmit}>
+    <form className="form__container" onSubmit={handleSubmit}>
       {formFieldsConfig.map(({ label, type, name, isError, errorText, value }) => (
         <FormField
           key={name}

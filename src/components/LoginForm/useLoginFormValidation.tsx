@@ -12,7 +12,7 @@ export const useLoginFormValidation = (LoginFormData: LoginFormDataInterface): V
   const validateForm = (): boolean => {
     const { email, password } = LoginFormData;
 
-    const isAnyEmpty = () => email.length === 0 || password.length === 0;
+    const isAnyEmpty = () => email.trim() === '' || password.trim() === '';
 
     if (isAnyEmpty()) {
       setError({
