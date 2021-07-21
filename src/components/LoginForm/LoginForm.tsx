@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
-import { LoginFormDataInterface, ErrorMessageLoginVisibleInterface } from '../../shared/interfaces/FormInterfaces';
+import { LoginCredentialsInterface, ErrorMessageLoginVisibleInterface } from '../../shared/interfaces/FormInterfaces';
 import { useLoginFormValidation } from './useLoginFormValidation';
 import { useFormLoginFieldsConfig } from './useFormLoginFieldsConfig';
 import { FormField } from '../../shared/components/FormField/FormField';
@@ -10,19 +10,20 @@ import { signInWithCredentials } from '../../actions/signInWithCredentials';
 export const LoginForm: React.FC = () => {
   const history = useHistory();
 
-  const initialFormData: LoginFormDataInterface = {
+  const [formData, setFormData] = useState<LoginCredentialsInterface>({
     password: '',
     email: ''
-  };
-  const [formData, setFormData] = useState(initialFormData);
+  });
 
-  const initialErrorMessageVisible: ErrorMessageLoginVisibleInterface = {
+  const [isErrorMessageVisible, setIsErrorMessageVisible] = useState<ErrorMessageLoginVisibleInterface>({
     email: false,
     password: false
-  };
-  const [isErrorMessageVisible, setIsErrorMessageVisible] = useState(initialErrorMessageVisible);
+  });
+
   const [isLoading, setIsLoading] = useState(false);
+
   const { error, setError, validateForm } = useLoginFormValidation(formData);
+
   const formFieldsConfig = useMemo(
     () => useFormLoginFieldsConfig(formData, isErrorMessageVisible),
     [formData, isErrorMessageVisible]
@@ -30,16 +31,20 @@ export const LoginForm: React.FC = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
+
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     setIsLoading(true);
+
     if (validateForm()) {
       const { email, password } = formData;
       await signInWithCredentials({ email, password, setError, history });
     }
+
     setIsLoading(false);
   };
 

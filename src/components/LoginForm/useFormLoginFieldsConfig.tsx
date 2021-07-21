@@ -1,11 +1,12 @@
-import { LoginFormDataInterface, FormFieldConfigInterface } from '../../shared/interfaces/FormInterfaces';
+import {
+  ErrorMessageLoginVisibleInterface,
+  LoginCredentialsInterface,
+  FormFieldConfigInterface
+} from '../../shared/interfaces/FormInterfaces';
 
 export const useFormLoginFieldsConfig = (
-  formData: LoginFormDataInterface,
-  errorMessageVisible: {
-    email: boolean;
-    password: boolean;
-  }
+  formData: LoginCredentialsInterface,
+  errorMessageVisible: ErrorMessageLoginVisibleInterface
 ): FormFieldConfigInterface[] => [
   {
     label: 'E-mail',
