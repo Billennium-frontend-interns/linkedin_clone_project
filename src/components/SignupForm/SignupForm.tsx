@@ -34,21 +34,25 @@ export const SignupForm: React.FC = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
+
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     setIsLoading(true);
+
     if (validateForm()) {
       const { email, password, name } = formData;
       await signWithCredentails({ email, password, name, history, setError });
     }
+
     setIsLoading(false);
   };
 
   return (
-    <form className="form__wrapper" data-testid="signupForm" onSubmit={handleSubmit}>
+    <form className="form__container" data-testid="signupForm" onSubmit={handleSubmit}>
       {formFieldsConfig.map(({ label, type, name, isError, errorText, value }) => (
         <FormField
           key={name}
@@ -60,9 +64,9 @@ export const SignupForm: React.FC = () => {
           value={value}
           className="form__input"
           // eslint-disable-next-line
-          onClick={(event: React.MouseEvent<HTMLDivElement>) => {
-            setIsErrorMessageVisible({ ...isErrorMessageVisible, [name]: true });
-          }}
+          onClick={(event: React.MouseEvent<HTMLDivElement>) =>
+            setIsErrorMessageVisible({ ...isErrorMessageVisible, [name]: true })
+          }
           onChange={handleChange}
         />
       ))}
