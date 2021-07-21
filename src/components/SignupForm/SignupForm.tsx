@@ -1,27 +1,28 @@
 import React, { useState, useMemo } from 'react';
 import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 import { SignUpFormDataInterface, ErrorMessageVisibleInterface } from './interfaces/SignupFormInterfaces';
 import { useSignupFormValidation } from './useSignupFormValidation';
 import { useFormFieldsConfig } from './useFormFieldsConfig';
 import { FormField } from '../../shared/components/FormField/FormField';
-import { signUpWithEmailAndPassword } from '../../actions/signUpWithEmailAndPassword';
+import { signWithCredentails } from '../../actions/signUpWithEmailAndPassword';
 
 export const SignupForm: React.FC = () => {
-  const initialFormData: SignUpFormDataInterface = {
+  const history = useHistory();
+
+  const [formData, setFormData] = useState<SignUpFormDataInterface>({
     name: '',
     password: '',
     repeatPassword: '',
     email: ''
-  };
-  const [formData, setFormData] = useState(initialFormData);
+  });
 
-  const initialErrorMessageVisible: ErrorMessageVisibleInterface = {
+  const [isErrorMessageVisible, setIsErrorMessageVisible] = useState<ErrorMessageVisibleInterface>({
     name: false,
     email: false,
     password: false,
     repeatPassword: false
-  };
-  const [isErrorMessageVisible, setIsErrorMessageVisible] = useState(initialErrorMessageVisible);
+  });
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -41,7 +42,7 @@ export const SignupForm: React.FC = () => {
     setIsLoading(true);
     if (validateForm()) {
       const { email, password, name } = formData;
-      await signUpWithEmailAndPassword({ email, password, name, setError });
+      await signWithCredentails({ email, password, name, history, setError });
     }
     setIsLoading(false);
   };
