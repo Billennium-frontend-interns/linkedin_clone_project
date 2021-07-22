@@ -1,11 +1,12 @@
 @import '../../styles/Colors.scss';
 @import '../../styles/Fonts.scss';
 @import '../../styles/Mixins.scss';
+
 .welcomePage {
   @include flexCenter;
 
   height: 100vh;
-  font-size: $smallFont;
+  font-size: $bigFont;
   color: $darkBlue;
   background: $mainTheme;
   background-color: $lightBlue;
@@ -16,17 +17,17 @@
     &__title {
       @include flexCenter;
       margin: 30px;
-      margin: 0;
-      font-size: $mediumFont;
+      font-size: $largeFont;
       font-weight: bold;
     }
     
     &__icon {
-      font-size: $largeFont;
+      font-size: $titleFont;
     }
 
     &__sub-title {
       letter-spacing: 1px;
+      font-size: $bigFont;
       font-weight: normal;
       text-align: center;
     }
