@@ -1,0 +1,43 @@
+@import '../../styles/Mixins.scss';
+@import '../../styles/Breakpoints.scss';
+@import '../../styles/Colors.scss';
+@import '../../styles/FontSizes.scss';
+@import '../../styles/FontWeights.scss';
+
+.navigationIcon {
+  text-decoration: none;
+  @include flexCenter;
+  margin-right: 20px;
+  color: $gray;
+  cursor: pointer;
+
+  &:hover {
+    color: $linkedinBlueColor;
+  }
+
+  &--active {
+    color: $linkedinBlueColor;
+    text-decoration: none;
+  }
+
+  @media only screen and (min-width: $mobile) {
+    @include flexColumn;
+  }
+
+  &__title {
+    display: none;
+
+    @media only screen and (min-width: $mobile) {
+      font-size: $smallFont;
+      font-weight: $normalWeight;
+      margin: 0;
+      display: block;
+    }
+  }
+
+  &__icon {
+    object-fit: contain;
+    width: 25px !important;
+    height: 25px !important;
+  }
+}
