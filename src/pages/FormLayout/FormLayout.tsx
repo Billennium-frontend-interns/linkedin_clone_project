@@ -3,7 +3,6 @@ import GoogleIcon from '@material-ui/icons/Google';
 import { useHistory } from 'react-router-dom';
 import { signInWithGooglePopup } from '../../actions/signInWithGooglePopup';
 import './FormLayout.scss';
-import '../../shared/styles/formstyles.scss';
 import { Logo } from '../../shared/components/Logo/Logo';
 
 interface FormLayoutProps {

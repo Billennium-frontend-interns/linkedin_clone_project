@@ -72,7 +72,14 @@ export const SignupForm: React.FC = () => {
           />
         ))}
         {error.isError && <p className="form__error">{error.errorText}</p>}
-        <Button variant="contained" color="primary" className="form__submit" type="submit" disabled={isLoading}>
+        <Button
+          variant="contained"
+          color="primary"
+          className="form__submit"
+          type="submit"
+          disabled={isLoading}
+          datatest-id="signup_button"
+        >
           Register
         </Button>
       </form>

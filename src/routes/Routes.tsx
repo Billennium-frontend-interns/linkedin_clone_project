@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { FormLayout } from '../pages/LoginSignupPage/FormLayout';
+import { FormLayout } from '../pages/FormLayout/FormLayout';
 import { DefaultRoute } from './DefaultRoute';
 import { ProtectedRoute } from './ProtectedRoute';
 import { Logo } from '../shared/components/Logo/Logo';
