@@ -1,28 +1,28 @@
 @import '../../styles/Mixins.scss';
 @import '../../styles/Breakpoints.scss';
-@import '../../styles/ZIndexs.scss';
-@import '../../styles/Fonts.scss';
-@import '../../styles/Global.scss';
+@import '../../styles/ZIndexes.scss';
+@import '../../styles/FontSizes.scss';
+@import '../../styles/Globals.scss';
+@import '../../styles/Colors.scss';
 
 .header {
   position: sticky;
-  @include FlexJustifyContentSpaceAround;
-  border-bottom: 0.1px solid lightgray;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 0.1px solid $lightgray;
   width: 100%;
   top: 0;
   padding: 10px 0;
-  z-index: $maxZIndex;
+  z-index: $ZIndexHeader;
 
   &__search {
-    @include flexAlignItemsCenter;
+    @include flexCenter;
   }
 
   &__logo {
     font-size: $bigFont !important;
-  }
 
-  @media only screen and (min-width: $mobileDevices) {
-    &__logo {
+    @media only screen and (min-width: $medium) {
       margin-right: 10px;
     }
   }
