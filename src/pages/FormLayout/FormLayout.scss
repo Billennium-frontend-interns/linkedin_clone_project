@@ -1,50 +1,57 @@
-@import '../../styles/Mixins.scss';
-@import '../../styles/Colors.scss';
-@import '../../styles/Fonts.scss';
-@import '../../styles/Variables.scss';
+@import '../../styles/Mixins';
+@import '../../styles/Colors';
+@import '../../styles/Fonts';
+@import '../../styles/Variables';
 
-.FormLayout__container {
-  @include flexColumn;
-  min-height: 100vh;
-  background: $gradientBlue;
+.formLayout__container {
+	@include flexColumn;
 
-  .FormLayout__signinText{
-    text-align: center;
-  }
+	background: $gradientBlue;
+	min-height: 100vh;
 
-  .FormLayout__formcontainer{
-    width: 90%;
-    @include flexColumn;
-    .hint {
-      .cta__button {
-        color: $darkBlue;
-        font-size: $smallFont;
-        cursor: pointer;
-        text-decoration: none;
-        padding: .5rem;
+	.formLayout__Text {
+		text-align: center;
+	}
 
-        &:focus {
-          outline:none;
-          text-decoration: underline;
-          background-color: rgba($darkBlue, .3);
-        }
+	.formLayout__form {
+		@include flexColumn;
 
-        @media only screen and (max-width: $smallBreakpoint) {
-          font-size: $smallestFont;
-        }
-      }
-        @media only screen and (max-width: $smallBreakpoint){
-        font-size: $smallestFont;
-      }
-    }
-  }
-  .FormLayout__signInGoogleButton {
-    background: none;
-    border: none;
-    padding: 0;
-    
-    &:hover {
-      cursor: pointer;
-    }
-  }
+		width: 90%;
+
+		.hint {
+			font-weight: $fontBold;
+
+			.cta__button {
+				color: $darkBlue;
+				cursor: pointer;
+				font-size: $smallFont;
+				padding: 0.5rem;
+				text-decoration: none;
+
+				&:focus {
+					background-color: rgba($darkBlue, 0.3);
+					outline: none;
+					text-decoration: underline;
+				}
+
+				@media only screen and (max-width: $smallBreakpoint) {
+					font-size: $smallestFont;
+				}
+			}
+
+			@media only screen and (max-width: $smallBreakpoint) {
+				font-size: $smallestFont;
+			}
+		}
+	}
+
+	.formLayout__signInGoogleButton {
+		background: none;
+		border: hidden;
+		padding: 0;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
 }

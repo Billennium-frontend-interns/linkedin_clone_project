@@ -44,8 +44,8 @@ export const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="FormLayout__formcontainer">
-      <h1 className="FormLayout__signinText">Sign in</h1>
+    <div className="formLayout__form">
+      <h1 className="formLayout__Text">Sign in</h1>
       <form className="form__container" onSubmit={handleSubmit}>
         {formFieldsConfig.map(({ label, type, name, isError, errorText, value }) => (
           <FormField
@@ -76,12 +76,12 @@ export const LoginForm: React.FC = () => {
           Sign in
         </Button>
       </form>
-      <h4 className="hint">
+      <p className="hint">
         Don&apos;t have an account?
         <Link to="/signUp" className="cta__button">
           Sign up!
         </Link>
-      </h4>
+      </p>
     </div>
   );
 };
