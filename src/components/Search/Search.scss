@@ -1,0 +1,28 @@
+@import '../../styles/Mixins.scss';
+@import '../../styles/Breakpoints.scss';
+@import '../../styles/Colors.scss';
+
+.search {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  height: 22px;
+  color: $gray;
+
+  @media only screen and (min-width: $medium) {
+    border-radius: 5px;
+    padding: 5px;
+    background-color: $lightergray;
+  }
+
+  &__input {
+    display: none;
+
+    @media only screen and (min-width: $medium) {
+      display: block;
+      outline: none;
+      border: none;
+      background: none;
+    }
+  }
+}

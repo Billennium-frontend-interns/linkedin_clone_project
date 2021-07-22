@@ -1,5 +1,6 @@
 @import '../../styles/Colors.scss';
-@import '../../styles/Fonts.scss';
+@import '../../styles/FontSizes.scss';
+@import '../../styles/FontWeights.scss';
 @import '../../styles/Mixins.scss';
 
 .welcomePage {
@@ -13,10 +14,11 @@
 
   .hero {
     @include flexColumn;
+    margin:30px;
     
     &__title {
       @include flexCenter;
-      margin: 30px;
+      margin: 0;
       font-size: $largeFont;
       font-weight: bold;
     }
@@ -28,7 +30,7 @@
     &__sub-title {
       letter-spacing: 1px;
       font-size: $bigFont;
-      font-weight: normal;
+      font-weight: $normalWeight;
       text-align: center;
     }
 

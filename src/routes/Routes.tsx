@@ -5,10 +5,11 @@ import { DefaultRoute } from './DefaultRoute';
 import { ProtectedRoute } from './ProtectedRoute';
 
 export const Routes = [
-  <Route exact path="/" />,
-  <Route exact path="/welcome" component={Welcome} />,
+  <Route exact path="/" component={Welcome} />,
   <Route exact path="/signUp" />,
   <Route exact path="/signIn" />,
   <ProtectedRoute path="/feed" />,
+  <ProtectedRoute exact path="/network" />,
+  <ProtectedRoute exact path="/notification" />,
   <DefaultRoute />
 ];
