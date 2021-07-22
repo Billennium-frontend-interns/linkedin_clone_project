@@ -1,0 +1,49 @@
+@import '../../styles/Colors.scss';
+@import '../../styles/FontSizes.scss';
+@import '../../styles/FontWeights.scss';
+@import '../../styles/Mixins.scss';
+
+.welcomePage {
+  @include flexCenter;
+
+  height: 100vh;
+  font-size: $bigFont;
+  color: $darkBlue;
+  background: $mainTheme;
+  background-color: $lightBlue;
+
+  .hero {
+    @include flexColumn;
+    margin: 30px;
+    
+    &__title {
+      @include flexCenter;
+      margin: 0;
+      font-size: $largeFont;
+      font-weight: bold;
+    }
+    
+    &__icon {
+      font-size: $titleFont;
+    }
+
+    &__sub-title {
+      letter-spacing: 1px;
+      font-size: $bigFont;
+      font-weight: $normalWeight;
+      text-align: center;
+    }
+
+    &__links {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      width: 300px;
+      margin-bottom: 30px;
+    }
+
+    &__link {
+      text-decoration: none;
+    }
+  }
+}
