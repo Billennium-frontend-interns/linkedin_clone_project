@@ -6,20 +6,20 @@ import './Welcome.scss';
 
 export const Welcome: React.FC = () => (
   <main className="welcomePage">
-    <section className="container">
-      <div className="hero">
-        <h1 className="hero__h1">Linked</h1>
+    <section className="hero">
+      <h1 className="hero__title">
+        <span>Linked</span>
         <LinkedInIcon className="hero__icon" />
-      </div>
-      <h2 className="welcomeTxt">Welcome to your professional community</h2>
-      <div className="btns">
-        <Link className="btns__item" data-testid="signIn" to="/signIn">
-          <Button className="primary" variant="outlined" color="primary" size="large">
+      </h1>
+      <h2 className="hero__sub-title">Welcome to your professional community</h2>
+      <div className="hero__links">
+        <Link className="hero__link" to="/signIn">
+          <Button data-testid="signIn" className="primary" variant="outlined" color="primary" size="large">
             Sign in
           </Button>
         </Link>
-        <Link className="btns__item" data-testid="signUp" to="/signUp">
-          <Button className="secondary" variant="contained" color="primary" size="large">
+        <Link className="hero__link" to="/signUp">
+          <Button data-testid="signUp" className="secondary" variant="contained" color="primary" size="large">
             Sign up
           </Button>
         </Link>

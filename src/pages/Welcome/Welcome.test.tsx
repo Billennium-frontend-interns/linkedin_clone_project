@@ -3,35 +3,35 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { render } from '@testing-library/react';
 import { Welcome } from './Welcome';
-import App from '../../App';
 
-it('renders welcome text correctly', () => {
+it('welcome page contains sign in button', () => {
   const history = createMemoryHistory();
   const { getByText } = render(
     <Router history={history}>
       <Welcome />
     </Router>
   );
-  expect(getByText('Welcome to your professional community')).toBeInTheDocument();
+  const signInButton = getByText(/Sign in/);
+
+  expect(signInButton).toBeTruthy();
 });
-it('renders sign in button correctly', () => {
+
+it('sing in button redirects to sign in page', () => {
+  ('');
+});
+
+it('renders sign up button correctly', () => {
   const history = createMemoryHistory();
-  const { getByTestId } = render(
+  const { getByText } = render(
     <Router history={history}>
       <Welcome />
     </Router>
   );
-  expect(getByTestId('signIn')).toBeInTheDocument();
+  const signInButton = getByText(/Sign up/);
+
+  expect(signInButton).toBeTruthy();
 });
-it('handleSignIn', async () => {
-  const history = createMemoryHistory();
-  history.push('/welcome');
-  const { getByTestId } = render(
-    <Router history={history}>
-      <App />
-    </Router>
-  );
-  // const button = getByTestId('signIn');
-  // fireEvent.click(button)
-  // expect(helloText).toBeInTheDocument()
+
+it('sing in button redirects to sign up page', () => {
+  ('');
 });
