@@ -7,8 +7,8 @@ export interface LogoProps {
 }
 
 export const Logo: React.FC<LogoProps> = ({ variant }: LogoProps) => (
-  <span className={`logo logo--${variant}`}>
-    <h1>Linked</h1>
+  <p className={`logo logo--${variant}`}>
+    <span className="logo__text">Linked</span>
     <LinkedInIcon className="logo__icon" />
-  </span>
+  </p>
 );

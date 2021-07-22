@@ -6,17 +6,15 @@
   flex-direction: column;
   word-break: normal;
   max-inline-size: 403px;
+  padding-bottom: 1rem;
+
   .form__input {
     width: 100%;
-    margin-bottom: 1rem;
-  }
-  .form__error {
-    color: red;
-    padding: 1rem;
-    font-weight: 500;
   }
 
   .form__error {
+    color: red;
+    padding: 1rem;
     font-weight: bold;
   }
 }
