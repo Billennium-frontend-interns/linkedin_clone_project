@@ -1,42 +1,18 @@
+@import './Colors.scss';
+
 .form__container {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
-  word-break: normal;
-  max-inline-size: 403px;
-  padding-bottom: 1rem;
-
-  .form__input {
-    width: 100%;
-  }
+  max-inline-size: 400px;
 
   .form__error {
-    color: red;
-    padding: 1rem;
+    text-align: center;
+    color: white;
+    padding: 8px;
+    background-color: $error;
+    border-radius: 5px;
     font-weight: bold;
-  }
-}
-@media only screen and (min-width: 576px) {
-  .form__wrapper {
-    .form__input {
-      width: 403px;
-    }
-  }
-}
-@media only screen and (max-width: 320px) {
-  .form__wrapper {
-    .form__input {
-      margin-bottom: 0.7rem;
-      & :last-child {
-        margin-bottom: 0;
-      }
-    }
-    .form__error {
-      color: red;
-      padding: 0.5rem;
-      font-weight: 500;
-    }
   }
 }

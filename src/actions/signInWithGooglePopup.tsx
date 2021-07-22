@@ -6,8 +6,5 @@ interface SignInWithGoogle {
 }
 
 export const signInWithGooglePopup = ({ history }: SignInWithGoogle): void => {
-  auth
-    .signInWithPopup(provider)
-    .then(() => history.push('/feed'))
-    .catch(error => console.error(error));
+  auth.signInWithPopup(provider).then(() => history.push('/feed'));
 };

@@ -1,94 +1,50 @@
+@import '../../styles/Mixins.scss';
+@import '../../styles/Colors.scss';
+@import '../../styles/Fonts.scss';
+@import '../../styles/Variables.scss';
+
 .FormLayout__container {
-  margin: 0;
-  padding: 0 2.5%;
-  height: 100vh;
-  overflow: hidden;
-  background: linear-gradient(0deg, rgba(40, 103, 178, 0.28895308123249297) 0%, rgba(255, 255, 255, 1) 71%);
-  .FormLayout__signinText {
-    margin: 0;
-  }
-  .FormLayout__formcontainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-  }
-}
+  @include flexColumn;
+  min-height: 100vh;
+  background: $gradientBlue;
 
-.FormLayout__signInGoogleButton {
-  border: none;
-  background: none;
-  font-size: 1rem;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  margin-bottom: 0.5rem;
-  &:hover {
-    color: rgb(76, 76, 212);
-    cursor: pointer;
+  .FormLayout__signinText{
+    text-align: center;
   }
-  .google__icon {
-    margin-left: 0.1rem;
-    font-size: 2rem;
-  }
-}
 
-.cta__button {
-  border: none;
-  background: none;
-  color: rgb(76, 76, 212);
-  font-size: 1rem;
-  cursor: pointer;
-  padding: 1em 1em 0 0;
-  margin-left: 0.5em;
-  text-decoration: none;
-  &:focus {
-    outline: none;
-    text-decoration: rgb(76, 76, 212);
-    color: black;
-  }
-}
-.logo {
-  margin-bottom: 3rem;
-}
+  .FormLayout__formcontainer{
+    width: 90%;
+    @include flexColumn;
+    .hint {
+      .cta__button {
+        color: $darkBlue;
+        font-size: $smallFont;
+        cursor: pointer;
+        text-decoration: none;
+        padding: .5rem;
 
-.FormLayout__signInGoogleButton {
-  border: none;
-  background: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.3rem;
-  &:hover {
-    color: rgb(76, 76, 212);
-    cursor: pointer;
-  }
-  .google__icon {
-    margin-left: 0.3rem;
-    font-size: 2rem;
-  }
-}
-@media only screen and (max-width: 320px) {
-  .hint {
-    font-size: 0.7rem;
-  }
-  .cta__button {
-    font-size: 0.7rem;
+        &:focus {
+          outline:none;
+          text-decoration: underline;
+          background-color: rgba($darkBlue, .3);
+        }
+
+        @media only screen and (max-width: $smallBreakpoint) {
+          font-size: $smallestFont;
+        }
+      }
+        @media only screen and (max-width: $smallBreakpoint){
+        font-size: $smallestFont;
+      }
+    }
   }
   .FormLayout__signInGoogleButton {
-    font-size: 1rem;
-    margin-top: 0.2rem;
-    margin-bottom: 0.3rem;
-    .google__icon {
-      margin-left: 0.5rem;
-      font-size: 1rem;
+    background: none;
+    border: none;
+    padding: 0;
+    
+    &:hover {
+      cursor: pointer;
     }
   }
 }

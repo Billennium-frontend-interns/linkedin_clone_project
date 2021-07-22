@@ -1,26 +1,21 @@
+@import '../../../styles/Fonts.scss';
+@import '../../../styles/Colors.scss';
+
+
 .logo {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-    'Helvetica Neue', sans-serif;
-  color: #2977c9;
+  color: $darkBlue;
   display: flex;
   align-items: center;
-  font-size: 2rem;
   user-select: none;
-  margin-bottom: 0;
 
   .logo__text {
     font-weight: bold;
-  }
-
-  .logo__text {
-    font-size: 3rem;
   }
 
   &--small {
     .logo__text {
       font-size: 3rem;
     }
-
     .logo__icon {
       font-size: 4rem;
     }
@@ -30,7 +25,6 @@
     .logo__text {
       font-size: 4rem;
     }
-
     .logo__icon {
       font-size: 5rem;
     }
@@ -40,7 +34,6 @@
     .logo__text {
       font-size: 5rem;
     }
-
     .logo__icon {
       font-size: 6rem;
     }
