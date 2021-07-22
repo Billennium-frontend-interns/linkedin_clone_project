@@ -1,8 +1,8 @@
 import { History, LocationState } from 'history';
 import { auth } from '../firebase';
-import { ErrorInterface, Credentials } from '../shared/interfaces/FormInterfaces';
+import { ErrorInterface, SignupCredentials } from '../shared/interfaces/FormInterfaces';
 
-type SignUpWithCredentailsInterface = Credentials & {
+type SignUpWithCredentailsInterface = SignupCredentials & {
   history: History<LocationState>;
   setError: React.Dispatch<React.SetStateAction<ErrorInterface>>;
 };

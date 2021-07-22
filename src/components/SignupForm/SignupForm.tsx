@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Button } from '@material-ui/core';
 import { Link, useHistory } from 'react-router-dom';
-import { SignUpCredentialsInterface, ErrorMessageVisibleInterface } from '../../shared/interfaces/FormInterfaces';
+import { SignUpCredentialsInterface, ErrorMessageSignupVisibleInterface } from '../../shared/interfaces/FormInterfaces';
 import { useSignupFormValidation } from './useSignupFormValidation';
 import { useFormFieldsConfig } from './useFormFieldsConfig';
 import { FormField } from '../../shared/components/FormField/FormField';
@@ -17,7 +17,7 @@ export const SignupForm: React.FC = () => {
     email: ''
   });
 
-  const [isErrorMessageVisible, setIsErrorMessageVisible] = useState<ErrorMessageVisibleInterface>({
+  const [isErrorMessageVisible, setIsErrorMessageVisible] = useState<ErrorMessageSignupVisibleInterface>({
     name: false,
     email: false,
     password: false,

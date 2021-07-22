@@ -1,12 +1,12 @@
 import {
   SignUpCredentialsInterface,
   FormFieldConfigInterface,
-  ErrorMessageVisibleInterface
+  ErrorMessageSignupVisibleInterface
 } from '../../shared/interfaces/FormInterfaces';
 
 export const useFormFieldsConfig = (
   formData: SignUpCredentialsInterface,
-  errorMessageVisible: ErrorMessageVisibleInterface
+  errorMessageVisible: ErrorMessageSignupVisibleInterface
 ): FormFieldConfigInterface[] => [
   {
     label: 'Email',

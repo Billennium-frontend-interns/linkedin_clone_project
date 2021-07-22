@@ -1,4 +1,4 @@
-export interface Credentials {
+export interface SignupCredentials {
   name: string;
   email: string;
   password: string;
@@ -24,12 +24,12 @@ export interface ErrorInterface {
   errorText: string;
 }
 
-export type SignUpCredentialsInterface = Credentials & { repeatPassword: string };
+export type SignUpCredentialsInterface = SignupCredentials & { repeatPassword: string };
 
 export type ErrorMessageLoginVisibleInterface = {
   [Property in keyof LoginCredentialsInterface]: boolean;
 };
 
-export type ErrorMessageVisibleInterface = {
+export type ErrorMessageSignupVisibleInterface = {
   [Property in keyof SignUpCredentialsInterface]: boolean;
 };
