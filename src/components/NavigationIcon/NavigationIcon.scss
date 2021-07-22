@@ -28,7 +28,7 @@
     display: none;
 
     @media only screen and (min-width: $mobile) {
-      font-size: $smallerFont;
+      font-size: $smallFont;
       font-weight: $normalWeight;
       margin: 0;
       display: block;

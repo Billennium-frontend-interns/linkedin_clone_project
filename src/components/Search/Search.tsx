@@ -5,6 +5,6 @@ import './Search.scss';
 export const Search: React.FC = () => (
   <div className="search">
     <SearchIcon className="search__icon" />
-    <input className="search__input" type="text" />
+    <input placeholder="Search..." className="search__input" type="text" />
   </div>
 );

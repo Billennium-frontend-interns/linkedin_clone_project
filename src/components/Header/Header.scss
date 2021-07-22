@@ -20,7 +20,7 @@
   }
 
   &__logo {
-    font-size: $bigFont !important;
+    font-size: $titleFont !important;
 
     @media only screen and (min-width: $medium) {
       margin-right: 10px;

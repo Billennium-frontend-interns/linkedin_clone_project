@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { OverridableComponent } from '@material-ui/core/OverridableComponent';
-import cx from '@mateusz_lisowski/merge-classnames';
 import { useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 import './NavigationIcon.scss';
 
 interface NavigationIconProps {
@@ -15,7 +15,7 @@ export const NavigationIcon: React.FC<NavigationIconProps> = ({ Icon, title, pat
   const location = useLocation();
 
   return (
-    <div className={cx([{ 'navigationIcon--active': location.pathname === path }, 'navigationIcon'])}>
+    <div className={classNames('navigationIcon', { 'navigationIcon--active': path === location.pathname })}>
       <Icon className="navigationIcon__icon" />
       <p className="navigationIcon__title">{title}</p>
     </div>
