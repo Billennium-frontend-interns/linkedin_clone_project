@@ -42,6 +42,10 @@ To Start Server:
 To Visit App:  
 `localhost:3000/`
 
+# Firebase config
+
+We are using environment variables to hide Firebase API keys.
+
 # Reflection
 
 We create this application for an internship at Billennium.
