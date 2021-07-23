@@ -1,18 +1,19 @@
-@import './Colors.scss';
+@import './Colors';
+@import './Fonts';
 
 .form__container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  max-inline-size: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-inline-size: 400px;
+	width: 100%;
 
-  .form__error {
-    text-align: center;
-    color: white;
-    padding: 8px;
-    background-color: $error;
-    border-radius: 5px;
-    font-weight: bold;
-  }
+	.form__error {
+		background-color: $error;
+		border-radius: 5px;
+		color: white;
+		font-weight: $fontBold;
+		padding: 8px;
+		text-align: center;
+	}
 }

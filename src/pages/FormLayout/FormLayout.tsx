@@ -14,11 +14,11 @@ export const FormLayout: React.FC<FormLayoutProps> = ({ formComponent }: FormLay
   const history = useHistory();
 
   return (
-    <main className="FormLayout__container">
+    <main className="formLayout__container">
       <Logo variant={window.screen.width < 281 ? 'small' : 'medium'} />
       {formComponent}
       <button
-        className="FormLayout__signInGoogleButton"
+        className="formLayout__signInGoogleButton"
         type="button"
         aria-label="Sign in with Google"
         onClick={() => signInWithGooglePopup({ history })}
