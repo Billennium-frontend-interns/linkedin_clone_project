@@ -34,6 +34,10 @@ Photos will appear in the future.
 - Router Switch
 - Render props
 
+# Firebase config
+
+We use environment variables to hide Firebase API keys.
+
 # Installation and Setup Instructions
 
 Clone down this repository. You will need node and npm installed globally on your machine.
