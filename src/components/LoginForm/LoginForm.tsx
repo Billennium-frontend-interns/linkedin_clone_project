@@ -9,21 +9,16 @@ import { signInWithCredentials } from '../../actions/signInWithCredentials';
 
 export const LoginForm: React.FC = () => {
   const history = useHistory();
-
   const [formData, setFormData] = useState<LoginCredentialsInterface>({
     password: '',
     email: ''
   });
-
   const [isErrorMessageVisible, setIsErrorMessageVisible] = useState<ErrorMessageLoginVisibleInterface>({
     email: false,
     password: false
   });
-
   const [isLoading, setIsLoading] = useState(false);
-
   const { error, setError, validateForm } = useLoginFormValidation(formData);
-
   const formFieldsConfig = useMemo(
     () => useFormLoginFieldsConfig(formData, isErrorMessageVisible),
     [formData, isErrorMessageVisible]
@@ -37,7 +32,6 @@ export const LoginForm: React.FC = () => {
 
   const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     setIsLoading(true);
 
     if (validateForm()) {

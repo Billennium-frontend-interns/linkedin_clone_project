@@ -9,23 +9,19 @@ import { signUpWithCredentails } from '../../actions/signUpWithCredentails';
 
 export const SignupForm: React.FC = () => {
   const history = useHistory();
-
   const [formData, setFormData] = useState<SignUpCredentialsInterface>({
     name: '',
     password: '',
     repeatPassword: '',
     email: ''
   });
-
   const [isErrorMessageVisible, setIsErrorMessageVisible] = useState<ErrorMessageSignupVisibleInterface>({
     name: false,
     email: false,
     password: false,
     repeatPassword: false
   });
-
   const [isLoading, setIsLoading] = useState(false);
-
   const { error, setError, validateForm } = useSignupFormValidation(formData);
   const formFieldsConfig = useMemo(
     () => useFormFieldsConfig(formData, isErrorMessageVisible),
@@ -40,7 +36,6 @@ export const SignupForm: React.FC = () => {
 
   const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     setIsLoading(true);
 
     if (validateForm()) {
