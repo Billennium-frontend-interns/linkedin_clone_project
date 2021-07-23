@@ -33,7 +33,7 @@ it('Inputing password should update password', () => {
   expect(passwordInput.value).toBe('example password');
 });
 
-it("Clicking button with empty fields should display error Fields can't be empty", () => {
+it("Clicking button with empty fields should display error 'Fields can't be empty' message", () => {
   const utils = render(
     <Router history={history}>
       <LoginForm />
