@@ -1,43 +1,43 @@
-@import '../../../styles/Fonts.scss';
+@import '../../../styles/FontSizes.scss';
 @import '../../../styles/Colors.scss';
 
 .logo {
-	color: $darkBlue;
-	display: flex;
-	align-items: center;
-	user-select: none;
+  color: $darkBlue;
+  display: flex;
+  align-items: center;
+  user-select: none;
 
-	.logo__text {
-		font-weight: bold;
-	}
+  .logo__text {
+    font-weight: bold;
+  }
 
-	&--small {
-		.logo__text {
-			font-size: 3rem;
-		}
+  &--small {
+    .logo__text {
+      font-size: 3rem;
+    }
 
-		.logo__icon {
-			font-size: 4rem;
-		}
-	}
+    .logo__icon {
+      font-size: 4rem;
+    }
+  }
 
-	&--medium {
-		.logo__text {
-			font-size: 4rem;
-		}
+  &--medium {
+    .logo__text {
+      font-size: 4rem;
+    }
 
-		.logo__icon {
-			font-size: 5rem;
-		}
-	}
+    .logo__icon {
+      font-size: 5rem;
+    }
+  }
 
-	&--big {
-		.logo__text {
-			font-size: 5rem;
-		}
+  &--big {
+    .logo__text {
+      font-size: 5rem;
+    }
 
-		.logo__icon {
-			font-size: 6rem;
-		}
-	}
+    .logo__icon {
+      font-size: 6rem;
+    }
+  }
 }

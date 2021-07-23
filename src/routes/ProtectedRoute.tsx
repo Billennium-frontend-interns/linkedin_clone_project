@@ -19,11 +19,12 @@ export const ProtectedRoute: React.FC<RouteProps> = ({ exact, path, component })
 };
 
 ProtectedRoute.defaultProps = {
-  exact: true
+  exact: true,
+  component: undefined
 };
 
 ProtectedRoute.propTypes = {
   exact: PropTypes.bool,
   path: PropTypes.string.isRequired,
-  component: PropTypes.func.isRequired
+  component: PropTypes.func
 };

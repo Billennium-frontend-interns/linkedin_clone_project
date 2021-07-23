@@ -1,0 +1,29 @@
+@import '../../styles/Mixins.scss';
+@import '../../styles/Breakpoints.scss';
+@import '../../styles/ZIndexes.scss';
+@import '../../styles/FontSizes.scss';
+@import '../../styles/Globals.scss';
+@import '../../styles/Colors.scss';
+
+.header {
+  position: sticky;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 0.1px solid $lightGray;
+  width: 100%;
+  top: 0;
+  padding: 10px 0;
+  z-index: $ZIndexHeader;
+
+  &__search {
+    @include flexCenter;
+  }
+
+  &__logo {
+    font-size: $titleFont !important;
+
+    @media only screen and (min-width: $medium) {
+      margin-right: 10px;
+    }
+  }
+}

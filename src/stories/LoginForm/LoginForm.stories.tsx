@@ -1,8 +1,8 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { LoginForm } from '../components/LoginForm/LoginForm';
-import '../styles/FormStyles.scss';
-import '../pages/FormLayout/FormLayout.scss';
+import { LoginForm } from '../../components/LoginForm/LoginForm';
+import '../../styles/FormStyles.scss';
+import '../../pages/FormLayout/FormLayout.scss';
 
 export default {
   component: LoginForm,

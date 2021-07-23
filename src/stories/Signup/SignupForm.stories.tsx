@@ -1,8 +1,8 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { SignupForm } from '../components/SignupForm/SignupForm';
-import '../styles/FormStyles.scss';
-import '../pages/FormLayout/FormLayout.scss';
+import { SignupForm } from '../../components/SignupForm/SignupForm';
+import '../../styles/FormStyles.scss';
+import '../../pages/FormLayout/FormLayout.scss';
 
 export default {
   component: SignupForm,

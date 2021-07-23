@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react';
-import { Logo, LogoProps } from '../shared/components/Logo/Logo';
+import { Logo, LogoProps } from '../../shared/components/Logo/Logo';
 
 export default {
   component: Logo,
