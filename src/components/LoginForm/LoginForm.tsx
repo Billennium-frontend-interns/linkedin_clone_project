@@ -44,7 +44,7 @@ export const LoginForm: React.FC = () => {
 
   return (
     <div className="formLayout__form">
-      <h1 className="formLayout__Text">Sign in</h1>
+      <h1 className="formLayout__text">Sign in</h1>
       <form className="form__container" onSubmit={handleSubmit}>
         {formFieldsConfig.map(({ label, type, name, isError, errorText, value }) => (
           <FormField

@@ -48,7 +48,7 @@ export const SignupForm: React.FC = () => {
 
   return (
     <div className="formLayout__form">
-      <h1 className="formLayout__Text">Sign up</h1>
+      <h1 className="formLayout__text">Sign up</h1>
       <form className="form__container" data-testid="signupForm" onSubmit={handleSubmit}>
         {formFieldsConfig.map(({ label, type, name, isError, errorText, value }) => (
           <FormField

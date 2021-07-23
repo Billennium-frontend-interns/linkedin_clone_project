@@ -1,5 +1,6 @@
 @import '../../../styles/FontSizes.scss';
 @import '../../../styles/Colors.scss';
+@import '../../../styles/FontWeights.scss';
 
 .logo {
   color: $darkBlue;
@@ -8,7 +9,7 @@
   user-select: none;
 
   .logo__text {
-    font-weight: bold;
+    font-weight: $fontBold;
   }
 
   &--small {
