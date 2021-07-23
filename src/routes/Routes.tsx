@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route } from 'react-router-dom';
 import { FormLayout } from '../pages/FormLayout/FormLayout';
 import { Welcome } from '../pages/Welcome/Welcome';
