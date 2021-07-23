@@ -1,0 +1,58 @@
+@import '../../styles/Mixins';
+@import '../../styles/Colors';
+@import '../../styles/FontSizes';
+@import '../../styles/Breakpoints';
+@import '../../styles/FontWeights.scss';
+
+.formLayout__container {
+  @include flexColumn;
+
+  background: $mainTheme;
+  min-height: 100vh;
+
+  .formLayout__text {
+    text-align: center;
+  }
+
+  .formLayout__form {
+    @include flexColumn;
+
+    width: 90%;
+
+    .hint {
+      font-weight: $fontBold;
+
+      .cta__button {
+        color: $darkBlue;
+        cursor: pointer;
+        font-size: $smallFont;
+        padding: 0.5rem;
+        text-decoration: none;
+
+        &:focus {
+          background-color: rgba($darkBlue, 0.3);
+          outline: none;
+          text-decoration: underline;
+        }
+
+        @media only screen and (max-width: $mobile) {
+          font-size: $textFont;
+        }
+      }
+
+      @media only screen and (max-width: $mobile) {
+        font-size: $textFont;
+      }
+    }
+  }
+
+  .formLayout__signInGoogleButton {
+    background: none;
+    border: hidden;
+    padding: 0;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

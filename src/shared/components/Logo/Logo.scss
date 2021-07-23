@@ -1,0 +1,44 @@
+@import '../../../styles/FontSizes.scss';
+@import '../../../styles/Colors.scss';
+@import '../../../styles/FontWeights.scss';
+
+.logo {
+  color: $darkBlue;
+  display: flex;
+  align-items: center;
+  user-select: none;
+
+  .logo__text {
+    font-weight: $fontBold;
+  }
+
+  &--small {
+    .logo__text {
+      font-size: 3rem;
+    }
+
+    .logo__icon {
+      font-size: 4rem;
+    }
+  }
+
+  &--medium {
+    .logo__text {
+      font-size: 4rem;
+    }
+
+    .logo__icon {
+      font-size: 5rem;
+    }
+  }
+
+  &--big {
+    .logo__text {
+      font-size: 5rem;
+    }
+
+    .logo__icon {
+      font-size: 6rem;
+    }
+  }
+}

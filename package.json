@@ -103,5 +103,8 @@
         }
       }
     ]
+  },
+  "resolutions": {
+    "babel-loader": "8.1.0"
   }
 }
