@@ -8,6 +8,8 @@
 - Add any additional information or context
 
 # Checklist
+- [ ] Performed self-review
+- [ ] Added data-testId for UI elements
 - [ ] Tests
 - [ ] Storybook
 
