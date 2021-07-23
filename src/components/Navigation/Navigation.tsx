@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { navigationItems } from '../../constants/Navigation';
+import { Dropdown } from '../Dropdown/Dropdown';
 import { NavigationIcon } from '../NavigationIcon/NavigationIcon';
 import './Navigation.scss';
 
@@ -14,7 +15,7 @@ export const Navigation: React.FC = () => (
               <NavigationIcon data-testid="navigationIcon" title={title} path={path} Icon={icon} />
             </Link>
           ) : (
-            <NavigationIcon data-testid="navigationIcon" title={title} Icon={icon} />
+            <Dropdown DropdownOpener={<NavigationIcon data-testid="navigationDropdown" title={title} Icon={icon} />} />
           )}
         </li>
       ))}
