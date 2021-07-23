@@ -1,5 +1,5 @@
 import { History, LocationState } from 'history';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import { ErrorInterface, SignupCredentials } from '../shared/interfaces/FormInterfaces';
 
 type SignUpWithCredentailsInterface = SignupCredentials & {
@@ -18,6 +18,10 @@ export const signUpWithCredentails = async ({
     await auth.createUserWithEmailAndPassword(email, password);
     await auth.currentUser?.updateProfile({
       displayName: name
+    });
+    await db.collection('users').doc(auth.currentUser?.uid).set({
+      displayName: name,
+      id: auth.currentUser?.uid
     });
     history.push('/home');
   } catch (err) {
