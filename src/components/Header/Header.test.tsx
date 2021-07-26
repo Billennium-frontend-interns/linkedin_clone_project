@@ -26,23 +26,30 @@ const setup = () => {
   };
 };
 
-test('is serach render in Header', async () => {
-  const { searchInput } = setup();
-  expect(searchInput).toBeInTheDocument();
-});
+describe('<Header />', () => {
+  it('is serach render in Header', async () => {
+    const { searchInput } = setup();
 
-test('is all 3 render in Header', async () => {
-  const { headerLinks } = setup();
-  expect(headerLinks.length).toBe(3);
-});
+    expect(searchInput).toBeInTheDocument();
+  });
 
-test('dropdown dont show at render', async () => {
-  const { utils } = setup();
-  expect(utils.getAllByRole('button').length).toBe(1);
-});
+  it('is all 3 render in Header', async () => {
+    const { headerLinks } = setup();
 
-test('dropdown shows correctly', async () => {
-  const { dropdownOpener, utils } = setup();
-  fireEvent.click(dropdownOpener);
-  expect(utils.getByText('Test test')).toBeInTheDocument();
+    expect(headerLinks.length).toBe(3);
+  });
+
+  it('dropdown dont show at render', async () => {
+    const { utils } = setup();
+
+    expect(utils.getAllByRole('button').length).toBe(1);
+  });
+
+  it('dropdown shows correctly', async () => {
+    const { dropdownOpener, utils } = setup();
+
+    fireEvent.click(dropdownOpener);
+
+    expect(utils.getAllByRole('button').length).toBe(3);
+  });
 });

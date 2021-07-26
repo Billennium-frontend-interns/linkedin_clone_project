@@ -1,18 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import Avatar from '@material-ui/core/Avatar';
-import { Button } from '@material-ui/core';
 import './Dropdown.scss';
 
-interface Dropdownprops {
+interface DropdownProps {
   DropdownOpener: React.ReactNode;
+  children?: React.ReactNode;
 }
 
-export const Dropdown: React.FC<Dropdownprops> = ({ DropdownOpener }) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const box = useRef(null);
+export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdown = useRef() as React.MutableRefObject<HTMLDivElement>;
 
-  const closeDropdownOutside = (ref: React.MutableRefObject<HTMLDivElement | null>) => {
+  const closeDropdownOutside = (ref: React.MutableRefObject<HTMLDivElement>) => {
     useEffect(() => {
       const handleOutsideClick = (event: any) => {
         if (ref.current && !ref.current.contains(event.target)) {
@@ -26,7 +25,7 @@ export const Dropdown: React.FC<Dropdownprops> = ({ DropdownOpener }) => {
     }, [isDropdownOpen, ref]);
   };
 
-  closeDropdownOutside(box);
+  closeDropdownOutside(dropdown);
 
   return (
     <div className="dropdown">
@@ -41,13 +40,8 @@ export const Dropdown: React.FC<Dropdownprops> = ({ DropdownOpener }) => {
         {DropdownOpener}
       </div>
       {isDropdownOpen && (
-        <div data-testid="dropdownContainer" ref={box} className="dropdown__container">
-          <Avatar />
-          <p>Test test</p>
-          <Button variant="outlined" color="primary">
-            view profile
-          </Button>
-          <Button variant="outlined">log out</Button>
+        <div data-testid="dropdownContainer" ref={dropdown} className="dropdown__container">
+          {children}
         </div>
       )}
     </div>
@@ -55,5 +49,6 @@ export const Dropdown: React.FC<Dropdownprops> = ({ DropdownOpener }) => {
 };
 
 Dropdown.propTypes = {
-  DropdownOpener: PropTypes.func.isRequired
+  DropdownOpener: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired
 };

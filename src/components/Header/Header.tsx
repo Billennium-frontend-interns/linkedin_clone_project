@@ -8,8 +8,8 @@ export const Header: React.FC = () => (
   <header className="header">
     <div className="header__search">
       <LinkedInIcon color="primary" className="header__logo" />
-      <Search />
+      <Search testId="searchInput" />
     </div>
-    <Navigation />
+    <Navigation testId="navigationIcon" />
   </header>
 );
