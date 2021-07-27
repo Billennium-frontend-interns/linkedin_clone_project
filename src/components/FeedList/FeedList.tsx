@@ -5,7 +5,7 @@ import { useGetUserFollows } from './useGetUserFollows';
 import { filterItems } from './PostsFilter';
 
 export const FeedList: React.FC = () => {
-  const { data: follows, isLoading: isFollowsLoading, isError: isFollowsError } = useGetUserFollows();
+  const { data: userFollows, isLoading: isFollowsLoading, isError: isFollowsError } = useGetUserFollows();
   const { data: posts, isLoading: isPostsLoading, isError: isPostsError } = useGetPosts();
 
   if (isFollowsLoading || isPostsLoading) {
@@ -16,20 +16,20 @@ export const FeedList: React.FC = () => {
     return <p>Error has occurred please try again </p>;
   }
 
-  const userPosts = filterItems(follows, posts);
+  const userPosts = filterItems(userFollows, posts);
 
   return (
     <section>
       <div>
-        {follows.map(follow => (
+        {userFollows.map(follow => (
           <p>{follow}</p>
         ))}
       </div>
       <div>
-        {userPosts.map(({ displayName, content }) => (
+        {userPosts.map(({ ownerUid, displayName, content }) => (
           <div>
             <p>
-              {displayName}: {content}
+              OwnerUid:{ownerUid}, OwnerName:{displayName}, PostContent: {content}
             </p>
           </div>
         ))}
