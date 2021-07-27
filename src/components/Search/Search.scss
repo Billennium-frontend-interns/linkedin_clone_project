@@ -5,6 +5,8 @@
 .search {
   display: flex;
   align-items: center;
+  flex-direction: column;
+
   padding: 10px;
   height: 22px;
   color: $gray;
@@ -15,6 +17,10 @@
     background-color: $lightGray;
   }
 
+  &__container {
+    display: flex;
+  }
+
   &__input {
     display: none;
 
@@ -23,6 +29,18 @@
       outline: none;
       border: none;
       background: none;
+      color: black;
+    }
+  }
+
+  &__hints {
+    display: none;
+
+    @media only screen and (min-width: $medium) {
+      display: block;
+      padding: 0;
+      margin: 3px 0;
+      width: 100%;
     }
   }
 }
