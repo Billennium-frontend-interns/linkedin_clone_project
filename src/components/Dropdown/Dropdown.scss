@@ -11,8 +11,7 @@
 
   &__button {
     text-transform: none !important;
-    width: 100% !important;
-    margin-bottom: 10px !important;
+    flex: 1 !important;
   }
 
   &__container {
@@ -26,8 +25,14 @@
     padding: 10px 20px;
     border-radius: 5px;
 
+    & li {
+      margin-bottom: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
     & ul {
-      @include flexColumn;
       list-style-type: none;
       padding: 0;
       margin: 0;
