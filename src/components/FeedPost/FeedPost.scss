@@ -13,7 +13,6 @@
     padding: 10px;
     border: 1px solid $lightGray;
     margin-bottom: 1em;
-    
     @media only screen and (max-width: $mobile) {
         border-radius: 0px;
     }
@@ -41,7 +40,6 @@
     font-size: $mediumFont;
     width: 100%;
     max-block-size: none;
-
     &--see__less {
         padding: 0;
         max-block-size: 64px;
@@ -63,7 +61,6 @@
     width: 100%;
     background: white;
     margin-top: -.5rem;
-    
     &:focus {
         outline: none;
         text-decoration: underline;

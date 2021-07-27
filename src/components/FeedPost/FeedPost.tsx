@@ -35,7 +35,7 @@ export const FeedPost: React.FC<FeedPostProps> = ({ uid, displayName, avatar, co
             setSeeMore(!seeMore);
           }}
         >
-          {`...see ${!seeMore ? 'more' : 'less'}`}
+          ...see more
         </button>
       )}
       <p className="feedPost__timestamp">{timePassed}</p>
