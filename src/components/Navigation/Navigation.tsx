@@ -24,7 +24,7 @@ export const Navigation: React.FC<NavigationProps> = ({ testid }) => (
             <Dropdown
               DropdownOpener={<NavigationIcon data-testid={`${testid}DropdownOpener`} title={title} Icon={icon} />}
             >
-              <HeaderDropdown />
+              <HeaderDropdown data-testid={`${testid}Dropdown`} />
             </Dropdown>
           )}
         </li>
@@ -36,6 +36,7 @@ export const Navigation: React.FC<NavigationProps> = ({ testid }) => (
 Navigation.defaultProps = {
   testid: undefined
 };
+
 Navigation.propTypes = {
   testid: PropTypes.string
 };

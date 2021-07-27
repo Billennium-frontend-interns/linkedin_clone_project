@@ -1,15 +1,20 @@
 import React, { useContext } from 'react';
 import { Avatar, Button } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { signout } from '../../actions/signout';
 
-export const HeaderDropdown: React.FC = () => {
+interface HeaderDropdownProps {
+  testid?: string;
+}
+
+export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ testid }) => {
   const user = useContext(AuthContext);
   const history = useHistory();
 
   return (
-    <ul>
+    <ul data-testid={testid}>
       <li>
         <Avatar src={user?.photoURL || ''} />
       </li>
@@ -33,4 +38,12 @@ export const HeaderDropdown: React.FC = () => {
       </li>
     </ul>
   );
+};
+
+HeaderDropdown.defaultProps = {
+  testid: undefined
+};
+
+HeaderDropdown.propTypes = {
+  testid: PropTypes.string
 };
