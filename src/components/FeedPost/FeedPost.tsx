@@ -33,14 +33,14 @@ export const FeedPost: React.FC<FeedPostProps> = ({
         <img className="feedPost__avatar" src={avatar} alt={`${displayName}'s avatar`} />
         <p className="feedPost__name">{displayName}</p>
       </Link>
-      <p ref={ref} className={`feedPost__content feedPost__content--see__${seeMore ? null : 'less'}`}>
+      <p ref={ref} className={`feedPost__content feedPost__content--see__${!seeMore && 'less'}`}>
         {content.trim()}
       </p>
       {isContentOverflowing && !seeMore && (
         <button
           data-testid={`"feedPost__seeButton--${testid}`}
           type="button"
-          className={`feedPost__seeButton feedPost__seeButton--see__${seeMore ? null : 'less'}`}
+          className={`feedPost__seeButton feedPost__seeButton--see__${!seeMore && 'less'}`}
           onClick={() => {
             setSeeMore(!seeMore);
           }}
