@@ -12,7 +12,7 @@ export const useGetPosts = (): StateAble<PostData[]> => {
   const getPosts = async () => {
     try {
       const snapshot = await db.collection('posts').get();
-      const data = snapshot.docs.map(post => post.data()) as PostData[];
+      const data = snapshot.docs.map(post => ({ ...post.data(), id: post.id })) as PostData[];
       setState({ ...state, data, isLoading: false });
     } catch (error) {
       setState({ ...state, isError: true, isLoading: false });

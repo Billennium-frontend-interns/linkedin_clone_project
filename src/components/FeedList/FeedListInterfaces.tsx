@@ -5,6 +5,7 @@ export interface StateAble<T> {
 }
 
 export interface PostData {
+  id: string;
   ownerUid: string;
   displayName: string;
   content: string;
