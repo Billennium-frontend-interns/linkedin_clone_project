@@ -25,7 +25,7 @@
     margin: 0;
     width: 100%;
     text-decoration: none;
-    color: black;
+    color: $postTextBlack;
 }
 
 .feedPost__avatar {
@@ -65,7 +65,7 @@
     font-weight: $fontBold;
     font-size: $textFont;
     width: 100%;
-    background: white;
+    background: $postBackgroundWhite;
     margin-top: -.5rem;
 
     &:focus {
