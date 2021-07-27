@@ -2,24 +2,21 @@ import React, { useEffect, useState } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import './Search.scss';
-import db from '../../firebase';
 import { SearchHint } from '../SearchHint/SearchHint';
 
-export const Search: React.FC<{ testId?: string }> = ({ testId }) => {
+interface SearchProps {
+  testId?: string;
+  hintsFunction?: (set: React.Dispatch<React.SetStateAction<string[]>>, value: string) => void;
+}
+
+export const Search: React.FC<SearchProps> = ({ testId, hintsFunction }) => {
   const [searchInput, setSearchInput] = useState('');
-  const [searchHints, setSearchHints] = useState<{ id: string; displayName: string }[]>([]);
+  const [searchHints, setSearchHints] = useState<string[]>([]);
 
   useEffect(() => {
-    db.collection('users')
-      .orderBy('displayName', 'asc')
-      .onSnapshot(snapshot => {
-        setSearchHints(
-          snapshot.docs
-            .map(doc => ({ id: doc.id, displayName: doc.data().displayName }))
-            .filter(doc => doc.displayName.startsWith(searchInput) && searchInput)
-            .slice(0, 5)
-        );
-      });
+    if (hintsFunction) {
+      hintsFunction(setSearchHints, searchInput);
+    }
   }, [searchInput]);
 
   return (
@@ -36,8 +33,8 @@ export const Search: React.FC<{ testId?: string }> = ({ testId }) => {
         />
       </div>
       <ul className="search__hints">
-        {searchHints.map(({ id, displayName }) => (
-          <SearchHint key={id} hint={displayName} />
+        {searchHints.map(hint => (
+          <SearchHint hint={hint} />
         ))}
       </ul>
     </div>
@@ -45,5 +42,6 @@ export const Search: React.FC<{ testId?: string }> = ({ testId }) => {
 };
 
 Search.propTypes = {
-  testId: PropTypes.string.isRequired
+  testId: PropTypes.string.isRequired,
+  hintsFunction: PropTypes.func.isRequired
 };
