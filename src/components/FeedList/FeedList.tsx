@@ -1,43 +1,39 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { db } from '../../firebase';
+import React from 'react';
+import { CircularProgress } from '@material-ui/core';
+import { useGetPosts } from './useGetPosts';
+import { useGetUserFollows } from './useGetUserFollows';
+import { filterItems } from './PostsFilter';
 
 export const FeedList: React.FC = () => {
-  const [posts, setPosts] = useState<firebase.default.firestore.DocumentData[]>([]);
+  const { data: follows, isLoading: isFollowsLoading, isError: isFollowsError } = useGetUserFollows();
+  const { data: posts, isLoading: isPostsLoading, isError: isPostsError } = useGetPosts();
 
-  const getPosts = useCallback(async () => {
-    const snapshot = await db.collection('posts').get();
-    setPosts(snapshot.docs.map(doc => doc.data()));
-  }, []);
+  if (isFollowsLoading || isPostsLoading) {
+    return <CircularProgress />;
+  }
 
-  useEffect(() => {
-    getPosts();
-  }, []);
+  if (isFollowsError || isPostsError) {
+    return <p>Error has occurred please try again </p>;
+  }
+
+  const userPosts = filterItems(follows, posts);
 
   return (
     <section>
-      <h1>FeedList</h1>
-      {posts.map(post => {
-        const { content, avatar, displayName } = post;
-        return (
-          <div
-            style={{
-              border: '2px solid black',
-              margin: '20px'
-            }}
-          >
-            <p>{displayName}</p>
-            <img
-              src={avatar}
-              alt="Profile"
-              style={{
-                height: '100px',
-                width: '100px'
-              }}
-            />
-            <p>{content}</p>
+      <div>
+        {follows.map(follow => (
+          <p>{follow}</p>
+        ))}
+      </div>
+      <div>
+        {userPosts.map(({ displayName, content }) => (
+          <div>
+            <p>
+              {displayName}: {content}
+            </p>
           </div>
-        );
-      })}
+        ))}
+      </div>
     </section>
   );
 };
