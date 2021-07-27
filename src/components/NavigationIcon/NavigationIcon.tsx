@@ -10,14 +10,18 @@ interface NavigationIconProps {
   Icon: OverridableComponent<any>;
   title: string;
   path?: string;
+  testid?: string;
 }
 
-export const NavigationIcon: React.FC<NavigationIconProps> = ({ Icon, title, path }) => {
+export const NavigationIcon: React.FC<NavigationIconProps> = ({ Icon, title, path, testid }) => {
   const location = useLocation();
   const user = useContext(AuthContext);
 
   return (
-    <div className={classNames('navigationIcon', { 'navigationIcon--active': path === location.pathname })}>
+    <div
+      data-testid={testid}
+      className={classNames('navigationIcon', { 'navigationIcon--active': path === location.pathname })}
+    >
       <Icon className="navigationIcon__icon" src={user?.photoURL} />
       <p className="navigationIcon__title">{title}</p>
     </div>
@@ -25,11 +29,13 @@ export const NavigationIcon: React.FC<NavigationIconProps> = ({ Icon, title, pat
 };
 
 NavigationIcon.defaultProps = {
-  path: ''
+  path: '',
+  testid: undefined
 };
 
 NavigationIcon.propTypes = {
   Icon: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  path: PropTypes.string
+  path: PropTypes.string,
+  testid: PropTypes.string
 };

@@ -5,9 +5,10 @@ import './Dropdown.scss';
 interface DropdownProps {
   DropdownOpener: React.ReactNode;
   children?: React.ReactNode;
+  testid?: string;
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children }) => {
+export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children, testid }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdown = useRef() as React.MutableRefObject<HTMLDivElement>;
 
@@ -28,7 +29,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children }) 
   closeDropdownOutside(dropdown);
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" data-testid={testid}>
       <div
         className="dropdown__opener"
         data-testid="dropdownOpener"
@@ -48,7 +49,12 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children }) 
   );
 };
 
+Dropdown.defaultProps = {
+  testid: undefined
+};
+
 Dropdown.propTypes = {
   DropdownOpener: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  testid: PropTypes.string
 };

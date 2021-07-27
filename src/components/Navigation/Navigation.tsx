@@ -1,23 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { HeaderDropdown } from '../../constants/HeaderDropdown';
+import { HeaderDropdown } from '../DropdownsContent/HeaderDropdown';
 import { navigationItems } from '../../constants/Navigation';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { NavigationIcon } from '../NavigationIcon/NavigationIcon';
 import './Navigation.scss';
 
-export const Navigation: React.FC<{ testId?: string }> = ({ testId }) => (
-  <nav className="navigation">
+interface NavigationProps {
+  testid?: string;
+}
+
+export const Navigation: React.FC<NavigationProps> = ({ testid }) => (
+  <nav className="navigation" data-testid={testid}>
     <ul className="navigation__wrapper">
       {navigationItems.map(({ title, path, icon }) => (
-        <li>
+        <li key={path}>
           {path ? (
             <Link className="navigation__link" to={path}>
-              <NavigationIcon data-testid={testId} title={title} path={path} Icon={icon} />
+              <NavigationIcon data-testid={`${testid}Link${title}`} title={title} path={path} Icon={icon} />
             </Link>
           ) : (
-            <Dropdown DropdownOpener={<NavigationIcon title={title} Icon={icon} />}>
+            <Dropdown
+              DropdownOpener={<NavigationIcon data-testid={`${testid}DropdownOpener`} title={title} Icon={icon} />}
+            >
               <HeaderDropdown />
             </Dropdown>
           )}
@@ -27,6 +33,9 @@ export const Navigation: React.FC<{ testId?: string }> = ({ testId }) => (
   </nav>
 );
 
+Navigation.defaultProps = {
+  testid: undefined
+};
 Navigation.propTypes = {
-  testId: PropTypes.string.isRequired
+  testid: PropTypes.string
 };

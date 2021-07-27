@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Avatar, Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-import { signout } from '../actions/signout';
-import { AuthContext } from '../context/AuthProvider';
+import { AuthContext } from '../../context/AuthProvider';
+import { signout } from '../../actions/signout';
 
 export const HeaderDropdown: React.FC = () => {
   const user = useContext(AuthContext);

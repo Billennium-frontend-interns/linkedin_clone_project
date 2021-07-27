@@ -3,13 +3,21 @@ import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import './Search.scss';
 
-export const Search: React.FC<{ testId?: string }> = ({ testId }) => (
-  <div className="search">
+interface SearchProps {
+  testid?: string;
+}
+
+export const Search: React.FC<SearchProps> = ({ testid }) => (
+  <div className="search" data-testid={testid}>
     <SearchIcon className="search__icon" />
-    <input data-testid={testId} placeholder="Search..." className="search__input" type="text" />
+    <input data-testid={`${testid}Input`} placeholder="Search..." className="search__input" type="text" />
   </div>
 );
 
+Search.defaultProps = {
+  testid: undefined
+};
+
 Search.propTypes = {
-  testId: PropTypes.string.isRequired
+  testid: PropTypes.string
 };
