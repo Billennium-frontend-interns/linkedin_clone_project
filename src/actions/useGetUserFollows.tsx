@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { db } from '../firebase';
 import { AuthContext } from '../context/AuthProvider';
-import { StateAble } from '../components/FeedList/FeedListInterfaces';
+import { StateAble } from '../shared/interfaces/StateAbleInterface';
 
 interface UserFollows {
   followed: string[];

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { StateAble } from '../components/FeedList/FeedListInterfaces';
+import { StateAble } from '../shared/interfaces/StateAbleInterface';
 import { FeedPostProps } from '../components/FeedPost/FeedPost';
 
 export const useGetPosts = (): StateAble<FeedPostProps[]> => {
