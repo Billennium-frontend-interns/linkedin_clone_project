@@ -3,6 +3,10 @@ import { db } from '../firebase';
 import { AuthContext } from '../context/AuthProvider';
 import { StateAble } from '../components/FeedList/FeedListInterfaces';
 
+interface UserFollows {
+  followed: string[];
+}
+
 export const useGetUserFollows = (): StateAble<string[]> => {
   const currentUser = useContext(AuthContext);
   const [state, setState] = useState<StateAble<string[]>>({
@@ -13,9 +17,9 @@ export const useGetUserFollows = (): StateAble<string[]> => {
 
   const getUserFollows = async () => {
     try {
-      const snapshot = await db.collection('follows').where('followId', '==', currentUser?.uid).get();
-      const data = snapshot.docs.map(follow => follow.data().receiverId);
-      setState({ ...state, data, isLoading: false });
+      const snapshot = await db.collection('follows').doc(currentUser?.uid).get();
+      const { followed } = snapshot.data() as UserFollows;
+      setState({ ...state, data: followed, isLoading: false });
     } catch (error) {
       setState({ ...state, isError: true, isLoading: false });
     }
