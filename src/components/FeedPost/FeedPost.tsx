@@ -3,19 +3,20 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { useIsContentOverflowing } from '../../actions/useIsContentOverflowing';
+import AvatarPlaceholder from '../../assets/images/avatar_placeholder.png';
 import './FeedPost.scss';
 
 interface FeedPostProps {
-  uid: string;
+  ownerUid: string;
   displayName: string;
-  avatar: string;
+  avatar?: string;
   content: string;
   timestamp: string;
   testid?: string;
 }
 
 export const FeedPost: React.FC<FeedPostProps> = ({
-  uid,
+  ownerUid,
   displayName,
   avatar,
   content,
@@ -28,8 +29,8 @@ export const FeedPost: React.FC<FeedPostProps> = ({
   const timePassed = moment(timestamp).startOf('hour').fromNow();
 
   return (
-    <article className="feedPost__container">
-      <Link className="feedPost__user" data-testid={`"feedPost__user--${testid}`} to={`/user/${uid}`}>
+    <article className="feedPost">
+      <Link className="feedPost__user" data-testid={`"feedPost__user--${testid}`} to={`/user/${ownerUid}`}>
         <img className="feedPost__avatar" src={avatar} alt={`${displayName}'s avatar`} />
         <p className="feedPost__name">{displayName}</p>
       </Link>
@@ -54,13 +55,14 @@ export const FeedPost: React.FC<FeedPostProps> = ({
 };
 
 FeedPost.defaultProps = {
-  testid: ''
+  testid: '',
+  avatar: AvatarPlaceholder
 };
 
 FeedPost.propTypes = {
-  uid: PropTypes.string.isRequired,
+  ownerUid: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
   content: PropTypes.string.isRequired,
   timestamp: PropTypes.string.isRequired,
   testid: PropTypes.string
