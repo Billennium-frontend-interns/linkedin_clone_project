@@ -7,5 +7,5 @@ export const navigationItems = [
   { path: '/feed', icon: HomeIcon, title: 'Home' },
   { path: '/network', icon: SupervisorAccountIcon, title: 'My Network' },
   { path: '/notifications', icon: NotificationsIcon, title: 'Notifications' },
-  { path: '', icon: Avatar, title: 'Me ▼' }
+  { path: '', icon: Avatar, title: 'Me▼' }
 ];
