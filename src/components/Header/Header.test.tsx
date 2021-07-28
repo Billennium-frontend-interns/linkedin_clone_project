@@ -31,37 +31,37 @@ const setup = () => {
 };
 
 describe('<Header />', () => {
-  it('is search component in Header', async () => {
+  it('should search component be visible', async () => {
     const { searchHeader } = setup();
 
     expect(searchHeader).toBeInTheDocument();
   });
 
-  it('is search input in Header', async () => {
+  it('should search input be visible', async () => {
     const { searchHeaderInput } = setup();
 
     expect(searchHeaderInput).toBeInTheDocument();
   });
 
-  it('is navgitaion component in Header', async () => {
+  it('should navgitaion component be visible', async () => {
     const { navigationHeader } = setup();
 
     expect(navigationHeader).toBeInTheDocument();
   });
 
-  it('is all links in Header', async () => {
+  it('should all links be visible', async () => {
     const { navigationHeaderLinks } = setup();
 
     expect(navigationHeaderLinks.length).toBe(3);
   });
 
-  it('dropdown initially is not visible', async () => {
+  it('should dropdown initially not be visible', async () => {
     const { utils } = setup();
 
     expect(utils.queryByTestId('navigationHeaderDropdown')).not.toBeInTheDocument();
   });
 
-  it('dropdown shows correctly after clicking it', async () => {
+  it('should shows dropdown correctly after clicking it', async () => {
     const { navigationHeaderDropdownOpener, utils } = setup();
 
     fireEvent.click(navigationHeaderDropdownOpener);
