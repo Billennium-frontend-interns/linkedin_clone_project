@@ -1,0 +1,88 @@
+@import '../../styles/Mixins';
+@import '../../styles/Colors';
+@import '../../styles/FontSizes';
+@import '../../styles/FontWeights';
+@import '../../styles/Breakpoints';
+@import '../../styles/Fonts';
+
+.feedPost {
+    @include flexColumn;
+    font-family: $postText;
+    max-inline-size: 500px;
+    border-radius: 10px;
+    background: $white;
+    padding: 10px;
+    border: 1px solid $lightGray;
+    margin-bottom: 1em;
+
+    @media only screen and (max-width: $mobile) {
+      border-radius: 0px;
+      border-left: none;
+      border-right: none;
+    }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    width:fit-content;
+    margin: 0;
+    text-decoration: none;
+    color: $black;
+  }
+
+  &__avatar {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  &__name {
+    font-size: $smallFont;
+    font-weight: $fontBold;
+  }
+
+  &__content {
+    font-size: $mediumFont;
+    width: 100%;
+    max-block-size: none;
+
+    &--see__less {
+      padding: 0;
+      max-block-size: 64px;
+      word-wrap: normal;
+      overflow: hidden;
+    }
+
+    @media only screen and (max-width: $mobile) {
+      font-size: $smallFont;
+    }
+  }
+
+  &__seeButton {
+    border: none;
+    text-decoration: none;
+    color: $darkBlue;
+    cursor: pointer;
+    text-align: end;
+    font-weight: $fontBold;
+    font-size: $textFont;
+    width: 100%;
+    background: $white;
+    margin-top: -0.5rem;
+
+    &:focus {
+      outline: none;
+      text-decoration: underline;
+    }
+  }
+
+  &__timestamp {
+    text-align: end;
+    font-size: $textFont;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+}
+

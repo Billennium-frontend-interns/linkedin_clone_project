@@ -15,5 +15,6 @@ export const Routes = [
   <ProtectedRoute path="/feed" component={Logo} />,
   <ProtectedRoute exact path="/network" />,
   <ProtectedRoute exact path="/notification" />,
+  <ProtectedRoute path="/user/:ownerUid" />,
   <DefaultRoute />
 ];
