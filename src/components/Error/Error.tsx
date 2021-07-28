@@ -5,6 +5,7 @@ interface ErrorProps {
   isError: boolean;
   children: React.ReactElement;
   className?: string;
+  testid?: string;
 }
 
 export const Error: React.FC<ErrorProps> = ({ isError, children }) => {
@@ -18,5 +19,6 @@ export const Error: React.FC<ErrorProps> = ({ isError, children }) => {
 Error.propTypes = {
   isError: PropTypes.bool.isRequired,
   children: PropTypes.element.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  testid: PropTypes.string
 };

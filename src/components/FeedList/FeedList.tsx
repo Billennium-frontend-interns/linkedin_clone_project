@@ -45,7 +45,7 @@ export const FeedList: React.FC = () => {
   }
 
   return (
-    <section className="feedList">
+    <section className="feedList" data-testid="feedList">
       <Loader isLoading={isFollowsLoading || isPostsLoading}>
         <Error isError={isFollowsError || isPostsError}>
           <InfiniteScroll
