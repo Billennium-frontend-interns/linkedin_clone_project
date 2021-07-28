@@ -1,0 +1,23 @@
+@import '../../styles/ZIndexes.scss';
+@import '../../styles/Colors.scss';
+@import '../../styles/Mixins.scss';
+
+.dropdown {
+  position: sticky;
+
+  &__opener {
+    position: relative;
+  }
+
+  &__container {
+    background-color: $white;
+    z-index: $ZIndexDropdown;
+    box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    width: 150px;
+    top: 50px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+}
