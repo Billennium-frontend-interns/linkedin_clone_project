@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
-import { db } from '../../firebase';
-import { AuthContext } from '../../context/AuthProvider';
-import { StateAble } from './FeedListInterfaces';
+import { db } from '../firebase';
+import { AuthContext } from '../context/AuthProvider';
+import { StateAble } from '../components/FeedList/FeedListInterfaces';
 
 export const useGetUserFollows = (): StateAble<string[]> => {
   const currentUser = useContext(AuthContext);

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { CircularProgress } from '@material-ui/core';
-import { useGetPosts } from './useGetPosts';
-import { useGetUserFollows } from './useGetUserFollows';
+import { useGetPosts } from '../../actions/useGetPosts';
+import { useGetUserFollows } from '../../actions/useGetUserFollows';
 import { postFilter } from './PostsFilter';
-import { FeedPostProps } from '../FeedPost/FeedPost';
+import { FeedPost, FeedPostProps } from '../FeedPost/FeedPost';
+import { Loader } from '../Loader/Loader';
+import { Error } from '../Error/Error';
 
 export const FeedList: React.FC = () => {
   const [posts, setPosts] = useState<FeedPostProps[]>([]);
@@ -20,17 +22,9 @@ export const FeedList: React.FC = () => {
     }
   }, [userFollows, allPosts]);
 
-  if (isFollowsLoading || isPostsLoading) {
-    return <CircularProgress />;
-  }
-
-  if (isFollowsError || isPostsError) {
-    return <p>Error has occurred please try again...</p>;
-  }
-
   const userPosts = postFilter(userFollows, allPosts);
 
-  const fetchMoreData = () => {
+  const getMoreData = () => {
     if (posts.length >= userPosts.length) {
       setHasMore(false);
       return;
@@ -43,30 +37,33 @@ export const FeedList: React.FC = () => {
   };
 
   return (
-    <section
-      style={{
-        fontSize: '6rem'
-      }}
-    >
-      <InfiniteScroll
-        dataLength={posts.length}
-        next={fetchMoreData}
-        hasMore={hasMore}
-        loader={<p>Loading...</p>}
-        endMessage={
-          <p style={{ textAlign: 'center' }}>
-            <b>Yay! You have seen it all</b>
-          </p>
-        }
-      >
-        {posts.map(({ testid, ownerUid, displayName, content }) => (
-          <div key={testid}>
-            <p>
-              OwnerUid:{ownerUid}, OwnerName:{displayName}, PostContent: {content}
-            </p>
-          </div>
-        ))}
-      </InfiniteScroll>
+    <section>
+      <Loader isLoading={isFollowsLoading || isPostsLoading}>
+        <Error isError={isFollowsError || isPostsError}>
+          <InfiniteScroll
+            dataLength={posts.length}
+            next={getMoreData}
+            hasMore={hasMore}
+            loader={<CircularProgress />}
+            endMessage={
+              <p style={{ textAlign: 'center' }}>
+                <b>Yay! You have seen it all</b>
+              </p>
+            }
+          >
+            {posts.map(({ testid, ownerUid, displayName, content, avatar, timestamp }) => (
+              <FeedPost
+                testid={testid}
+                ownerUid={ownerUid}
+                displayName={displayName}
+                content={content}
+                avatar={avatar}
+                timestamp={timestamp}
+              />
+            ))}
+          </InfiniteScroll>
+        </Error>
+      </Loader>
     </section>
   );
 };

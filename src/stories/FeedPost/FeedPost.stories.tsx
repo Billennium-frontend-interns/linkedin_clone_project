@@ -21,7 +21,7 @@ const avatar =
 const text = 'Social media bez memów? Ale jak to???';
 export const Default = () => (
   <>
-    <FeedPost uid="123123" displayName="Michael" content={text} avatar={avatar} timestamp="23 July, 2021" />
-    <FeedPost uid="123123" displayName="Otis Skryba" content={text1} avatar={avatar} timestamp="23 July, 2021" />
+    <FeedPost ownerUid="123123" displayName="Michael" content={text} avatar={avatar} timestamp="23 July, 2021" />
+    <FeedPost ownerUid="123123" displayName="Otis Skryba" content={text1} avatar={avatar} timestamp="23 July, 2021" />
   </>
 );
