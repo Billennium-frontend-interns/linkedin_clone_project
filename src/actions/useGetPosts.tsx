@@ -12,7 +12,7 @@ export const useGetPosts = (): StateAble<FeedPostProps[]> => {
 
   const getPosts = async () => {
     try {
-      const snapshot = await db.collection('posts').get();
+      const snapshot = await db.collection('posts').orderBy('timestamp', 'desc').get();
       const data = snapshot.docs.map(post => ({ ...post.data(), testid: post.id })) as FeedPostProps[];
       setState({ ...state, data, isLoading: false });
     } catch (error) {

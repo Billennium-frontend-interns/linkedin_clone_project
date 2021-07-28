@@ -33,7 +33,7 @@ export const FeedList: React.FC = () => {
     setTimeout(() => {
       setPosts(userPosts.slice(0, index + 4));
       setIndex(index + 1);
-    }, 1000);
+    }, 3000);
   };
 
   return (
