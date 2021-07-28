@@ -5,10 +5,9 @@ import './Dropdown.scss';
 interface DropdownProps {
   DropdownOpener: React.ReactNode;
   children?: React.ReactNode;
-  testid?: string;
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children, testid }) => {
+export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdown = useRef() as React.MutableRefObject<HTMLDivElement>;
 
@@ -29,10 +28,9 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children, te
   closeDropdownOutside(dropdown);
 
   return (
-    <div className="dropdown" data-testid={testid}>
+    <div className="dropdown">
       <div
         className="dropdown__opener"
-        data-testid="dropdownOpener"
         onClick={() => setIsDropdownOpen(true)}
         onKeyDown={() => setIsDropdownOpen(true)}
         role="button"
@@ -41,7 +39,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children, te
         {DropdownOpener}
       </div>
       {isDropdownOpen && (
-        <div data-testid="dropdownContainer" ref={dropdown} className="dropdown__container">
+        <div ref={dropdown} className="dropdown__container">
           {children}
         </div>
       )}
@@ -49,12 +47,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children, te
   );
 };
 
-Dropdown.defaultProps = {
-  testid: undefined
-};
-
 Dropdown.propTypes = {
   DropdownOpener: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
-  testid: PropTypes.string
+  children: PropTypes.node.isRequired
 };

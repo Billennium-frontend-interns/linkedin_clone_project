@@ -14,42 +14,58 @@ const setup = () => {
     </Router>
   );
 
-  const searchInput = utils.getByTestId('searchInput') as HTMLInputElement;
-  const headerLinks = utils.getAllByRole('link');
-  const dropdownOpener = utils.getByTestId('dropdownOpener') as HTMLButtonElement;
+  const searchHeader = utils.getByTestId('searchHeader');
+  const searchHeaderInput = utils.getByTestId('searchHeaderInput') as HTMLInputElement;
+  const navigationHeader = utils.getByTestId('navigationHeader');
+  const navigationHeaderLinks = utils.getAllByRole('link');
+  const navigationHeaderDropdownOpener = utils.getByTestId('navigationHeaderDropdownOpener');
 
   return {
     utils,
-    searchInput,
-    headerLinks,
-    dropdownOpener
+    searchHeader,
+    searchHeaderInput,
+    navigationHeader,
+    navigationHeaderLinks,
+    navigationHeaderDropdownOpener
   };
 };
 
 describe('<Header />', () => {
-  it('is serach render in Header', async () => {
-    const { searchInput } = setup();
+  it('is search component in Header', async () => {
+    const { searchHeader } = setup();
 
-    expect(searchInput).toBeInTheDocument();
+    expect(searchHeader).toBeInTheDocument();
   });
 
-  it('is all 3 render in Header', async () => {
-    const { headerLinks } = setup();
+  it('is search input in Header', async () => {
+    const { searchHeaderInput } = setup();
 
-    expect(headerLinks.length).toBe(3);
+    expect(searchHeaderInput).toBeInTheDocument();
   });
 
-  it('dropdown dont show at render', async () => {
+  it('is navgitaion component in Header', async () => {
+    const { navigationHeader } = setup();
+
+    expect(navigationHeader).toBeInTheDocument();
+  });
+
+  it('is all links in Header', async () => {
+    const { navigationHeaderLinks } = setup();
+
+    expect(navigationHeaderLinks.length).toBe(3);
+  });
+
+  it('dropdown initially is not visible', async () => {
     const { utils } = setup();
 
-    expect(utils.getAllByRole('button').length).toBe(1);
+    expect(utils.queryByTestId('navigationHeaderDropdown')).not.toBeInTheDocument();
   });
 
-  it('dropdown shows correctly', async () => {
-    const { dropdownOpener, utils } = setup();
+  it('dropdown shows correctly after clicking i', async () => {
+    const { navigationHeaderDropdownOpener, utils } = setup();
 
-    fireEvent.click(dropdownOpener);
+    fireEvent.click(navigationHeaderDropdownOpener);
 
-    expect(utils.getAllByRole('button').length).toBe(3);
+    expect(utils.getByTestId('navigationHeaderDropdown')).toBeInTheDocument();
   });
 });

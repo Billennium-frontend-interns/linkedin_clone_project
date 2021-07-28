@@ -9,11 +9,6 @@
     position: relative;
   }
 
-  &__button {
-    text-transform: none !important;
-    flex: 1 !important;
-  }
-
   &__container {
     background-color: $white;
     z-index: $ZIndexDropdown;
@@ -24,18 +19,5 @@
     right: 20px;
     padding: 10px 20px;
     border-radius: 5px;
-
-    & li {
-      margin-bottom: 10px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-
-    & ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
   }
 }

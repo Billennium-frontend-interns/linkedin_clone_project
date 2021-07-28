@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { signout } from '../../actions/signout';
+import './HeaderDropdown.scss';
 
 interface HeaderDropdownProps {
   testid?: string;
@@ -14,25 +15,31 @@ export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ testid }) => {
   const history = useHistory();
 
   return (
-    <ul data-testid={testid}>
-      <li>
+    <ul className="headerDropdown" data-testid={testid}>
+      <li className="headerDropdown__listItem">
         <Avatar src={user?.photoURL || ''} />
       </li>
-      <li>
+      <li className="headerDropdown__listItem">
         <p>{user?.displayName || 'User'}</p>
       </li>
-      <li>
+      <li className="headerDropdown__listItem">
         <Button
+          data-testid={`${testid}ViewProfile`}
           onClick={() => history.push('/myProfile')}
-          className="dropdown__button"
+          className="headerDropdown__button"
           variant="outlined"
           color="primary"
         >
           View Profile
         </Button>
       </li>
-      <li>
-        <Button onClick={signout} className="dropdown__button" variant="outlined">
+      <li className="headerDropdown__listItem">
+        <Button
+          onClick={signout}
+          data-testid={`${testid}SignOut`}
+          className="headerDropdown__button"
+          variant="outlined"
+        >
           Sign Out
         </Button>
       </li>

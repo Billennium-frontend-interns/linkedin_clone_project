@@ -18,13 +18,11 @@ export const Navigation: React.FC<NavigationProps> = ({ testid }) => (
         <li key={path}>
           {path ? (
             <Link className="navigation__link" to={path}>
-              <NavigationIcon data-testid={`${testid}Link${title}`} title={title} path={path} Icon={icon} />
+              <NavigationIcon testid={`${testid}Link${title}`} title={title} path={path} Icon={icon} />
             </Link>
           ) : (
-            <Dropdown
-              DropdownOpener={<NavigationIcon data-testid={`${testid}DropdownOpener`} title={title} Icon={icon} />}
-            >
-              <HeaderDropdown data-testid={`${testid}Dropdown`} />
+            <Dropdown DropdownOpener={<NavigationIcon testid={`${testid}DropdownOpener`} title={title} Icon={icon} />}>
+              <HeaderDropdown testid={`${testid}Dropdown`} />
             </Dropdown>
           )}
         </li>
