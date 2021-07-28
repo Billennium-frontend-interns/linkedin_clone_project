@@ -5,8 +5,8 @@ import moment from 'moment';
 import { useIsContentOverflowing } from '../../actions/useIsContentOverflowing';
 import './FeedPost.scss';
 
-interface FeedPostProps {
-  uid: string;
+export interface FeedPostProps {
+  ownerUid: string;
   displayName: string;
   avatar: string;
   content: string;
@@ -15,7 +15,7 @@ interface FeedPostProps {
 }
 
 export const FeedPost: React.FC<FeedPostProps> = ({
-  uid,
+  ownerUid,
   displayName,
   avatar,
   content,
@@ -29,7 +29,7 @@ export const FeedPost: React.FC<FeedPostProps> = ({
 
   return (
     <article className="feedPost__container">
-      <Link className="feedPost__user" data-testid={`"feedPost__user--${testid}`} to={`/user/${uid}`}>
+      <Link className="feedPost__user" data-testid={`"feedPost__user--${testid}`} to={`/user/${ownerUid}`}>
         <img className="feedPost__avatar" src={avatar} alt={`${displayName}'s avatar`} />
         <p className="feedPost__name">{displayName}</p>
       </Link>
@@ -58,7 +58,7 @@ FeedPost.defaultProps = {
 };
 
 FeedPost.propTypes = {
-  uid: PropTypes.string.isRequired,
+  ownerUid: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
