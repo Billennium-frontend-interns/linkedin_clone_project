@@ -9,10 +9,10 @@ interface LoaderProps {
   testid?: string;
 }
 
-export const Loader: React.FC<LoaderProps> = ({ isLoading, children }) => {
+export const Loader: React.FC<LoaderProps> = ({ isLoading, children, className, testid }) => {
   if (isLoading) {
     return (
-      <div className="loader">
+      <div className={className} data-testid={testid}>
         <CircularProgress />
       </div>
     );

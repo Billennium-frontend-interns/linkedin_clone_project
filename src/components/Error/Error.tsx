@@ -8,9 +8,13 @@ interface ErrorProps {
   testid?: string;
 }
 
-export const Error: React.FC<ErrorProps> = ({ isError, children }) => {
+export const Error: React.FC<ErrorProps> = ({ isError, children, className, testid }) => {
   if (isError) {
-    return <p className="error">Error has occurred please try again...</p>;
+    return (
+      <p className={className} data-testid={testid}>
+        Error has occurred please try again...
+      </p>
+    );
   }
 
   return children;
