@@ -68,4 +68,12 @@ describe('<Header />', () => {
 
     expect(utils.getByTestId('navigationHeaderDropdown')).toBeInTheDocument();
   });
+
+  it('should show what user is typing in input', async () => {
+    const { searchHeaderInput } = setup();
+
+    fireEvent.change(searchHeaderInput, { target: { value: 'Mariusz' } });
+
+    expect(searchHeaderInput.value).toBe('Mariusz');
+  });
 });

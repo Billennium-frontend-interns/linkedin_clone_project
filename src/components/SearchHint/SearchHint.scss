@@ -1,0 +1,18 @@
+@import '../../styles/Colors.scss';
+
+.searchHint {
+  list-style-type: none;
+  padding: 10px 5px;
+  background-color: $white;
+  border: 1px solid $lightGray;
+  border-top: none;
+
+  &:hover {
+    color: $linkedinBlue;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $black;
+  }
+}
