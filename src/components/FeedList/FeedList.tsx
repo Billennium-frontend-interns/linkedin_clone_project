@@ -3,7 +3,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { CircularProgress } from '@material-ui/core';
 import { useGetPosts } from '../../actions/useGetPosts';
 import { useGetUserFollows } from '../../actions/useGetUserFollows';
-import { postFilter } from '../../actions/PostsFilter';
+import { postsFilter } from '../../actions/PostsFilter';
 import { FeedPost, FeedPostProps } from '../FeedPost/FeedPost';
 import { Loader } from '../Loader/Loader';
 import { Error } from '../Error/Error';
@@ -16,7 +16,7 @@ export const FeedList: React.FC = () => {
 
   const { data: userFollows, isLoading: isFollowsLoading, isError: isFollowsError } = useGetUserFollows();
   const { data: allPosts, isLoading: isPostsLoading, isError: isPostsError } = useGetPosts();
-  const userPosts = postFilter(userFollows, allPosts);
+  const userPosts = postsFilter(userFollows, allPosts);
 
   useEffect(() => {
     if (userFollows.length && allPosts.length) {
