@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ testid }) => (
   <header className="header" data-testid={testid}>
     <div className="header__search">
       <LinkedInIcon color="primary" className="header__logo" />
-      <Search testid="searchHeader" hintsFunction={userHints} />
+      <Search testid="searchHeader" getHints={userHints} />
     </div>
     <Navigation testid="navigationHeader" />
   </header>

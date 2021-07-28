@@ -6,16 +6,16 @@ import './Search.scss';
 
 interface SearchProps {
   testid?: string;
-  hintsFunction?: (set: React.Dispatch<React.SetStateAction<string[]>>, value: string) => void;
+  getHints?: (set: React.Dispatch<React.SetStateAction<string[]>>, value: string) => void;
 }
 
-export const Search: React.FC<SearchProps> = ({ testid, hintsFunction }) => {
+export const Search: React.FC<SearchProps> = ({ testid, getHints }) => {
   const [searchInput, setSearchInput] = useState('');
   const [searchHints, setSearchHints] = useState<string[]>([]);
 
   useEffect(() => {
-    if (hintsFunction) {
-      hintsFunction(setSearchHints, searchInput);
+    if (getHints) {
+      getHints(setSearchHints, searchInput);
     }
   }, [searchInput]);
 
@@ -25,7 +25,7 @@ export const Search: React.FC<SearchProps> = ({ testid, hintsFunction }) => {
         <SearchIcon className="search__icon" />
         <input
           value={searchInput}
-          onChange={e => setSearchInput(e.target.value)}
+          onChange={event => setSearchInput(event.target.value)}
           data-testid={`${testid}Input`}
           placeholder="Search..."
           className="search__input"
@@ -47,5 +47,5 @@ Search.defaultProps = {
 
 Search.propTypes = {
   testid: PropTypes.string,
-  hintsFunction: PropTypes.func.isRequired
+  getHints: PropTypes.func.isRequired
 };
