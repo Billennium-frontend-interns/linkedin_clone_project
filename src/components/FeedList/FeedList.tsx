@@ -22,6 +22,7 @@ export const FeedList: React.FC = () => {
     if (userFollows.length && allPosts.length) {
       setPosts(userPosts.slice(0, 5));
     }
+
     if (userPosts.length <= 5 && allPosts.length) {
       setHasMore(false);
     }
