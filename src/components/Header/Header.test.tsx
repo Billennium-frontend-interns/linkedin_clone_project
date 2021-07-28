@@ -61,7 +61,7 @@ describe('<Header />', () => {
     expect(utils.queryByTestId('navigationHeaderDropdown')).not.toBeInTheDocument();
   });
 
-  it('dropdown shows correctly after clicking i', async () => {
+  it('dropdown shows correctly after clicking it', async () => {
     const { navigationHeaderDropdownOpener, utils } = setup();
 
     fireEvent.click(navigationHeaderDropdownOpener);
