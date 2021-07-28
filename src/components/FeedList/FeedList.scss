@@ -5,6 +5,7 @@
 
 .feedList {
   @include flexColumn;
+  font-family: $postText;
 
   &__loader {
     @include flexCenter;
@@ -19,9 +20,15 @@
   }
 
   &__endMessage {
-    font-family: $postText;
     color: $linkedinBlue;
     font-weight: $fontBold;
     text-align: center;
   }
+}
+
+.noPostsError {
+  font-family: $darkBlue;
+  color: $linkedinBlue;
+  font-weight: $fontBold;
+  text-align: center;
 }

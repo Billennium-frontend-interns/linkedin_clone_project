@@ -22,6 +22,9 @@ export const FeedList: React.FC = () => {
     if (userFollows.length && allPosts.length) {
       setPosts(userPosts.slice(0, 5));
     }
+    if (userPosts.length <= 5 && allPosts.length) {
+      setHasMore(false);
+    }
   }, [userFollows, allPosts]);
 
   const getMoreData = () => {
@@ -36,6 +39,10 @@ export const FeedList: React.FC = () => {
     }, 1000);
   };
 
+  if (!userPosts.length && allPosts.length) {
+    return <p className="noPostsError">Follow users to see their posts!</p>;
+  }
+
   return (
     <section className="feedList">
       <Loader isLoading={isFollowsLoading || isPostsLoading}>
@@ -45,9 +52,9 @@ export const FeedList: React.FC = () => {
             next={getMoreData}
             hasMore={hasMore}
             loader={
-              <p className="feedList__loader">
+              <div className="feedList__loader">
                 <CircularProgress />
-              </p>
+              </div>
             }
             endMessage={<p className="feedList__endMessage">Yay! You have seen it all</p>}
             className="feedList__posts"
