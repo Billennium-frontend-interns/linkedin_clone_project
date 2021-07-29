@@ -14,8 +14,8 @@ export const FeedList: React.FC = () => {
   const [index, setIndex] = useState(5);
   const [hasMore, setHasMore] = useState(true);
 
-  const { data: userFollows, isLoading: isFollowsLoading, isError: isFollowsError } = useGetUserFollows();
-  const { data: allPosts, isLoading: isPostsLoading, isError: isPostsError } = useGetPosts();
+  const { userFollows, isLoading: isFollowsLoading, isError: isFollowsError } = useGetUserFollows();
+  const { allPosts, isLoading: isPostsLoading, isError: isPostsError } = useGetPosts();
   const userPosts = postsFilter(userFollows, allPosts);
 
   const initializePosts = () => {
