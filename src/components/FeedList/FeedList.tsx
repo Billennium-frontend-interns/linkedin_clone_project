@@ -19,13 +19,13 @@ export const FeedList: React.FC = () => {
   const userPosts = postsFilter(userFollows, allPosts);
 
   const initializePosts = () => {
-    if (userFollows.length && allPosts.length) {
+    if (userPosts.length) {
       setPosts(userPosts.slice(0, 5));
     }
   };
 
   const checkPostsAmount = () => {
-    if (userPosts.length <= 5 && true) {
+    if (userPosts.length <= 5 && allPosts.length) {
       setHasMore(false);
     }
   };
@@ -38,7 +38,7 @@ export const FeedList: React.FC = () => {
 
     setTimeout(() => {
       setPosts(userPosts.slice(0, index + 4));
-      setIndex(index + 1);
+      setIndex(index + 4);
     }, 1000);
   };
 
@@ -47,7 +47,7 @@ export const FeedList: React.FC = () => {
     checkPostsAmount();
   }, [userFollows, allPosts]);
 
-  if (!userPosts.length && true) {
+  if (!userPosts.length && allPosts.length) {
     return <WithError isError errorMessage="Follow users to see their posts!" className="noPostsError" />;
   }
 
