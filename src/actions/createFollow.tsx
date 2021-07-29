@@ -1,13 +1,14 @@
+import * as firebase from 'firebase';
 import { auth, db } from '../firebase';
 
 export const createFollow = async (receiverUid: string): Promise<void> => {
-  try {
-    db.collection('follows').doc(auth.currentUser?.uid).set({
-      followerUid: auth.currentUser?.uid,
-      receiverUid
-    });
-  } catch (error) {
-    // eslint-disable-next-line
-    console.log(error);
-  }
+  const currentUserUid = auth.currentUser?.uid;
+  const userRef = db.collection('follows').doc(currentUserUid);
+  const receiverRef = db.collection('follows').doc(receiverUid);
+  userRef.update({
+    followed: firebase.default.firestore.FieldValue.arrayUnion(receiverUid)
+  });
+  receiverRef.update({
+    followers: firebase.default.firestore.FieldValue.arrayUnion(currentUserUid)
+  });
 };

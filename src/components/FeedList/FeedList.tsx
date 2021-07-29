@@ -25,7 +25,7 @@ export const FeedList: React.FC = () => {
   };
 
   const checkPostsAmount = () => {
-    if (userPosts.length <= 5 && allPosts.length) {
+    if (userPosts.length <= 5 && true) {
       setHasMore(false);
     }
   };
@@ -47,7 +47,7 @@ export const FeedList: React.FC = () => {
     checkPostsAmount();
   }, [userFollows, allPosts]);
 
-  if (!userPosts.length && allPosts.length) {
+  if (!userPosts.length && true) {
     return <WithError isError errorMessage="Follow users to see their posts!" className="noPostsError" />;
   }
 
