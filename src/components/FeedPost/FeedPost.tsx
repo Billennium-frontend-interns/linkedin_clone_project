@@ -6,7 +6,7 @@ import { useIsContentOverflowing } from '../../actions/useIsContentOverflowing';
 import AvatarPlaceholder from '../../assets/images/avatar_placeholder.png';
 import './FeedPost.scss';
 
-interface FeedPostProps {
+export interface FeedPostProps {
   ownerUid: string;
   displayName: string;
   avatar?: string;
