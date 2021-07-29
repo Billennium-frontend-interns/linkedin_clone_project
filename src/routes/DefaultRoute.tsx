@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { CircularProgress } from '@material-ui/core';
 import { AuthContext } from '../context/AuthProvider';
 
-export const DefaultRoute = () => {
+export const DefaultRoute: React.FC = () => {
   const user = useContext(AuthContext);
 
   return (

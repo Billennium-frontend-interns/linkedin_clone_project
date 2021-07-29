@@ -8,6 +8,7 @@ import { SignupForm } from '../components/SignupForm/SignupForm';
 import { LoginForm } from '../components/LoginForm/LoginForm';
 import { FeedList } from '../components/FeedList/FeedList';
 
+
 export const Routes = [
   <Route exact path="/" component={Welcome} />,
   <Route exact path="/signUp" render={() => <FormLayout formComponent={<SignupForm />} />} />,
@@ -15,6 +16,6 @@ export const Routes = [
   <ProtectedRoute path="/feed" component={FeedList} />,
   <ProtectedRoute exact path="/network" />,
   <ProtectedRoute exact path="/notification" />,
-  <ProtectedRoute path="/user/:uid" />,
+  <ProtectedRoute path="/user/:ownerUid" />,
   <DefaultRoute />
 ];

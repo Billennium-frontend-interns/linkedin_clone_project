@@ -1,0 +1,17 @@
+.headerDropdown {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  &__listItem {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    text-transform: none !important;
+    flex: 1;
+  }
+}
