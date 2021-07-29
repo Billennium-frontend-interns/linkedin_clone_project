@@ -3,26 +3,32 @@ import PropTypes from 'prop-types';
 
 interface ErrorProps {
   isError: boolean;
-  children: React.ReactElement;
+  errorMessage: string;
+  children?: React.ReactElement;
   className?: string;
   testid?: string;
 }
 
-export const Error: React.FC<ErrorProps> = ({ isError, children, className, testid }) => {
+export const WithError: React.FC<ErrorProps> = ({ isError, errorMessage, children, className, testid }) => {
   if (isError) {
     return (
       <p className={className} data-testid={testid}>
-        Error has occurred please try again...
+        {errorMessage}
       </p>
     );
+  }
+
+  if (!children) {
+    return null;
   }
 
   return children;
 };
 
-Error.propTypes = {
+WithError.propTypes = {
   isError: PropTypes.bool.isRequired,
-  children: PropTypes.element.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  children: PropTypes.element,
   className: PropTypes.string,
   testid: PropTypes.string
 };

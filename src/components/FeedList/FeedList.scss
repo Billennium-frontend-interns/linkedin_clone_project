@@ -5,7 +5,6 @@
 
 .feedList {
   @include flexColumn;
-  font-family: $postText;
 
   &__loader {
     @include flexCenter;

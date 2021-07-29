@@ -1,15 +1,20 @@
 import { useState, useEffect, useContext } from 'react';
 import { db } from '../firebase';
 import { AuthContext } from '../context/AuthProvider';
-import { StateAble } from '../shared/interfaces/StateAbleInterface';
+
+interface GetUserFollows {
+  data: string[];
+  isLoading: boolean;
+  isError: boolean;
+}
 
 interface UserFollows {
   followed: string[];
 }
 
-export const useGetUserFollows = (): StateAble<string[]> => {
+export const useGetUserFollows = (): GetUserFollows => {
   const currentUser = useContext(AuthContext);
-  const [state, setState] = useState<StateAble<string[]>>({
+  const [state, setState] = useState<GetUserFollows>({
     data: [],
     isLoading: true,
     isError: false

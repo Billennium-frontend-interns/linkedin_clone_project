@@ -5,8 +5,8 @@ import { useGetPosts } from '../../actions/useGetPosts';
 import { useGetUserFollows } from '../../actions/useGetUserFollows';
 import { postsFilter } from '../../actions/PostsFilter';
 import { FeedPost, FeedPostProps } from '../FeedPost/FeedPost';
-import { Loader } from '../Loader/Loader';
-import { Error } from '../Error/Error';
+import { WithLoader } from '../WithLoader/WithLoader';
+import { WithError } from '../WithError/WithError';
 import './FeedList.scss';
 
 export const FeedList: React.FC = () => {
@@ -18,15 +18,17 @@ export const FeedList: React.FC = () => {
   const { data: allPosts, isLoading: isPostsLoading, isError: isPostsError } = useGetPosts();
   const userPosts = postsFilter(userFollows, allPosts);
 
-  useEffect(() => {
+  const initializePosts = () => {
     if (userFollows.length && allPosts.length) {
       setPosts(userPosts.slice(0, 5));
     }
+  };
 
+  const checkPostsAmount = () => {
     if (userPosts.length <= 5 && allPosts.length) {
       setHasMore(false);
     }
-  }, [userFollows, allPosts]);
+  };
 
   const getMoreData = () => {
     if (posts.length >= userPosts.length) {
@@ -40,14 +42,19 @@ export const FeedList: React.FC = () => {
     }, 1000);
   };
 
+  useEffect(() => {
+    initializePosts();
+    checkPostsAmount();
+  }, [userFollows, allPosts]);
+
   if (!userPosts.length && allPosts.length) {
-    return <p className="noPostsError">Follow users to see their posts!</p>;
+    return <WithError isError errorMessage="Follow users to see their posts!" className="noPostsError" />;
   }
 
   return (
     <section className="feedList" data-testid="feedList">
-      <Loader isLoading={isFollowsLoading || isPostsLoading}>
-        <Error isError={isFollowsError || isPostsError}>
+      <WithLoader isLoading={isFollowsLoading || isPostsLoading}>
+        <WithError isError={isFollowsError || isPostsError} errorMessage="Error has occurred please try again...">
           <InfiniteScroll
             dataLength={posts.length}
             next={getMoreData}
@@ -72,8 +79,8 @@ export const FeedList: React.FC = () => {
               />
             ))}
           </InfiniteScroll>
-        </Error>
-      </Loader>
+        </WithError>
+      </WithLoader>
     </section>
   );
 };

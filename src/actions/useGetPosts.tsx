@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { StateAble } from '../shared/interfaces/StateAbleInterface';
 import { FeedPostProps } from '../components/FeedPost/FeedPost';
 
-export const useGetPosts = (): StateAble<FeedPostProps[]> => {
-  const [state, setState] = useState<StateAble<FeedPostProps[]>>({
+interface GetPosts {
+  data: FeedPostProps[];
+  isLoading: boolean;
+  isError: boolean;
+}
+
+export const useGetPosts = (): GetPosts => {
+  const [state, setState] = useState<GetPosts>({
     data: [],
     isLoading: true,
     isError: false

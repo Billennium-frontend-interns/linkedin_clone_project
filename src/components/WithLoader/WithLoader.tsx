@@ -9,7 +9,7 @@ interface LoaderProps {
   testid?: string;
 }
 
-export const Loader: React.FC<LoaderProps> = ({ isLoading, children, className, testid }) => {
+export const WithLoader: React.FC<LoaderProps> = ({ isLoading, children, className, testid }) => {
   if (isLoading) {
     return (
       <div className={className} data-testid={testid}>
@@ -21,7 +21,7 @@ export const Loader: React.FC<LoaderProps> = ({ isLoading, children, className, 
   return children;
 };
 
-Loader.propTypes = {
+WithLoader.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   children: PropTypes.element.isRequired,
   className: PropTypes.string,
