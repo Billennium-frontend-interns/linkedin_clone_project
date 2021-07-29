@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Search } from '../Search/Search';
 import { Navigation } from '../Navigation/Navigation';
 import './Header.scss';
+import { userHints } from '../../constants/UserHints';
 
 interface HeaderProps {
   testid?: string;
@@ -13,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ testid }) => (
   <header className="header" data-testid={testid}>
     <div className="header__search">
       <LinkedInIcon color="primary" className="header__logo" />
-      <Search testid="searchHeader" />
+      <Search testid="searchHeader" getHints={userHints} />
     </div>
     <Navigation testid="navigationHeader" />
   </header>
