@@ -9,5 +9,8 @@ interface FeedPostProps {
 }
 
 export const setPost = async ({ ownerUid, content, avatar, timestamp, displayName }: FeedPostProps): Promise<void> => {
-  await db.collection('posts').add({ ownerUid, content, avatar, timestamp, displayName });
+  db.collection('posts')
+    .add({ ownerUid, content, avatar, timestamp, displayName })
+    .then(data => console.log(data))
+    .catch(error => console.log(error.message));
 };
