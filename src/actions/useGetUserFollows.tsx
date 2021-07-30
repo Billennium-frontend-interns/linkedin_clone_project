@@ -1,15 +1,12 @@
 import { useState, useEffect, useContext } from 'react';
 import { db } from '../firebase';
 import { AuthContext } from '../context/AuthProvider';
+import { UserFollows } from '../shared/interfaces/UserInterfaces';
 
 interface GetUserFollows {
   userFollows: string[];
   isLoading: boolean;
   isError: boolean;
-}
-
-interface UserFollows {
-  followed: string[];
 }
 
 export const useGetUserFollows = (): GetUserFollows => {

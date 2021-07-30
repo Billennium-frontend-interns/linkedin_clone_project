@@ -1,0 +1,29 @@
+@import '../../styles/Mixins.scss';
+@import '../../styles/Colors.scss';
+
+.userCard {
+  @include flexColumn;
+  padding: 20px 0;
+  border: 1px solid $lightGray;
+  width: 200px;
+  border-radius: 15px;
+  margin: 10px;
+  background-color: $white;
+
+  &:hover {
+    box-shadow: 0px 7px 13px -7px #000000, 53px 3px 3px 3px rgba(0, 0, 0, 0);
+  }
+
+  &__info {
+    @include flexColumn;
+  }
+
+  &__avatar {
+    height: 100px !important;
+    width: 100px !important;
+  }
+
+  &__button {
+    margin-top: 20px !important;
+  }
+}
