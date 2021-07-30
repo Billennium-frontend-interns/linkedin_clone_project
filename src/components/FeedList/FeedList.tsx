@@ -7,11 +7,12 @@ import { postsFilter } from '../../actions/postsFilter';
 import { FeedPost, FeedPostProps } from '../FeedPost/FeedPost';
 import { WithLoader } from '../WithLoader/WithLoader';
 import { WithError } from '../WithError/WithError';
+import { Posts } from '../../constants/Posts';
 import './FeedList.scss';
 
 export const FeedList: React.FC = () => {
   const [posts, setPosts] = useState<FeedPostProps[]>([]);
-  const [index, setIndex] = useState(5);
+  const [index, setIndex] = useState(Posts.initial);
   const [hasMore, setHasMore] = useState(true);
 
   const { userFollows, isLoading: isFollowsLoading, isError: isFollowsError } = useGetUserFollows();
@@ -20,12 +21,12 @@ export const FeedList: React.FC = () => {
 
   const initializePosts = () => {
     if (userPosts.length) {
-      setPosts(userPosts.slice(0, 5));
+      setPosts(userPosts.slice(0, Posts.initial));
     }
   };
 
   const checkPostsAmount = () => {
-    if (userPosts.length <= 5 && allPosts.length) {
+    if (userPosts.length <= Posts.initial && allPosts.length) {
       setHasMore(false);
     }
   };
@@ -37,8 +38,8 @@ export const FeedList: React.FC = () => {
     }
 
     setTimeout(() => {
-      setPosts(userPosts.slice(0, index + 4));
-      setIndex(index + 4);
+      setPosts(userPosts.slice(0, index + Posts.new));
+      setIndex(index + Posts.new);
     }, 1000);
   };
 
