@@ -1,4 +1,4 @@
 export enum Posts {
-  new = 4,
-  initial = 5
+  newAmount = 4,
+  initialAmount = 5
 }

@@ -12,7 +12,7 @@ import './FeedList.scss';
 
 export const FeedList: React.FC = () => {
   const [posts, setPosts] = useState<FeedPostProps[]>([]);
-  const [index, setIndex] = useState(Posts.initial);
+  const [index, setIndex] = useState(Posts.initialAmount);
   const [hasMore, setHasMore] = useState(true);
 
   const { userFollows, isLoading: isFollowsLoading, isError: isFollowsError } = useGetUserFollows();
@@ -21,12 +21,12 @@ export const FeedList: React.FC = () => {
 
   const initializePosts = () => {
     if (userPosts.length) {
-      setPosts(userPosts.slice(0, Posts.initial));
+      setPosts(userPosts.slice(0, Posts.initialAmount));
     }
   };
 
   const checkPostsAmount = () => {
-    if (userPosts.length <= Posts.initial && allPosts.length) {
+    if (userPosts.length <= Posts.initialAmount && allPosts.length) {
       setHasMore(false);
     }
   };
@@ -38,8 +38,8 @@ export const FeedList: React.FC = () => {
     }
 
     setTimeout(() => {
-      setPosts(userPosts.slice(0, index + Posts.new));
-      setIndex(index + Posts.new);
+      setPosts(userPosts.slice(0, index + Posts.newAmount));
+      setIndex(index + Posts.newAmount);
     }, 1000);
   };
 
