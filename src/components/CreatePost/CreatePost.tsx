@@ -17,11 +17,11 @@ export const CreatePost: React.FC = () => {
     event.preventDefault();
     if (postText !== '') {
       await setPost({
-        ownerUid: currentUser?.uid,
+        ownerUid: currentUser?.uid as string,
         content: postText,
-        displayName: currentUser?.displayName,
+        displayName: currentUser?.displayName as string,
         timestamp: generateDate(),
-        avatar: currentUser?.photoURL
+        avatar: currentUser?.photoURL as string
       });
     }
     setPostText('');

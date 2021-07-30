@@ -1,16 +1,19 @@
 import { db } from '../firebase';
 
 interface FeedPostProps {
-  ownerUid: string | undefined | null;
-  displayName: string | undefined | null;
-  avatar?: string | undefined | null;
+  ownerUid: string;
+  displayName: string;
+  avatar?: string;
   content: string;
   timestamp: string;
 }
 
-export const setPost = async ({ ownerUid, content, avatar, timestamp, displayName }: FeedPostProps): Promise<void> => {
-  db.collection('posts')
-    .add({ ownerUid, content, avatar, timestamp, displayName })
-    .then(data => console.log(data))
-    .catch(error => console.log(error.message));
+export const setPost = ({ ownerUid, content, avatar, timestamp, displayName }: FeedPostProps): void => {
+  try {
+    db.collection('posts')
+      .add({ ownerUid, content, avatar, timestamp, displayName })
+      .then(post => post);
+  } catch (error) {
+    console.log(error.message);
+  }
 };
