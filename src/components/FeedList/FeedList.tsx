@@ -3,15 +3,16 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { CircularProgress } from '@material-ui/core';
 import { useGetPosts } from '../../actions/useGetPosts';
 import { useGetUserFollows } from '../../actions/useGetUserFollows';
-import { postsFilter } from '../../actions/PostsFilter';
+import { postsFilter } from '../../actions/postsFilter';
 import { FeedPost, FeedPostProps } from '../FeedPost/FeedPost';
 import { WithLoader } from '../WithLoader/WithLoader';
 import { WithError } from '../WithError/WithError';
+import { Posts } from '../../constants/Posts';
 import './FeedList.scss';
 
 export const FeedList: React.FC = () => {
   const [posts, setPosts] = useState<FeedPostProps[]>([]);
-  const [index, setIndex] = useState(5);
+  const [index, setIndex] = useState(Posts.initialAmount);
   const [hasMore, setHasMore] = useState(true);
 
   const { userFollows, isLoading: isFollowsLoading, isError: isFollowsError } = useGetUserFollows();
@@ -19,13 +20,13 @@ export const FeedList: React.FC = () => {
   const userPosts = postsFilter(userFollows, allPosts);
 
   const initializePosts = () => {
-    if (userFollows.length && allPosts.length) {
-      setPosts(userPosts.slice(0, 5));
+    if (userPosts.length) {
+      setPosts(userPosts.slice(0, Posts.initialAmount));
     }
   };
 
   const checkPostsAmount = () => {
-    if (userPosts.length <= 5 && allPosts.length) {
+    if (userPosts.length <= Posts.initialAmount && allPosts.length) {
       setHasMore(false);
     }
   };
@@ -37,8 +38,8 @@ export const FeedList: React.FC = () => {
     }
 
     setTimeout(() => {
-      setPosts(userPosts.slice(0, index + 4));
-      setIndex(index + 1);
+      setPosts(userPosts.slice(0, index + Posts.newAmount));
+      setIndex(index + Posts.newAmount);
     }, 1000);
   };
 
