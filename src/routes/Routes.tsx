@@ -7,12 +7,14 @@ import { ProtectedRoute } from './ProtectedRoute';
 import { SignupForm } from '../components/SignupForm/SignupForm';
 import { LoginForm } from '../components/LoginForm/LoginForm';
 import { FeedList } from '../components/FeedList/FeedList';
+import { EditProfile } from '../components/EditProfile/EditProfile';
 
 export const Routes = [
   <Route exact path="/" component={Welcome} />,
   <Route exact path="/signUp" render={() => <FormLayout formComponent={<SignupForm />} />} />,
   <Route exact path="/signIn" render={() => <FormLayout formComponent={<LoginForm />} />} />,
   <ProtectedRoute path="/feed" component={FeedList} />,
+  <ProtectedRoute path="/editprofile" component={EditProfile} />,
   <ProtectedRoute exact path="/network" />,
   <ProtectedRoute exact path="/notification" />,
   <ProtectedRoute path="/user/:ownerUid" />,
