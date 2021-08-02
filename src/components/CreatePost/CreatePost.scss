@@ -1,0 +1,21 @@
+@import '../../styles/Mixins.scss';
+@import '../../styles/Colors.scss';
+
+.create-post {
+  display: flex;
+  border-radius: 20px;
+  border: 1px solid $lightBlue;
+  padding: 20px;
+  margin: 10px 30px;
+
+  .share-box {
+    @include flexColumn;
+    width: 100%;
+    margin: 0 15px;
+
+    &__text {
+      width: 100%;
+      margin: 15px;
+    } 
+  }
+}

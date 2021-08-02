@@ -23,6 +23,10 @@ export const signUpWithCredentails = async ({
       displayName: name,
       id: auth.currentUser?.uid
     });
+    await db.collection('follows').doc(auth.currentUser?.uid).set({
+      followed: [],
+      followers: []
+    });
     history.push('/home');
   } catch (err) {
     setError({
