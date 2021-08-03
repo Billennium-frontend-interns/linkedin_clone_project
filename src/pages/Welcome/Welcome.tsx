@@ -5,7 +5,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import './Welcome.scss';
 
 export const Welcome: React.FC = () => (
-  <main className="welcomePage" data-test>
+  <main className="welcomePage">
     <section className="hero">
       <h1 className="hero__title">
         <span>Linked</span>
