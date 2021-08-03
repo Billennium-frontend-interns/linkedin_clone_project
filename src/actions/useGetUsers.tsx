@@ -19,7 +19,7 @@ export const useGetUsers = (): GetUser => {
 
   const getUsers = async () => {
     try {
-      const snapshot = await db.collection('users').get();
+      const snapshot = await db.collection('users').orderBy('displayName', 'asc').get();
       const users = snapshot.docs.map(user => user.data()).filter(user => user.id !== currentUser?.uid) as User[];
       setState({ ...state, users, isLoading: false });
     } catch (error) {

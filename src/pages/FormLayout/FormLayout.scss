@@ -7,7 +7,7 @@
 .formLayout__container {
   @include flexColumn;
 
-  background: $mainTheme;
+  background: $welcomeMainTheme;
   min-height: 100vh;
 
   .formLayout__text {

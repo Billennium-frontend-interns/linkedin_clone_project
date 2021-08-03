@@ -9,9 +9,10 @@ interface UserCardProps {
   displayName: string;
   followed?: boolean;
   id: string;
+  testid?: string;
 }
 
-export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followed, id }) => {
+export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followed, id, testid }) => {
   const [isFollowed, setIsFollowed] = useState(followed);
 
   const handleClick = () => {
@@ -24,7 +25,7 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followe
   };
 
   return (
-    <section className="userCard">
+    <section className="userCard" data-testid={`${testid}${id}`}>
       <div className="userCard__info">
         <Avatar className="userCard__avatar" src={avatar} />
         <p>{displayName}</p>
@@ -38,12 +39,14 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followe
 
 UserCard.defaultProps = {
   avatar: '',
-  followed: false
+  followed: false,
+  testid: undefined
 };
 
 UserCard.propTypes = {
   avatar: PropTypes.string,
   displayName: PropTypes.string.isRequired,
   followed: PropTypes.bool,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  testid: PropTypes.string
 };

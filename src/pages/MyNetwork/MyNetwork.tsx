@@ -10,30 +10,36 @@ export const MyNetwork: React.FC = () => {
   const [showRecommendedUsers, setShowRecommendedUsers] = useState(true);
 
   return (
-    <div className="myNetwork">
-      <Header />
+    <div className="myNetwork" data-testid="myNetworkPage">
+      <Header testid="myNetworkPageHeader" />
       <div className="myNetwork__container">
         <div className="myNetwork__buttons">
           <Button
             size="large"
             variant="outlined"
             color="primary"
+            data-testid="recommendedUsersButton"
             onClick={() => setShowRecommendedUsers(true)}
             className={classNames('myNetwork__button', { 'myNetwork__button--active': showRecommendedUsers })}
           >
-            Recommended User
+            Recommended Users
           </Button>
           <Button
             size="large"
             variant="outlined"
             color="primary"
+            data-testid="followedUsersButton"
             onClick={() => setShowRecommendedUsers(false)}
             className={classNames('myNetwork__button', { 'myNetwork__button--active': !showRecommendedUsers })}
           >
-            Followed User
+            Followed Users
           </Button>
         </div>
-        {showRecommendedUsers ? <RecommendedUsers /> : <FollowedUsers />}
+        {showRecommendedUsers ? (
+          <RecommendedUsers testid="recommendedUsers" />
+        ) : (
+          <FollowedUsers testid="followedUsers" />
+        )}
       </div>
     </div>
   );
