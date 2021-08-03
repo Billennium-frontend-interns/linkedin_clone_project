@@ -10,3 +10,9 @@
   align-items: center;
   flex-direction: column;
 }
+
+@mixin flexWrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
