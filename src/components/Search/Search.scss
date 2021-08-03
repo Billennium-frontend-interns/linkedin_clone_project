@@ -9,10 +9,27 @@
   height: 22px;
   color: $gray;
 
+  &--hide {
+    margin-left: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: $lightGray;
+  }
+
   @media only screen and (min-width: $medium) {
     border-radius: 5px;
     padding: 5px;
     background-color: $lightGray;
+    margin-left: 0;
+  }
+
+  &__icon {
+    cursor: pointer;
+
+    @media only screen and (min-width: $medium) {
+      cursor: default;
+      pointer-events: none;
+    }
   }
 
   &__container {
@@ -21,6 +38,14 @@
 
   &__input {
     display: none;
+
+    &--hide {
+      display: block;
+      outline: none;
+      border: none;
+      background: none;
+      color: black;
+    }
 
     @media only screen and (min-width: $medium) {
       display: block;
@@ -33,6 +58,13 @@
 
   &__hints {
     display: none;
+
+    &--hide {
+      display: block;
+      padding: 0;
+      margin: 3px 0;
+      width: 100%;
+    }
 
     @media only screen and (min-width: $medium) {
       display: block;
