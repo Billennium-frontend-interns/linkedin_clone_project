@@ -7,6 +7,7 @@ import { ProtectedRoute } from './ProtectedRoute';
 import { SignupForm } from '../components/SignupForm/SignupForm';
 import { LoginForm } from '../components/LoginForm/LoginForm';
 import { FeedList } from '../components/FeedList/FeedList';
+import { UserPage } from '../pages/UserPage/UserPage';
 
 export const Routes = [
   <Route exact path="/" component={Welcome} />,
@@ -15,6 +16,6 @@ export const Routes = [
   <ProtectedRoute path="/feed" component={FeedList} />,
   <ProtectedRoute exact path="/network" />,
   <ProtectedRoute exact path="/notification" />,
-  <ProtectedRoute path="/user/:ownerUid" />,
+  <ProtectedRoute path="/user/:ownerUid" component={UserPage} />,
   <DefaultRoute />
 ];

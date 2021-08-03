@@ -9,6 +9,7 @@ interface signInWithCredentials {
   history: History<LocationState>;
 }
 
+// eslint-disable-next-line
 export const signInWithCredentials = ({ email, password, setError, history }: signInWithCredentials): void => {
   auth
     .signInWithEmailAndPassword(email, password)

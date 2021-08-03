@@ -1,0 +1,70 @@
+@import '../../styles/Mixins';
+@import '../../styles/FontSizes';
+@import '../../styles/FontWeights';
+@import '../../styles/Colors';
+@import '../../styles/Breakpoints';
+
+.userDetails {
+    @include flexCenter;
+    max-width: 700px;
+    width: 100%;
+    border-top: 1px solid $lightGray;
+    border-bottom: 1px solid $lightGray;
+    padding: 1em 0;
+    margin: 1em 0;
+    background: $white;
+    height: fit-content;
+    @media only screen and (min-width: $mobile) {
+        border: 1px solid $lightGray;
+        border-radius: 15px;
+    }
+
+    &__avatar {
+        width: 96px;
+        height: 96px;
+        margin: 1rem;
+        border-radius: 50%;
+
+        @media only screen and (min-width: $mobile) {
+            width: 164px;
+            height: 164px;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        width: 100%;
+        min-height: 96px;
+        padding-top: 1rem;
+    }
+
+    &__name {
+        width: fit-content;
+        font-size: $smallFont;
+        font-weight: $fontBold;
+        margin: 0;
+
+        @media only screen and (min-width: $mobile) {
+            font-size: $mediumFont;
+        }
+    }
+
+    &__flare {
+        display: flex;
+        color: $linkedinBlue;
+        align-items: center;
+        font-size: $textFont;
+        margin-top: 0;
+    }
+
+    &__bio {
+        margin-top: .5em;
+    }
+    
+    &__edit {
+        align-items: flex-end;
+    }
+}
+

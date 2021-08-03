@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 import './SearchHint.scss';
 
 interface SearchHintProps {
-  hint: string;
+  displayName: string;
+  id: string;
 }
 
-export const SearchHint: React.FC<SearchHintProps> = ({ hint }) => (
-  <Link className="searchHint__link" to={`/profile/${hint}`}>
-    <li className="searchHint">{hint}</li>
+export const SearchHint: React.FC<SearchHintProps> = ({ displayName, id }) => (
+  <Link className="searchHint__link" to={`/user/${id}`}>
+    <li className="searchHint">{displayName}</li>
   </Link>
 );
 
 SearchHint.propTypes = {
-  hint: PropTypes.string.isRequired
+  displayName: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
 };

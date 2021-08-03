@@ -4,14 +4,18 @@ import PropTypes from 'prop-types';
 import { SearchHint } from '../SearchHint/SearchHint';
 import './Search.scss';
 
+type userHint = {
+  displayName: string;
+  id: string;
+};
 interface SearchProps {
   testid?: string;
-  getHints?: (set: React.Dispatch<React.SetStateAction<string[]>>, value: string) => void;
+  getHints?: (set: React.Dispatch<React.SetStateAction<userHint[][]>>, value: string) => void;
 }
 
 export const Search: React.FC<SearchProps> = ({ testid, getHints }) => {
   const [searchInput, setSearchInput] = useState('');
-  const [searchHints, setSearchHints] = useState<string[]>([]);
+  const [searchHints, setSearchHints] = useState<userHint[][]>([]);
 
   useEffect(() => {
     if (getHints) {
@@ -34,7 +38,7 @@ export const Search: React.FC<SearchProps> = ({ testid, getHints }) => {
       </div>
       <ul className="search__hints">
         {searchHints.map(hint => (
-          <SearchHint key={hint} hint={hint} />
+          <SearchHint key={hint[0].id} displayName={hint[0].displayName} id={hint[0].id} />
         ))}
       </ul>
     </div>

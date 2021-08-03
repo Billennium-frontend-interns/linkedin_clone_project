@@ -25,7 +25,7 @@ export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ testid }) => {
       <li className="headerDropdown__listItem">
         <Button
           data-testid={`${testid}ViewProfile`}
-          onClick={() => history.push('/myProfile')}
+          onClick={() => history.push(`/user/${user?.uid}`)}
           className="headerDropdown__button"
           variant="outlined"
           color="primary"

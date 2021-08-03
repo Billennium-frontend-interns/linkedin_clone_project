@@ -1,0 +1,16 @@
+@import '../../styles/Mixins';
+@import '../../styles/FontSizes';
+@import '../../styles/FontWeights';
+@import '../../styles/Colors';
+@import '../../styles/Breakpoints';
+
+.userPage {
+    @include flexColumn;
+    min-height: 100vh;
+    justify-content: flex-start;
+    background: $linkedinMainTheme;
+
+    &__ctaButton{
+        margin: 1em;
+    }
+}
