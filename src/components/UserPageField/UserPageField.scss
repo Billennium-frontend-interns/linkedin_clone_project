@@ -7,23 +7,14 @@
 
 
 .userPageField {
-    max-width: 700px;
-    width: 100%;
-    border-top: 1px solid $lightGray;
-    border-bottom: 1px solid $lightGray;
-    margin: 1em 0;
-    background: $white;
-
-    @media only screen and (min-width: $mobile) {
-        border:1px solid $lightGray;
-        border-radius: 15px;
-    }
+    @include cardStyling;
+    margin-bottom: 1em;
 
     &__title {
         display: flex;
         font-size: $mediumFont;
         align-items: center;
-        padding: .5em 1em;
+        padding: 0 1em;
     }
 
     &__entries {

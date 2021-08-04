@@ -6,23 +6,15 @@
 
 .userDetails {
     @include flexCenter;
-    max-width: 700px;
-    width: 100%;
-    border-top: 1px solid $lightGray;
-    border-bottom: 1px solid $lightGray;
-    padding: 1em 0;
+    @include cardStyling;
     margin: 1em 0;
-    background: $white;
+    padding: 1em 0;
     height: fit-content;
-    @media only screen and (min-width: $mobile) {
-        border: 1px solid $lightGray;
-        border-radius: 15px;
-    }
 
     &__avatar {
         width: 96px;
         height: 96px;
-        margin: 1rem;
+        margin: 0 1em;
         border-radius: 50%;
 
         @media only screen and (min-width: $mobile) {
@@ -41,9 +33,11 @@
     }
 
     &__name {
+        display: flex;
         width: fit-content;
         font-size: $smallFont;
         font-weight: $fontBold;
+        align-items: center;
         margin: 0;
 
         @media only screen and (min-width: $mobile) {
@@ -61,10 +55,31 @@
 
     &__bio {
         margin-top: .5em;
+        font-size: $textFont;
+        max-width: 90%;
+
+        @media only screen and (min-width: $mobile) {
+        font-size: $smallFont
+        }
     }
     
     &__edit {
         align-items: flex-end;
+    }
+
+    &__followButton {
+        background: none;
+        border: 1px solid $linkedinBlue;
+        border-radius: 5px;
+        color: $linkedinBlue;
+        cursor: pointer;
+        font-size: $textFont;
+        margin-left: 1em;
+        padding: 0 0.5em;
+        
+        @media only screen and (min-width: $mobile) {
+            font-size: $smallFont;
+            }
     }
 }
 

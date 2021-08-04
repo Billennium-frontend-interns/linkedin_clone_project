@@ -6,16 +6,7 @@
 @import '../../styles/Fonts';
 
 .userPageFieldForm {
-    max-width: 700px;
-    width: 100%;
-    border-top: 1px solid $lightGray;
-    border-bottom: 1px solid $lightGray;
-    background: $white;
-
-    @media only screen and (min-width: $mobile) {
-        border:1px solid $lightGray;
-        border-radius: 15px;
-    }
+    @include cardStyling;
 
     &__title {
         display: flex;
@@ -24,7 +15,7 @@
         padding: 1em;
     }
 
-    &__field{
+    &__field {
         margin-bottom: 1em;
         padding: 0 1em;
     }

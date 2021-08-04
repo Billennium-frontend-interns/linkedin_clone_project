@@ -33,24 +33,13 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
   };
 
   const followButtonHandler = () => {
-    if (isFollowing) {
-      return (
-        <Button variant="outlined" color="primary" onClick={() => handleClick('unfollow')}>
-          Unfollow
-        </Button>
-      );
-    }
-    if (isUserFollowedBy && !isFollowing) {
-      return (
-        <Button variant="outlined" color="primary" onClick={() => handleClick('follow')}>
-          Follow back
-        </Button>
-      );
-    }
+    const action = isFollowing ? 'unfollow' : 'follow';
+    const text = isUserFollowedBy ? 'follow back' : 'follow';
+
     return (
-      <Button variant="outlined" color="primary" onClick={() => handleClick('follow')}>
-        Follow
-      </Button>
+      <button type="button" className="userDetails__followButton" onClick={() => handleClick(action)}>
+        {isFollowing ? 'unfollow' : text}
+      </button>
     );
   };
 
@@ -63,25 +52,26 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
         width="164px"
         height="164px"
       />
-      <span className="userDetails__info">
-        <p className="userDetails__name">
+      <div className="userDetails__info">
+        <header className="userDetails__name">
           {displayName}{' '}
-          {isMyUserDetails && (
+          {isMyUserDetails ? (
             <span aria-label="editButton" className="userDetails__edit">
               <Button>
                 <EditIcon />
               </Button>
             </span>
+          ) : (
+            followButtonHandler()
           )}
-        </p>
+        </header>
         {isUserFollowedBy && (
           <p className="userDetails__flare">
             <CheckCircleIcon fontSize="inherit" /> User is following you
           </p>
         )}
-        {!isMyUserDetails && <span className="userDetails__followButton">{followButtonHandler()}</span>}
-        <span className="userDetails__bio">{bio}</span>
-      </span>
+        <p className="userDetails__bio">{bio}</p>
+      </div>
     </section>
   );
 };

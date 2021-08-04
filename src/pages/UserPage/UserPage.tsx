@@ -40,10 +40,10 @@ export const UserPage: React.FC = () => {
       <section className="userPage">
         {userData ? (
           <UserDetails
-            bio={userData.bio}
+            bio={userData?.bio}
             ownerUid={ownerUid}
-            displayName={userData.displayName}
-            avatar={userData.avatar}
+            displayName={userData?.displayName}
+            avatar={userData?.avatar}
             isMyUserDetails={loggedInUser?.uid === ownerUid}
             isUserFollowedBy={isUserFollowed}
             isUserFollowing={isUserFollowing}
@@ -51,12 +51,10 @@ export const UserPage: React.FC = () => {
         ) : null}
         <WithLoader isLoading={isLoading}>
           <>
-            {
+            {(data || []).map((el, id) => (
               // eslint-disable-next-line
-              (data || []).map((el, id) => (
-                <UserPageField key={id} data={el} isLoading={isLoading} isError={isError} />
-              ))
-            }
+              <UserPageField key={id} data={el} isLoading={isLoading} isError={isError} />
+            ))}
             {!isAddField && loggedInUser?.uid === ownerUid && <UserPageFieldForm />}
             {loggedInUser?.uid === ownerUid && (
               <span className="userPage__ctaButton">

@@ -64,8 +64,8 @@ export const UserPageFieldForm: React.FC = () => {
       setFormData({
         content: Object.fromEntries(
           Object.entries(fieldsData)
-            .map(el => [el[0], el[1].trim()])
-            .filter(el => el[1] !== '')
+            .map(([name, content]) => [name, content.trim()])
+            .filter(([, content]) => content !== '')
         ),
         title: formTitle
       });
@@ -115,12 +115,7 @@ export const UserPageFieldForm: React.FC = () => {
           </button>
         )}
         <span className="userPageFieldForm__submitButtonWrapper">
-          <Button
-            className="userPageFieldForm__submitButton"
-            variant="contained"
-            style={{ color: 'black', background: 'lightgreen' }}
-            type="submit"
-          >
+          <Button className="userPageFieldForm__submitButton" variant="contained" color="primary" type="submit">
             Confirm
           </Button>
         </span>

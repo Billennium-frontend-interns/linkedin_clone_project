@@ -10,7 +10,7 @@ interface signInWithCredentials {
 }
 
 // eslint-disable-next-line
-export const signInWithCredentials = ({ email, password, setError, history }: signInWithCredentials): void => {
+export const signInWithCredentials = ({ email, password, setError, history }: signInWithCredentials): Promise<void> =>
   auth
     .signInWithEmailAndPassword(email, password)
     .then(() => history.push('/feed'))
@@ -20,4 +20,3 @@ export const signInWithCredentials = ({ email, password, setError, history }: si
         errorText: error.message
       })
     );
-};

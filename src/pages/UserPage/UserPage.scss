@@ -8,7 +8,7 @@
     @include flexColumn;
     min-height: 100vh;
     justify-content: flex-start;
-    background: $linkedinMainTheme;
+    background: $backgroundTheme;
 
     &__ctaButton{
         margin: 1em;

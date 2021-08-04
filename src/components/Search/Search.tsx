@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import { SearchHint } from '../SearchHint/SearchHint';
+import { userHint } from '../../shared/interfaces/UserInterfaces';
 import './Search.scss';
 
-type userHint = {
-  displayName: string;
-  id: string;
-};
 interface SearchProps {
   testid?: string;
   getHints?: (set: React.Dispatch<React.SetStateAction<userHint[][]>>, value: string) => void;
@@ -37,8 +34,8 @@ export const Search: React.FC<SearchProps> = ({ testid, getHints }) => {
         />
       </div>
       <ul className="search__hints">
-        {searchHints.map(hint => (
-          <SearchHint key={hint[0].id} displayName={hint[0].displayName} id={hint[0].id} />
+        {searchHints.map(([hint]) => (
+          <SearchHint key={hint.id} displayName={hint.displayName} id={hint.id} />
         ))}
       </ul>
     </div>
