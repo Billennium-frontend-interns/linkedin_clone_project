@@ -14,7 +14,7 @@ interface NavigationProps {
 }
 
 export const Navigation: React.FC<NavigationProps> = ({ testid, isSearchOpen }) => (
-  <nav className={classNames('navigation', { 'navigation--hide': isSearchOpen })} data-testid={testid}>
+  <nav className={classNames('navigation', { 'navigation--hidden': isSearchOpen })} data-testid={testid}>
     <ul className="navigation__wrapper">
       {navigationItems.map(({ title, path, icon }) => (
         <li key={path}>

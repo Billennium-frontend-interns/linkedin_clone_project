@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -15,6 +15,23 @@ interface SearchProps {
 export const Search: React.FC<SearchProps> = ({ testid, getHints, setIsSearchOpen, isSearchOpen }) => {
   const [searchInput, setSearchInput] = useState('');
   const [searchHints, setSearchHints] = useState<string[]>([]);
+  const container = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+  const closeInputOutside = (ref: React.MutableRefObject<HTMLInputElement>) => {
+    if (setIsSearchOpen) {
+      useEffect(() => {
+        const handleOutsideClick = (event: any) => {
+          if (ref.current && !ref.current.contains(event.target)) {
+            setIsSearchOpen(false);
+            document.removeEventListener('click', handleOutsideClick);
+          }
+        };
+        if (isSearchOpen) {
+          document.addEventListener('click', handleOutsideClick);
+        }
+      }, [isSearchOpen, ref]);
+    }
+  };
 
   useEffect(() => {
     if (getHints) {
@@ -22,27 +39,29 @@ export const Search: React.FC<SearchProps> = ({ testid, getHints, setIsSearchOpe
     }
   }, [searchInput]);
 
+  closeInputOutside(container);
+
   return (
-    <div className={classNames('search', { 'search--hide': isSearchOpen })} data-testid={testid}>
-      <div className="search__container">
+    <div className={classNames('search', { 'search--hidden': isSearchOpen })} data-testid={testid}>
+      <div ref={container} className="search__container">
         <SearchIcon
           onClick={() => {
             if (setIsSearchOpen) {
-              setIsSearchOpen(!isSearchOpen);
+              setIsSearchOpen(true);
             }
           }}
-          className="search__icon"
+          className={classNames('search__icon', { 'search__icon--hidden': isSearchOpen })}
         />
         <input
           value={searchInput}
           onChange={event => setSearchInput(event.target.value)}
           data-testid={`${testid}Input`}
           placeholder="Search..."
-          className={classNames('search__input', { 'search__input--hide': isSearchOpen })}
+          className={classNames('search__input', { 'search__input--hidden': isSearchOpen })}
           type="text"
         />
       </div>
-      <ul className={classNames('search__hints', { 'search__hints--hide': isSearchOpen })}>
+      <ul className={classNames('search__hints', { 'search__hints--hidden': isSearchOpen })}>
         {searchHints.map(hint => (
           <SearchHint key={hint} hint={hint} />
         ))}

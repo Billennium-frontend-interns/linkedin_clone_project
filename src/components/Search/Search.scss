@@ -9,11 +9,19 @@
   height: 22px;
   color: $gray;
 
-  &--hide {
+  :hover {
+    color: $linkedinBlue;
+  }
+
+  &--hidden {
     margin-left: 10px;
     border-radius: 5px;
     padding: 5px;
     background-color: $lightGray;
+
+    :hover {
+      color: inherit;
+    }
   }
 
   @media only screen and (min-width: $medium) {
@@ -21,10 +29,18 @@
     padding: 5px;
     background-color: $lightGray;
     margin-left: 0;
+
+    :hover {
+      color: inherit;
+    }
   }
 
   &__icon {
     cursor: pointer;
+
+    &--hidden {
+      cursor: default;
+    }
 
     @media only screen and (min-width: $medium) {
       cursor: default;
@@ -39,12 +55,12 @@
   &__input {
     display: none;
 
-    &--hide {
+    &--hidden {
       display: block;
       outline: none;
       border: none;
       background: none;
-      color: black;
+      color: $black;
     }
 
     @media only screen and (min-width: $medium) {
@@ -52,14 +68,14 @@
       outline: none;
       border: none;
       background: none;
-      color: black;
+      color: $black;
     }
   }
 
   &__hints {
     display: none;
 
-    &--hide {
+    &--hidden {
       display: block;
       padding: 0;
       margin: 3px 0;
