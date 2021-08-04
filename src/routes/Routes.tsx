@@ -8,13 +8,14 @@ import { SignupForm } from '../components/SignupForm/SignupForm';
 import { LoginForm } from '../components/LoginForm/LoginForm';
 import { FeedList } from '../components/FeedList/FeedList';
 import { UserPage } from '../pages/UserPage/UserPage';
+import { MyNetwork } from '../pages/MyNetwork/MyNetwork';
 
 export const Routes = [
   <Route exact path="/" component={Welcome} />,
   <Route exact path="/signUp" render={() => <FormLayout formComponent={<SignupForm />} />} />,
   <Route exact path="/signIn" render={() => <FormLayout formComponent={<LoginForm />} />} />,
   <ProtectedRoute path="/feed" component={FeedList} />,
-  <ProtectedRoute exact path="/network" />,
+  <ProtectedRoute exact path="/network" component={MyNetwork} />,
   <ProtectedRoute exact path="/notification" />,
   <ProtectedRoute path="/user/:ownerUid" component={UserPage} />,
   <DefaultRoute />
