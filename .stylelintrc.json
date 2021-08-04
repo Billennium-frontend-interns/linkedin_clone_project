@@ -1,7 +1,6 @@
 {
     "extends": [
-      "stylelint-config-sass-guidelines",
-      "stylelint-config-prettier"
+      "stylelint-config-sass-guidelines"
     ],
     "fix": true,
     "formatter": "verbose",
@@ -11,7 +10,11 @@
     ],
     "rules": {
       "at-rule-no-unknown": null,
-      "scss/at-rule-no-unknown": true
+      "scss/at-rule-no-unknown": true,
+      "max-nesting-depth": 5,
+      "resolveNestedSelectors": true,
+      "scss/dollar-variable-pattern": "^foo",
+      "scss/selector-no-redundant-nesting-selector": true
     },
     "syntax": "scss"
 }
