@@ -5,12 +5,6 @@
 @import '../../styles/Colors.scss';
 @import '../../styles/Breakpoints.scss';
 
-.editProfile {
-  &__editForm {
-    @include flexCenter;
-  }
-}
-
 .modal {
   position: absolute;
   top: 50%;
@@ -21,7 +15,6 @@
   padding: 2%;
   width: 90vw;
   min-height: 80vh;
-  background: $mainTheme;
   font-family: $postText;
   @include flexColumn;
 
@@ -35,18 +28,11 @@
     width: 75vw;
   }
 
-  @media only screen and (min-width: $laptop) {
-    width: 40vw;
+  @media only screen and (min-width: $medium) {
+    width: 50vw;
   }
-}
 
-.editForm {
-  @include flexColumn;
-  margin-bottom: 2vh;
-  width: 75%;
-
-  & div {
-    min-width: 100%;
-    margin-bottom: 10px;
+  @media only screen and (min-width: $laptop) {
+    width: 35vw;
   }
 }

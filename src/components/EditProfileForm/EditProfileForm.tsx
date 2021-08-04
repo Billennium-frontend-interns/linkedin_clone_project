@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import { WithLoader } from '../WithLoader/WithLoader';
 import { WithError } from '../WithError/WithError';
-import { auth } from '../../firebase';
+import { AuthContext } from '../../context/AuthProvider';
 import { UserData } from '../../shared/interfaces/UserInterfaces';
 import { useGetUserData } from '../../actions/useGetUserData';
 import { editProfile } from '../../actions/editProfile';
+import { updateAvatar } from '../../actions/updateAvatar';
+import './EditProfileForm.scss';
 
 export const EditProfileForm: React.FC = () => {
+  const currentUser = useContext(AuthContext);
   const [shouldDataChange, setShouldDataChange] = useState(false);
   const [formData, setFormData] = useState<UserData>({
     displayName: '',
@@ -15,7 +18,7 @@ export const EditProfileForm: React.FC = () => {
     bio: ''
   });
 
-  const { userData, isLoading, isError } = useGetUserData(auth.currentUser?.uid as string);
+  const { userData, isLoading, isError } = useGetUserData(currentUser?.uid as string);
 
   useEffect(() => {
     setFormData(userData);
@@ -29,7 +32,11 @@ export const EditProfileForm: React.FC = () => {
 
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    editProfile(auth.currentUser?.uid as string, formData);
+    if (event.target.file.files[0]) {
+      console.log('dupa');
+      updateAvatar(currentUser?.uid as string, event.target.file.files[0]);
+    }
+    editProfile(currentUser?.uid as string, formData);
     setShouldDataChange(false);
   };
 
@@ -68,6 +75,14 @@ export const EditProfileForm: React.FC = () => {
             id="bio"
             value={formData.bio}
             onChange={handleChange}
+          />
+          <input
+            type="file"
+            name="file"
+            id="file"
+            onChange={() => {
+              setShouldDataChange(true);
+            }}
           />
           <Button variant="contained" color="primary" type="submit" disabled={!shouldDataChange}>
             Edit

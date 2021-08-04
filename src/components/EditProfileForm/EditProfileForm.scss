@@ -1,0 +1,12 @@
+@import '../../styles/Mixins.scss';
+
+.editForm {
+  @include flexColumn;
+  margin-bottom: 2vh;
+  width: 75%;
+
+  & div {
+    min-width: 100%;
+    margin-bottom: 10px;
+  }
+}
