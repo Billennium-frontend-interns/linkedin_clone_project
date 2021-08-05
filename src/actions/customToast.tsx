@@ -22,14 +22,12 @@ export const customToast = (type: type, text: string, hideProgressBar = true) =>
         hideProgressBar,
         autoClose: 3000
       });
-
     case 'error':
       return toast.error(text, {
         position: 'bottom-right',
         hideProgressBar,
         autoClose: 3000
       });
-
     default:
       return toast(text, {
         position: 'bottom-right',
