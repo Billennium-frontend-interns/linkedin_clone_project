@@ -28,7 +28,7 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
   const [isFollowing, setIsFollowing] = useState(isUserFollowing);
 
   const handleClick = (action: 'follow' | 'unfollow') => {
-    followAction(ownerUid, action);
+    followAction(ownerUid, displayName, action);
     setIsFollowing(!isFollowing);
   };
 

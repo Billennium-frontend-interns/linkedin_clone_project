@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { ToastContainer } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import { db } from '../../firebase';
@@ -70,6 +71,7 @@ export const UserPage: React.FC = () => {
             )}
           </>
         </WithLoader>
+        <ToastContainer />
       </section>
     </>
   );
