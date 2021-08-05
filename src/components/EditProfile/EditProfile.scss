@@ -11,14 +11,18 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid $lightGray;
-  border-radius: 15px;
-  padding: 2%;
+  padding-bottom: 2%;
   width: 90vw;
   min-height: 80vh;
   font-family: $postText;
   @include flexColumn;
 
+  button {
+    width: 82px !important;
+  }
+
   &__title {
+    margin: 16px 0px 16px 0px;
     font-weight: $fontBold;
     font-size: $mediumFont;
     color: $linkedinBlue;

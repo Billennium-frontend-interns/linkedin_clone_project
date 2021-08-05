@@ -1,12 +1,42 @@
 @import '../../styles/Mixins.scss';
+@import '../../styles/FontSizes.scss';
+@import '../../styles/Breakpoints.scss';
 
 .editForm {
   @include flexColumn;
   margin-bottom: 2vh;
   width: 75%;
+  text-align: center;
 
   & div {
     min-width: 100%;
     margin-bottom: 10px;
   }
+}
+
+.MuiDropzoneArea {
+  &-root {
+    min-height: 0px !important;
+    max-height: 140px !important;
+  }
+
+  &-text {
+    margin: 4px 0px !important;
+  }
+
+  &-icon {
+    display: none !important;
+  }
+
+  &-textContainer {
+    margin: 0px !important;
+  }
+}
+
+.MuiFab-root {
+  display: none !important;
+}
+
+.dropzone__text {
+  font-size: $smallFont !important;
 }

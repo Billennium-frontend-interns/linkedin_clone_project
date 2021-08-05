@@ -12,7 +12,6 @@ export const useGetUserData = (userUid: string): GetUserData => {
   const [state, setState] = useState<GetUserData>({
     userData: {
       displayName: '',
-      avatar: '',
       bio: ''
     },
     isLoading: true,

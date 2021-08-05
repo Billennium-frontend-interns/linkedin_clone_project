@@ -5,6 +5,5 @@ export interface UserFollows {
 
 export interface UserData {
   displayName: string;
-  avatar: string;
   bio: string;
 }
