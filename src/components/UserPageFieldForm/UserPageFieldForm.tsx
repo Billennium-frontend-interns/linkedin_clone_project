@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { updateProfileFields } from '../../actions/updateProfileFields';
-import { fields, contentField } from '../../shared/interfaces/ProfileFieldInterfaces';
+import { contentField } from '../../shared/interfaces/ProfileFieldInterfaces';
 import './UserPageFieldForm.scss';
 
 type fieldType = {
   name: string;
   value: string;
 };
+interface UserPageFieldFormProps {
+  data: boolean;
+  setter: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-export const UserPageFieldForm: React.FC = () => {
+export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, setter }: UserPageFieldFormProps) => {
   const MAX_FIELDS_THRESHOLD = 12;
   const MAX_INPUT_LENGTH = 100;
-  const [formData, setFormData] = useState<fields>();
   const [fieldsData, setFieldsData] = useState<contentField>({});
   const [fieldInputs, setFieldInputs] = useState<fieldType[]>([]);
   const [formTitle, setFormTitle] = useState('');
@@ -61,23 +64,19 @@ export const UserPageFieldForm: React.FC = () => {
 
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     if (!validate()) {
-      setFormData({
+      const formData = {
         content: Object.fromEntries(
           Object.entries(fieldsData)
             .map(([name, content]) => [name, content.trim()])
             .filter(([, content]) => content !== '')
         ),
         title: formTitle
-      });
+      };
+      updateProfileFields(formData);
+      setter(!data);
     }
     event.preventDefault();
   };
-
-  useEffect(() => {
-    if (formData) {
-      updateProfileFields(formData);
-    }
-  }, [formData]);
 
   return (
     <article className="userPageFieldForm">
