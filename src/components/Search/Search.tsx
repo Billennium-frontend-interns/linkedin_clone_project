@@ -3,18 +3,19 @@ import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { SearchHint } from '../SearchHint/SearchHint';
+import { userHint } from '../../shared/interfaces/UserInterfaces';
 import './Search.scss';
 
 interface SearchProps {
   testid?: string;
-  getHints?: (set: React.Dispatch<React.SetStateAction<string[]>>, value: string) => void;
+  getHints?: (set: React.Dispatch<React.SetStateAction<userHint[][]>>, value: string) => void;
   setIsSearchOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   isSearchOpen?: boolean;
 }
 
 export const Search: React.FC<SearchProps> = ({ testid, getHints, setIsSearchOpen, isSearchOpen }) => {
   const [searchInput, setSearchInput] = useState('');
-  const [searchHints, setSearchHints] = useState<string[]>([]);
+  const [searchHints, setSearchHints] = useState<userHint[][]>([]);
   const container = useRef() as React.MutableRefObject<HTMLInputElement>;
 
   const closeInputOutside = (ref: React.MutableRefObject<HTMLInputElement>) => {
@@ -62,8 +63,8 @@ export const Search: React.FC<SearchProps> = ({ testid, getHints, setIsSearchOpe
         />
       </div>
       <ul className={classNames('search__hints', { 'search__hints--hidden': isSearchOpen })}>
-        {searchHints.map(hint => (
-          <SearchHint key={hint} hint={hint} />
+        {searchHints.map(([hint]) => (
+          <SearchHint key={hint.id} displayName={hint.displayName} id={hint.id} />
         ))}
       </ul>
     </div>

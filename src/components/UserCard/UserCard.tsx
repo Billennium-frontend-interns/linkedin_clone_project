@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Avatar, Button } from '@material-ui/core';
 import { followAction } from '../../actions/followAction';
 import './UserCard.scss';
@@ -28,7 +29,9 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followe
     <section className="userCard" data-testid={`${testid}${id}`}>
       <div className="userCard__info">
         <Avatar className="userCard__avatar" src={avatar} />
-        <p>{displayName}</p>
+        <Link className="userCard__displayName" data-testid={`"userCard__displayName--${testid}`} to={`/user/${id}`}>
+          <p>{displayName}</p>
+        </Link>
       </div>
       <Button onClick={handleClick} variant="outlined" color="primary" className="userCard__button">
         {isFollowed ? 'Followed' : 'Follow'}
