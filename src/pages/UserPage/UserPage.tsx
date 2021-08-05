@@ -8,8 +8,8 @@ import { UserPageField } from '../../components/UserPageField/UserPageField';
 import { AuthContext } from '../../context/AuthProvider';
 import { useIsUserFollowed } from '../../actions/useIsUserFollowed';
 import { Header } from '../../components/Header/Header';
-import { useGetUserProfileFields } from '../../actions/useGetUserProfileFields';
 import { WithLoader } from '../../components/WithLoader/WithLoader';
+import { UserPageFieldInterface, fields } from '../../shared/interfaces/ProfileFieldInterfaces';
 import './UserPage.scss';
 
 type UserPageParams = {
@@ -23,16 +23,24 @@ export const UserPage: React.FC = () => {
   const loggedInUser = useContext(AuthContext);
   const isUserFollowed = useIsUserFollowed(loggedInUser?.uid, ownerUid);
   const isUserFollowing = useIsUserFollowed(ownerUid, loggedInUser?.uid);
-  const { data, isLoading, isError } = useGetUserProfileFields(ownerUid);
+  const [fieldEntries, setFieldEntries] = useState<UserPageFieldInterface<fields[]>>({
+    data: [],
+    isLoading: true,
+    isError: true
+  });
+  const [getFields, setGetFields] = useState(false);
 
   useEffect(() => {
     db.collection('users')
       .doc(ownerUid)
       .get()
-      .then(doc => setUserData(doc.data()))
+      .then(doc => {
+        setUserData(doc.data());
+        setFieldEntries({ data: doc.data()?.profileFields, isLoading: false, isError: false });
+      })
       // eslint-disable-next-line
       .catch(error => console.error(error));
-  }, [ownerUid]);
+  }, [ownerUid, getFields]);
 
   return (
     <>
@@ -49,13 +57,20 @@ export const UserPage: React.FC = () => {
             isUserFollowing={isUserFollowing}
           />
         ) : null}
-        <WithLoader isLoading={isLoading}>
+        <WithLoader isLoading={fieldEntries.isLoading}>
           <>
-            {(data || []).map((el, id) => (
+            {(fieldEntries.data || []).map((fieldEntry: fields, id: number) => (
               // eslint-disable-next-line
-              <UserPageField key={id} data={el} isLoading={isLoading} isError={isError} />
+              <UserPageField
+                key={id}
+                data={fieldEntry}
+                isLoading={fieldEntries.isLoading}
+                isError={fieldEntries.isError}
+              />
             ))}
-            {!isAddField && loggedInUser?.uid === ownerUid && <UserPageFieldForm />}
+            {!isAddField && loggedInUser?.uid === ownerUid && (
+              <UserPageFieldForm data={getFields} setter={setGetFields} />
+            )}
             {loggedInUser?.uid === ownerUid && (
               <span className="userPage__ctaButton">
                 <Button

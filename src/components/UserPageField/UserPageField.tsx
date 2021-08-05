@@ -15,8 +15,9 @@ export const UserPageField: React.FC<UserPageFieldInterface<fields>> = ({
       <article className="userPageField">
         <h3 className="userPageField__title">{data.title}</h3>
         <ul>
-          {Object.entries(data.content).map(([, fieldEntry]) => (
-            <li key={fieldEntry} className="userPageField__entries">
+          {Object.entries(data.content).map(([, fieldEntry], id) => (
+            // eslint-disable-next-line
+            <li key={id} className="userPageField__entries">
               {fieldEntry}
             </li>
           ))}
