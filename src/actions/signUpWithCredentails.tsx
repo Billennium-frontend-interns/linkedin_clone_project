@@ -1,6 +1,7 @@
 import { History, LocationState } from 'history';
 import { auth, db } from '../firebase';
 import { ErrorInterface, SignupCredentials } from '../shared/interfaces/FormInterfaces';
+import { customToast } from './customToast';
 
 type SignUpWithCredentailsInterface = SignupCredentials & {
   history: History<LocationState>;
@@ -27,7 +28,8 @@ export const signUpWithCredentails = async ({
       followed: [],
       followers: []
     });
-    history.push('/home');
+    history.push('/feed');
+    customToast('success', 'Successfully Sign Up');
   } catch (err) {
     setError({
       isError: true,

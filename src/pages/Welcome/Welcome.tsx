@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
@@ -7,6 +8,7 @@ import './Welcome.scss';
 export const Welcome: React.FC = () => (
   <main className="welcomePage">
     <section className="hero">
+      <ToastContainer className="hero__toastContainer" />
       <h1 className="hero__title">
         <span>Linked</span>
         <LinkedInIcon className="hero__icon" />
