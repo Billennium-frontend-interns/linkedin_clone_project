@@ -8,7 +8,7 @@
 .feedPost {
     @include flexColumn;
     font-family: $postText;
-    max-inline-size: 500px;
+    max-width: 700px;
     border-radius: 10px;
     background: $white;
     padding: 10px;

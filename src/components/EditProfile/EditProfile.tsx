@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import { Button } from '@material-ui/core';
 import { EditProfileForm } from '../EditProfileForm/EditProfileForm';
@@ -6,29 +7,28 @@ import './EditProfile.scss';
 
 Modal.setAppElement('#root');
 
-export const EditProfile: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+interface EditProfileProps {
+  isOpen: boolean;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
+export const EditProfile: React.FC<EditProfileProps> = ({ isOpen, setIsModalOpen }) => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
   return (
-    <section className="editProfile">
-      <button type="button" onClick={openModal}>
-        Edit profile
-      </button>
-      <Modal className="modal" isOpen={isModalOpen} onRequestClose={closeModal}>
-        <p className="modal__title">Edit your profile</p>
-        <EditProfileForm />
-        <Button variant="contained" color="secondary" type="button" onClick={closeModal}>
-          Close
-        </Button>
-      </Modal>
-    </section>
+    <Modal className="modal" isOpen={isOpen} onRequestClose={closeModal}>
+      <p className="modal__title">Edit your profile</p>
+      <EditProfileForm />
+      <Button variant="contained" color="secondary" type="button" onClick={closeModal}>
+        Close
+      </Button>
+    </Modal>
   );
+};
+
+EditProfile.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  setIsModalOpen: PropTypes.func.isRequired
 };

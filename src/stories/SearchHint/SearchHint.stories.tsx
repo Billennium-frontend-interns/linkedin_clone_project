@@ -13,6 +13,11 @@ export default {
   ]
 };
 
-const Users = ['Jakub Gość', 'Mateusz Szklarz', 'Mateusz DJ', 'Matuesz Opiekun'];
+const User = [
+  {
+    id: '123123',
+    displayName: 'Testing'
+  }
+];
 
-export const Default = () => Users.map(user => <SearchHint hint={user} />);
+export const Default = () => <SearchHint id={User[0].id} displayName={User[0].displayName} />;

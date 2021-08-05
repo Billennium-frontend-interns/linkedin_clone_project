@@ -4,14 +4,13 @@ import { Button, TextField } from '@material-ui/core';
 import { WithLoader } from '../WithLoader/WithLoader';
 import { WithError } from '../WithError/WithError';
 import { AuthContext } from '../../context/AuthProvider';
-import { UserData } from '../../shared/interfaces/UserInterfaces';
 import { useGetUserData } from '../../actions/useGetUserData';
 import { editProfile } from '../../actions/editProfile';
 import { updateAvatar } from '../../actions/updateAvatar';
 import './EditProfileForm.scss';
 
 export const EditProfileForm: React.FC = () => {
-  const initialFormData: UserData = {
+  const initialFormData = {
     displayName: '',
     bio: ''
   };

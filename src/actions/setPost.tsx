@@ -1,4 +1,5 @@
 import { db } from '../firebase';
+import { customToast } from './customToast';
 
 interface FeedPostProps {
   ownerUid: string;
@@ -12,8 +13,10 @@ export const setPost = ({ ownerUid, content, avatar, timestamp, displayName }: F
   try {
     db.collection('posts')
       .add({ ownerUid, content, avatar, timestamp, displayName })
-      .then(post => post);
+      .then(() => {
+        customToast('default', 'Adding Post 🚀', false);
+      });
   } catch (error) {
-    console.log(error.message);
+    customToast('error', 'There was a problem with Adding a Post');
   }
 };
