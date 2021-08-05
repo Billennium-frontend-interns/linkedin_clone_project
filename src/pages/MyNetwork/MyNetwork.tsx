@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
+import { ToastContainer } from 'react-toastify';
 import { Button } from '@material-ui/core';
 import { Header } from '../../components/Header/Header';
 import { FollowedUsers } from '../../components/FollowedUsers/FollowedUsers';
@@ -41,6 +42,7 @@ export const MyNetwork: React.FC = () => {
           <FollowedUsers testid="followedUsers" />
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };

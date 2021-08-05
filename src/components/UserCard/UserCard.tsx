@@ -18,9 +18,9 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followe
 
   const handleClick = () => {
     if (!isFollowed) {
-      followAction(id, 'follow');
+      followAction(id, displayName, 'follow');
     } else {
-      followAction(id, 'unfollow');
+      followAction(id, displayName, 'unfollow');
     }
     setIsFollowed(!isFollowed);
   };
