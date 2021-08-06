@@ -81,7 +81,7 @@ export const EditProfileForm: React.FC = () => {
             helperText={isBioValid ? 'Bio must be shorter than 500 characters' : ''}
             value={formData.bio}
             onChange={handleChange}
-            rows={6}
+            rows={2}
             multiline
           />
           <DropzoneArea

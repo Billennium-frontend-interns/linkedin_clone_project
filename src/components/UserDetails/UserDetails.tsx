@@ -59,7 +59,11 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
           {displayName}{' '}
           {isMyUserDetails ? (
             <span aria-label="editButton" className="userDetails__edit">
-              <Button>
+              <Button
+                onClick={() => {
+                  setIsEditModalOpen(true);
+                }}
+              >
                 <EditIcon />
               </Button>
             </span>

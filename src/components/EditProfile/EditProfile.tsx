@@ -18,7 +18,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({ isOpen, setIsModalOpen
   };
 
   return (
-    <Modal className="modal" isOpen={isOpen} onRequestClose={closeModal}>
+    <Modal className="modal" isOpen={isOpen} onRequestClose={closeModal} overlayClassName="overlay">
       <p className="modal__title">Edit your profile</p>
       <EditProfileForm />
       <Button variant="contained" color="secondary" type="button" onClick={closeModal}>
