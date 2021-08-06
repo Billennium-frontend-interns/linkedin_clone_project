@@ -5,8 +5,11 @@
   display: flex;
   border-radius: 20px;
   border: 1px solid $lightBlue;
+  background-color: $white;
   padding: 20px;
-  margin: 10px 30px;
+  margin: 20px 30px;
+  max-width: 600px;
+  flex: 1;
 
   .share-box {
     @include flexColumn;
@@ -16,6 +19,6 @@
     &__text {
       width: 100%;
       margin: 15px;
-    } 
+    }
   }
 }

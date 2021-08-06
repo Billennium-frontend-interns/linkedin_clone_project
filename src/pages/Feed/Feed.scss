@@ -1,0 +1,11 @@
+@import '../../styles/Colors';
+
+.feed {
+  background-color: $mainBackground;
+  min-height: 100vh;
+
+  &__createPost {
+    display: flex;
+    justify-content: center;
+  }
+}
