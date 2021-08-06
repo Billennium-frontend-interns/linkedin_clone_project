@@ -1,9 +1,9 @@
 import { MemoryRouter } from 'react-router-dom';
-import { MyNetwork } from '../../pages/MyNetwork/MyNetwork';
+import { Feed } from '../../pages/Feed/Feed';
 
 export default {
-  component: MyNetwork,
-  title: 'Pages/MyNetwork',
+  component: Feed,
+  title: 'Pages/Feed',
   decorators: [
     (Story: React.FC) => (
       <MemoryRouter>
@@ -13,4 +13,4 @@ export default {
   ]
 };
 
-export const Default = () => <MyNetwork />;
+export const Default = () => <Feed />;

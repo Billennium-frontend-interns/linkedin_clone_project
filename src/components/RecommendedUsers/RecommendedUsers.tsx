@@ -32,7 +32,7 @@ export const RecommendedUsers: React.FC<RecommendedUsersProps> = ({ testid }) =>
       <WithError isError={isFollowsError || isError} errorMessage="Error has occurred please try again...">
         <div data-testid={testid} className="recommendedUsers">
           {recommendedUsers?.map(({ displayName, avatar, id }) => (
-            <UserCard displayName={displayName} avatar={avatar} id={id} />
+            <UserCard key={id} displayName={displayName} avatar={avatar} id={id} />
           ))}
         </div>
       </WithError>
