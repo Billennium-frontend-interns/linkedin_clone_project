@@ -17,7 +17,7 @@ interface RecommendedUsersProps {
 export const RecommendedUsers: React.FC<RecommendedUsersProps> = ({ testid }) => {
   const { userFollows, isLoading: isFollowsLoading, isError: isFollowsError } = useGetUserFollows();
   const { users, isLoading, isError } = useGetUsers();
-  const [recommendedUsers, setRecommendedUsers] = useState<User[]>();
+  const [recommendedUsers, setRecommendedUsers] = useState<User[]>([]);
 
   const getRecommendedUsersInfo = () =>
     users
@@ -38,7 +38,7 @@ export const RecommendedUsers: React.FC<RecommendedUsersProps> = ({ testid }) =>
               <UserCard displayName={displayName} avatar={avatar} id={id} />
             ))}
           </div>
-          <IconButton onClick={() => setRecommendedUsers(recommendedUsers?.concat(getRecommendedUsersInfo()))}>
+          <IconButton onClick={() => setRecommendedUsers([...recommendedUsers, ...getRecommendedUsersInfo()])}>
             <ExpandMoreIcon fontSize="large" />
           </IconButton>
         </div>
