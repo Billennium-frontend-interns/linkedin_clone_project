@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { UserEditData } from './editProfile';
+import { User } from '../shared/interfaces/UserInterfaces';
 import { db } from '../firebase';
 
 interface GetUserData {
-  userData: UserEditData;
+  userData: User;
   isLoading: boolean;
   isError: boolean;
 }
@@ -12,7 +12,9 @@ export const useGetUserData = (userUid: string): GetUserData => {
   const [state, setState] = useState<GetUserData>({
     userData: {
       displayName: '',
-      bio: ''
+      bio: '',
+      avatar: '',
+      id: ''
     },
     isLoading: true,
     isError: false
@@ -21,7 +23,7 @@ export const useGetUserData = (userUid: string): GetUserData => {
   const getUserData = async () => {
     try {
       const userData = (await db.collection('users').doc(userUid).get()).data();
-      setState({ ...state, isLoading: false, userData: userData as UserEditData });
+      setState({ ...state, isLoading: false, userData: userData as User });
     } catch (error) {
       setState({ ...state, isError: true, isLoading: false });
     }

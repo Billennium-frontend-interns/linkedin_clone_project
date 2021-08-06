@@ -1,11 +1,7 @@
 import { auth, db } from '../firebase';
+import { User } from '../shared/interfaces/UserInterfaces';
 
-export interface UserEditData {
-  displayName: string;
-  bio: string;
-}
-
-export const editProfile = async (userUid: string, newData: UserEditData): Promise<void> => {
+export const editProfile = async (userUid: string, newData: User): Promise<void> => {
   try {
     await auth.currentUser?.updateProfile(newData);
     await db.collection('users').doc(userUid).update(newData);

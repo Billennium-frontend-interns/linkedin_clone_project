@@ -7,6 +7,7 @@ import { AuthContext } from '../../context/AuthProvider';
 import { useGetUserData } from '../../actions/useGetUserData';
 import { editProfile } from '../../actions/editProfile';
 import { updateAvatar } from '../../actions/updateAvatar';
+import { User } from '../../shared/interfaces/UserInterfaces';
 import './EditProfileForm.scss';
 
 export const EditProfileForm: React.FC = () => {
@@ -48,7 +49,7 @@ export const EditProfileForm: React.FC = () => {
       if (event.target.avatar.files[0]) {
         updateAvatar(currentUser?.uid as string, event.target.avatar.files[0]);
       }
-      editProfile(currentUser?.uid as string, formData);
+      editProfile(currentUser?.uid as string, formData as User);
       setShouldDataChange(false);
     }
   };
