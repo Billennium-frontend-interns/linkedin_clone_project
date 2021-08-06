@@ -5,81 +5,81 @@
 @import '../../styles/Breakpoints';
 
 .userDetails {
-    @include flexCenter;
-    @include cardStyling;
-    margin: 1em 0;
-    padding: 1em 0;
-    height: fit-content;
+  @include flexCenter;
+  @include cardStyling;
+  margin: 1em 0;
+  padding: 1em 0;
+  height: fit-content;
+  word-break: break-all;
 
-    &__avatar {
-        width: 96px;
-        height: 96px;
-        margin: 0 1em;
-        border-radius: 50%;
+  &__avatar {
+    width: 96px;
+    height: 96px;
+    margin: 0 1em;
+    border-radius: 50%;
 
-        @media only screen and (min-width: $mobile) {
-            width: 164px;
-            height: 164px;
-        }
+    @media only screen and (min-width: $mobile) {
+      width: 164px;
+      height: 164px;
     }
+  }
 
-    &__info {
-        display: flex;
-        flex-direction: column;
-        align-content: flex-start;
-        width: 100%;
-        min-height: 96px;
-        padding-top: 1rem;
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    width: 100%;
+    min-height: 96px;
+    padding-top: 1rem;
+  }
+
+  &__name {
+    display: flex;
+    width: fit-content;
+    font-size: $smallFont;
+    font-weight: $fontBold;
+    align-items: center;
+    margin: 0;
+
+    @media only screen and (min-width: $mobile) {
+      font-size: $mediumFont;
     }
+  }
 
-    &__name {
-        display: flex;
-        width: fit-content;
-        font-size: $smallFont;
-        font-weight: $fontBold;
-        align-items: center;
-        margin: 0;
+  &__flare {
+    display: flex;
+    color: $linkedinBlue;
+    align-items: center;
+    font-size: $textFont;
+    margin-top: 0;
+  }
 
-        @media only screen and (min-width: $mobile) {
-            font-size: $mediumFont;
-        }
+  &__bio {
+    margin-top: 0.5em;
+    font-size: $textFont;
+    max-width: 90%;
+
+    @media only screen and (min-width: $mobile) {
+      font-size: $smallFont;
     }
+  }
 
-    &__flare {
-        display: flex;
-        color: $linkedinBlue;
-        align-items: center;
-        font-size: $textFont;
-        margin-top: 0;
-    }
+  &__edit {
+    align-items: flex-end;
+  }
 
-    &__bio {
-        margin-top: .5em;
-        font-size: $textFont;
-        max-width: 90%;
+  &__followButton {
+    background: none;
+    border: 1px solid $linkedinBlue;
+    border-radius: 5px;
+    color: $linkedinBlue;
+    cursor: pointer;
+    font-size: $textFont;
+    margin-left: 1em;
+    padding: 0 0.5em;
 
-        @media only screen and (min-width: $mobile) {
-        font-size: $smallFont
-        }
+    @media only screen and (min-width: $mobile) {
+      font-size: $smallFont;
     }
-    
-    &__edit {
-        align-items: flex-end;
-    }
-
-    &__followButton {
-        background: none;
-        border: 1px solid $linkedinBlue;
-        border-radius: 5px;
-        color: $linkedinBlue;
-        cursor: pointer;
-        font-size: $textFont;
-        margin-left: 1em;
-        padding: 0 0.5em;
-        
-        @media only screen and (min-width: $mobile) {
-            font-size: $smallFont;
-            }
-    }
+  }
 }
-

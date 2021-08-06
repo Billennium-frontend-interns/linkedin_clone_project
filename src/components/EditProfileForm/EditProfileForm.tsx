@@ -10,6 +10,9 @@ import { updateAvatar } from '../../actions/updateAvatar';
 import './EditProfileForm.scss';
 
 export const EditProfileForm: React.FC = () => {
+  const MIN_NICKNAME_CHARACTERS = 3;
+  const MAX_NICKNAME_CHARACTERS = 30;
+  const MAX_BIO_CHARACTERS = 300;
   const initialFormData = {
     displayName: '',
     bio: ''
@@ -25,16 +28,13 @@ export const EditProfileForm: React.FC = () => {
     return () => setFormData(initialFormData);
   }, [userData]);
 
-  const isNicknameValid =
-    formData.displayName.trim() === '' || formData.displayName.length < 3 || formData.displayName.length > 30;
-  const isBioValid = formData.bio.length >= 500;
+  const isNicknameNotValid =
+    formData.displayName.trim() === '' ||
+    formData.displayName.length < MIN_NICKNAME_CHARACTERS ||
+    formData.displayName.length > MAX_NICKNAME_CHARACTERS;
+  const isBioNotValid = formData.bio.length >= MAX_BIO_CHARACTERS;
 
-  const validateForm = (): boolean => {
-    if (formData.displayName.trim() === '') {
-      return false;
-    }
-    return !isNicknameValid && !isBioValid;
-  };
+  const validateForm = (): boolean => !isNicknameNotValid && !isBioNotValid;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -64,9 +64,9 @@ export const EditProfileForm: React.FC = () => {
             type="text"
             name="displayName"
             id="displayName"
-            error={isNicknameValid}
+            error={isNicknameNotValid}
             helperText={
-              isNicknameValid ? 'Nickname must be longer than 3 characters and shorter than 30 characters' : ''
+              isNicknameNotValid ? 'Nickname must be longer than 3 characters and shorter than 30 characters' : ''
             }
             value={formData.displayName}
             onChange={handleChange}
@@ -78,8 +78,8 @@ export const EditProfileForm: React.FC = () => {
             type="text"
             name="bio"
             id="bio"
-            error={isBioValid}
-            helperText={isBioValid ? 'Bio must be shorter than 500 characters' : ''}
+            error={isBioNotValid}
+            helperText={isBioNotValid ? 'Bio must be shorter than 300 characters' : ''}
             value={formData.bio}
             onChange={handleChange}
             rows={2}
