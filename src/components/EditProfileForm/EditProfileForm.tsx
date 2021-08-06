@@ -71,6 +71,7 @@ export const EditProfileForm: React.FC = () => {
             }
             value={formData.displayName}
             onChange={handleChange}
+            data-testid="displayName"
           />
           <TextField
             className="editForm__field"
@@ -85,6 +86,7 @@ export const EditProfileForm: React.FC = () => {
             onChange={handleChange}
             rows={2}
             multiline
+            data-testid="bio"
           />
           <DropzoneArea
             dropzoneText="Enter new avatar"
