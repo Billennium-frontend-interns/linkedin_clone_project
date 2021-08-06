@@ -91,6 +91,7 @@ export const EditProfileForm: React.FC = () => {
           <DropzoneArea
             dropzoneText="Enter new avatar"
             dropzoneParagraphClass="dropzone__text"
+            acceptedFiles={['image/*']}
             filesLimit={1}
             showAlerts={false}
             onDrop={() => setShouldDataChange(true)}
