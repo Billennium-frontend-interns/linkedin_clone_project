@@ -25,7 +25,8 @@ export const EditProfileForm: React.FC = () => {
     return () => setFormData(initialFormData);
   }, [userData]);
 
-  const isNicknameValid = formData.displayName.length < 3 || formData.displayName.length > 30;
+  const isNicknameValid =
+    formData.displayName.trim() === '' || formData.displayName.length < 3 || formData.displayName.length > 30;
   const isBioValid = formData.bio.length >= 500;
 
   const validateForm = (): boolean => {
