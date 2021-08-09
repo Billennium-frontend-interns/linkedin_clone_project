@@ -57,25 +57,6 @@ To Visit App:
 
 # Deployment 
 
- **Install the `gh-pages` package as a "dev-dependency" of the app.**
-
-`npm install gh-pages --save-dev`
-
- The commands shown in the following steps can all be issued from within the app's folder.
-
- **Add some properties to the app's `package.json` file.**
-```
- "homepage": "https://billennium-frontend-interns.github.io/linkedin_clone_project"
-```
- In the existing `scripts` property, add a `predeploy` property and a `deploy` property, each having the values shown below:
-
-    
-    "scripts": {
-      "predeploy": "npm run build",
-      "deploy": "gh-pages -d build"
-    }
-
-
 **Generate a *production build* of  app, and deploy it to GitHub Pages.**
 
 `npm run deploy`
@@ -98,12 +79,11 @@ Status : final development
 
 # ToDo
 
-
  * Insert screenshots
 
 # Contributors
 
-
+<a href="https://github.com/MateuszLisowski"><img src="https://github.com/MateuszLisowski.png" width='96px' height='96px'/></a>status
 <a href="https://github.com/jakub-gosciniak"><img src="https://github.com/jakub-gosciniak.png" width='96px' height='96px'/></a>
 <a href="https://github.com/mateusz0612"><img src="https://github.com/mateusz0612.png" width='96px' height='96px'/></a>
 <a href="https://github.com/Polo11121"><img src='https://avatars.githubusercontent.com/u/87152087?&v=4' width='96px' height='96px'/></a>
