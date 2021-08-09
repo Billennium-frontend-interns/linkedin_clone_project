@@ -61,8 +61,8 @@ export const UserPage: React.FC = () => {
         <WithLoader isLoading={fieldEntries.isLoading}>
           <>
             {(fieldEntries.data || []).map((fieldEntry: fields, id: number) => (
-              // eslint-disable-next-line
               <UserPageField
+                // eslint-disable-next-line
                 key={id}
                 data={fieldEntry}
                 isLoading={fieldEntries.isLoading}
