@@ -47,3 +47,4 @@ RecommendedUsers.defaultProps = {
 RecommendedUsers.propTypes = {
   testid: PropTypes.string
 };
+
