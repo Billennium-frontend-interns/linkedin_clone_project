@@ -7,8 +7,10 @@ import './Feed.scss';
 
 export const Feed: React.FC = () => (
   <div className="feed">
-    <Header />
-    <CreatePost />
+    <Header testid="feedPageHeader" />
+    <div className="feed__createPost">
+      <CreatePost />
+    </div>
     <FeedList />
     <ToastContainer />
   </div>

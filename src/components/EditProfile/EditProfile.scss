@@ -1,0 +1,63 @@
+@import '../../styles/Mixins.scss';
+@import '../../styles/Fonts.scss';
+@import '../../styles/FontSizes.scss';
+@import '../../styles/FontWeights.scss';
+@import '../../styles/Colors.scss';
+@import '../../styles/Breakpoints.scss';
+
+@keyframes appear {
+  from {
+    top: -30%;
+  }
+  to {
+    top: 50%;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid $lightGray;
+  padding-bottom: 2%;
+  width: 90vw;
+  min-height: 80vh;
+  font-family: $postText;
+  margin-top: 7vh;
+  background-color: #fff;
+  animation: appear 1s;
+  @include flexColumn;
+
+  button {
+    width: 82px !important;
+  }
+
+  &__title {
+    margin: 16px 0px 16px 0px;
+    font-weight: $fontBold;
+    font-size: $mediumFont;
+    color: $linkedinBlue;
+  }
+
+  @media only screen and (min-width: $mobile) {
+    width: 75vw;
+  }
+
+  @media only screen and (min-width: $medium) {
+    width: 50vw;
+  }
+
+  @media only screen and (min-width: $laptop) {
+    width: 35vw;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(124, 124, 116, 0.5);
+}

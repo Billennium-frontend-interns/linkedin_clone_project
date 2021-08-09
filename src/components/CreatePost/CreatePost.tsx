@@ -28,7 +28,7 @@ export const CreatePost: React.FC = () => {
   };
 
   return (
-    <article className="create-post">
+    <article data-testid="createPost" className="create-post">
       <Avatar className="avatar" src={currentUser?.photoURL || ''} />
       <form className="share-box" onSubmit={handleSubmit}>
         <TextField

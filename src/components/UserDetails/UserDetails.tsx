@@ -3,6 +3,7 @@ import { Button } from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import EditIcon from '@material-ui/icons/Edit';
 import AvatarPlaceholder from '../../assets/images/avatar_placeholder.png';
+import { EditProfile } from '../EditProfile/EditProfile';
 import { followAction } from '../../actions/followAction';
 import './UserDetails.scss';
 
@@ -26,6 +27,7 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
   isUserFollowing
 }: UserDetailsProps) => {
   const [isFollowing, setIsFollowing] = useState(isUserFollowing);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const handleClick = (action: 'follow' | 'unfollow') => {
     followAction(ownerUid, displayName, action);
@@ -57,7 +59,11 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
           {displayName}{' '}
           {isMyUserDetails ? (
             <span aria-label="editButton" className="userDetails__edit">
-              <Button>
+              <Button
+                onClick={() => {
+                  setIsEditModalOpen(true);
+                }}
+              >
                 <EditIcon />
               </Button>
             </span>
@@ -72,6 +78,7 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
         )}
         <p className="userDetails__bio">{bio}</p>
       </div>
+      <EditProfile isOpen={isEditModalOpen} setIsModalOpen={setIsEditModalOpen} />
     </section>
   );
 };

@@ -5,11 +5,16 @@
   @include flexColumn;
   @include cardStyling;
   padding: 20px 0;
-  width: 200px;
+  max-width: 200px;
   margin: 10px;
+  box-shadow: none;
 
-  &:hover {
-    box-shadow: $lightBoxShadow;
+  @media only screen and (min-width: $mobile) {
+    width: 200px;
+
+    &:hover {
+      box-shadow: $lightBoxShadow;
+    }
   }
 
   &__info {
@@ -29,7 +34,7 @@
     text-decoration: none;
     color: $black;
 
-    &:hover{
+    &:hover {
       text-decoration: underline;
     }
   }
