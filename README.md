@@ -4,7 +4,7 @@ An application imitating Linkedin website, containing its most important functio
 
 # Project Status
 
-This project is currently in legal progress.
+MVP has been completed
 
 # Project Screen Shot(s)
 
@@ -64,7 +64,6 @@ To Visit App:
    App is now accessible at: https://billennium-frontend-interns.github.io/linkedin_clone_project/
 
 
-
 # Reflection
 
 We create this application for an internship at Billennium.
@@ -75,15 +74,13 @@ The purpose of creating this application is to see what working in a team on a r
 
 Application development issues: nothing by now
 
-Status : final development
-
 # ToDo
 
  * Insert screenshots
 
 # Contributors
 
-<a href="https://github.com/MateuszLisowski"><img src="https://github.com/MateuszLisowski.png" width='96px' height='96px'/></a>status
+<a href="https://github.com/MateuszLisowski"><img src="https://github.com/MateuszLisowski.png" width='96px' height='96px'/></a>
 <a href="https://github.com/jakub-gosciniak"><img src="https://github.com/jakub-gosciniak.png" width='96px' height='96px'/></a>
 <a href="https://github.com/mateusz0612"><img src="https://github.com/mateusz0612.png" width='96px' height='96px'/></a>
 <a href="https://github.com/Polo11121"><img src='https://avatars.githubusercontent.com/u/87152087?&v=4' width='96px' height='96px'/></a>
