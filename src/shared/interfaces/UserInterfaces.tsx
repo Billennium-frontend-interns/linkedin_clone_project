@@ -1,7 +1,13 @@
-export interface UserFollows {
-  followed: string[];
-  followers: string[];
-}
+// export interface UserFollows {
+//   followed: string[];
+//   followers: string[];
+// }
+
+export type FollowType = {
+  uid: string;
+  seen: boolean;
+  timestamp: firebase.default.firestore.Timestamp;
+};
 
 export type userHint = {
   displayName: string;

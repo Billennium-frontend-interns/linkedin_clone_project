@@ -1,6 +1,5 @@
 import React, { useRef, useState, MutableRefObject } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import moment from 'moment';
 import { useIsContentOverflowing } from '../../actions/useIsContentOverflowing';
 import AvatarPlaceholder from '../../assets/images/avatar_placeholder.png';
@@ -11,7 +10,7 @@ export interface FeedPostProps {
   displayName: string;
   avatar?: string;
   content: string;
-  timestamp: string;
+  timestamp: firebase.default.firestore.Timestamp;
   testid?: string;
 }
 
@@ -26,7 +25,7 @@ export const FeedPost: React.FC<FeedPostProps> = ({
   const [seeMore, setSeeMore] = useState(false);
   const ref = useRef() as MutableRefObject<HTMLParagraphElement>;
   const isContentOverflowing = useIsContentOverflowing(ref);
-  const timePassed = moment(timestamp).startOf('hour').fromNow();
+  const timePassed = moment.unix(timestamp.seconds).fromNow();
 
   return (
     <article className="feedPost">
@@ -57,13 +56,4 @@ export const FeedPost: React.FC<FeedPostProps> = ({
 FeedPost.defaultProps = {
   testid: '',
   avatar: AvatarPlaceholder
-};
-
-FeedPost.propTypes = {
-  ownerUid: PropTypes.string.isRequired,
-  displayName: PropTypes.string.isRequired,
-  avatar: PropTypes.string,
-  content: PropTypes.string.isRequired,
-  timestamp: PropTypes.string.isRequired,
-  testid: PropTypes.string
 };

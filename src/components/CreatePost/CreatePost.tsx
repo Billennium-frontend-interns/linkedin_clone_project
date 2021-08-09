@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { TextField, Avatar, Button } from '@material-ui/core';
-import { generateDate } from '../../utilities/date';
 import { setPost } from '../../actions/setPost';
 import { AuthContext } from '../../context/AuthProvider';
 import './CreatePost.scss';
@@ -20,7 +19,6 @@ export const CreatePost: React.FC = () => {
         ownerUid: currentUser?.uid as string,
         content: postText,
         displayName: currentUser?.displayName as string,
-        timestamp: generateDate(),
         avatar: currentUser?.photoURL as string
       });
     }

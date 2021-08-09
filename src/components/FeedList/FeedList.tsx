@@ -43,6 +43,7 @@ export const FeedList: React.FC = () => {
   };
 
   useEffect(() => {
+    console.log(userFollows);
     initializePosts();
     checkPostsAmount();
   }, [userFollows, allPosts]);

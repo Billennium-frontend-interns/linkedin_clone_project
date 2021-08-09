@@ -18,9 +18,10 @@ export const signInWithCredentials = ({ email, password, setError, history }: si
       history.push('/feed');
       customToast('success', 'Successfully Sign In');
     })
-    .catch(error =>
+    .catch(error => {
+      console.log(error);
       setError({
         isError: true,
         errorText: error.message
-      })
-    );
+      });
+    });
