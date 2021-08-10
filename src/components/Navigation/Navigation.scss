@@ -1,4 +1,9 @@
+@import '../../styles/Breakpoints.scss';
 .navigation {
+  &--hidden {
+    display: none;
+  }
+
   &__link {
     text-decoration: none;
   }
@@ -6,5 +11,10 @@
   &__wrapper {
     display: flex;
     list-style-type: none;
+    padding: 0;
+  }
+
+  @media only screen and (min-width: $medium) {
+    display: block;
   }
 }

@@ -1,0 +1,41 @@
+@import '../../styles/Mixins.scss';
+@import '../../styles/Colors.scss';
+
+.userCard {
+  @include flexColumn;
+  @include cardStyling;
+  padding: 20px 0;
+  max-width: 200px;
+  margin: 10px;
+  box-shadow: none;
+
+  @media only screen and (min-width: $mobile) {
+    width: 200px;
+
+    &:hover {
+      box-shadow: $lightBoxShadow;
+    }
+  }
+
+  &__info {
+    @include flexColumn;
+  }
+
+  &__avatar {
+    height: 100px !important;
+    width: 100px !important;
+  }
+
+  &__button {
+    margin-top: 20px !important;
+  }
+
+  &__displayName {
+    text-decoration: none;
+    color: $black;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

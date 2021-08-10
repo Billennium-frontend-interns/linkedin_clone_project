@@ -15,14 +15,18 @@
   .hero {
     @include flexColumn;
     margin: 30px;
-    
+
+     &__toastContainer {
+      font-size: $smallFont;
+    }
+
     &__title {
       @include flexCenter;
       margin: 0;
       font-size: $largeFont;
       font-weight: bold;
     }
-    
+
     &__icon {
       font-size: $titleFont;
     }

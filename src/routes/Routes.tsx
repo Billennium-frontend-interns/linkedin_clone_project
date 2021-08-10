@@ -6,15 +6,17 @@ import { DefaultRoute } from './DefaultRoute';
 import { ProtectedRoute } from './ProtectedRoute';
 import { SignupForm } from '../components/SignupForm/SignupForm';
 import { LoginForm } from '../components/LoginForm/LoginForm';
-import { Header } from '../components/Header/Header';
+import { UserPage } from '../pages/UserPage/UserPage';
+import { MyNetwork } from '../pages/MyNetwork/MyNetwork';
+import { Feed } from '../pages/Feed/Feed';
 
 export const Routes = [
   <Route exact path="/" component={Welcome} />,
   <Route exact path="/signUp" render={() => <FormLayout formComponent={<SignupForm />} />} />,
   <Route exact path="/signIn" render={() => <FormLayout formComponent={<LoginForm />} />} />,
-  <ProtectedRoute path="/feed" component={Header} />,
-  <ProtectedRoute exact path="/network" />,
+  <ProtectedRoute path="/feed" component={Feed} />,
+  <ProtectedRoute exact path="/network" component={MyNetwork} />,
   <ProtectedRoute exact path="/notification" />,
-  <ProtectedRoute path="/user/:ownerUid" />,
+  <ProtectedRoute path="/user/:ownerUid" component={UserPage} />,
   <DefaultRoute />
 ];

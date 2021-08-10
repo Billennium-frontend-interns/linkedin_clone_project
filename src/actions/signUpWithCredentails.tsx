@@ -1,6 +1,7 @@
 import { History, LocationState } from 'history';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import { ErrorInterface, SignupCredentials } from '../shared/interfaces/FormInterfaces';
+import { customToast } from './customToast';
 
 type SignUpWithCredentailsInterface = SignupCredentials & {
   history: History<LocationState>;
@@ -19,7 +20,17 @@ export const signUpWithCredentails = async ({
     await auth.currentUser?.updateProfile({
       displayName: name
     });
-    history.push('/home');
+    await db.collection('users').doc(auth.currentUser?.uid).set({
+      displayName: name,
+      id: auth.currentUser?.uid,
+      bio: ''
+    });
+    await db.collection('follows').doc(auth.currentUser?.uid).set({
+      followed: [],
+      followers: []
+    });
+    history.push('/feed');
+    customToast('success', 'Successfully Sign Up');
   } catch (err) {
     setError({
       isError: true,

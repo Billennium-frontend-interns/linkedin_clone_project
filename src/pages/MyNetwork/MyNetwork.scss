@@ -1,0 +1,46 @@
+@import '../../styles/Breakpoints.scss';
+@import '../../styles/Colors.scss';
+
+.myNetwork {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $mainBackground;
+  min-height: 100vh;
+
+  &__container {
+    margin: 20px 0;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $white;
+    padding: 10px;
+    border: 1px solid $lightGray;
+  }
+
+  &__buttons {
+    min-width: 74%;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: $white;
+
+    @media only screen and (min-width: $laptop) {
+      flex-direction: row;
+    }
+  }
+
+  &__button {
+    flex: 1;
+    border: none !important;
+    border-radius: 0 !important;
+
+    &--active {
+      color: white !important;
+      border: none !important;
+      background-color: $linkedinBlue !important;
+    }
+  }
+}

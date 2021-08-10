@@ -1,0 +1,9 @@
+@import '../../styles/Mixins.scss';
+
+.recommendedUsers {
+  @include flexColumn;
+
+  &__wrapper {
+    @include flexWrap;
+  }
+}
