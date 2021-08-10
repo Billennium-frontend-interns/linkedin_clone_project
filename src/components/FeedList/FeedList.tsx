@@ -53,7 +53,7 @@ export const FeedList: React.FC = () => {
 
   return (
     <section className="feedList" data-testid="feedList">
-      <WithLoader isLoading={isFollowsLoading || isPostsLoading}>
+      <WithLoader isLoading={isFollowsLoading || isPostsLoading} className="feedList__loader">
         <WithError isError={isFollowsError || isPostsError} errorMessage="Error has occurred please try again...">
           <InfiniteScroll
             dataLength={posts.length}
