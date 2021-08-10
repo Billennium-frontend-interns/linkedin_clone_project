@@ -8,7 +8,25 @@ MVP has been completed
 
 # Project Screen Shot(s)
 
-Photos will appear in the future.
+
+#### Welcome Page
+![welcome-page](https://user-images.githubusercontent.com/76663651/128849049-39fbc9ea-81a4-4555-8df1-79f6905fa2e6.png)
+
+#### Sign up
+![sign-up](https://user-images.githubusercontent.com/76663651/128849243-b39a08b7-f5ee-46e1-b816-d47b6044324c.png)
+#### Sign in
+![sign-in](https://user-images.githubusercontent.com/76663651/128849326-c286ec90-bcb1-455c-bcad-d3e3345fe937.png)
+#### Feed
+![feed](https://user-images.githubusercontent.com/76663651/128849482-1bb9afc1-96e9-48d0-81e9-e93e2e8003ca.png)
+
+#### User Page
+![user-page](https://user-images.githubusercontent.com/76663651/128849671-91bb9ef6-f81d-4609-8911-c5800e2da114.png)
+#### Folowed users
+![folowed users](https://user-images.githubusercontent.com/76663651/128849852-9365d1c3-71f8-411e-9d11-3cba980c753d.png)
+#### Recommended users
+![recommend users](https://user-images.githubusercontent.com/76663651/128849913-606cd271-d6bd-4113-93c5-4d33e4e69a49.png)
+
+
 
 # Technologies
 
@@ -73,10 +91,6 @@ We want this application to resemble the original as much as possible and such f
 The purpose of creating this application is to see what working in a team on a real project looks like and to improve our programming skills
 
 Application development issues: nothing by now
-
-# ToDo
-
- * Insert screenshots
 
 # Contributors
 
