@@ -1,6 +1,7 @@
 import { History, LocationState } from 'history';
 import { auth } from '../firebase';
 import { ErrorInterface } from '../shared/interfaces/FormInterfaces';
+import { customToast } from './customToast';
 
 interface signInWithCredentials {
   email: string;
@@ -9,14 +10,17 @@ interface signInWithCredentials {
   history: History<LocationState>;
 }
 
-export const signInWithCredentials = ({ email, password, setError, history }: signInWithCredentials): void => {
+// eslint-disable-next-line
+export const signInWithCredentials = ({ email, password, setError, history }: signInWithCredentials): Promise<void> =>
   auth
     .signInWithEmailAndPassword(email, password)
-    .then(() => history.push('/feed'))
+    .then(() => {
+      history.push('/feed');
+      customToast('success', 'Successfully Sign In');
+    })
     .catch(error =>
       setError({
         isError: true,
         errorText: error.message
       })
     );
-};

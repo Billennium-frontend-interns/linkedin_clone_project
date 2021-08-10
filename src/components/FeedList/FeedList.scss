@@ -1,0 +1,33 @@
+@import '../../styles/Mixins.scss';
+@import '../../styles/Colors.scss';
+@import '../../styles/Fonts.scss';
+@import '../../styles/FontWeights.scss';
+
+.feedList {
+  @include flexColumn;
+
+  &__loader {
+    @include flexCenter;
+  }
+
+  &__posts {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__endMessage {
+    color: $linkedinBlue;
+    font-weight: $fontBold;
+    text-align: center;
+  }
+}
+
+.noPostsError {
+  font-family: $darkBlue;
+  color: $linkedinBlue;
+  font-weight: $fontBold;
+  text-align: center;
+}

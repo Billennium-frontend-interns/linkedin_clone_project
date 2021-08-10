@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { HeaderDropdown } from '../DropdownsContent/HeaderDropdown';
 import { navigationItems } from '../../constants/Navigation';
 import { Dropdown } from '../Dropdown/Dropdown';
@@ -9,10 +10,11 @@ import './Navigation.scss';
 
 interface NavigationProps {
   testid?: string;
+  isSearchOpen?: boolean;
 }
 
-export const Navigation: React.FC<NavigationProps> = ({ testid }) => (
-  <nav className="navigation" data-testid={testid}>
+export const Navigation: React.FC<NavigationProps> = ({ testid, isSearchOpen }) => (
+  <nav className={classNames('navigation', { 'navigation--hidden': isSearchOpen })} data-testid={testid}>
     <ul className="navigation__wrapper">
       {navigationItems.map(({ title, path, icon }) => (
         <li key={path}>
@@ -32,9 +34,11 @@ export const Navigation: React.FC<NavigationProps> = ({ testid }) => (
 );
 
 Navigation.defaultProps = {
-  testid: undefined
+  testid: undefined,
+  isSearchOpen: false
 };
 
 Navigation.propTypes = {
-  testid: PropTypes.string
+  testid: PropTypes.string,
+  isSearchOpen: PropTypes.bool
 };

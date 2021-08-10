@@ -6,7 +6,7 @@ import { useIsContentOverflowing } from '../../actions/useIsContentOverflowing';
 import AvatarPlaceholder from '../../assets/images/avatar_placeholder.png';
 import './FeedPost.scss';
 
-interface FeedPostProps {
+export interface FeedPostProps {
   ownerUid: string;
   displayName: string;
   avatar?: string;
@@ -31,7 +31,7 @@ export const FeedPost: React.FC<FeedPostProps> = ({
   return (
     <article className="feedPost">
       <Link className="feedPost__user" data-testid={`"feedPost__user--${testid}`} to={`/user/${ownerUid}`}>
-        <img className="feedPost__avatar" src={avatar} alt={`${displayName}'s avatar`} />
+        <img className="feedPost__avatar" src={avatar || AvatarPlaceholder} alt={`${displayName}'s avatar`} />
         <p className="feedPost__name">{displayName}</p>
       </Link>
       <p ref={ref} className={`feedPost__content feedPost__content--see__${!seeMore && 'less'}`}>
