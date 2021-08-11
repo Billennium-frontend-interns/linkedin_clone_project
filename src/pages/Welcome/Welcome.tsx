@@ -12,7 +12,9 @@ export const Welcome: React.FC = () => {
   const notifications = useContext(NotificationContext);
 
   useEffect(() => {
-    notifications?.unsubscriber();
+    if (notifications && currentUser) {
+      notifications?.unsubscriber();
+    }
   }, []);
 
   if (currentUser) {
