@@ -9,8 +9,8 @@ interface signOutProps {
 export const signOut = ({ history }: signOutProps): void => {
   auth
     .signOut()
-    .then(async () => {
-      await history.push('/');
+    .then(() => {
+      history.push('/');
       customToast('success', 'Successfully Sign Out');
     })
     .catch(() => customToast('error', 'There was a problem with Sign Out'));

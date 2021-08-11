@@ -1,6 +1,8 @@
 import React, { useState, useEffect, createContext } from 'react';
 import PropTypes from 'prop-types';
+import { WithLoader } from '../components/WithLoader/WithLoader';
 import { auth } from '../firebase';
+import '../styles/GlobalLoader.scss';
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -9,18 +11,19 @@ interface AuthProviderProps {
 export const AuthContext = createContext<firebase.default.User | undefined | null>(undefined);
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<firebase.default.User | undefined | null>();
+  const [currentUser, setCurrentUser] = useState<firebase.default.User | null>(null);
+  const [pending, setPending] = useState(true);
 
   useEffect(() => {
-    const unsubscriber = auth.onAuthStateChanged(user => {
-      if (user) {
-        setCurrentUser(user);
-      } else {
-        setCurrentUser(null);
-      }
+    auth.onAuthStateChanged(user => {
+      setCurrentUser(user);
+      setPending(false);
     });
-    return unsubscriber;
   }, []);
+
+  if (pending) {
+    return <WithLoader isLoading className="globalLoader" />;
+  }
 
   return <AuthContext.Provider value={currentUser}>{children}</AuthContext.Provider>;
 };

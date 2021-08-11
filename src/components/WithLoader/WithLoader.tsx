@@ -4,7 +4,7 @@ import { CircularProgress } from '@material-ui/core';
 
 interface LoaderProps {
   isLoading: boolean;
-  children: React.ReactElement;
+  children?: React.ReactElement;
   className?: string;
   testid?: string;
 }
@@ -16,6 +16,10 @@ export const WithLoader: React.FC<LoaderProps> = ({ isLoading, children, classNa
         <CircularProgress />
       </div>
     );
+  }
+
+  if (!children) {
+    return null;
   }
 
   return children;
