@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './styles/Globals.scss';
 
 const App: React.FC = () => (
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <Switch>{Routes}</Switch>
     <ToastContainer />
   </Router>
