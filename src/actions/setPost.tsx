@@ -14,7 +14,7 @@ export const setPost = ({ ownerUid, content, avatar, timestamp, displayName }: F
     db.collection('posts')
       .add({ ownerUid, content, avatar, timestamp, displayName })
       .then(() => {
-        customToast('default', 'Adding Post 🚀', false);
+        customToast('success', 'Post successfully added', false);
       });
   } catch (error) {
     customToast('error', 'There was a problem with Adding a Post');

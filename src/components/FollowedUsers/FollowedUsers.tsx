@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Grow } from '@material-ui/core';
 import { useGetUserFollows } from '../../actions/useGetUserFollows';
 import { useGetUsers } from '../../actions/useGetUsers';
 import { User } from '../../shared/interfaces/UserInterfaces';
@@ -26,11 +27,13 @@ export const FollowedUsers: React.FC<FollowedUsersProps> = ({ testid }) => {
   return (
     <WithLoader isLoading={isLoading || isFollowsLoading}>
       <WithError isError={isFollowsError || isError} errorMessage="Error has occurred please try again...">
-        <div data-testid={testid} className="followedUsers">
-          {followedUsers?.map(({ displayName, avatar, id }) => (
-            <UserCard key={id} displayName={displayName} avatar={avatar} id={id} followed />
-          ))}
-        </div>
+        <Grow in timeout={500}>
+          <div data-testid={testid} className="followedUsers">
+            {followedUsers?.map(({ displayName, avatar, id }) => (
+              <UserCard key={id} displayName={displayName} avatar={avatar} id={id} followed />
+            ))}
+          </div>
+        </Grow>
       </WithError>
     </WithLoader>
   );

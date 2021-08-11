@@ -4,8 +4,10 @@ import { toast, ToastOptions } from 'react-toastify';
 type type = 'default' | 'info' | 'success' | 'error';
 
 const defaultOptions: ToastOptions = {
-  autoClose: 3000,
-  position: 'bottom-right'
+  autoClose: 2500,
+  position: 'bottom-right',
+  pauseOnFocusLoss: false,
+  pauseOnHover: false
 };
 
 export const customToast = (type: type, text: string, hideProgressBar = true): ReactText => {
