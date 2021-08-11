@@ -1,27 +1,28 @@
 import React, { useContext, useEffect } from 'react';
-import { Avatar } from '@material-ui/core';
-import moment from 'moment';
 import { NotificationContext } from '../../context/NotificationProvider';
+import { AuthContext } from '../../context/AuthProvider';
+import { Notification } from '../../components/Notification/Notification';
 
 export const Notifications: React.FC = () => {
   const notifications = useContext<any>(NotificationContext);
-
-  const followingSince = moment.unix(notifications?.timestamp).fromNow();
+  const user = useContext(AuthContext);
 
   useEffect(() => {
     console.log(notifications);
-    // DISPLAY ONLY {SEEN: FALSE} NOTIFICATIONS
-
-    // SET SEEN PROPERTY IN DATABASE TO TRUE ->
-    // -> TO EVERY DISPLAYED FOLLOW NOTIFICATION
   }, []);
 
-  // SIGNOUT SHOULD USE NOTIFICATIONCONTEXT TO UNSUBSCRIBE TO LISTENER
-  // EVERY HOT RELOAD OF APP WILL ATTACH NEW LISTENER
-  // SO YOU NEED TO REFRESH PAGE AFTER EVERY HOT RELOAD
   return (
     <article className="notifications">
-      <Avatar />
+      {notifications?.data.filter((data: any) => data.data().seen === false).length === 0 ? (
+        <p>No new notifications</p>
+      ) : (
+        notifications.data.map(
+          (data: any) =>
+            !data.data().seen && (
+              <Notification userId={user?.uid} followerId={data.id} timestamp={data.data().timestamp} />
+            )
+        )
+      )}
     </article>
   );
 };

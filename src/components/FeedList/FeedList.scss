@@ -4,8 +4,6 @@
 @import '../../styles/FontWeights.scss';
 
 .feedList {
-  @include flexColumn;
-
   &__loader {
     @include flexCenter;
   }

@@ -4,10 +4,10 @@ import './Dropdown.scss';
 
 interface DropdownProps {
   DropdownOpener: React.ReactNode;
-  children?: React.ReactNode;
+  content?: any;
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children }) => {
+export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, content }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdown = useRef() as React.MutableRefObject<HTMLDivElement>;
 
@@ -40,7 +40,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children }) 
       </div>
       {isDropdownOpen && (
         <div ref={dropdown} className="dropdown__container">
-          {children}
+          {React.createElement(content)}
         </div>
       )}
     </div>
@@ -49,5 +49,5 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children }) 
 
 Dropdown.propTypes = {
   DropdownOpener: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired
+  content: PropTypes.element.isRequired
 };

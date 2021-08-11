@@ -14,7 +14,8 @@
     z-index: $ZIndexDropdown;
     box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.3);
     position: absolute;
-    width: 150px;
+    min-width: 150px;
+    max-width: fit-content;
     top: 50px;
     right: 20px;
     padding: 10px 20px;

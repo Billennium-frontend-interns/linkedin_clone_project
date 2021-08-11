@@ -1,0 +1,23 @@
+@import '../../styles/Mixins';
+@import '../../styles/Colors';
+@import '../../styles/Breakpoints';
+
+.notificationCard {
+    display:flex;
+    align-items: center;
+
+    &__avatar {
+        margin-right: 1ch;
+    }
+
+    &__text {
+        padding: .3em;
+    }
+
+    &__link {
+        margin-right: 1ch;
+        text-decoration: none;
+        color: $black;
+        cursor: pointer;
+    }
+}

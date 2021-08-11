@@ -1,0 +1,7 @@
+@import './Mixins.scss';
+
+.globalLoader {
+  min-width: 100vw;
+  min-height: 100vh;
+  @include flexCenter;
+}

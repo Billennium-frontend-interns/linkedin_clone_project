@@ -2,25 +2,30 @@ import React, { useState, useContext } from 'react';
 import { TextField, Avatar, Button } from '@material-ui/core';
 import { setPost } from '../../actions/setPost';
 import { AuthContext } from '../../context/AuthProvider';
+import { customToast } from '../../actions/customToast';
 import './CreatePost.scss';
 
 export const CreatePost: React.FC = () => {
   const [postText, setPostText] = useState('');
   const currentUser = useContext(AuthContext);
 
+  const isNicknameValid = postText.trim() !== '';
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPostText(event.target.value);
   };
 
-  const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (postText !== '') {
-      await setPost({
+    if (isNicknameValid) {
+      setPost({
         ownerUid: currentUser?.uid as string,
         content: postText,
         displayName: currentUser?.displayName as string,
         avatar: currentUser?.photoURL as string
       });
+    } else {
+      customToast('error', "Post text can't be empty", false);
     }
     setPostText('');
   };

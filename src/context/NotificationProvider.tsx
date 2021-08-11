@@ -2,15 +2,14 @@ import React, { createContext, useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { db } from '../firebase';
 import { AuthContext } from './AuthProvider';
-import { FollowType } from '../shared/interfaces/UserInterfaces';
 
 type NotificationsStateType = {
-  data: FollowType[];
+  data: firebase.default.firestore.DocumentData[];
   unsubscriber: any;
 };
 
 interface INotifications {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 }
 
 export const NotificationContext = createContext<NotificationsStateType | undefined>({
@@ -31,25 +30,17 @@ export const NotificationsProvider: React.FC<INotifications> = ({ children }) =>
 
   useEffect(() => {
     if (user && user.uid) {
-      const followerData: FollowType[] = [];
       const unsubscribe = db
         .collection('users')
         .doc(user.uid)
         .collection('followers')
+        .orderBy('timestamp', 'desc')
         .onSnapshot(snapshot => {
-          snapshot.docChanges().forEach(change => {
-            if (change.type === 'added') {
-              followerData.push({
-                uid: change.doc.id,
-                seen: change.doc.data().seen,
-                timestamp: change.doc.data().timestamp
-              });
-            }
-          });
-          setChanges({ data: [...changes.data, ...followerData], unsubscriber: unsubscribe });
+          setChanges({ data: snapshot.docs, unsubscriber: unsubscribe });
         });
     }
   }, [user]);
+
   return <NotificationContext.Provider value={changes}>{children}</NotificationContext.Provider>;
 };
 
