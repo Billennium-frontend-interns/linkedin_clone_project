@@ -3,10 +3,11 @@
 
 .create-post {
   border: 1px solid $lightBlue;
-  border-radius: 20px;
-  display: flex;
-  margin: 10px 30px;
+  background-color: $white;
   padding: 20px;
+  margin: 20px auto;
+  max-width: 680px;
+  flex: 1;
 
   .share-box {
     @include flexColumn;
@@ -15,7 +16,6 @@
 
     &__text {
       margin: 15px;
-      width: 100%;
-    } 
+    }
   }
 }

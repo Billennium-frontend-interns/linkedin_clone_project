@@ -3,7 +3,7 @@ import { MyNetwork } from '../../pages/MyNetwork/MyNetwork';
 
 export default {
   component: MyNetwork,
-  title: 'MyNetwork/MyNetwork',
+  title: 'Pages/MyNetwork',
   decorators: [
     (Story: React.FC) => (
       <MemoryRouter>

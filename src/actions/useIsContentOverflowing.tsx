@@ -1,6 +1,6 @@
 import { useState, useEffect, MutableRefObject } from 'react';
 
-export const useIsContentOverflowing = (ref: MutableRefObject<HTMLElement>) => {
+export const useIsContentOverflowing = (ref: MutableRefObject<HTMLElement>): boolean => {
   const [isContentOverflowing, setIsContentOverflowing] = useState(false);
 
   useEffect(() => {

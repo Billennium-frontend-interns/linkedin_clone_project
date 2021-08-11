@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { IconButton, Grow } from '@material-ui/core';
 import { useGetUserFollows } from '../../actions/useGetUserFollows';
 import { useGetUsers } from '../../actions/useGetUsers';
 import { User } from '../../shared/interfaces/UserInterfaces';
@@ -15,11 +17,17 @@ interface RecommendedUsersProps {
 export const RecommendedUsers: React.FC<RecommendedUsersProps> = ({ testid }) => {
   const { userFollows, isLoading: isFollowsLoading, isError: isFollowsError } = useGetUserFollows();
   const { users, isLoading, isError } = useGetUsers();
-  const [recommendedUsers, setRecommendedUsers] = useState<User[]>();
+  const [recommendedUsers, setRecommendedUsers] = useState<User[]>([]);
 
   const getRecommendedUsersInfo = () =>
     users
       .filter(user => !userFollows.includes(user.id))
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 8);
+
+  const getMoreRecommendedUsersInfo = () =>
+    users
+      .filter(user => !userFollows.includes(user.id) && !recommendedUsers?.includes(user))
       .sort(() => Math.random() - 0.5)
       .slice(0, 8);
 
@@ -30,10 +38,17 @@ export const RecommendedUsers: React.FC<RecommendedUsersProps> = ({ testid }) =>
   return (
     <WithLoader isLoading={isLoading || isFollowsLoading}>
       <WithError isError={isFollowsError || isError} errorMessage="Error has occurred please try again...">
-        <div data-testid={testid} className="recommendedUsers">
-          {recommendedUsers?.map(({ displayName, avatar, id }) => (
-            <UserCard displayName={displayName} avatar={avatar} id={id} />
-          ))}
+        <div className="recommendedUsers">
+          <Grow in timeout={500}>
+            <div data-testid={testid} className="recommendedUsers__wrapper">
+              {recommendedUsers.map(({ displayName, avatar, id }) => (
+                <UserCard key={id} displayName={displayName} avatar={avatar} id={id} />
+              ))}
+            </div>
+          </Grow>
+          <IconButton onClick={() => setRecommendedUsers([...recommendedUsers, ...getMoreRecommendedUsersInfo()])}>
+            <ExpandMoreIcon fontSize="large" />
+          </IconButton>
         </div>
       </WithError>
     </WithLoader>

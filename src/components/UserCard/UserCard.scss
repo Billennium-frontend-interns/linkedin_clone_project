@@ -3,15 +3,18 @@
 
 .userCard {
   @include flexColumn;
+  @include cardStyling;
   padding: 20px 0;
-  border: 1px solid $lightGray;
-  width: 200px;
-  border-radius: 15px;
+  max-width: 200px;
   margin: 10px;
-  background-color: $white;
+  box-shadow: none;
 
-  &:hover {
-    box-shadow: $lightBoxShadow;
+  @media only screen and (min-width: $mobile) {
+    width: 200px;
+
+    &:hover {
+      box-shadow: $lightBoxShadow;
+    }
   }
 
   &__info {
@@ -25,5 +28,14 @@
 
   &__button {
     margin-top: 20px !important;
+  }
+
+  &__displayName {
+    text-decoration: none;
+    color: $black;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

@@ -16,6 +16,10 @@
     @include flexColumn;
     margin: 30px;
 
+     &__toastContainer {
+      font-size: $smallFont;
+    }
+
     &__title {
       @include flexCenter;
       margin: 0;

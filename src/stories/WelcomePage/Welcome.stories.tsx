@@ -4,7 +4,7 @@ import { Welcome } from '../../pages/Welcome/Welcome';
 
 export default {
   component: Welcome,
-  title: 'Components/Pages',
+  title: 'Pages/Welcome',
   decorators: [
     (Story: React.FC) => (
       <MemoryRouter>

@@ -3,7 +3,7 @@ import { Avatar, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
-import { signout } from '../../actions/signout';
+import { signOut } from '../../actions/signout';
 import './HeaderDropdown.scss';
 
 interface HeaderDropdownProps {
@@ -25,7 +25,7 @@ export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ testid }) => {
       <li className="headerDropdown__listItem">
         <Button
           data-testid={`${testid}ViewProfile`}
-          onClick={() => history.push('/myProfile')}
+          onClick={() => history.push(`/user/${user?.uid}`)}
           className="headerDropdown__button"
           variant="outlined"
           color="primary"
@@ -35,7 +35,7 @@ export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ testid }) => {
       </li>
       <li className="headerDropdown__listItem">
         <Button
-          onClick={signout}
+          onClick={() => signOut({ history })}
           data-testid={`${testid}SignOut`}
           className="headerDropdown__button"
           variant="outlined"

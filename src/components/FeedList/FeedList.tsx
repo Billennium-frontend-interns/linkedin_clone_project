@@ -3,7 +3,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { CircularProgress } from '@material-ui/core';
 import { useGetPosts } from '../../actions/useGetPosts';
 import { useGetUserFollows } from '../../actions/useGetUserFollows';
-import { postsFilter } from '../../actions/PostsFilter';
+import { postsFilter } from '../../actions/postsFilter';
 import { FeedPost, FeedPostProps } from '../FeedPost/FeedPost';
 import { WithLoader } from '../WithLoader/WithLoader';
 import { WithError } from '../WithError/WithError';
@@ -14,7 +14,6 @@ export const FeedList: React.FC = () => {
   const [posts, setPosts] = useState<FeedPostProps[]>([]);
   const [index, setIndex] = useState(Posts.initialAmount);
   const [hasMore, setHasMore] = useState(true);
-
   const { userFollows, isLoading: isFollowsLoading, isError: isFollowsError } = useGetUserFollows();
   const { allPosts, isLoading: isPostsLoading, isError: isPostsError } = useGetPosts();
   const userPosts = postsFilter(userFollows, allPosts);
@@ -54,7 +53,7 @@ export const FeedList: React.FC = () => {
 
   return (
     <section className="feedList" data-testid="feedList">
-      <WithLoader isLoading={isFollowsLoading || isPostsLoading}>
+      <WithLoader isLoading={isFollowsLoading || isPostsLoading} className="feedList__loader">
         <WithError isError={isFollowsError || isPostsError} errorMessage="Error has occurred please try again...">
           <InfiniteScroll
             dataLength={posts.length}

@@ -1,0 +1,43 @@
+@import '../../styles/Mixins.scss';
+@import '../../styles/Fonts.scss';
+@import '../../styles/FontSizes.scss';
+@import '../../styles/Colors.scss';
+@import '../../styles/FontWeights.scss';
+
+.loginRequired {
+  min-width: 100vw;
+  min-height: 100vh;
+  background: $mainTheme;
+  background-color: $lightBlue;
+  text-align: center;
+  @include flexColumn;
+
+  &__title {
+    margin: 0px 10px;
+    font-weight: $normalWeight;
+    color: $darkBlue;
+  }
+
+  &__icon {
+    width: 80px !important;
+    height: 80px !important;
+    margin: 15px 0px 10px 0px;
+    color: $darkBlue;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: baseline;
+    font-weight: $fontBold;
+  }
+
+  &__hint {
+    margin: 5px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $darkBlue;
+    margin-left: 5px;
+  }
+}
