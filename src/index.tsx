@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { AuthProvider } from './context/AuthProvider';
+import { GlobalErrorBoundary } from './components/GlobalErrorBoundary/GlobalErrorBoundary';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <GlobalErrorBoundary>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </GlobalErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root')
 );
