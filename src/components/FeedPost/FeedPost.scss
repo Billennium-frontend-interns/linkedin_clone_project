@@ -13,7 +13,7 @@
   background: $white;
   padding: 10px;
   border: 1px solid $lightGray;
-  margin-bottom: 1.25em;
+  margin: 0px auto 1.25em auto;
 
   @media only screen and (max-width: $mobile) {
     border-radius: 0px;
