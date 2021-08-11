@@ -8,6 +8,6 @@ import { HeaderDropdown } from '../components/DropdownsContent/HeaderDropdown';
 export const navigationItems = [
   { path: '/feed', icon: HomeIcon, title: 'Home' },
   { path: '/network', icon: SupervisorAccountIcon, title: 'My Network' },
-  { path: '', icon: NotificationsIcon, title: 'Notifications', content: Notifications },
+  { path: '', icon: NotificationsIcon, title: 'Notifications', content: Notifications, badge: true },
   { path: '', icon: Avatar, title: 'Me▼', content: HeaderDropdown }
 ];

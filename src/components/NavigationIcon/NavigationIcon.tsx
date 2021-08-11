@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { Badge } from '@material-ui/core';
 import { OverridableComponent } from '@material-ui/core/OverridableComponent';
 import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
@@ -11,9 +12,10 @@ interface NavigationIconProps {
   title: string;
   path?: string;
   testid?: string;
+  badgeContent?: number;
 }
 
-export const NavigationIcon: React.FC<NavigationIconProps> = ({ Icon, title, path, testid }) => {
+export const NavigationIcon: React.FC<NavigationIconProps> = ({ Icon, title, path, testid, badgeContent }) => {
   const location = useLocation();
   const user = useContext(AuthContext);
 
@@ -22,7 +24,14 @@ export const NavigationIcon: React.FC<NavigationIconProps> = ({ Icon, title, pat
       data-testid={testid}
       className={classNames('navigationIcon', { 'navigationIcon--active': path === location.pathname })}
     >
-      <Icon className="navigationIcon__icon" src={user?.photoURL} />
+      {badgeContent ? (
+        <Badge badgeContent={badgeContent} color="primary">
+          <Icon className="navigationIcon__icon" src={user?.photoURL} />
+        </Badge>
+      ) : (
+        <Icon className="navigationIcon__icon" src={user?.photoURL} />
+      )}
+
       <p className="navigationIcon__title">{title}</p>
     </div>
   );
@@ -30,12 +39,14 @@ export const NavigationIcon: React.FC<NavigationIconProps> = ({ Icon, title, pat
 
 NavigationIcon.defaultProps = {
   path: '',
-  testid: undefined
+  testid: undefined,
+  badgeContent: 0
 };
 
 NavigationIcon.propTypes = {
   Icon: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   path: PropTypes.string,
-  testid: PropTypes.string
+  testid: PropTypes.string,
+  badgeContent: PropTypes.number
 };
