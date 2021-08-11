@@ -23,7 +23,7 @@ export class GlobalErrorBoundary extends React.Component<ErrorBoundaryProps, Err
     console.log(error, errorInfo);
   }
 
-  render(): React.ReactElement | React.ReactElement[] {
+  render(): React.ReactElement {
     const { hasError } = this.state;
     const { children } = this.props;
     if (hasError) {
