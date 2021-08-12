@@ -19,7 +19,6 @@ export const signInWithCredentials = ({ email, password, setError, history }: si
       customToast('success', 'Successfully Sign In');
     })
     .catch(error => {
-      console.log(error);
       setError({
         isError: true,
         errorText: error.message

@@ -2,13 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-// import { HeaderDropdown } from '../DropdownsContent/HeaderDropdown';
-// import { Notifications } from '../../pages/Notifications/Notifications';
 import { navigationItems } from '../../constants/Navigation';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { NavigationIcon } from '../NavigationIcon/NavigationIcon';
-import './Navigation.scss';
 import { NotificationContext } from '../../context/NotificationProvider';
+import './Navigation.scss';
 
 interface NavigationProps {
   testid?: string;
@@ -27,7 +25,7 @@ export const Navigation: React.FC<NavigationProps> = ({ testid, isSearchOpen }) 
     <nav className={classNames('navigation', { 'navigation--hidden': isSearchOpen })} data-testid={testid}>
       <ul className="navigation__wrapper">
         {navigationItems.map(({ title, path, icon, content, badge }) => (
-          <li key={path}>
+          <li key={title}>
             {path ? (
               <Link className="navigation__link" to={path}>
                 <NavigationIcon testid={`${testid}Link${title}`} title={title} path={path} Icon={icon} />

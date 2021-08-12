@@ -14,11 +14,18 @@
     z-index: $ZIndexDropdown;
     box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.3);
     position: absolute;
-    min-width: 150px;
-    max-width: fit-content;
-    top: 50px;
-    right: 20px;
     padding: 10px 20px;
-    border-radius: 5px;
+    min-width: 150px;
+    max-inline-size: 200px;
+    width: 80vw;
+    top: 50px;
+    right: 0px;
+
+    @media only screen and (min-width: $mobile) {
+      max-width: 200px;
+      right: 20px;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
   }
 }

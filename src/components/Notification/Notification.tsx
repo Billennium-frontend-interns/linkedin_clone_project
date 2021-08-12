@@ -17,21 +17,29 @@ export const Notification: React.FC<NotificationProps> = ({ userId, followerId, 
   const { userData } = useGetUserData(followerId);
 
   useEffect(
+    // eslint-disable-next-line
     () => (): any => db.collection('users').doc(userId).collection('followers').doc(followerId).update({ seen: true }),
     []
   );
 
   return (
     <article className="notificationCard">
-      <Avatar className="notificationCard__avatar" src={userData?.avatar} alt="user avatar" variant="circular" />
-      <p className="notificationCard__text">
+      <Avatar
+        className="notificationCard__avatar"
+        src={userData?.avatar}
+        alt="user avatar"
+        variant="rounded"
+        style={{ height: '64px', width: '64px' }}
+      />
+      <div className="notificationCard__text">
         <strong>
           <Link className="notificationCard__link" to={`user/${followerId}`}>
             {userData?.displayName}
           </Link>
         </strong>
-        followed you {followingSince}
-      </p>
+        <p className="notificationCard__action">followed you</p>
+        <p className="notificationCard__timestamp">{followingSince}</p>
+      </div>
     </article>
   );
 };

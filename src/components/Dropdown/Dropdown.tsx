@@ -4,7 +4,7 @@ import './Dropdown.scss';
 
 interface DropdownProps {
   DropdownOpener: React.ReactNode;
-  content?: any;
+  content: React.FC<unknown> | string;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, content }) => {
@@ -48,6 +48,6 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, content }) =
 };
 
 Dropdown.propTypes = {
-  DropdownOpener: PropTypes.func.isRequired,
-  content: PropTypes.element.isRequired
+  DropdownOpener: PropTypes.node.isRequired,
+  content: PropTypes.func.isRequired
 };

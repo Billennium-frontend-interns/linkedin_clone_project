@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { db } from '../firebase';
 import { AuthContext } from './AuthProvider';
 
-type NotificationsStateType = {
+export type NotificationsStateType = {
   data: firebase.default.firestore.DocumentData[];
-  unsubscriber: any;
+  unsubscriber: () => unknown;
 };
 
 interface INotifications {

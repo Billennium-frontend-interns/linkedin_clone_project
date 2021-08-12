@@ -12,8 +12,8 @@ export const Welcome: React.FC = () => {
   const notifications = useContext(NotificationContext);
 
   useEffect(() => {
-    if (notifications && currentUser) {
-      notifications?.unsubscriber();
+    if (notifications && notifications.data.length > 0 && notifications.unsubscriber) {
+      notifications.unsubscriber();
     }
   }, []);
 
