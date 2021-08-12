@@ -1,0 +1,41 @@
+@import '../../styles/Colors.scss';
+@import '../../styles/Mixins.scss';
+@import '../../styles/FontSizes.scss';
+@import '../../styles/FontWeights.scss';
+
+.errorFallback {
+  min-width: 100vw;
+  min-height: 100vh;
+  background: $mainTheme;
+  background-color: $lightBlue;
+  text-align: center;
+  color: $darkBlue;
+  @include flexColumn;
+
+  &__title {
+    @include flexColumn;
+    font-weight: $normalWeight;
+    padding: 0px 10px;
+    margin: 5px 0px;
+
+    @media only screen and (min-width: $medium) {
+      flex-direction: row;
+    }
+  }
+
+  &__icon {
+    width: 80px !important;
+    height: 80px !important;
+
+    &--sad {
+      width: 40px !important;
+      height: 40px !important;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $linkedinBlue;
+      transition: 0.5s;
+    }
+  }
+}
