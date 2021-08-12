@@ -1,18 +1,15 @@
 import React from 'react';
+import { ErrorFallback } from '../../pages/ErrorFallback/ErrorFallback';
 
 interface ErrorBoundaryProps {
   children: React.ReactElement;
 }
 
-interface ErrorBoundaryState {
-  hasError: boolean;
-}
-
-export class GlobalErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  constructor(props: ErrorBoundaryProps) {
-    super(props);
-    this.state = { hasError: false };
-  }
+export class GlobalErrorBoundary extends React.Component<ErrorBoundaryProps> {
+  // eslint-disable-next-line react/state-in-constructor
+  state = {
+    hasError: false
+  };
 
   static getDerivedStateFromError(): { hasError: boolean } {
     return { hasError: true };
@@ -26,8 +23,9 @@ export class GlobalErrorBoundary extends React.Component<ErrorBoundaryProps, Err
   render(): React.ReactElement {
     const { hasError } = this.state;
     const { children } = this.props;
+
     if (hasError) {
-      return <h1>Something went wrong.</h1>;
+      return <ErrorFallback />;
     }
 
     return children;
