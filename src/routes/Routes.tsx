@@ -9,6 +9,7 @@ import { LoginForm } from '../components/LoginForm/LoginForm';
 import { UserPage } from '../pages/UserPage/UserPage';
 import { MyNetwork } from '../pages/MyNetwork/MyNetwork';
 import { Feed } from '../pages/Feed/Feed';
+import { Notifications } from '../pages/Notifications/Notifications';
 
 export const Routes = [
   <Route exact path="/" component={Welcome} />,
@@ -16,7 +17,7 @@ export const Routes = [
   <Route exact path="/signIn" render={() => <FormLayout formComponent={<LoginForm />} />} />,
   <ProtectedRoute path="/feed" component={Feed} />,
   <ProtectedRoute exact path="/network" component={MyNetwork} />,
-  <ProtectedRoute exact path="/notification" />,
+  <ProtectedRoute exact path="/notifications" component={Notifications} />,
   <ProtectedRoute path="/user/:ownerUid" component={UserPage} />,
   <DefaultRoute />
 ];

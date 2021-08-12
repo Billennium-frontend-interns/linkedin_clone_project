@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Link, Redirect } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import { NotificationContext } from '../../context/NotificationProvider';
 import { auth } from '../../firebase';
 import './Welcome.scss';
 
 export const Welcome: React.FC = () => {
   const { currentUser } = auth;
+  const notifications = useContext(NotificationContext);
+
+  useEffect(() => {
+    if (notifications && notifications.data.length > 0 && notifications.unsubscriber) {
+      notifications.unsubscriber();
+    }
+  }, []);
 
   if (currentUser) {
     return <Redirect to="/feed" />;

@@ -69,7 +69,7 @@ export const FeedList: React.FC = () => {
           >
             {posts.map(({ testid, ownerUid, displayName, content, avatar, timestamp }) => (
               <FeedPost
-                key={testid}
+                key={`${ownerUid},${timestamp.seconds}`}
                 testid={testid}
                 ownerUid={ownerUid}
                 displayName={displayName}
