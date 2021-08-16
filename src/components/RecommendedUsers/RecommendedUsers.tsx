@@ -46,9 +46,11 @@ export const RecommendedUsers: React.FC<RecommendedUsersProps> = ({ testid }) =>
               ))}
             </div>
           </Grow>
-          <IconButton onClick={() => setRecommendedUsers([...recommendedUsers, ...getMoreRecommendedUsersInfo()])}>
-            <ExpandMoreIcon fontSize="large" />
-          </IconButton>
+          {recommendedUsers.length !== [...recommendedUsers, ...getMoreRecommendedUsersInfo()].length && (
+            <IconButton onClick={() => setRecommendedUsers([...recommendedUsers, ...getMoreRecommendedUsersInfo()])}>
+              <ExpandMoreIcon fontSize="large" />
+            </IconButton>
+          )}
         </div>
       </WithError>
     </WithLoader>
