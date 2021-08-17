@@ -1,31 +1,26 @@
 import React, { useRef, useState, MutableRefObject } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { useGetUserData } from '../../actions/useGetUserData';
 import { useIsContentOverflowing } from '../../actions/useIsContentOverflowing';
 import AvatarPlaceholder from '../../assets/images/avatar_placeholder.png';
 import './FeedPost.scss';
 
 export interface FeedPostProps {
   ownerUid: string;
-  displayName: string;
-  avatar?: string;
   content: string;
   timestamp: firebase.default.firestore.Timestamp;
   testid?: string;
 }
 
-export const FeedPost: React.FC<FeedPostProps> = ({
-  ownerUid,
-  displayName,
-  avatar,
-  content,
-  timestamp,
-  testid
-}: FeedPostProps) => {
+export const FeedPost: React.FC<FeedPostProps> = ({ ownerUid, content, timestamp, testid }: FeedPostProps) => {
   const [seeMore, setSeeMore] = useState(false);
   const ref = useRef() as MutableRefObject<HTMLParagraphElement>;
   const isContentOverflowing = useIsContentOverflowing(ref);
   const timePassed = moment.unix(timestamp.seconds).fromNow();
+  const {
+    userData: { avatar, displayName }
+  } = useGetUserData(ownerUid);
 
   return (
     <article className="feedPost">
@@ -54,6 +49,5 @@ export const FeedPost: React.FC<FeedPostProps> = ({
 };
 
 FeedPost.defaultProps = {
-  testid: '',
-  avatar: AvatarPlaceholder
+  testid: ''
 };
