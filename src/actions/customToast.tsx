@@ -5,7 +5,7 @@ type type = 'default' | 'info' | 'success' | 'error';
 
 const defaultOptions: ToastOptions = {
   autoClose: 2500,
-  position: 'bottom-right',
+  position: 'top-right',
   pauseOnFocusLoss: false,
   pauseOnHover: false
 };

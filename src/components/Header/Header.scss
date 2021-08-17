@@ -26,5 +26,13 @@
     @media only screen and (min-width: $medium) {
       margin-right: 10px;
     }
+
+    &--hidden {
+      display: none !important;
+
+      @media only screen and (min-width: $small) {
+        display: block !important;
+      }
+    }
   }
 }

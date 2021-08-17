@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { DebounceInput } from 'react-debounce-input';
 import { SearchHint } from '../SearchHint/SearchHint';
 import { userHint } from '../../shared/interfaces/UserInterfaces';
 import './Search.scss';
@@ -53,7 +54,9 @@ export const Search: React.FC<SearchProps> = ({ testid, getHints, setIsSearchOpe
           }}
           className={classNames('search__icon', { 'search__icon--hidden': isSearchOpen })}
         />
-        <input
+        <DebounceInput
+          minLength={3}
+          debounceTimeout={500}
           value={searchInput}
           onChange={event => setSearchInput(event.target.value)}
           data-testid={`${testid}Input`}
@@ -64,7 +67,7 @@ export const Search: React.FC<SearchProps> = ({ testid, getHints, setIsSearchOpe
       </div>
       <ul className={classNames('search__hints', { 'search__hints--hidden': isSearchOpen })}>
         {searchHints.map(([hint]) => (
-          <SearchHint key={hint.id} displayName={hint.displayName} id={hint.id} />
+          <SearchHint key={hint.id} displayName={hint.displayName} id={hint.id} avatar={hint.avatar} />
         ))}
       </ul>
     </div>

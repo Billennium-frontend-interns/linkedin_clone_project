@@ -1,9 +1,5 @@
 import { db } from '../firebase';
-
-type userHint = {
-  displayName: string;
-  id: string;
-};
+import { userHint } from '../shared/interfaces/UserInterfaces';
 
 export const userHints: (set: React.Dispatch<React.SetStateAction<userHint[][]>>, value: string) => void = async (
   set,
@@ -12,8 +8,8 @@ export const userHints: (set: React.Dispatch<React.SetStateAction<userHint[][]>>
   const snapshot = await db.collection('users').orderBy('displayName', 'asc').get();
   set(
     snapshot.docs
-      .map(doc => [{ displayName: doc.data().displayName, id: doc.data().id }])
-      .filter(doc => doc[0].displayName.startsWith(value) && value)
+      .map(doc => [{ displayName: doc.data().displayName, id: doc.data().id, avatar: doc.data().avatar }])
+      .filter(doc => doc[0].displayName.toUpperCase().includes(value.toUpperCase()) && value)
       .slice(0, 5)
   );
 };

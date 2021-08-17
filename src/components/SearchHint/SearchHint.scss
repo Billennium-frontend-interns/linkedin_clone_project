@@ -1,11 +1,26 @@
 @import '../../styles/Colors.scss';
+@import '../../styles/FontSizes.scss';
+@import '../../styles/Breakpoints.scss';
 
 .searchHint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   list-style-type: none;
   padding: 10px 5px;
   background-color: $white;
   border: 1px solid $lightGray;
   border-top: none;
+  font-size: $textFont;
+
+  @media only screen and (min-width: $small) {
+    font-size: $smallFont;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
 
   &:hover {
     color: $linkedinBlue;

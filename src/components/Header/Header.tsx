@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import { Search } from '../Search/Search';
 import { Navigation } from '../Navigation/Navigation';
 import { userHints } from '../../constants/UserHints';
@@ -16,7 +17,10 @@ export const Header: React.FC<HeaderProps> = ({ testid }) => {
   return (
     <header className="header" data-testid={testid}>
       <div className="header__search">
-        <LinkedInIcon color="primary" className="header__logo" />
+        <LinkedInIcon
+          color="primary"
+          className={classnames('header__logo', { 'header__logo--hidden': isSearchOpen })}
+        />
         <Search
           setIsSearchOpen={setIsSearchOpen}
           isSearchOpen={isSearchOpen}

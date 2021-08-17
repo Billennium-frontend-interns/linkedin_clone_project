@@ -5,9 +5,12 @@
 .search {
   display: flex;
   flex-direction: column;
-  padding: 10px;
   height: 22px;
   color: $gray;
+
+  @media only screen and (min-width: $small) {
+    padding: 10px;
+  }
 
   :hover {
     color: $linkedinBlue;
@@ -54,6 +57,11 @@
 
   &__input {
     display: none;
+    width: 200px;
+
+    @media only screen and (min-width: $small) {
+      width: 260px;
+    }
 
     &--hidden {
       display: block;
