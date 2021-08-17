@@ -8,6 +8,8 @@
   max-width: 200px;
   margin: 10px;
   box-shadow: none;
+  word-break: break-all;
+  text-align: center;
 
   @media only screen and (min-width: $mobile) {
     width: 200px;
