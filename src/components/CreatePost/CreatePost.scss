@@ -3,13 +3,18 @@
 
 .create-post {
   display: flex;
-  border-radius: 20px;
-  border: 1px solid $lightBlue;
+  border-bottom: 1px solid $lightBlue;
+  border-top: 1px solid $lightBlue;
   background-color: $white;
   padding: 20px;
   margin: 20px auto;
   max-width: 680px;
   flex: 1;
+
+  @media only screen and (min-width: $tablet) {
+    border: 1px solid $lightBlue;
+    border-radius: 20px;
+  }
 
   .share-box {
     @include flexColumn;

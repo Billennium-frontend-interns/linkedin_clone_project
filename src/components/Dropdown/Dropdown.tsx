@@ -13,8 +13,8 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, content }) =
 
   const closeDropdownOutside = (ref: React.MutableRefObject<HTMLDivElement>) => {
     useEffect(() => {
-      const handleOutsideClick = (event: any) => {
-        if (ref.current && !ref.current.contains(event.target)) {
+      const handleOutsideClick = (event: Event) => {
+        if (ref.current && !ref.current.contains(event.target as HTMLElement)) {
           setIsDropdownOpen(false);
           document.removeEventListener('click', handleOutsideClick);
         }

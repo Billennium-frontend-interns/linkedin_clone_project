@@ -22,8 +22,8 @@ export const Search: React.FC<SearchProps> = ({ testid, getHints, setIsSearchOpe
   const closeInputOutside = (ref: React.MutableRefObject<HTMLInputElement>) => {
     if (setIsSearchOpen) {
       useEffect(() => {
-        const handleOutsideClick = (event: any) => {
-          if (ref.current && !ref.current.contains(event.target)) {
+        const handleOutsideClick = (event: Event) => {
+          if (ref.current && !ref.current.contains(event.target as HTMLElement)) {
             setIsSearchOpen(false);
             document.removeEventListener('click', handleOutsideClick);
           }
