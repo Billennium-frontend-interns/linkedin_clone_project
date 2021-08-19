@@ -16,8 +16,10 @@ export default {
 const User = [
   {
     id: '123123',
-    displayName: 'Testing'
+    displayName: 'Testing',
+    avatar:
+      'http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcTeDK7atisY59wDS-qONZEV7u27EzeGi4SjbNkSqVeJq8OQ3HNTxtY_-Mm_PsMm'
   }
 ];
 
-export const Default = () => <SearchHint id={User[0].id} displayName={User[0].displayName} />;
+export const Default = () => <SearchHint id={User[0].id} displayName={User[0].displayName} avatar={User[0].avatar} />;

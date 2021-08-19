@@ -12,6 +12,7 @@ export type FollowType = {
 export type userHint = {
   displayName: string;
   id: string;
+  avatar: string;
 };
 export interface User {
   displayName: string;
