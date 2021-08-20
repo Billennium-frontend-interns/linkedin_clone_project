@@ -21,6 +21,12 @@
 
   &__info {
     @include flexColumn;
+    text-decoration: none;
+    color: $black;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__avatar {
@@ -30,14 +36,10 @@
 
   &__button {
     margin-top: 20px !important;
-  }
 
-  &__displayName {
-    text-decoration: none;
-    color: $black;
-
-    &:hover {
-      text-decoration: underline;
+    &--followed {
+      background-color: $linkedinBlue !important;
+      color: $white !important;
     }
   }
 }
