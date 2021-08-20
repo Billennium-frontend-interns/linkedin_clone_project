@@ -2,7 +2,7 @@
 @import '../../styles/Colors.scss';
 
 .create-post {
-  display: flex;
+  @include flexColumn;
   border-bottom: 1px solid $lightBlue;
   border-top: 1px solid $lightBlue;
   background-color: $white;
@@ -17,7 +17,7 @@
   }
 
   .share-box {
-    @include flexColumn;
+    @include flexCenter;
     width: 100%;
     margin: 0 15px;
 

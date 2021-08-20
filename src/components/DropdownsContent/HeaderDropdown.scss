@@ -8,6 +8,7 @@
     flex-direction: column;
     align-items: center;
   }
+
   &__listItem {
     margin-bottom: 10px;
     width: 100%;
@@ -18,5 +19,10 @@
   &__button {
     text-transform: none !important;
     flex: 1;
+  }
+
+  &__actions {
+    display: grid;
+    place-items: center;
   }
 }
