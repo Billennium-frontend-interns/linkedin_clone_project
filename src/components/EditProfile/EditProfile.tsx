@@ -26,7 +26,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({ isOpen, setIsModalOpen
       data-testId="editProfileModal"
     >
       <p className="modal__title">Edit your profile</p>
-      <EditProfileForm />
+      <EditProfileForm closeModal={closeModal} />
       <Button variant="contained" color="secondary" type="button" onClick={closeModal}>
         Close
       </Button>

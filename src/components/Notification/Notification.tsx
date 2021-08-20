@@ -23,23 +23,21 @@ export const Notification: React.FC<NotificationProps> = ({ userId, followerId, 
   );
 
   return (
-    <article className="notificationCard">
-      <Avatar
-        className="notificationCard__avatar"
-        src={userData?.avatar}
-        alt="user avatar"
-        variant="rounded"
-        style={{ height: '64px', width: '64px' }}
-      />
-      <div className="notificationCard__text">
-        <strong>
-          <Link className="notificationCard__link" to={`user/${followerId}`}>
-            {userData?.displayName}
-          </Link>
-        </strong>
-        <p className="notificationCard__action">followed you</p>
-        <p className="notificationCard__timestamp">{followingSince}</p>
-      </div>
-    </article>
+    <Link className="notificationCard__link" to={`user/${followerId}`}>
+      <article className="notificationCard">
+        <Avatar
+          className="notificationCard__avatar"
+          src={userData?.avatar}
+          alt="user avatar"
+          variant="rounded"
+          style={{ height: '64px', width: '64px' }}
+        />
+        <div className="notificationCard__text">
+          <strong>{userData?.displayName}</strong>
+          <p className="notificationCard__action">followed you</p>
+          <p className="notificationCard__timestamp">{followingSince}</p>
+        </div>
+      </article>
+    </Link>
   );
 };

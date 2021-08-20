@@ -20,14 +20,14 @@ const userData = {
   isMyUserDetails: false,
   isUserFollowedBy: true,
   isUserFollowing: true,
-  bio: 'SSZEMZA'
+  headline: 'SSZEMZA'
 };
 
 export const Default = () => (
   <UserDetails
     ownerUid={userData.ownerUid}
     isUserFollowing={userData.isUserFollowing}
-    bio={userData.bio}
+    headline={userData.headline}
     displayName={userData.displayName}
     avatar={userData.avatar}
     isMyUserDetails={userData.isMyUserDetails}

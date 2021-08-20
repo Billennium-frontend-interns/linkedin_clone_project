@@ -49,7 +49,7 @@ export const UserPage: React.FC = () => {
       <section className="userPage">
         {userData ? (
           <UserDetails
-            bio={userData?.bio}
+            headline={userData?.headline}
             ownerUid={ownerUid}
             displayName={userData?.displayName}
             avatar={userData?.avatar}
