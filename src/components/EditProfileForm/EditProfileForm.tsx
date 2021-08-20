@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { DropzoneArea } from 'material-ui-dropzone';
 import { Button, TextField } from '@material-ui/core';
 import { WithLoader } from '../WithLoader/WithLoader';
@@ -10,7 +11,11 @@ import { updateAvatar } from '../../actions/updateAvatar';
 import { User } from '../../shared/interfaces/UserInterfaces';
 import './EditProfileForm.scss';
 
-export const EditProfileForm: React.FC = () => {
+interface EditProfileFormProps {
+  closeModal: () => void;
+}
+
+export const EditProfileForm: React.FC<EditProfileFormProps> = ({ closeModal }) => {
   const MIN_NICKNAME_CHARACTERS = 3;
   const MAX_NICKNAME_CHARACTERS = 30;
   const MAX_BIO_CHARACTERS = 300;
@@ -51,6 +56,7 @@ export const EditProfileForm: React.FC = () => {
       }
       editProfile(currentUser?.uid as string, formData as User);
       setShouldDataChange(false);
+      closeModal();
     }
   };
 
@@ -107,4 +113,8 @@ export const EditProfileForm: React.FC = () => {
       </WithError>
     </WithLoader>
   );
+};
+
+EditProfileForm.propTypes = {
+  closeModal: PropTypes.func.isRequired
 };
