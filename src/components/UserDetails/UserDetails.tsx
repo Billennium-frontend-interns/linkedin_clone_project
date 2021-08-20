@@ -10,7 +10,7 @@ import './UserDetails.scss';
 interface UserDetailsProps {
   ownerUid: string;
   displayName: string;
-  bio?: string;
+  headline?: string;
   avatar: string;
   isMyUserDetails: boolean;
   isUserFollowedBy: boolean;
@@ -20,7 +20,7 @@ interface UserDetailsProps {
 export const UserDetails: React.FC<UserDetailsProps> = ({
   ownerUid,
   displayName,
-  bio,
+  headline,
   avatar,
   isMyUserDetails,
   isUserFollowedBy,
@@ -76,7 +76,7 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
             <CheckCircleIcon fontSize="inherit" /> User is following you
           </p>
         )}
-        <p className="userDetails__bio">{bio}</p>
+        <p className="userDetails__bio">{headline}</p>
       </div>
       <EditProfile isOpen={isEditModalOpen} setIsModalOpen={setIsEditModalOpen} />
     </section>
@@ -84,5 +84,5 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
 };
 
 UserDetails.defaultProps = {
-  bio: ''
+  headline: ''
 };

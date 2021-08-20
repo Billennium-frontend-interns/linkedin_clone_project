@@ -13,10 +13,10 @@ import './EditProfileForm.scss';
 export const EditProfileForm: React.FC = () => {
   const MIN_NICKNAME_CHARACTERS = 3;
   const MAX_NICKNAME_CHARACTERS = 30;
-  const MAX_BIO_CHARACTERS = 300;
+  const MAX_HEADLINE_CHARACTERS = 30;
   const initialFormData = {
     displayName: '',
-    bio: ''
+    headline: ''
   };
   const currentUser = useContext(AuthContext);
   const [shouldDataChange, setShouldDataChange] = useState(false);
@@ -33,9 +33,9 @@ export const EditProfileForm: React.FC = () => {
     formData.displayName.trim() === '' ||
     formData.displayName.length < MIN_NICKNAME_CHARACTERS ||
     formData.displayName.length > MAX_NICKNAME_CHARACTERS;
-  const isBioNotValid = formData.bio.length >= MAX_BIO_CHARACTERS;
+  const isHeadlineNotValid = formData.headline.length >= MAX_HEADLINE_CHARACTERS;
 
-  const validateForm = (): boolean => !isNicknameNotValid && !isBioNotValid;
+  const validateForm = (): boolean => !isNicknameNotValid && !isHeadlineNotValid;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -76,13 +76,13 @@ export const EditProfileForm: React.FC = () => {
           <TextField
             className="editForm__field"
             variant="outlined"
-            label="Enter new Bio"
+            label="Enter new headline"
             type="text"
-            name="bio"
-            id="bio"
-            error={isBioNotValid}
-            helperText={isBioNotValid ? 'Bio must be shorter than 300 characters' : ''}
-            value={formData.bio}
+            name="headline"
+            id="headline"
+            error={isHeadlineNotValid}
+            helperText={isHeadlineNotValid ? 'Headline must be shorter than 30 characters' : ''}
+            value={formData.headline}
             onChange={handleChange}
             rows={2}
             multiline

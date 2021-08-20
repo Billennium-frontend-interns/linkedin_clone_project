@@ -12,7 +12,7 @@ export const useGetUserData = (userUid: string): GetUserData => {
   const [state, setState] = useState<GetUserData>({
     userData: {
       displayName: '',
-      bio: '',
+      headline: '',
       avatar: '',
       id: ''
     },
