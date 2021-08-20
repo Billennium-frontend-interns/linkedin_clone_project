@@ -8,6 +8,7 @@ import './CreatePost.scss';
 export const CreatePost: React.FC = () => {
   const [postText, setPostText] = useState('');
   const currentUser = useContext(AuthContext);
+  const MAX_INPUT_LENGTH = 300;
 
   const isNicknameValid = postText.trim() !== '';
 
@@ -41,6 +42,7 @@ export const CreatePost: React.FC = () => {
           onChange={handleChange}
           className="share-box__text"
           data-testid="textPost"
+          inputProps={{ maxLength: MAX_INPUT_LENGTH }}
         />
         <Button
           variant="contained"

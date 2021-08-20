@@ -87,6 +87,7 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
             helperText={titleError && `Title can't be empty`}
             onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => checkKeyDown(e)}
             onChange={event => setFormTitle(event.target.value)}
+            inputProps={{ maxLength: MAX_INPUT_LENGTH }}
             variant="outlined"
             placeholder="Title"
             name="title"
