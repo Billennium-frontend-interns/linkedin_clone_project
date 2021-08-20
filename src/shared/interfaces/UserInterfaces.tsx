@@ -1,8 +1,3 @@
-// export interface UserFollows {
-//   followed: string[];
-//   followers: string[];
-// }
-
 export type FollowType = {
   uid: string;
   seen: boolean;

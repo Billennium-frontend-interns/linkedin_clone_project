@@ -28,13 +28,16 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followe
   return (
     <Grow in timeout={500}>
       <section className="userCard" data-testid={`${testid}${id}`}>
-        <div className="userCard__info">
+        <Link className="userCard__info" data-testid={`"userCard__displayName--${testid}`} to={`/user/${id}`}>
           <Avatar className="userCard__avatar" src={avatar} />
-          <Link className="userCard__displayName" data-testid={`"userCard__displayName--${testid}`} to={`/user/${id}`}>
-            <p>{displayName}</p>
-          </Link>
-        </div>
-        <Button onClick={handleClick} variant="outlined" color="primary" className="userCard__button">
+          <p className="userCard__displayName">{displayName}</p>
+        </Link>
+        <Button
+          onClick={handleClick}
+          variant={isFollowed ? 'contained' : 'outlined'}
+          color="primary"
+          className="userCard__button"
+        >
           {isFollowed ? 'Followed' : 'Follow'}
         </Button>
       </section>
