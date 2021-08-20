@@ -21,4 +21,9 @@
     text-transform: none !important;
     flex: 1;
   }
+
+  &__actions {
+    display: grid;
+    place-items: center;
+  }
 }

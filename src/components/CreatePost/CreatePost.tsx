@@ -16,7 +16,7 @@ export const CreatePost: React.FC = () => {
     setPostText(event.target.value);
   };
 
-  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     if (isNicknameValid) {
       setPost({
@@ -33,8 +33,8 @@ export const CreatePost: React.FC = () => {
 
   return (
     <article data-testid="createPost" className="create-post">
-      <Avatar className="avatar" src={currentUser?.photoURL || ''} />
-      <form className="share-box" onSubmit={handleSubmit}>
+      <div className="share-box">
+        <Avatar className="avatar" src={currentUser?.photoURL || ''} />
         <TextField
           multiline
           placeholder="What do you want to say?"
@@ -44,17 +44,18 @@ export const CreatePost: React.FC = () => {
           data-testid="textPost"
           inputProps={{ maxLength: MAX_INPUT_LENGTH }}
         />
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          type="submit"
-          className="share-box__add-post"
-          data-testid="addPost"
-        >
-          Add Post
-        </Button>
-      </form>
+      </div>
+      <Button
+        type="button"
+        variant="contained"
+        color="primary"
+        size="small"
+        className="share-box__add-post"
+        data-testid="addPost"
+        onClick={handleSubmit}
+      >
+        Add Post
+      </Button>
     </article>
   );
 };
