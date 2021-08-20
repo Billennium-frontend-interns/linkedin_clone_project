@@ -3,6 +3,11 @@
   padding: 0;
   margin: 0;
 
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   &__listItem {
     margin-bottom: 10px;
     width: 100%;

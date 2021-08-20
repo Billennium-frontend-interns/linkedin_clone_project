@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { signOut } from '../../actions/signOut';
+import { useGetUserData } from '../../actions/useGetUserData';
 import './HeaderDropdown.scss';
 
 interface HeaderDropdownProps {
@@ -11,21 +12,25 @@ interface HeaderDropdownProps {
 }
 
 export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ testid }) => {
-  const user = useContext(AuthContext);
+  const currentUser = useContext(AuthContext);
+  const { userData } = useGetUserData(currentUser?.uid as string);
   const history = useHistory();
 
   return (
     <ul className="headerDropdown" data-testid={testid}>
       <li className="headerDropdown__listItem">
-        <Avatar src={user?.photoURL || ''} />
+        <Avatar src={userData?.avatar || ''} />
       </li>
       <li className="headerDropdown__listItem">
-        <p>{user?.displayName || 'User'}</p>
+        <p className="headerDropdown__info">
+          {userData?.displayName || 'User'}
+          <span>{userData?.headline}</span>
+        </p>
       </li>
       <li className="headerDropdown__listItem">
         <Button
           data-testid={`${testid}ViewProfile`}
-          onClick={() => history.push(`/user/${user?.uid}`)}
+          onClick={() => history.push(`/user/${userData?.id}`)}
           className="headerDropdown__button"
           variant="outlined"
           color="primary"
