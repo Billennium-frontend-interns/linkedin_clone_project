@@ -47,6 +47,8 @@
     font-size: $mediumFont;
     width: 100%;
     max-block-size: none;
+    word-break: break-all;
+
 
     &--see__less {
       padding: 0;
