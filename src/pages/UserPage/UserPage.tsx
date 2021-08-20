@@ -41,7 +41,7 @@ export const UserPage: React.FC = () => {
       })
       // eslint-disable-next-line
       .catch(error => console.error(error));
-  }, [ownerUid, getFields]);
+  }, [ownerUid, isAddField]);
 
   return (
     <>
@@ -70,7 +70,7 @@ export const UserPage: React.FC = () => {
               />
             ))}
             {!isAddField && loggedInUser?.uid === ownerUid && (
-              <UserPageFieldForm data={getFields} setter={setGetFields} />
+              <UserPageFieldForm data={isAddField} setter={setIsAddField} />
             )}
             {loggedInUser?.uid === ownerUid && (
               <span className="userPage__ctaButton">
