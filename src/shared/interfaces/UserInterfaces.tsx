@@ -13,5 +13,5 @@ export interface User {
   displayName: string;
   id: string;
   avatar: string;
-  bio: string;
+  headline: string;
 }
