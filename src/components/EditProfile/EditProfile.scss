@@ -40,6 +40,16 @@
     color: $linkedinBlue;
   }
 
+  &__close {
+    position: absolute;
+    top: 2.5%;
+    right: 2.5%;
+    
+    :hover {
+      cursor: pointer;
+    }
+  }
+
   @media only screen and (min-width: $mobile) {
     width: 75vw;
   }
