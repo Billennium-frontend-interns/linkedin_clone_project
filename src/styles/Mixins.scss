@@ -17,8 +17,11 @@
   max-width: 700px;
   width: 100%;
   border: 1px solid $lightGray;
-  border-radius: 15px;
   background: $white;
+
+  @media only screen and (min-width: $tablet) {
+    border-radius: 15px;
+  }
 }
 
 @mixin flexWrap {
