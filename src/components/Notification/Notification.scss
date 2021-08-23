@@ -3,29 +3,29 @@
 @import '../../styles/Breakpoints';
 
 .notificationCard {
+  display: flex;
+  margin: 5px;
+
+  &__avatar {
+    margin-right: 1ch;
+  }
+
+  &__text {
     display: flex;
-    margin: 5px;
-    
-    &__avatar {
-        margin-right: 1ch;
-    }
+    flex-direction: column;
+  }
 
-    &__text {
-        display: flex;
-        flex-direction: column;
-    }
+  &__link {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+  }
 
-    &__link {
-        text-decoration: none;
-        cursor: pointer;
-        color: black;
-    }
+  &__timestamp {
+    margin: 1px;
+  }
 
-    &__timestamp {
-        margin: 1px;
-    }
-
-    &__action {
-        margin: 1px;
-    }
+  &__action {
+    margin: 1px;
+  }
 }

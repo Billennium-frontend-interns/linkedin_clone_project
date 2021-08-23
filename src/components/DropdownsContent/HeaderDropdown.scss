@@ -1,3 +1,5 @@
+@import '../../styles/FontWeights.scss';
+
 .headerDropdown {
   list-style-type: none;
   padding: 0;
@@ -7,7 +9,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    word-break: break-all;
   }
+
+  &__name {
+    font-weight: $fontBold;
+  }
+
   &__listItem {
     margin-bottom: 10px;
     width: 100%;
