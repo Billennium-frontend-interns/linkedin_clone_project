@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
-import { Button } from '@material-ui/core';
+import CancelIcon from '@material-ui/icons/Cancel';
 import { EditProfileForm } from '../EditProfileForm/EditProfileForm';
 import './EditProfile.scss';
 
@@ -27,9 +27,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({ isOpen, setIsModalOpen
     >
       <p className="modal__title">Edit your profile</p>
       <EditProfileForm closeModal={closeModal} />
-      <Button variant="contained" color="secondary" type="button" onClick={closeModal}>
-        Close
-      </Button>
+      <CancelIcon onClick={closeModal} className="modal__closeIcon" />
     </Modal>
   );
 };
