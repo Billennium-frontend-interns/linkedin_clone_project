@@ -1,5 +1,6 @@
 @import '../../styles/Colors.scss';
 @import '../../styles/FontSizes.scss';
+@import '../../styles/FontWeights.scss';
 @import '../../styles/Breakpoints.scss';
 
 .searchHint {
@@ -20,6 +21,10 @@
   &__info {
     display: flex;
     flex-direction: column;
+  }
+
+  &__name {
+    font-weight: $fontBold;
   }
 
   &:hover {
