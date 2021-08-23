@@ -8,6 +8,10 @@
   background-color: $mainBackground;
   min-height: 100vh;
 
+  &--dark {
+    background-color: #181818;
+  }
+
   &__container {
     margin: 20px 0;
     width: 65vw;
@@ -17,6 +21,11 @@
     background-color: $white;
     padding: 10px;
     border: 1px solid $lightGray;
+
+    &--dark {
+      background-color: #282828;
+      border-color: #181818;
+    }
   }
 
   &__buttons {

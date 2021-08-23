@@ -15,6 +15,12 @@
   border: 1px solid $lightGray;
   margin: 0px auto 1.25em auto;
 
+  &--dark {
+    background-color: #282828;
+    color: white;
+    border-color: #12121212;
+  }
+
   @media only screen and (max-width: $mobile) {
     border-radius: 0px;
     border-left: none;
@@ -36,11 +42,16 @@
     width: 48px;
     border-radius: 50%;
     margin-right: 10px;
+    background-color: white;
   }
 
   &__name {
     font-size: $smallFont;
     font-weight: $fontBold;
+
+    &--dark {
+      color: white;
+    }
   }
 
   &__content {
@@ -48,7 +59,6 @@
     width: 100%;
     max-block-size: none;
     word-break: break-all;
-
 
     &--see__less {
       padding: 0;
@@ -71,7 +81,7 @@
     font-weight: $fontBold;
     font-size: $textFont;
     width: 100%;
-    background: $white;
+    background: inherit;
     margin-top: -0.5rem;
 
     &:focus {

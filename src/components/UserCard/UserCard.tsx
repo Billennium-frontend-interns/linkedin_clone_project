@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Avatar, Button, Grow } from '@material-ui/core';
 import { followAction } from '../../actions/followAction';
+import { DarkModeContext } from '../../context/DarkModeProvider';
 import './UserCard.scss';
 
 interface UserCardProps {
@@ -15,6 +17,7 @@ interface UserCardProps {
 
 export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followed, id, testid }) => {
   const [isFollowed, setIsFollowed] = useState(followed);
+  const [isDarkMode] = useContext(DarkModeContext);
 
   const handleClick = () => {
     if (!isFollowed) {
@@ -27,7 +30,7 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followe
 
   return (
     <Grow in timeout={500}>
-      <section className="userCard" data-testid={`${testid}${id}`}>
+      <section className={classNames('userCard', { 'userCard--dark': isDarkMode })} data-testid={`${testid}${id}`}>
         <Link className="userCard__info" data-testid={`"userCard__displayName--${testid}`} to={`/user/${id}`}>
           <Avatar className="userCard__avatar" src={avatar} />
           <p className="userCard__displayName">{displayName}</p>

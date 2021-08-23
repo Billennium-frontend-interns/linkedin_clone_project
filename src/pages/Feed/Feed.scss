@@ -4,6 +4,9 @@
   background-color: $mainBackground;
   min-height: 100vh;
 
+  &--dark {
+    background-color: #181818;
+  }
   &__createPost {
     display: flex;
     justify-content: center;

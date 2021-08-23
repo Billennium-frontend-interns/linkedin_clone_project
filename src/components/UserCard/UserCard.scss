@@ -11,6 +11,12 @@
   word-break: break-all;
   text-align: center;
 
+  &--dark {
+    background-color: #404040;
+    border-color: #181818;
+    color: white;
+  }
+
   @media only screen and (min-width: $mobile) {
     width: 200px;
 

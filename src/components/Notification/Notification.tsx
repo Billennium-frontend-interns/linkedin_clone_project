@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import moment from 'moment';
+import classNames from 'classnames';
 import { Avatar } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { useGetUserData } from '../../actions/useGetUserData';
-import './Notification.scss';
 import { db } from '../../firebase';
+import { DarkModeContext } from '../../context/DarkModeProvider';
+import './Notification.scss';
 
 interface NotificationProps {
   followerId: string;
@@ -15,6 +17,7 @@ interface NotificationProps {
 export const Notification: React.FC<NotificationProps> = ({ userId, followerId, timestamp }: NotificationProps) => {
   const followingSince = moment.unix(timestamp.seconds).fromNow();
   const { userData } = useGetUserData(followerId);
+  const [isDarkMode] = useContext(DarkModeContext);
 
   useEffect(
     // eslint-disable-next-line
@@ -23,7 +26,10 @@ export const Notification: React.FC<NotificationProps> = ({ userId, followerId, 
   );
 
   return (
-    <Link className="notificationCard__link" to={`user/${followerId}`}>
+    <Link
+      className={classNames('notificationCard__link', { 'notificationCard__link--dark': isDarkMode })}
+      to={`user/${followerId}`}
+    >
       <article className="notificationCard">
         <Avatar
           className="notificationCard__avatar"

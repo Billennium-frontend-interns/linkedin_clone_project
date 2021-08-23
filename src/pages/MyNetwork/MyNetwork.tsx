@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { Button } from '@material-ui/core';
 import { Header } from '../../components/Header/Header';
 import { FollowedUsers } from '../../components/FollowedUsers/FollowedUsers';
 import { RecommendedUsers } from '../../components/RecommendedUsers/RecommendedUsers';
+import { DarkModeContext } from '../../context/DarkModeProvider';
 import './MyNetwork.scss';
 
 export const MyNetwork: React.FC = () => {
   const [showRecommendedUsers, setShowRecommendedUsers] = useState(true);
+  const [isDarkMode] = useContext(DarkModeContext);
 
   return (
-    <div className="myNetwork" data-testid="myNetworkPage">
+    <div className={classNames('myNetwork', { 'myNetwork--dark': isDarkMode })} data-testid="myNetworkPage">
       <Header testid="myNetworkPageHeader" />
-      <div className="myNetwork__container">
+      <div className={classNames('myNetwork__container', { 'myNetwork__container--dark': isDarkMode })}>
         <div className="myNetwork__buttons">
           <Button
             size="large"

@@ -11,7 +11,15 @@
   max-width: 680px;
   flex: 1;
 
+  &--dark {
+    background-color: #282828;
+  }
+
   @media only screen and (min-width: $tablet) {
+    &--dark {
+      border: 1px solid #121212;
+    }
+
     border: 1px solid $lightBlue;
     border-radius: 20px;
   }
