@@ -5,6 +5,12 @@
 .notificationCard {
   display: flex;
   margin: 5px;
+  word-break: break-all;
+  transition: transform 100ms;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   &__avatar {
     margin-right: 1ch;
