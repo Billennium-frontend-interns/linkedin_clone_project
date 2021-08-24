@@ -55,7 +55,7 @@ export const UserPage: React.FC = () => {
             ownerUid={ownerUid}
             displayName={userData?.displayName}
             avatar={userData?.avatar}
-            isMyUserDetails={loggedInUser?.uid === ownerUid}
+            isMyUserDetails={isOwner}
             isUserFollowedBy={isUserFollowed}
             isUserFollowing={isUserFollowing}
           />
@@ -87,10 +87,8 @@ export const UserPage: React.FC = () => {
                   isError={fieldEntries.isError}
                 />
               ))}
-              {!isAddField && loggedInUser?.uid === ownerUid && (
-                <UserPageFieldForm data={isAddField} setter={setIsAddField} />
-              )}
-              {loggedInUser?.uid === ownerUid && (
+              {!isAddField && isOwner && <UserPageFieldForm data={isAddField} setter={setIsAddField} />}
+              {isOwner && (
                 <span className="userPage__ctaButton">
                   <Button
                     type="button"
