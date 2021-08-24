@@ -9,7 +9,7 @@ export const SearchHint: React.FC<User> = ({ displayName, id, avatar, headline }
   <Link className="searchHint__link" to={`/user/${id}`}>
     <li className="searchHint">
       <div className="searchHint__info">
-        <span>{displayName}</span>
+        <span className="searchHint__name">{displayName}</span>
         <span>{headline}</span>
       </div>
       <Avatar className="searchHint__avatar" src={avatar} />

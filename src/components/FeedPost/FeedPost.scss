@@ -15,10 +15,8 @@
   border: 1px solid $lightGray;
   margin: 0px auto 1.25em auto;
 
-  @media only screen and (max-width: $mobile) {
+  @media only screen and (max-width: $tablet) {
     border-radius: 0px;
-    border-left: none;
-    border-right: none;
   }
 
   &__user {
@@ -48,7 +46,6 @@
     width: 100%;
     max-block-size: none;
     word-break: break-all;
-
 
     &--see__less {
       padding: 0;

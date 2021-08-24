@@ -20,14 +20,14 @@
     text-decoration: none;
   }
 
-  @media only screen and (min-width: $medium) {
+  @media only screen and (min-width: $tablet) {
     @include flexColumn;
   }
 
   &__title {
     display: none;
 
-    @media only screen and (min-width: $medium) {
+    @media only screen and (min-width: $tablet) {
       font-size: $textFont;
       font-weight: $normalWeight;
       margin: 0;

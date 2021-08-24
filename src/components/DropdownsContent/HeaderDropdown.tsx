@@ -30,10 +30,10 @@ export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ testid }) => {
             <Avatar src={userData?.avatar || ''} />
           </li>
           <li className="headerDropdown__listItem">
-            <p className="headerDropdown__info">
-              {userData?.displayName || 'User'}
+            <div className="headerDropdown__info">
+              <span className="headerDropdown__name">{userData?.displayName || 'User'}</span>
               <span>{userData?.headline}</span>
-            </p>
+            </div>
           </li>
           <li className="headerDropdown__listItem">
             <Button
