@@ -18,11 +18,24 @@
     font-size: $mediumFont;
     align-items: center;
     padding: 1em;
+
+    &--dark {
+      & .MuiOutlinedInput-root {
+        color: $lightGray !important;
+      }
+    }
   }
 
   &__field {
     margin-bottom: 1em;
     padding: 0 1em;
+
+    &--dark {
+      color: $lightGray !important;
+      & .MuiInput-root {
+        color: $lightGray !important;
+      }
+    }
   }
 
   &__addfield {
@@ -30,11 +43,21 @@
     background: none;
     padding: 1em;
     cursor: pointer;
+
+    &--dark {
+      color: $lightGray !important;
+    }
   }
 
   &__submitButtonWrapper {
     @include flexCenter;
     width: 100%;
     margin-bottom: 0.5em;
+  }
+
+  &__submitButton {
+    &--dark {
+      color: $lightGray !important;
+    }
   }
 }

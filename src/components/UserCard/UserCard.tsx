@@ -31,17 +31,23 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followe
   return (
     <Grow in timeout={500}>
       <section className={classNames('userCard', { 'userCard--dark': isDarkMode })} data-testid={`${testid}${id}`}>
-        <Link className="userCard__info" data-testid={`"userCard__displayName--${testid}`} to={`/user/${id}`}>
+        <Link
+          className={classNames('userCard__info', { 'userCard__info--dark': isDarkMode })}
+          data-testid={`"userCard__displayName--${testid}`}
+          to={`/user/${id}`}
+        >
           <Avatar className="userCard__avatar" src={avatar} />
-          <p className={classNames('userCard__displayName', { 'userCard__displayName--dark': isDarkMode })}>
-            {displayName}
-          </p>
+          <p className="userCard__displayName">{displayName}</p>
         </Link>
         <Button
           onClick={handleClick}
           variant={isFollowed ? 'contained' : 'outlined'}
           color="primary"
-          className="userCard__button"
+          className={classNames(
+            'userCard__button',
+            { 'userCard__button--darkFollowed': isFollowed && isDarkMode },
+            { 'userCard__button--darkUnfollowed': !isFollowed && isDarkMode }
+          )}
         >
           {isFollowed ? 'Followed' : 'Follow'}
         </Button>

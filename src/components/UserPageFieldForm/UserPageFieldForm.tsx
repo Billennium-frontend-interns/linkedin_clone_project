@@ -84,12 +84,9 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
   return (
     <article className={classNames('userPageFieldForm', { 'userPageFieldForm--dark': isDarkMode })}>
       <form onSubmit={handleSubmit}>
-        <div className="userPageFieldForm__title">
+        <div className={classNames('userPageFieldForm__title', { 'userPageFieldForm__title--dark': isDarkMode })}>
           <TextField
             error={titleError}
-            className={classNames('userPageFieldForm__titleField', {
-              'userPageFieldFormField__titleField--dark': isDarkMode
-            })}
             helperText={titleError && `Title can't be empty`}
             onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => checkKeyDown(e)}
             onChange={event => setFormTitle(event.target.value)}
@@ -101,7 +98,7 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
         </div>
         <ul>
           {fieldInputs.map(({ name }) => (
-            <li className="userPageFieldForm__field">
+            <li className={classNames('userPageFieldForm__field', { 'userPageFieldForm__field--dark': isDarkMode })}>
               <TextField
                 name={name}
                 value={fieldsData[name]}
@@ -116,12 +113,23 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
           ))}
         </ul>
         {fieldInputs.length < MAX_FIELDS_THRESHOLD && (
-          <button className="userPageFieldForm__addfield" type="button" onClick={addField}>
+          <button
+            className={classNames('userPageFieldForm__addfield', { 'userPageFieldForm__addfield--dark': isDarkMode })}
+            type="button"
+            onClick={addField}
+          >
             <AddIcon role="button" aria-label="Add new field" />
           </button>
         )}
         <span className="userPageFieldForm__submitButtonWrapper">
-          <Button className="userPageFieldForm__submitButton" variant="contained" color="primary" type="submit">
+          <Button
+            className={classNames('userPageFieldForm__submitButton', {
+              'userPageFieldForm__submitButton--dark': isDarkMode
+            })}
+            variant="contained"
+            color="primary"
+            type="submit"
+          >
             Confirm
           </Button>
         </span>

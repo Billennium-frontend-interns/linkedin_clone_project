@@ -14,7 +14,7 @@
 
   &--dark {
     background-color: $darkModeGray;
-    color: $white !important;
+    color: $lightGray !important;
     border-color: $darkModeBlack;
   }
 
@@ -76,7 +76,7 @@
 
   &__icon {
     &--dark {
-      color: $white !important;
+      color: $lightGray !important;
     }
   }
 

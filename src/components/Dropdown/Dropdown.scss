@@ -22,8 +22,8 @@
     right: 0px;
 
     &--dark {
-      background-color: #282828;
-      color: white;
+      background-color: $darkModeLightGray;
+      color: $lightGray;
     }
 
     @media only screen and (min-width: $mobile) {

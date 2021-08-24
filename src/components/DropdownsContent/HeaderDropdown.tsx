@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import classNames from 'classnames';
 import { Avatar, Button, IconButton } from '@material-ui/core';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
@@ -43,7 +44,9 @@ export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ testid }) => {
             <Button
               data-testid={`${testid}ViewProfile`}
               onClick={() => history.push(`/user/${userData?.id}`)}
-              className="headerDropdown__button"
+              className={classNames('headerDropdown__button', {
+                'headerDropdown__button--darkViewProfile': isDarkMode
+              })}
               variant="outlined"
               color="primary"
             >
@@ -54,7 +57,9 @@ export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ testid }) => {
             <Button
               onClick={() => signOut({ history })}
               data-testid={`${testid}SignOut`}
-              className="headerDropdown__button"
+              className={classNames('headerDropdown__button', {
+                'headerDropdown__button--darkLogout': isDarkMode
+              })}
               variant="outlined"
             >
               Sign Out

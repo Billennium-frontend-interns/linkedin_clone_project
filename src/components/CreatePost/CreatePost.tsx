@@ -43,7 +43,7 @@ export const CreatePost: React.FC = () => {
           placeholder="What do you want to say?"
           value={postText}
           onChange={handleChange}
-          className="share-box__text"
+          className={classNames('share-box__text', { 'share-box__text--dark': isDarkMode })}
           data-testid="textPost"
           inputProps={{ maxLength: MAX_INPUT_LENGTH }}
         />
@@ -53,7 +53,7 @@ export const CreatePost: React.FC = () => {
         variant="contained"
         color="primary"
         size="small"
-        className="share-box__add-post"
+        className={classNames('share-box__add-post', { 'share-box__add-post--dark': isDarkMode })}
         data-testid="addPost"
         onClick={handleSubmit}
       >

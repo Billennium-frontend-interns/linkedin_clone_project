@@ -15,7 +15,6 @@
   &--dark {
     background-color: #404040;
     border-color: $darkModeMainBackground;
-    color: $white;
   }
 
   @media only screen and (min-width: $mobile) {
@@ -31,6 +30,10 @@
     text-decoration: none;
     color: $black;
 
+    &--dark {
+      color: $lightGray;
+    }
+
     &:hover {
       text-decoration: underline;
     }
@@ -41,17 +44,15 @@
     width: 100px !important;
   }
 
-  &__displayName {
-    &--dark {
-      color: $white;
-    }
-  }
   &__button {
     margin-top: 20px !important;
 
-    &--followed {
-      background-color: $linkedinBlue !important;
-      color: $white !important;
+    &--darkFollowed {
+      color: $lightGray !important;
+    }
+
+    &--darkUnfollowed {
+      background-color: $darkModeGray !important;
     }
   }
 }

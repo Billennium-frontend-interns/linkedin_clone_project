@@ -17,7 +17,7 @@
 
   &--dark {
     background-color: $darkModeGray;
-    color: $white;
+    color: $lightGray;
     border-color: $darkModeBlack;
   }
 
@@ -48,7 +48,7 @@
     font-weight: $fontBold;
 
     &--dark {
-      color: $white;
+      color: $lightGray;
     }
   }
 

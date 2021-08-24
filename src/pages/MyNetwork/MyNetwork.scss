@@ -36,6 +36,10 @@
     border-radius: 5px;
     background-color: $white;
 
+    &--dark {
+      background-color: $lightGray;
+    }
+
     @media only screen and (min-width: $laptop) {
       flex-direction: row;
     }
@@ -50,6 +54,10 @@
       color: $white !important;
       border: none !important;
       background-color: $linkedinBlue !important;
+
+      &--dark {
+        color: $lightGray !important;
+      }
     }
   }
 }

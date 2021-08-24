@@ -28,6 +28,15 @@
   &__button {
     text-transform: none !important;
     flex: 1;
+
+    &--darkViewProfile {
+      background-color: $darkModeGray !important;
+    }
+
+    &--darkLogout {
+      background-color: $darkModeGray !important;
+      color: $lightGray !important;
+    }
   }
 
   &__actions {

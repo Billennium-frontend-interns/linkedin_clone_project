@@ -17,7 +17,7 @@
   &--dark {
     background-color: $darkModeLightGray;
     border-color: $darkModeBlack;
-    color: $white;
+    color: $lightGray;
   }
 
   @media only screen and (min-width: $small) {
@@ -31,10 +31,6 @@
 
   &__name {
     font-weight: $fontBold;
-  }
-
-  &:hover {
-    color: $linkedinBlue;
   }
 
   &__link {

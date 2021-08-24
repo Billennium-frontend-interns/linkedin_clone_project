@@ -30,7 +30,7 @@
   @include flexColumn;
 
   &--dark {
-    background-color: $darkModeGray;
+    background-color: $darkModeLightGray;
     border-color: $darkModeBlack;
   }
 
