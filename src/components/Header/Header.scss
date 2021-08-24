@@ -28,14 +28,14 @@
   &__logo {
     font-size: $titleFont !important;
 
-    @media only screen and (min-width: $medium) {
+    @media only screen and (min-width: $tablet) {
       margin-right: 10px;
     }
 
     &--hidden {
       display: none !important;
 
-      @media only screen and (min-width: $small) {
+      @media only screen and (min-width: $mobile) {
         display: block !important;
       }
     }
