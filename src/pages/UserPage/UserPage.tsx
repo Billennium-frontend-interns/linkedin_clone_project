@@ -34,6 +34,7 @@ export const UserPage: React.FC = () => {
   });
   const [getFields, setGetFields] = useState(false);
   const [isUserPostsShowed, setIsUserPostsShowed] = useState(false);
+  const isOwner = ownerUid === loggedInUser?.uid;
 
   useEffect(() => {
     db.collection('users')
@@ -57,22 +58,24 @@ export const UserPage: React.FC = () => {
             ownerUid={ownerUid}
             displayName={userData?.displayName}
             avatar={userData?.avatar}
-            isMyUserDetails={loggedInUser?.uid === ownerUid}
+            isMyUserDetails={isOwner}
             isUserFollowedBy={isUserFollowed}
             isUserFollowing={isUserFollowing}
           />
         ) : null}
-        <Button
-          type="button"
-          variant="contained"
-          color={isUserPostsShowed ? 'secondary' : 'primary'}
-          className="userPage__showButton"
-          onClick={() => {
-            setIsUserPostsShowed(!isUserPostsShowed);
-          }}
-        >
-          {isUserPostsShowed ? 'Show profile fields' : 'Show my posts'}
-        </Button>
+        {isOwner && (
+          <Button
+            type="button"
+            variant="contained"
+            color={isUserPostsShowed ? 'secondary' : 'primary'}
+            className="userPage__showButton"
+            onClick={() => {
+              setIsUserPostsShowed(!isUserPostsShowed);
+            }}
+          >
+            {isUserPostsShowed ? 'Show profile fields' : 'Show my posts'}
+          </Button>
+        )}
         {isUserPostsShowed ? (
           <MyPosts />
         ) : (
@@ -87,10 +90,8 @@ export const UserPage: React.FC = () => {
                   isError={fieldEntries.isError}
                 />
               ))}
-              {!isAddField && loggedInUser?.uid === ownerUid && (
-                <UserPageFieldForm data={isAddField} setter={setIsAddField} />
-              )}
-              {loggedInUser?.uid === ownerUid && (
+              {!isAddField && isOwner && <UserPageFieldForm data={isAddField} setter={setIsAddField} />}
+              {isOwner && (
                 <span className="userPage__ctaButton">
                   <Button
                     type="button"
