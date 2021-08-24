@@ -1,0 +1,14 @@
+@import '../../styles/Mixins.scss';
+
+.myPosts {
+  width: 100%;
+  max-width: 700px;
+
+  &__wrapper {
+    @include flexCenter;
+  }
+
+  &__showMore {
+    margin: auto !important;
+  }
+}
