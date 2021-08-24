@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 import { TextField, Button } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { updateProfileFields } from '../../actions/updateProfileFields';
 import { contentField } from '../../shared/interfaces/ProfileFieldInterfaces';
 import './UserPageFieldForm.scss';
+import { useDarkMode } from '../../context/DarkModeProvider';
 
 type fieldType = {
   name: string;
@@ -22,6 +24,7 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
   const [formTitle, setFormTitle] = useState('');
   const [titleError, setTitleError] = useState(false);
   const [fieldError, setFieldError] = useState(false);
+  const { isDarkMode } = useDarkMode();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -79,11 +82,14 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
   };
 
   return (
-    <article className="userPageFieldForm">
+    <article className={classNames('userPageFieldForm', { 'userPageFieldForm--dark': isDarkMode })}>
       <form onSubmit={handleSubmit}>
         <div className="userPageFieldForm__title">
           <TextField
             error={titleError}
+            className={classNames('userPageFieldForm__titleField', {
+              'userPageFieldFormField__titleField--dark': isDarkMode
+            })}
             helperText={titleError && `Title can't be empty`}
             onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => checkKeyDown(e)}
             onChange={event => setFormTitle(event.target.value)}

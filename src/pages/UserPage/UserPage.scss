@@ -5,12 +5,16 @@
 @import '../../styles/Breakpoints';
 
 .userPage {
-    @include flexColumn;
-    min-height: 100vh;
-    justify-content: flex-start;
-    background: $mainBackground;
+  @include flexColumn;
+  min-height: 100vh;
+  justify-content: flex-start;
+  background: $mainBackground;
 
-    &__ctaButton{
-        margin: 1em;
-    }
+  &--dark {
+    background-color: $darkModeMainBackground;
+  }
+
+  &__ctaButton {
+    margin: 1em;
+  }
 }

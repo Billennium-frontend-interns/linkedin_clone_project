@@ -1,15 +1,16 @@
-import React, { useContext } from 'react';
-import classnames from 'classnames';
+import React from 'react';
+import classNames from 'classnames';
 import { CreatePost } from '../../components/CreatePost/CreatePost';
 import { FeedList } from '../../components/FeedList/FeedList';
 import { Header } from '../../components/Header/Header';
-import { DarkModeContext } from '../../context/DarkModeProvider';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './Feed.scss';
 
 export const Feed: React.FC = () => {
-  const [isDarkMode] = useContext(DarkModeContext);
+  const { isDarkMode } = useDarkMode();
+
   return (
-    <div className={classnames('feed', { 'feed--dark': isDarkMode })}>
+    <div className={classNames('feed', { 'feed--dark': isDarkMode })}>
       <Header testid="feedPageHeader" />
       <div className="feed__createPost">
         <CreatePost />

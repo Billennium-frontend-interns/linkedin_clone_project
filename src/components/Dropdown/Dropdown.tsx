@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { DarkModeContext } from '../../context/DarkModeProvider';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './Dropdown.scss';
 
 interface DropdownProps {
@@ -11,7 +11,7 @@ interface DropdownProps {
 
 export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, content }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isDarkMode] = useContext(DarkModeContext);
+  const { isDarkMode } = useDarkMode();
   const dropdown = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const closeDropdownOutside = (ref: React.MutableRefObject<HTMLDivElement>) => {

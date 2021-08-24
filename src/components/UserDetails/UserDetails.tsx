@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 import { Button } from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import EditIcon from '@material-ui/icons/Edit';
 import AvatarPlaceholder from '../../assets/images/avatar_placeholder.png';
 import { EditProfile } from '../EditProfile/EditProfile';
 import { followAction } from '../../actions/followAction';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './UserDetails.scss';
 
 interface UserDetailsProps {
@@ -28,6 +30,7 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
 }: UserDetailsProps) => {
   const [isFollowing, setIsFollowing] = useState(isUserFollowing);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const { isDarkMode } = useDarkMode();
 
   const handleClick = (action: 'follow' | 'unfollow') => {
     followAction(ownerUid, displayName, action);
@@ -46,7 +49,7 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
   };
 
   return (
-    <section className="userDetails">
+    <section className={classNames('userDetails', { 'userDetails--dark': isDarkMode })}>
       <img
         className="userDetails__avatar"
         src={avatar || AvatarPlaceholder}
@@ -64,7 +67,7 @@ export const UserDetails: React.FC<UserDetailsProps> = ({
                   setIsEditModalOpen(true);
                 }}
               >
-                <EditIcon />
+                <EditIcon className={classNames('userDetails__icon', { 'userDetails__icon--dark': isDarkMode })} />
               </Button>
             </span>
           ) : (

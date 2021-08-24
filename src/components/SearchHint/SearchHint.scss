@@ -1,5 +1,6 @@
 @import '../../styles/Colors.scss';
 @import '../../styles/FontSizes.scss';
+@import '../../styles/FontWeights.scss';
 @import '../../styles/Breakpoints.scss';
 
 .searchHint {
@@ -13,6 +14,12 @@
   border-top: none;
   font-size: $textFont;
 
+  &--dark {
+    background-color: $darkModeLightGray;
+    border-color: $darkModeBlack;
+    color: $white;
+  }
+
   @media only screen and (min-width: $small) {
     font-size: $smallFont;
   }
@@ -20,6 +27,10 @@
   &__info {
     display: flex;
     flex-direction: column;
+  }
+
+  &__name {
+    font-weight: $fontBold;
   }
 
   &:hover {

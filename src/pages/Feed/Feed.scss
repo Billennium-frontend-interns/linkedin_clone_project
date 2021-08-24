@@ -5,8 +5,9 @@
   min-height: 100vh;
 
   &--dark {
-    background-color: #181818;
+    background-color: $darkModeMainBackground;
   }
+
   &__createPost {
     display: flex;
     justify-content: center;

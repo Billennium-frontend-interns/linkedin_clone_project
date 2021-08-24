@@ -3,8 +3,7 @@
 
 .create-post {
   @include flexColumn;
-  border-bottom: 1px solid $lightBlue;
-  border-top: 1px solid $lightBlue;
+  border: 1px solid $lightBlue;
   background-color: $white;
   padding: 20px;
   margin: 20px auto;
@@ -12,12 +11,13 @@
   flex: 1;
 
   &--dark {
-    background-color: #282828;
+    background-color: $darkModeGray;
+    border-color: $darkModeBlack;
   }
 
   @media only screen and (min-width: $tablet) {
     &--dark {
-      border: 1px solid #121212;
+      border: 1px solid $darkModeBlack;
     }
 
     border: 1px solid $lightBlue;

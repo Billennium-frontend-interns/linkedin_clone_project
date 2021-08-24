@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState, useContext } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { DebounceInput } from 'react-debounce-input';
 import { SearchHint } from '../SearchHint/SearchHint';
 import { User } from '../../shared/interfaces/UserInterfaces';
-import { DarkModeContext } from '../../context/DarkModeProvider';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './Search.scss';
 
 interface SearchProps {
@@ -18,7 +18,7 @@ interface SearchProps {
 export const Search: React.FC<SearchProps> = ({ testid, getHints, setIsSearchOpen, isSearchOpen }) => {
   const [searchInput, setSearchInput] = useState('');
   const [searchHints, setSearchHints] = useState<User[][]>([]);
-  const [isDarkMode] = useContext(DarkModeContext);
+  const { isDarkMode } = useDarkMode();
   const container = useRef() as React.MutableRefObject<HTMLInputElement>;
 
   const closeInputOutside = (ref: React.MutableRefObject<HTMLInputElement>) => {
@@ -46,7 +46,15 @@ export const Search: React.FC<SearchProps> = ({ testid, getHints, setIsSearchOpe
   closeInputOutside(container);
 
   return (
-    <div className={classNames('search', { 'search--hidden': isSearchOpen })} data-testid={testid}>
+    <div
+      className={classNames(
+        'search',
+        { 'search--hidden': isSearchOpen },
+        { 'search--dark': isDarkMode },
+        { 'search--hidden--dark': isSearchOpen && isDarkMode }
+      )}
+      data-testid={testid}
+    >
       <div ref={container} className="search__container">
         <SearchIcon
           onClick={() => {

@@ -17,8 +17,8 @@
   z-index: $ZIndexHeader;
 
   &--dark {
-    background: #121212;
-    border-color: #404040;
+    background: $darkModeBlack;
+    border-color: $darkModeLightGray;
   }
 
   &__search {

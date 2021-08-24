@@ -9,7 +9,7 @@
   min-height: 100vh;
 
   &--dark {
-    background-color: #181818;
+    background-color: $darkModeMainBackground;
   }
 
   &__container {
@@ -23,8 +23,8 @@
     border: 1px solid $lightGray;
 
     &--dark {
-      background-color: #282828;
-      border-color: #181818;
+      background-color: $darkModeGray;
+      border-color: $darkModeMainBackground;
     }
   }
 
@@ -47,7 +47,7 @@
     border-radius: 0 !important;
 
     &--active {
-      color: white !important;
+      color: $white !important;
       border: none !important;
       background-color: $linkedinBlue !important;
     }

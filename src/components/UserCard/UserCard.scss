@@ -10,11 +10,12 @@
   box-shadow: none;
   word-break: break-all;
   text-align: center;
+  border-radius: 15px;
 
   &--dark {
     background-color: #404040;
-    border-color: #181818;
-    color: white;
+    border-color: $darkModeMainBackground;
+    color: $white;
   }
 
   @media only screen and (min-width: $mobile) {
@@ -40,6 +41,11 @@
     width: 100px !important;
   }
 
+  &__displayName {
+    &--dark {
+      color: $white;
+    }
+  }
   &__button {
     margin-top: 20px !important;
 
