@@ -1,6 +1,7 @@
 @import '../../styles/Mixins.scss';
 @import '../../styles/FontSizes.scss';
 @import '../../styles/Breakpoints.scss';
+@import '../../styles/Colors.scss';
 
 .editForm {
   @include flexColumn;
@@ -11,6 +12,26 @@
   & div {
     min-width: 100%;
     margin-bottom: 10px;
+  }
+
+  &__field {
+    &--dark {
+      & .MuiInputLabel-outlined.MuiInputLabel-shrink {
+        color: $lightGray !important;
+      }
+
+      & .MuiOutlinedInput-input {
+        color: $lightGray !important;
+      }
+
+      & .MuiInputLabel-outlined {
+        color: $lightGray !important;
+      }
+
+      & .MuiOutlinedInput-notchedOutline {
+        border-color: $lightGray !important;
+      }
+    }
   }
 }
 

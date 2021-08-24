@@ -5,22 +5,26 @@
 @import '../../styles/Breakpoints';
 @import '../../styles/Fonts';
 
-
 .userPageField {
-    @include cardStyling;
-    margin-bottom: 1em;
+  @include cardStyling;
+  margin-bottom: 1em;
 
-    &__title {
-        display: flex;
-        font-size: $mediumFont;
-        align-items: center;
-        padding: 0 1em;
-        word-break: break-all;
+  &--dark {
+    background-color: $darkModeGray;
+    color: $lightGray !important;
+    border-color: $darkModeBlack;
+  }
 
-    }
+  &__title {
+    display: flex;
+    font-size: $mediumFont;
+    align-items: center;
+    padding: 0 1em;
+    word-break: break-all;
+  }
 
-    &__entries {
-        word-break: break-all;
-        margin: 1em;
-    }
+  &__entries {
+    word-break: break-all;
+    margin: 1em;
+  }
 }

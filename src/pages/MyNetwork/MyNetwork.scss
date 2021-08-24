@@ -8,6 +8,10 @@
   background-color: $mainBackground;
   min-height: 100vh;
 
+  &--dark {
+    background-color: $darkModeMainBackground;
+  }
+
   &__container {
     margin: 20px 0;
     width: 65vw;
@@ -17,6 +21,11 @@
     background-color: $white;
     padding: 10px;
     border: 1px solid $lightGray;
+
+    &--dark {
+      background-color: $darkModeGray;
+      border-color: $darkModeMainBackground;
+    }
   }
 
   &__buttons {
@@ -26,6 +35,10 @@
     flex-direction: column;
     border-radius: 5px;
     background-color: $white;
+
+    &--dark {
+      background-color: $lightGray;
+    }
 
     @media only screen and (min-width: $laptop) {
       flex-direction: row;
@@ -38,9 +51,13 @@
     border-radius: 0 !important;
 
     &--active {
-      color: white !important;
+      color: $white !important;
       border: none !important;
       background-color: $linkedinBlue !important;
+
+      &--dark {
+        color: $lightGray !important;
+      }
     }
   }
 }

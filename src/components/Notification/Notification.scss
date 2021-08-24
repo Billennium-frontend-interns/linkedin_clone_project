@@ -24,7 +24,11 @@
   &__link {
     text-decoration: none;
     cursor: pointer;
-    color: black;
+    color: $black;
+
+    &--dark {
+      color: $lightGray;
+    }
   }
 
   &__timestamp {

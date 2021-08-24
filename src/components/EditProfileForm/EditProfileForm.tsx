@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { DropzoneArea } from 'material-ui-dropzone';
 import { Button, TextField } from '@material-ui/core';
@@ -10,6 +11,7 @@ import { editProfile } from '../../actions/editProfile';
 import { updateAvatar } from '../../actions/updateAvatar';
 import { User } from '../../shared/interfaces/UserInterfaces';
 import { customToast } from '../../actions/customToast';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './EditProfileForm.scss';
 
 interface EditProfileFormProps {
@@ -27,7 +29,7 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({ closeModal }) 
   const currentUser = useContext(AuthContext);
   const [shouldDataChange, setShouldDataChange] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
-
+  const { isDarkMode } = useDarkMode();
   const { userData, isLoading, isError } = useGetUserData(currentUser?.uid as string);
 
   useEffect(() => {
@@ -70,7 +72,7 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({ closeModal }) 
       <WithError isError={isError} errorMessage="Something went wrong please try again...">
         <form className="editForm" onSubmit={handleSubmit}>
           <TextField
-            className="editForm__field"
+            className={classNames('editForm__field', { 'editForm__field--dark': isDarkMode })}
             variant="outlined"
             label="Enter new name"
             type="text"
@@ -85,7 +87,7 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({ closeModal }) 
             data-testid="displayName"
           />
           <TextField
-            className="editForm__field"
+            className={classNames('editForm__field', { 'editForm__field--dark': isDarkMode })}
             variant="outlined"
             label="Enter new headline"
             type="text"

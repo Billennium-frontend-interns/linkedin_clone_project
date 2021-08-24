@@ -16,6 +16,11 @@
   padding: 10px 0;
   z-index: $ZIndexHeader;
 
+  &--dark {
+    background: $darkModeBlack;
+    border-color: $darkModeLightGray;
+  }
+
   &__search {
     @include flexCenter;
   }

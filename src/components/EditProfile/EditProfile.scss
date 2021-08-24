@@ -29,6 +29,11 @@
   animation: appear 1s;
   @include flexColumn;
 
+  &--dark {
+    background-color: $darkModeLightGray;
+    border-color: $darkModeBlack;
+  }
+
   button {
     width: 82px !important;
   }

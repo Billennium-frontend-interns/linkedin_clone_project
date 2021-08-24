@@ -14,6 +14,12 @@
   border-top: none;
   font-size: $textFont;
 
+  &--dark {
+    background-color: $darkModeLightGray;
+    border-color: $darkModeBlack;
+    color: $lightGray;
+  }
+
   @media only screen and (min-width: $small) {
     font-size: $smallFont;
   }
@@ -25,10 +31,6 @@
 
   &__name {
     font-weight: $fontBold;
-  }
-
-  &:hover {
-    color: $linkedinBlue;
   }
 
   &__link {

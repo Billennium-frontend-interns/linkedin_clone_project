@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import classNames from 'classnames';
 import { useParams } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import { db } from '../../firebase';
@@ -11,6 +12,7 @@ import { Header } from '../../components/Header/Header';
 import { WithLoader } from '../../components/WithLoader/WithLoader';
 import { UserPageFieldInterface, fields } from '../../shared/interfaces/ProfileFieldInterfaces';
 import { MyPosts } from '../../components/MyPosts/MyPosts';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './UserPage.scss';
 
 type UserPageParams = {
@@ -20,6 +22,7 @@ type UserPageParams = {
 export const UserPage: React.FC = () => {
   const [userData, setUserData] = useState<firebase.default.firestore.DocumentData>();
   const [isAddField, setIsAddField] = useState(true);
+  const { isDarkMode } = useDarkMode();
   const { ownerUid } = useParams<UserPageParams>();
   const loggedInUser = useContext(AuthContext);
   const isUserFollowed = useIsUserFollowed(loggedInUser?.uid, ownerUid);
@@ -31,6 +34,7 @@ export const UserPage: React.FC = () => {
   });
   const [getFields, setGetFields] = useState(false);
   const [isUserPostsShowed, setIsUserPostsShowed] = useState(false);
+  const isOwner = ownerUid === loggedInUser?.uid;
 
   useEffect(() => {
     db.collection('users')
@@ -47,29 +51,31 @@ export const UserPage: React.FC = () => {
   return (
     <>
       <Header />
-      <section className="userPage">
+      <section className={classNames('userPage', { 'userPage--dark': isDarkMode })}>
         {userData ? (
           <UserDetails
             headline={userData?.headline}
             ownerUid={ownerUid}
             displayName={userData?.displayName}
             avatar={userData?.avatar}
-            isMyUserDetails={loggedInUser?.uid === ownerUid}
+            isMyUserDetails={isOwner}
             isUserFollowedBy={isUserFollowed}
             isUserFollowing={isUserFollowing}
           />
         ) : null}
-        <Button
-          type="button"
-          variant="contained"
-          color={isUserPostsShowed ? 'secondary' : 'primary'}
-          className="userPage__showButton"
-          onClick={() => {
-            setIsUserPostsShowed(!isUserPostsShowed);
-          }}
-        >
-          {isUserPostsShowed ? 'Show profile fields' : 'Show my posts'}
-        </Button>
+        {isOwner && (
+          <Button
+            type="button"
+            variant="contained"
+            color={isUserPostsShowed ? 'secondary' : 'primary'}
+            className="userPage__showButton"
+            onClick={() => {
+              setIsUserPostsShowed(!isUserPostsShowed);
+            }}
+          >
+            {isUserPostsShowed ? 'Show profile fields' : 'Show my posts'}
+          </Button>
+        )}
         {isUserPostsShowed ? (
           <MyPosts />
         ) : (
@@ -84,10 +90,8 @@ export const UserPage: React.FC = () => {
                   isError={fieldEntries.isError}
                 />
               ))}
-              {!isAddField && loggedInUser?.uid === ownerUid && (
-                <UserPageFieldForm data={isAddField} setter={setIsAddField} />
-              )}
-              {loggedInUser?.uid === ownerUid && (
+              {!isAddField && isOwner && <UserPageFieldForm data={isAddField} setter={setIsAddField} />}
+              {isOwner && (
                 <span className="userPage__ctaButton">
                   <Button
                     type="button"
