@@ -9,6 +9,7 @@ import { useGetUserData } from '../../actions/useGetUserData';
 import { editProfile } from '../../actions/editProfile';
 import { updateAvatar } from '../../actions/updateAvatar';
 import { User } from '../../shared/interfaces/UserInterfaces';
+import { customToast } from '../../actions/customToast';
 import './EditProfileForm.scss';
 
 interface EditProfileFormProps {
@@ -60,6 +61,10 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({ closeModal }) 
     }
   };
 
+  const rejectFiles = () => {
+    customToast('error', 'Enter image with correct extension', false);
+  };
+
   return (
     <WithLoader isLoading={isLoading}>
       <WithError isError={isError} errorMessage="Something went wrong please try again...">
@@ -101,6 +106,7 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = ({ closeModal }) 
             filesLimit={1}
             showAlerts={false}
             onDrop={() => setShouldDataChange(true)}
+            onDropRejected={rejectFiles}
             inputProps={{
               id: 'avatar',
               name: 'avatar'
