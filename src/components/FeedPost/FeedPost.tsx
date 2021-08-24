@@ -1,9 +1,11 @@
 import React, { useRef, useState, MutableRefObject } from 'react';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
+import classNames from 'classnames';
+import { Link } from 'react-router-dom';
+import AvatarPlaceholder from '../../assets/images/avatar_placeholder.png';
 import { useGetUserData } from '../../actions/useGetUserData';
 import { useIsContentOverflowing } from '../../actions/useIsContentOverflowing';
-import AvatarPlaceholder from '../../assets/images/avatar_placeholder.png';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './FeedPost.scss';
 
 export interface FeedPostProps {
@@ -15,6 +17,7 @@ export interface FeedPostProps {
 
 export const FeedPost: React.FC<FeedPostProps> = ({ ownerUid, content, timestamp, testid }: FeedPostProps) => {
   const [seeMore, setSeeMore] = useState(false);
+  const { isDarkMode } = useDarkMode();
   const ref = useRef() as MutableRefObject<HTMLParagraphElement>;
   const isContentOverflowing = useIsContentOverflowing(ref);
   const timePassed = moment.unix(timestamp.seconds).fromNow();
@@ -23,10 +26,10 @@ export const FeedPost: React.FC<FeedPostProps> = ({ ownerUid, content, timestamp
   } = useGetUserData(ownerUid);
 
   return (
-    <article className="feedPost">
+    <article className={classNames('feedPost', { 'feedPost--dark': isDarkMode })}>
       <Link className="feedPost__user" data-testid={`"feedPost__user--${testid}`} to={`/user/${ownerUid}`}>
         <img className="feedPost__avatar" src={avatar || AvatarPlaceholder} alt={`${displayName}'s avatar`} />
-        <p className="feedPost__name">{displayName}</p>
+        <p className={classNames('feedPost__name', { 'feedPost__name--dark': isDarkMode })}>{displayName}</p>
       </Link>
       <p ref={ref} className={`feedPost__content feedPost__content--see__${!seeMore && 'less'}`}>
         {content.trim()}

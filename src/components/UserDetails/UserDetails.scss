@@ -12,6 +12,12 @@
   height: fit-content;
   word-break: break-word;
 
+  &--dark {
+    background-color: $darkModeGray;
+    color: $lightGray !important;
+    border-color: $darkModeBlack;
+  }
+
   &__avatar {
     width: 96px;
     height: 96px;
@@ -66,6 +72,12 @@
 
   &__edit {
     align-items: flex-end;
+  }
+
+  &__icon {
+    &--dark {
+      color: $lightGray !important;
+    }
   }
 
   &__followButton {

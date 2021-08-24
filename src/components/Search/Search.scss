@@ -22,6 +22,10 @@
     padding: 5px;
     background-color: $lightGray;
 
+    &--dark {
+      background-color: $darkModeLightGray;
+    }
+
     :hover {
       color: inherit;
     }
@@ -32,6 +36,10 @@
     padding: 5px;
     background-color: $lightGray;
     margin-left: 0;
+
+    &--dark {
+      background-color: $darkModeLightGray;
+    }
 
     :hover {
       color: inherit;

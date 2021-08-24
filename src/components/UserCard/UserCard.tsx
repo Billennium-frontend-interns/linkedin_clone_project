@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Avatar, Button, Grow } from '@material-ui/core';
 import { followAction } from '../../actions/followAction';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './UserCard.scss';
 
 interface UserCardProps {
@@ -15,6 +17,7 @@ interface UserCardProps {
 
 export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followed, id, testid }) => {
   const [isFollowed, setIsFollowed] = useState(followed);
+  const { isDarkMode } = useDarkMode();
 
   const handleClick = () => {
     if (!isFollowed) {
@@ -27,8 +30,12 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followe
 
   return (
     <Grow in timeout={500}>
-      <section className="userCard" data-testid={`${testid}${id}`}>
-        <Link className="userCard__info" data-testid={`"userCard__displayName--${testid}`} to={`/user/${id}`}>
+      <section className={classNames('userCard', { 'userCard--dark': isDarkMode })} data-testid={`${testid}${id}`}>
+        <Link
+          className={classNames('userCard__info', { 'userCard__info--dark': isDarkMode })}
+          data-testid={`"userCard__displayName--${testid}`}
+          to={`/user/${id}`}
+        >
           <Avatar className="userCard__avatar" src={avatar} />
           <p className="userCard__displayName">{displayName}</p>
         </Link>
@@ -36,7 +43,11 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followe
           onClick={handleClick}
           variant={isFollowed ? 'contained' : 'outlined'}
           color="primary"
-          className="userCard__button"
+          className={classNames(
+            'userCard__button',
+            { 'userCard__button--darkFollowed': isFollowed && isDarkMode },
+            { 'userCard__button--darkUnfollowed': !isFollowed && isDarkMode }
+          )}
         >
           {isFollowed ? 'Followed' : 'Follow'}
         </Button>

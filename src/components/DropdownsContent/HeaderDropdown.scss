@@ -1,4 +1,5 @@
 @import '../../styles/FontWeights.scss';
+@import '../../styles/Colors.scss';
 
 .headerDropdown {
   list-style-type: none;
@@ -27,10 +28,23 @@
   &__button {
     text-transform: none !important;
     flex: 1;
+
+    &--darkViewProfile {
+      background-color: $darkModeGray !important;
+    }
+
+    &--darkLogout {
+      background-color: $darkModeGray !important;
+      color: $lightGray !important;
+    }
   }
 
   &__actions {
     display: grid;
     place-items: center;
+  }
+
+  &__icon {
+    pointer-events: none !important;
   }
 }

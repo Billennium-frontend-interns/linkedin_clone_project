@@ -10,7 +10,17 @@
   max-width: 680px;
   flex: 1;
 
+  &--dark {
+    background-color: $darkModeGray;
+    border-color: $darkModeBlack;
+  }
+
   @media only screen and (min-width: $tablet) {
+    &--dark {
+      border: 1px solid $darkModeBlack;
+    }
+
+    border: 1px solid $lightBlue;
     border-radius: 20px;
   }
 
@@ -19,9 +29,19 @@
     width: 100%;
     margin: 0 15px;
 
+    &__add-post--dark {
+      color: $lightGray !important;
+    }
+
     &__text {
       width: 100%;
       margin: 15px;
+
+      &--dark {
+        & .MuiInput-root {
+          color: $lightGray;
+        }
+      }
     }
   }
 }

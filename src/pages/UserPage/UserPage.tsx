@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import classNames from 'classnames';
 import { useParams } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import { db } from '../../firebase';
@@ -11,6 +12,7 @@ import { Header } from '../../components/Header/Header';
 import { WithLoader } from '../../components/WithLoader/WithLoader';
 import { UserPageFieldInterface, fields } from '../../shared/interfaces/ProfileFieldInterfaces';
 import { MyPosts } from '../../components/MyPosts/MyPosts';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './UserPage.scss';
 
 type UserPageParams = {
@@ -20,6 +22,7 @@ type UserPageParams = {
 export const UserPage: React.FC = () => {
   const [userData, setUserData] = useState<firebase.default.firestore.DocumentData>();
   const [isAddField, setIsAddField] = useState(true);
+  const { isDarkMode } = useDarkMode();
   const { ownerUid } = useParams<UserPageParams>();
   const loggedInUser = useContext(AuthContext);
   const isUserFollowed = useIsUserFollowed(loggedInUser?.uid, ownerUid);
@@ -47,7 +50,7 @@ export const UserPage: React.FC = () => {
   return (
     <>
       <Header />
-      <section className="userPage">
+      <section className={classNames('userPage', { 'userPage--dark': isDarkMode })}>
         {userData ? (
           <UserDetails
             headline={userData?.headline}

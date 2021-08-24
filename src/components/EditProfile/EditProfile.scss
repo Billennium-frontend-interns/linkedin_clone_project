@@ -29,6 +29,11 @@
   animation: appear 1s;
   @include flexColumn;
 
+  &--dark {
+    background-color: $darkModeLightGray;
+    border-color: $darkModeBlack;
+  }
+
   button {
     width: 82px !important;
   }
@@ -44,7 +49,7 @@
     position: absolute;
     top: 2.5%;
     right: 2.5%;
-    
+
     :hover {
       cursor: pointer;
     }

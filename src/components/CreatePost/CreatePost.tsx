@@ -1,12 +1,15 @@
 import React, { useState, useContext } from 'react';
+import classNames from 'classnames';
 import { TextField, Avatar, Button } from '@material-ui/core';
 import { setPost } from '../../actions/setPost';
 import { AuthContext } from '../../context/AuthProvider';
 import { customToast } from '../../actions/customToast';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './CreatePost.scss';
 
 export const CreatePost: React.FC = () => {
   const [postText, setPostText] = useState('');
+  const { isDarkMode } = useDarkMode();
   const currentUser = useContext(AuthContext);
   const MAX_INPUT_LENGTH = 300;
 
@@ -32,7 +35,7 @@ export const CreatePost: React.FC = () => {
   };
 
   return (
-    <article data-testid="createPost" className="create-post">
+    <article data-testid="createPost" className={classNames('create-post', { 'create-post--dark': isDarkMode })}>
       <div className="share-box">
         <Avatar className="avatar" src={currentUser?.photoURL || ''} />
         <TextField
@@ -40,7 +43,7 @@ export const CreatePost: React.FC = () => {
           placeholder="What do you want to say?"
           value={postText}
           onChange={handleChange}
-          className="share-box__text"
+          className={classNames('share-box__text', { 'share-box__text--dark': isDarkMode })}
           data-testid="textPost"
           inputProps={{ maxLength: MAX_INPUT_LENGTH }}
         />
@@ -50,7 +53,7 @@ export const CreatePost: React.FC = () => {
         variant="contained"
         color="primary"
         size="small"
-        className="share-box__add-post"
+        className={classNames('share-box__add-post', { 'share-box__add-post--dark': isDarkMode })}
         data-testid="addPost"
         onClick={handleSubmit}
       >
