@@ -10,12 +10,13 @@ import './UserCard.scss';
 interface UserCardProps {
   avatar?: string;
   displayName: string;
+  headline?: string;
   followed?: boolean;
   id: string;
   testid?: string;
 }
 
-export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followed, id, testid }) => {
+export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, headline, followed, id, testid }) => {
   const [isFollowed, setIsFollowed] = useState(followed);
   const { isDarkMode } = useDarkMode();
 
@@ -37,7 +38,10 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followe
           to={`/user/${id}`}
         >
           <Avatar className="userCard__avatar" src={avatar} />
-          <p className="userCard__displayName">{displayName}</p>
+          <div className="userCard__bio">
+            <span className="userCard__displayName">{displayName}</span>
+            <span className="userCard__headline">{headline}</span>
+          </div>
         </Link>
         <Button
           onClick={handleClick}
@@ -59,13 +63,15 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followe
 UserCard.defaultProps = {
   avatar: '',
   followed: false,
-  testid: undefined
+  testid: undefined,
+  headline: ''
 };
 
 UserCard.propTypes = {
   avatar: PropTypes.string,
   displayName: PropTypes.string.isRequired,
   followed: PropTypes.bool,
+  headline: PropTypes.string,
   id: PropTypes.string.isRequired,
   testid: PropTypes.string
 };
