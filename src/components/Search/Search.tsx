@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { useParams } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
 import { SearchHint } from '../SearchHint/SearchHint';
 import { User } from '../../shared/interfaces/UserInterfaces';
@@ -20,6 +21,7 @@ export const Search: React.FC<SearchProps> = ({ testid, getHints, setIsSearchOpe
   const [searchHints, setSearchHints] = useState<User[][]>([]);
   const { isDarkMode } = useDarkMode();
   const container = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const params = useParams();
 
   const closeInputOutside = (ref: React.MutableRefObject<HTMLInputElement>) => {
     if (setIsSearchOpen) {
@@ -42,6 +44,10 @@ export const Search: React.FC<SearchProps> = ({ testid, getHints, setIsSearchOpe
       getHints(setSearchHints, searchInput);
     }
   }, [searchInput]);
+
+  useEffect(() => {
+    setSearchInput('');
+  }, [params]);
 
   closeInputOutside(container);
 
