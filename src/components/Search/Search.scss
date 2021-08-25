@@ -8,26 +8,26 @@
   height: 22px;
   color: $gray;
 
+  &:hover {
+    color: $linkedinBlue;
+  }
+
   @media only screen and (min-width: $small) {
     padding: 10px;
   }
 
-  :hover {
-    color: $linkedinBlue;
-  }
-
   &--hidden {
-    margin-left: 10px;
+    margin-left: 0;
     border-radius: 5px;
     padding: 5px;
     background-color: $lightGray;
 
-    &--dark {
-      background-color: $darkModeLightGray;
+    @media only screen and (min-width: $mobile) {
+      margin-left: 10px;
     }
 
-    :hover {
-      color: inherit;
+    &--dark {
+      background-color: $darkModeLightGray;
     }
   }
 
@@ -39,10 +39,6 @@
 
     &--dark {
       background-color: $darkModeLightGray;
-    }
-
-    :hover {
-      color: inherit;
     }
   }
 
@@ -65,10 +61,14 @@
 
   &__input {
     display: none;
-    width: 200px;
+    width: 215px;
 
     @media only screen and (min-width: $small) {
-      width: 260px;
+      width: 278px;
+    }
+
+    @media only screen and (min-width: $mobile) {
+      width: 360px;
     }
 
     &--hidden {

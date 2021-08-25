@@ -12,7 +12,11 @@
   background-color: $white;
   border: 1px solid $lightGray;
   border-top: none;
-  font-size: $textFont;
+  font-size: $xsmallFont;
+
+  &:hover {
+    color: $linkedinBlue;
+  }
 
   &--dark {
     background-color: $darkModeLightGray;
@@ -21,6 +25,10 @@
   }
 
   @media only screen and (min-width: $small) {
+    font-size: $textFont;
+  }
+
+  @media only screen and (min-width: $mobile) {
     font-size: $smallFont;
   }
 
