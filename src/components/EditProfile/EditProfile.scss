@@ -38,6 +38,10 @@
     width: 82px !important;
   }
 
+  &__closeButton {
+    max-width: 50px !important;
+  }
+
   &__title {
     margin: 16px 0px 16px 0px;
     font-weight: $fontBold;

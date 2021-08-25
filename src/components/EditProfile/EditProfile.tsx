@@ -33,7 +33,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({ isOpen, setIsModalOpen
       <p className="modal__title">Edit your profile</p>
       <EditProfileForm closeModal={closeModal} />
       <section className="modal__close">
-        <IconButton onClick={closeModal}>
+        <IconButton onClick={closeModal} className="modal__closeButton">
           <CancelIcon />
         </IconButton>
       </section>
