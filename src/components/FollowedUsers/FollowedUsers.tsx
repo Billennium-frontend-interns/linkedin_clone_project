@@ -29,8 +29,8 @@ export const FollowedUsers: React.FC<FollowedUsersProps> = ({ testid }) => {
       <WithError isError={isFollowsError || isError} errorMessage="Error has occurred please try again...">
         <Grow in timeout={500}>
           <div data-testid={testid} className="followedUsers">
-            {followedUsers?.map(({ displayName, avatar, id }) => (
-              <UserCard key={id} displayName={displayName} avatar={avatar} id={id} followed />
+            {followedUsers?.map(({ displayName, avatar, headline, id }) => (
+              <UserCard key={id} displayName={displayName} avatar={avatar} id={id} headline={headline} followed />
             ))}
           </div>
         </Grow>

@@ -35,6 +35,15 @@
     color: $black;
   }
 
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    &--dark {
+      color: $lightGray;
+    }
+  }
+
   &__avatar {
     height: 48px;
     width: 48px;
@@ -46,10 +55,6 @@
   &__name {
     font-size: $smallFont;
     font-weight: $fontBold;
-
-    &--dark {
-      color: $lightGray;
-    }
   }
 
   &__content {

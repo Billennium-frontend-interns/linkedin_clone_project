@@ -1,5 +1,7 @@
 @import '../../styles/Mixins.scss';
 @import '../../styles/Colors.scss';
+@import '../../styles/FontSizes.scss';
+@import '../../styles/FontWeights.scss';
 
 .userCard {
   @include flexColumn;
@@ -33,15 +35,21 @@
     &--dark {
       color: $lightGray;
     }
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 
   &__avatar {
     height: 100px !important;
     width: 100px !important;
+  }
+
+  &__bio {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
+  }
+
+  &__headline {
+    font-size: $textFont;
   }
 
   &__button {

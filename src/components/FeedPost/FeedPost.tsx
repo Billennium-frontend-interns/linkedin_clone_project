@@ -22,14 +22,17 @@ export const FeedPost: React.FC<FeedPostProps> = ({ ownerUid, content, timestamp
   const isContentOverflowing = useIsContentOverflowing(ref);
   const timePassed = moment.unix(timestamp.seconds).fromNow();
   const {
-    userData: { avatar, displayName }
+    userData: { avatar, displayName, headline }
   } = useGetUserData(ownerUid);
 
   return (
     <article className={classNames('feedPost', { 'feedPost--dark': isDarkMode })}>
       <Link className="feedPost__user" data-testid={`"feedPost__user--${testid}`} to={`/user/${ownerUid}`}>
         <img className="feedPost__avatar" src={avatar || AvatarPlaceholder} alt={`${displayName}'s avatar`} />
-        <p className={classNames('feedPost__name', { 'feedPost__name--dark': isDarkMode })}>{displayName}</p>
+        <div className={classNames('feedPost__info', { 'feedPost__info--dark': isDarkMode })}>
+          <span className="feedPost__name">{displayName}</span>
+          <span>{headline}</span>
+        </div>
       </Link>
       <p ref={ref} className={`feedPost__content feedPost__content--see__${!seeMore && 'less'}`}>
         {content.trim()}
