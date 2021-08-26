@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { useParams } from 'react-router-dom';
 import { useDarkMode } from '../../context/DarkModeProvider';
 import './Dropdown.scss';
 
@@ -13,6 +14,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, content }) =
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { isDarkMode } = useDarkMode();
   const dropdown = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const params = useParams();
 
   const closeDropdownOutside = (ref: React.MutableRefObject<HTMLDivElement>) => {
     useEffect(() => {
@@ -27,6 +29,10 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, content }) =
       }
     }, [isDropdownOpen, ref]);
   };
+
+  useEffect(() => {
+    setIsDropdownOpen(false);
+  }, [params]);
 
   closeDropdownOutside(dropdown);
 

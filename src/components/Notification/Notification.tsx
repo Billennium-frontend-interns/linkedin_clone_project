@@ -28,7 +28,7 @@ export const Notification: React.FC<NotificationProps> = ({ userId, followerId, 
   return (
     <Link
       className={classNames('notificationCard__link', { 'notificationCard__link--dark': isDarkMode })}
-      to={`user/${followerId}`}
+      to={`/user/${followerId}`}
     >
       <article className="notificationCard">
         <Avatar
