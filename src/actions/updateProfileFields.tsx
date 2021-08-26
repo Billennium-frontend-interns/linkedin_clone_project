@@ -5,7 +5,7 @@ import { customToast } from './customToast';
 
 type action = 'update' | 'delete';
 
-export const updateProfileFields = async (profileField: fields, action: action): Promise<void> => {
+export const updateProfileFields = async (profileField: fields, action): Promise<void> => {
   const currentUserUid = auth.currentUser?.uid;
   const userRef = db.collection('users').doc(currentUserUid);
 
