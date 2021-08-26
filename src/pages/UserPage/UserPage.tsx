@@ -36,6 +36,7 @@ export const UserPage: React.FC = () => {
   const isOwner = ownerUid === loggedInUser?.uid;
 
   useEffect(() => {
+    setIsUserPostsShowed(false);
     db.collection('users')
       .doc(ownerUid)
       .get()
@@ -62,21 +63,19 @@ export const UserPage: React.FC = () => {
             isUserFollowing={isUserFollowing}
           />
         ) : null}
-        {isOwner && (
-          <Button
-            type="button"
-            variant="contained"
-            color={isUserPostsShowed ? 'secondary' : 'primary'}
-            className="userPage__showButton"
-            onClick={() => {
-              setIsUserPostsShowed(!isUserPostsShowed);
-            }}
-          >
-            {isUserPostsShowed ? 'Show profile fields' : 'Show my posts'}
-          </Button>
-        )}
+        <Button
+          type="button"
+          variant="contained"
+          color={isUserPostsShowed ? 'secondary' : 'primary'}
+          className="userPage__showButton"
+          onClick={() => {
+            setIsUserPostsShowed(!isUserPostsShowed);
+          }}
+        >
+          {isUserPostsShowed ? 'Show user information' : `${isOwner ? 'Show my posts' : 'Show user posts'}`}
+        </Button>
         {isUserPostsShowed ? (
-          <MyPosts />
+          <MyPosts userUid={isOwner ? (loggedInUser?.uid as string) : ownerUid} />
         ) : (
           <WithLoader isLoading={fieldEntries.isLoading}>
             <>

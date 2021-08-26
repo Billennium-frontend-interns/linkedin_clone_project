@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { IconButton } from '@material-ui/core';
-import { AuthContext } from '../../context/AuthProvider';
 import { useGetPosts } from '../../actions/useGetPosts';
 import { postsFilter } from '../../actions/postsFilter';
 import { FeedPost } from '../FeedPost/FeedPost';
@@ -10,10 +10,13 @@ import { WithError } from '../WithError/WithError';
 import { Posts } from '../../constants/Posts';
 import './MyPosts.scss';
 
-export const MyPosts: React.FC = () => {
-  const currentUser = useContext(AuthContext);
+interface MyPostsProps {
+  userUid: string;
+}
+
+export const MyPosts: React.FC<MyPostsProps> = ({ userUid }) => {
   const { allPosts, isLoading, isError } = useGetPosts();
-  const userPosts = postsFilter([currentUser?.uid as string], allPosts);
+  const userPosts = postsFilter([userUid], allPosts);
   const [postIndex, setPostIndex] = useState(Posts.initialAmount);
   const isMorePosts = postIndex <= userPosts.length;
 
@@ -40,4 +43,8 @@ export const MyPosts: React.FC = () => {
       </WithError>
     </WithLoader>
   );
+};
+
+MyPosts.propTypes = {
+  userUid: PropTypes.string.isRequired
 };
