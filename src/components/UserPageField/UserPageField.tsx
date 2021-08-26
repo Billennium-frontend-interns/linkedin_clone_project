@@ -22,7 +22,10 @@ export const UserPageField: React.FC<UserPageFieldInterface<fields>> = ({
     <WithLoader isLoading={isLoading}>
       <WithError isError={isError} errorMessage="Couldn't get user data">
         <article className={classNames('userPageField', { 'userPageField--dark': isDarkMode })}>
-          <IconButton onClick={() => updateProfileFields(data, 'delete')} className="userPageField__delete">
+          <IconButton
+            onClick={() => updateProfileFields(data, 'delete')}
+            className={classNames('userPageField__delete', { 'userPageField__delete--dark': isDarkMode })}
+          >
             <DeleteIcon fontSize="small" />
           </IconButton>
           <h3 className="userPageField__title">{data.title}</h3>
