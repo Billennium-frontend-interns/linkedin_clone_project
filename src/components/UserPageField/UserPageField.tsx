@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { IconButton } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { UserPageFieldInterface, fields } from '../../shared/interfaces/ProfileFieldInterfaces';
 import { WithLoader } from '../WithLoader/WithLoader';
 import { WithError } from '../WithError/WithError';
 import { useDarkMode } from '../../context/DarkModeProvider';
 import './UserPageField.scss';
+import { updateProfileFields } from '../../actions/updateProfileFields';
 
 export const UserPageField: React.FC<UserPageFieldInterface<fields>> = ({
   data,
@@ -18,6 +21,9 @@ export const UserPageField: React.FC<UserPageFieldInterface<fields>> = ({
     <WithLoader isLoading={isLoading}>
       <WithError isError={isError} errorMessage="Couldn't get user data">
         <article className={classNames('userPageField', { 'userPageField--dark': isDarkMode })}>
+          <IconButton onClick={() => updateProfileFields(data, 'delete')} className="userPageField__delete">
+            <DeleteIcon fontSize="small" />
+          </IconButton>
           <h3 className="userPageField__title">{data.title}</h3>
           <ul>
             {Object.entries(data.content).map(([, fieldEntry], id) => (

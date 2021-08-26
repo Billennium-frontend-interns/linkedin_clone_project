@@ -8,11 +8,17 @@
 .userPageField {
   @include cardStyling;
   margin-bottom: 1em;
+  position: relative;
 
   &--dark {
     background-color: $darkModeGray;
     color: $lightGray !important;
     border-color: $darkModeBlack;
+  }
+
+  &__delete {
+    position: absolute !important;
+    right: 0 !important;
   }
 
   &__title {
