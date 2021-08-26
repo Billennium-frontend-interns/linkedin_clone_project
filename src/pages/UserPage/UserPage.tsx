@@ -32,7 +32,6 @@ export const UserPage: React.FC = () => {
     isLoading: true,
     isError: true
   });
-  const [getFields, setGetFields] = useState(false);
   const [isUserPostsShowed, setIsUserPostsShowed] = useState(false);
   const isOwner = ownerUid === loggedInUser?.uid;
 

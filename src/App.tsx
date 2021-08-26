@@ -1,6 +1,6 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { HashRouter as Router, Switch } from 'react-router-dom';
 import { Routes } from './routes/Routes';
 import { NotificationsProvider } from './context/NotificationProvider';
 import 'react-toastify/dist/ReactToastify.css';

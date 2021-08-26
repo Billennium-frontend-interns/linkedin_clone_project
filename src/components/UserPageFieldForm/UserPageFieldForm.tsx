@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { TextField, Button } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
+import { useParams } from 'react-router-dom';
 import { updateProfileFields } from '../../actions/updateProfileFields';
-import { contentField } from '../../shared/interfaces/ProfileFieldInterfaces';
-import './UserPageFieldForm.scss';
+import { contentField, fields } from '../../shared/interfaces/ProfileFieldInterfaces';
 import { useDarkMode } from '../../context/DarkModeProvider';
+import { db } from '../../firebase';
+import './UserPageFieldForm.scss';
 
 type fieldType = {
   name: string;
   value: string;
+};
+
+type UserPageParams = {
+  ownerUid: string;
 };
 interface UserPageFieldFormProps {
   data: boolean;
@@ -22,9 +28,11 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
   const [fieldsData, setFieldsData] = useState<contentField>({});
   const [fieldInputs, setFieldInputs] = useState<fieldType[]>([]);
   const [formTitle, setFormTitle] = useState('');
-  const [titleError, setTitleError] = useState(false);
+  const [titleError, setTitleError] = useState('');
   const [fieldError, setFieldError] = useState(false);
+  const [fieldEntries, setFieldEntries] = useState<fields[]>([]);
   const { isDarkMode } = useDarkMode();
+  const { ownerUid } = useParams<UserPageParams>();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -49,9 +57,24 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
     }
   };
 
+  useEffect(() => {
+    db.collection('users')
+      .doc(ownerUid)
+      .get()
+      .then(doc => {
+        setFieldEntries(doc.data()?.profileFields);
+      })
+      // eslint-disable-next-line
+      .catch(error => console.error(error));
+  }, []);
+
   const validate = (): boolean => {
     if (formTitle === '') {
-      setTitleError(!titleError);
+      setTitleError("Title can't be empty");
+      return true;
+    }
+    if (fieldEntries.map(entry => entry?.title).includes(formTitle)) {
+      setTitleError('Title is already used');
       return true;
     }
     if (Object.entries(fieldsData).length === 0) {
@@ -86,8 +109,8 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
       <form onSubmit={handleSubmit}>
         <div className={classNames('userPageFieldForm__title', { 'userPageFieldForm__title--dark': isDarkMode })}>
           <TextField
-            error={titleError}
-            helperText={titleError && `Title can't be empty`}
+            error={Boolean(titleError)}
+            helperText={titleError}
             onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => checkKeyDown(e)}
             onChange={event => setFormTitle(event.target.value)}
             inputProps={{ maxLength: MAX_INPUT_LENGTH }}
