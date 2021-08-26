@@ -19,6 +19,10 @@
   &__delete {
     position: absolute !important;
     right: 0 !important;
+    
+    &--dark {
+      color: $lightGray !important;
+    }
   }
 
   &__title {
