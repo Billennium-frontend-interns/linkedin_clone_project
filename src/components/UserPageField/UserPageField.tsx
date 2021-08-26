@@ -7,8 +7,9 @@ import { UserPageFieldInterface, fields } from '../../shared/interfaces/ProfileF
 import { WithLoader } from '../WithLoader/WithLoader';
 import { WithError } from '../WithError/WithError';
 import { useDarkMode } from '../../context/DarkModeProvider';
-import './UserPageField.scss';
 import { updateProfileFields } from '../../actions/updateProfileFields';
+import './UserPageField.scss';
+
 
 export const UserPageField: React.FC<UserPageFieldInterface<fields>> = ({
   data,
