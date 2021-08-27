@@ -86,6 +86,7 @@ export const UserPage: React.FC = () => {
                   data={fieldEntry}
                   isLoading={fieldEntries.isLoading}
                   isError={fieldEntries.isError}
+                  isOwner={isOwner}
                 />
               ))}
               {!isAddField && isOwner && <UserPageFieldForm data={isAddField} setter={setIsAddField} />}
