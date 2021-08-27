@@ -98,7 +98,7 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
         ),
         title: formTitle
       };
-      updateProfileFields(formData);
+      updateProfileFields(formData, 'update');
       setter(!data);
     }
     event.preventDefault();
