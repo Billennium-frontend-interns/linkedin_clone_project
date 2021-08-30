@@ -10,11 +10,11 @@ import { useDarkMode } from '../../context/DarkModeProvider';
 import { updateProfileFields } from '../../actions/updateProfileFields';
 import './UserPageField.scss';
 
-
 export const UserPageField: React.FC<UserPageFieldInterface<fields>> = ({
   data,
   isLoading,
-  isError
+  isError,
+  isOwner
 }: UserPageFieldInterface<fields>) => {
   const { isDarkMode } = useDarkMode();
 
@@ -22,12 +22,14 @@ export const UserPageField: React.FC<UserPageFieldInterface<fields>> = ({
     <WithLoader isLoading={isLoading}>
       <WithError isError={isError} errorMessage="Couldn't get user data">
         <article className={classNames('userPageField', { 'userPageField--dark': isDarkMode })}>
-          <IconButton
-            onClick={() => updateProfileFields(data, 'delete')}
-            className={classNames('userPageField__delete', { 'userPageField__delete--dark': isDarkMode })}
-          >
-            <DeleteIcon fontSize="small" />
-          </IconButton>
+          {isOwner && (
+            <IconButton
+              onClick={() => updateProfileFields(data, 'delete')}
+              className={classNames('userPageField__delete', { 'userPageField__delete--dark': isDarkMode })}
+            >
+              <DeleteIcon fontSize="small" />
+            </IconButton>
+          )}
           <h3 className="userPageField__title">{data.title}</h3>
           <ul>
             {Object.entries(data.content).map(([, fieldEntry], id) => (
