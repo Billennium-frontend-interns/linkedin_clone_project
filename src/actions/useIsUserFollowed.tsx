@@ -6,8 +6,8 @@ export const useIsUserFollowed = (currentUserId: string | undefined, pageUserId:
 
   const getFollows = async () => {
     try {
-      const follows = await db.collection('follows').doc(currentUserId).get();
-      setValue(follows.data()?.followers.includes(pageUserId));
+      const follows = await db.collection('users').doc(currentUserId).collection('followers').doc(pageUserId).get();
+      setValue(follows.exists);
     } catch (error) {
       // eslint-disable-next-line
       console.error(error);

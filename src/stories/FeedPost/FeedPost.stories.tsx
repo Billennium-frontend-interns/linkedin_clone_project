@@ -34,9 +34,9 @@ const avatar =
   'https://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/bf/bfb953c0e4436d5400ea1d73d89c39c63a3285a1_full.jpg';
 const text = 'Social media bez memów? Ale jak to???';
 
-export const Default = () => (
-  <>
-    <FeedPost ownerUid="123123" displayName="Michael" content={text} timestamp="23 July, 2021" />
-    <FeedPost ownerUid="123123" displayName="Otis Skryba" content={text1} avatar={avatar} timestamp="23 July, 2021" />
-  </>
-);
+// export const Default = () => (
+//   <>
+//     <FeedPost ownerUid="123123" displayName="Michael" content={text} timestamp={firebase.default.firestore.FieldValue.serverTimestamp()} />
+//     <FeedPost ownerUid="123123" displayName="Otis Skryba" content={text1} avatar={avatar} timestamp="23 July, 2021" />
+//   </>
+// );

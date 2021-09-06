@@ -23,11 +23,7 @@ export const signUpWithCredentails = async ({
     await db.collection('users').doc(auth.currentUser?.uid).set({
       displayName: name,
       id: auth.currentUser?.uid,
-      bio: ''
-    });
-    await db.collection('follows').doc(auth.currentUser?.uid).set({
-      followed: [],
-      followers: []
+      headline: ''
     });
     history.push('/feed');
     customToast('success', 'Successfully Sign Up');

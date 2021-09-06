@@ -29,8 +29,17 @@
   animation: appear 1s;
   @include flexColumn;
 
+  &--dark {
+    background-color: $darkModeLightGray;
+    border-color: $darkModeBlack;
+  }
+
   button {
     width: 82px !important;
+  }
+
+  &__closeButton {
+    max-width: 50px !important;
   }
 
   &__title {
@@ -38,6 +47,16 @@
     font-weight: $fontBold;
     font-size: $mediumFont;
     color: $linkedinBlue;
+  }
+
+  &__close {
+    position: absolute;
+    top: 1%;
+    right: 0.5%;
+
+    :hover {
+      cursor: pointer;
+    }
   }
 
   @media only screen and (min-width: $mobile) {

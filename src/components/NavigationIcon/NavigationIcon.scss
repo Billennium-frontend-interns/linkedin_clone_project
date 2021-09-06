@@ -7,7 +7,7 @@
 .navigationIcon {
   text-decoration: none;
   @include flexCenter;
-  margin-right: 20px;
+  margin-right: 18px;
   color: $gray;
   cursor: pointer;
 
@@ -20,14 +20,14 @@
     text-decoration: none;
   }
 
-  @media only screen and (min-width: $mobile) {
+  @media only screen and (min-width: $tablet) {
     @include flexColumn;
   }
 
   &__title {
     display: none;
 
-    @media only screen and (min-width: $mobile) {
+    @media only screen and (min-width: $tablet) {
       font-size: $textFont;
       font-weight: $normalWeight;
       margin: 0;

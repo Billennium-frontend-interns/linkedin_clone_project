@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
 import { TextField, Button } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
+import { useParams } from 'react-router-dom';
 import { updateProfileFields } from '../../actions/updateProfileFields';
-import { contentField } from '../../shared/interfaces/ProfileFieldInterfaces';
+import { contentField, fields } from '../../shared/interfaces/ProfileFieldInterfaces';
+import { useDarkMode } from '../../context/DarkModeProvider';
+import { db } from '../../firebase';
 import './UserPageFieldForm.scss';
 
 type fieldType = {
   name: string;
   value: string;
+};
+
+type UserPageParams = {
+  ownerUid: string;
 };
 interface UserPageFieldFormProps {
   data: boolean;
@@ -20,8 +28,11 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
   const [fieldsData, setFieldsData] = useState<contentField>({});
   const [fieldInputs, setFieldInputs] = useState<fieldType[]>([]);
   const [formTitle, setFormTitle] = useState('');
-  const [titleError, setTitleError] = useState(false);
+  const [titleError, setTitleError] = useState('');
   const [fieldError, setFieldError] = useState(false);
+  const [fieldEntries, setFieldEntries] = useState<fields[]>([]);
+  const { isDarkMode } = useDarkMode();
+  const { ownerUid } = useParams<UserPageParams>();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -46,9 +57,24 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
     }
   };
 
+  useEffect(() => {
+    db.collection('users')
+      .doc(ownerUid)
+      .get()
+      .then(doc => {
+        setFieldEntries(doc.data()?.profileFields);
+      })
+      // eslint-disable-next-line
+      .catch(error => console.error(error));
+  }, []);
+
   const validate = (): boolean => {
     if (formTitle === '') {
-      setTitleError(!titleError);
+      setTitleError("Title can't be empty");
+      return true;
+    }
+    if (fieldEntries.map(entry => entry?.title).includes(formTitle)) {
+      setTitleError('Title is already used');
       return true;
     }
     if (Object.entries(fieldsData).length === 0) {
@@ -72,21 +98,22 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
         ),
         title: formTitle
       };
-      updateProfileFields(formData);
+      updateProfileFields(formData, 'update');
       setter(!data);
     }
     event.preventDefault();
   };
 
   return (
-    <article className="userPageFieldForm">
+    <article className={classNames('userPageFieldForm', { 'userPageFieldForm--dark': isDarkMode })}>
       <form onSubmit={handleSubmit}>
-        <div className="userPageFieldForm__title">
+        <div className={classNames('userPageFieldForm__title', { 'userPageFieldForm__title--dark': isDarkMode })}>
           <TextField
-            error={titleError}
-            helperText={titleError && `Title can't be empty`}
+            error={Boolean(titleError)}
+            helperText={titleError}
             onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => checkKeyDown(e)}
             onChange={event => setFormTitle(event.target.value)}
+            inputProps={{ maxLength: MAX_INPUT_LENGTH }}
             variant="outlined"
             placeholder="Title"
             name="title"
@@ -94,7 +121,7 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
         </div>
         <ul>
           {fieldInputs.map(({ name }) => (
-            <li className="userPageFieldForm__field">
+            <li className={classNames('userPageFieldForm__field', { 'userPageFieldForm__field--dark': isDarkMode })}>
               <TextField
                 name={name}
                 value={fieldsData[name]}
@@ -109,12 +136,23 @@ export const UserPageFieldForm: React.FC<UserPageFieldFormProps> = ({ data, sett
           ))}
         </ul>
         {fieldInputs.length < MAX_FIELDS_THRESHOLD && (
-          <button className="userPageFieldForm__addfield" type="button" onClick={addField}>
+          <button
+            className={classNames('userPageFieldForm__addfield', { 'userPageFieldForm__addfield--dark': isDarkMode })}
+            type="button"
+            onClick={addField}
+          >
             <AddIcon role="button" aria-label="Add new field" />
           </button>
         )}
         <span className="userPageFieldForm__submitButtonWrapper">
-          <Button className="userPageFieldForm__submitButton" variant="contained" color="primary" type="submit">
+          <Button
+            className={classNames('userPageFieldForm__submitButton', {
+              'userPageFieldForm__submitButton--dark': isDarkMode
+            })}
+            variant="contained"
+            color="primary"
+            type="submit"
+          >
             Confirm
           </Button>
         </span>

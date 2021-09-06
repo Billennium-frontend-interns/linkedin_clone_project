@@ -1,20 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { useParams } from 'react-router-dom';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './Dropdown.scss';
 
 interface DropdownProps {
   DropdownOpener: React.ReactNode;
-  children?: React.ReactNode;
+  content: React.FC<unknown> | string;
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children }) => {
+export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, content }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { isDarkMode } = useDarkMode();
   const dropdown = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const params = useParams();
 
   const closeDropdownOutside = (ref: React.MutableRefObject<HTMLDivElement>) => {
     useEffect(() => {
-      const handleOutsideClick = (event: any) => {
-        if (ref.current && !ref.current.contains(event.target)) {
+      const handleOutsideClick = (event: Event) => {
+        if (ref.current && !ref.current.contains(event.target as HTMLElement)) {
           setIsDropdownOpen(false);
           document.removeEventListener('click', handleOutsideClick);
         }
@@ -24,6 +29,10 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children }) 
       }
     }, [isDropdownOpen, ref]);
   };
+
+  useEffect(() => {
+    setIsDropdownOpen(false);
+  }, [params]);
 
   closeDropdownOutside(dropdown);
 
@@ -39,8 +48,8 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children }) 
         {DropdownOpener}
       </div>
       {isDropdownOpen && (
-        <div ref={dropdown} className="dropdown__container">
-          {children}
+        <div ref={dropdown} className={classNames('dropdown__container', { 'dropdown__container--dark': isDarkMode })}>
+          {React.createElement(content)}
         </div>
       )}
     </div>
@@ -48,6 +57,6 @@ export const Dropdown: React.FC<DropdownProps> = ({ DropdownOpener, children }) 
 };
 
 Dropdown.propTypes = {
-  DropdownOpener: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired
+  DropdownOpener: PropTypes.node.isRequired,
+  content: PropTypes.func.isRequired
 };

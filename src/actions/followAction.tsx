@@ -6,16 +6,18 @@ type action = 'follow' | 'unfollow';
 
 export const followAction = async (receiverUid: string, displayName: string, action: action): Promise<void> => {
   const currentUserUid = auth.currentUser?.uid;
-  const userRef = db.collection('follows').doc(currentUserUid);
-  const receiverRef = db.collection('follows').doc(receiverUid);
+  const userRef = db.collection('users').doc(currentUserUid).collection('followed').doc(receiverUid);
+  const receiverRef = db.collection('users').doc(receiverUid).collection('followers').doc(currentUserUid);
   switch (action) {
     case 'follow':
       try {
-        await userRef.update({
-          followed: firebase.default.firestore.FieldValue.arrayUnion(receiverUid)
+        await userRef.set({
+          timestamp: firebase.default.firestore.FieldValue.serverTimestamp(),
+          seen: false
         });
-        await receiverRef.update({
-          followers: firebase.default.firestore.FieldValue.arrayUnion(currentUserUid)
+        await receiverRef.set({
+          timestamp: firebase.default.firestore.FieldValue.serverTimestamp(),
+          seen: false
         });
         customToast('default', `Followed ${displayName} 😃`);
       } catch (error) {
@@ -25,12 +27,8 @@ export const followAction = async (receiverUid: string, displayName: string, act
       break;
     case 'unfollow':
       try {
-        await userRef.update({
-          followed: firebase.default.firestore.FieldValue.arrayRemove(receiverUid)
-        });
-        await receiverRef.update({
-          followers: firebase.default.firestore.FieldValue.arrayRemove(currentUserUid)
-        });
+        await userRef.delete();
+        await receiverRef.delete();
         customToast('default', `Unfollowed ${displayName} ☹️`);
       } catch (error) {
         // eslint-disable-next-line

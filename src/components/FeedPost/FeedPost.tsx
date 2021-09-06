@@ -1,38 +1,38 @@
 import React, { useRef, useState, MutableRefObject } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import moment from 'moment';
-import { useIsContentOverflowing } from '../../actions/useIsContentOverflowing';
+import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import AvatarPlaceholder from '../../assets/images/avatar_placeholder.png';
+import { useGetUserData } from '../../actions/useGetUserData';
+import { useIsContentOverflowing } from '../../actions/useIsContentOverflowing';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './FeedPost.scss';
 
 export interface FeedPostProps {
   ownerUid: string;
-  displayName: string;
-  avatar?: string;
   content: string;
-  timestamp: string;
+  timestamp: firebase.default.firestore.Timestamp;
   testid?: string;
 }
 
-export const FeedPost: React.FC<FeedPostProps> = ({
-  ownerUid,
-  displayName,
-  avatar,
-  content,
-  timestamp,
-  testid
-}: FeedPostProps) => {
+export const FeedPost: React.FC<FeedPostProps> = ({ ownerUid, content, timestamp, testid }: FeedPostProps) => {
   const [seeMore, setSeeMore] = useState(false);
+  const { isDarkMode } = useDarkMode();
   const ref = useRef() as MutableRefObject<HTMLParagraphElement>;
   const isContentOverflowing = useIsContentOverflowing(ref);
-  const timePassed = moment(timestamp).startOf('hour').fromNow();
+  const timePassed = moment.unix(timestamp.seconds).fromNow();
+  const {
+    userData: { avatar, displayName, headline }
+  } = useGetUserData(ownerUid);
 
   return (
-    <article className="feedPost">
+    <article className={classNames('feedPost', { 'feedPost--dark': isDarkMode })}>
       <Link className="feedPost__user" data-testid={`"feedPost__user--${testid}`} to={`/user/${ownerUid}`}>
         <img className="feedPost__avatar" src={avatar || AvatarPlaceholder} alt={`${displayName}'s avatar`} />
-        <p className="feedPost__name">{displayName}</p>
+        <div className={classNames('feedPost__info', { 'feedPost__info--dark': isDarkMode })}>
+          <span className="feedPost__name">{displayName}</span>
+          <span>{headline}</span>
+        </div>
       </Link>
       <p ref={ref} className={`feedPost__content feedPost__content--see__${!seeMore && 'less'}`}>
         {content.trim()}
@@ -55,15 +55,5 @@ export const FeedPost: React.FC<FeedPostProps> = ({
 };
 
 FeedPost.defaultProps = {
-  testid: '',
-  avatar: AvatarPlaceholder
-};
-
-FeedPost.propTypes = {
-  ownerUid: PropTypes.string.isRequired,
-  displayName: PropTypes.string.isRequired,
-  avatar: PropTypes.string,
-  content: PropTypes.string.isRequired,
-  timestamp: PropTypes.string.isRequired,
-  testid: PropTypes.string
+  testid: ''
 };

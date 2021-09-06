@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import { DropzoneArea } from 'material-ui-dropzone';
 import { Button, TextField } from '@material-ui/core';
 import { WithLoader } from '../WithLoader/WithLoader';
@@ -8,20 +10,26 @@ import { useGetUserData } from '../../actions/useGetUserData';
 import { editProfile } from '../../actions/editProfile';
 import { updateAvatar } from '../../actions/updateAvatar';
 import { User } from '../../shared/interfaces/UserInterfaces';
+import { customToast } from '../../actions/customToast';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './EditProfileForm.scss';
 
-export const EditProfileForm: React.FC = () => {
+interface EditProfileFormProps {
+  closeModal: () => void;
+}
+
+export const EditProfileForm: React.FC<EditProfileFormProps> = ({ closeModal }) => {
   const MIN_NICKNAME_CHARACTERS = 3;
   const MAX_NICKNAME_CHARACTERS = 30;
-  const MAX_BIO_CHARACTERS = 300;
+  const MAX_HEADLINE_CHARACTERS = 30;
   const initialFormData = {
     displayName: '',
-    bio: ''
+    headline: ''
   };
   const currentUser = useContext(AuthContext);
   const [shouldDataChange, setShouldDataChange] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
-
+  const { isDarkMode } = useDarkMode();
   const { userData, isLoading, isError } = useGetUserData(currentUser?.uid as string);
 
   useEffect(() => {
@@ -33,9 +41,9 @@ export const EditProfileForm: React.FC = () => {
     formData.displayName.trim() === '' ||
     formData.displayName.length < MIN_NICKNAME_CHARACTERS ||
     formData.displayName.length > MAX_NICKNAME_CHARACTERS;
-  const isBioNotValid = formData.bio.length >= MAX_BIO_CHARACTERS;
+  const isHeadlineNotValid = formData.headline.length >= MAX_HEADLINE_CHARACTERS;
 
-  const validateForm = (): boolean => !isNicknameNotValid && !isBioNotValid;
+  const validateForm = (): boolean => !isNicknameNotValid && !isHeadlineNotValid;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -51,7 +59,12 @@ export const EditProfileForm: React.FC = () => {
       }
       editProfile(currentUser?.uid as string, formData as User);
       setShouldDataChange(false);
+      closeModal();
     }
+  };
+
+  const rejectFiles = () => {
+    customToast('error', 'Enter image with correct extension', false);
   };
 
   return (
@@ -59,7 +72,7 @@ export const EditProfileForm: React.FC = () => {
       <WithError isError={isError} errorMessage="Something went wrong please try again...">
         <form className="editForm" onSubmit={handleSubmit}>
           <TextField
-            className="editForm__field"
+            className={classNames('editForm__field', { 'editForm__field--dark': isDarkMode })}
             variant="outlined"
             label="Enter new name"
             type="text"
@@ -74,15 +87,15 @@ export const EditProfileForm: React.FC = () => {
             data-testid="displayName"
           />
           <TextField
-            className="editForm__field"
+            className={classNames('editForm__field', { 'editForm__field--dark': isDarkMode })}
             variant="outlined"
-            label="Enter new Bio"
+            label="Enter new headline"
             type="text"
-            name="bio"
-            id="bio"
-            error={isBioNotValid}
-            helperText={isBioNotValid ? 'Bio must be shorter than 300 characters' : ''}
-            value={formData.bio}
+            name="headline"
+            id="headline"
+            error={isHeadlineNotValid}
+            helperText={isHeadlineNotValid ? 'Headline must be shorter than 30 characters' : ''}
+            value={formData.headline}
             onChange={handleChange}
             rows={2}
             multiline
@@ -95,6 +108,7 @@ export const EditProfileForm: React.FC = () => {
             filesLimit={1}
             showAlerts={false}
             onDrop={() => setShouldDataChange(true)}
+            onDropRejected={rejectFiles}
             inputProps={{
               id: 'avatar',
               name: 'avatar'
@@ -107,4 +121,8 @@ export const EditProfileForm: React.FC = () => {
       </WithError>
     </WithLoader>
   );
+};
+
+EditProfileForm.propTypes = {
+  closeModal: PropTypes.func.isRequired
 };

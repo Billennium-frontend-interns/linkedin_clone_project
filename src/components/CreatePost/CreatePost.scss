@@ -2,6 +2,7 @@
 @import '../../styles/Colors.scss';
 
 .create-post {
+  @include flexColumn;
   border: 1px solid $lightBlue;
   background-color: $white;
   padding: 20px;
@@ -9,13 +10,38 @@
   max-width: 680px;
   flex: 1;
 
+  &--dark {
+    background-color: $darkModeGray;
+    border-color: $darkModeBlack;
+  }
+
+  @media only screen and (min-width: $tablet) {
+    &--dark {
+      border: 1px solid $darkModeBlack;
+    }
+
+    border: 1px solid $lightBlue;
+    border-radius: 20px;
+  }
+
   .share-box {
-    @include flexColumn;
+    @include flexCenter;
+    width: 100%;
     margin: 0 15px;
     width: 100%;
 
+    &__add-post--dark {
+      color: $lightGray !important;
+    }
+
     &__text {
       margin: 15px;
+
+      &--dark {
+        & .MuiInput-root {
+          color: $lightGray;
+        }
+      }
     }
   }
 }

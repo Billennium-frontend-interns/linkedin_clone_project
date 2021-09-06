@@ -17,5 +17,5 @@ export default {
 };
 
 export const Default = () => (
-  <Dropdown DropdownOpener={<NavigationIcon title="Dropdown" Icon={ArrowDropDownCircleIcon} />} />
+  <Dropdown DropdownOpener={<NavigationIcon title="Dropdown" Icon={ArrowDropDownCircleIcon} />} content="" />
 );

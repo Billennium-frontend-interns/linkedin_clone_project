@@ -41,14 +41,16 @@ export const RecommendedUsers: React.FC<RecommendedUsersProps> = ({ testid }) =>
         <div className="recommendedUsers">
           <Grow in timeout={500}>
             <div data-testid={testid} className="recommendedUsers__wrapper">
-              {recommendedUsers.map(({ displayName, avatar, id }) => (
-                <UserCard key={id} displayName={displayName} avatar={avatar} id={id} />
+              {recommendedUsers.map(({ displayName, avatar, headline, id }) => (
+                <UserCard key={id} displayName={displayName} headline={headline} avatar={avatar} id={id} />
               ))}
             </div>
           </Grow>
-          <IconButton onClick={() => setRecommendedUsers([...recommendedUsers, ...getMoreRecommendedUsersInfo()])}>
-            <ExpandMoreIcon fontSize="large" />
-          </IconButton>
+          {recommendedUsers.length !== [...recommendedUsers, ...getMoreRecommendedUsersInfo()].length && (
+            <IconButton onClick={() => setRecommendedUsers([...recommendedUsers, ...getMoreRecommendedUsersInfo()])}>
+              <ExpandMoreIcon fontSize="large" />
+            </IconButton>
+          )}
         </div>
       </WithError>
     </WithLoader>

@@ -67,14 +67,12 @@ export const FeedList: React.FC = () => {
             endMessage={<p className="feedList__endMessage">Yay! You have seen it all</p>}
             className="feedList__posts"
           >
-            {posts.map(({ testid, ownerUid, displayName, content, avatar, timestamp }) => (
+            {posts.map(({ testid, ownerUid, content, timestamp }) => (
               <FeedPost
-                key={testid}
+                key={`${ownerUid},${timestamp.seconds}`}
                 testid={testid}
                 ownerUid={ownerUid}
-                displayName={displayName}
                 content={content}
-                avatar={avatar}
                 timestamp={timestamp}
               />
             ))}

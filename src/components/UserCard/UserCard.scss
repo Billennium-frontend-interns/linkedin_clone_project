@@ -1,5 +1,7 @@
 @import '../../styles/Mixins.scss';
 @import '../../styles/Colors.scss';
+@import '../../styles/FontSizes.scss';
+@import '../../styles/FontWeights.scss';
 
 .userCard {
   @include flexColumn;
@@ -8,6 +10,14 @@
   max-width: 200px;
   margin: 10px;
   box-shadow: none;
+  word-break: break-all;
+  text-align: center;
+  border-radius: 15px;
+
+  &--dark {
+    background-color: #404040;
+    border-color: $darkModeMainBackground;
+  }
 
   @media only screen and (min-width: $mobile) {
     width: 200px;
@@ -19,6 +29,12 @@
 
   &__info {
     @include flexColumn;
+    text-decoration: none;
+    color: $black;
+
+    &--dark {
+      color: $lightGray;
+    }
   }
 
   &__avatar {
@@ -26,16 +42,25 @@
     width: 100px !important;
   }
 
-  &__button {
-    margin-top: 20px !important;
+  &__bio {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
   }
 
-  &__displayName {
-    text-decoration: none;
-    color: $black;
+  &__headline {
+    font-size: $textFont;
+  }
 
-    &:hover {
-      text-decoration: underline;
+  &__button {
+    margin-top: 20px !important;
+
+    &--darkFollowed {
+      color: $lightGray !important;
+    }
+
+    &--darkUnfollowed {
+      background-color: $darkModeGray !important;
     }
   }
 }

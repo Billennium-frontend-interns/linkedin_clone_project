@@ -5,22 +5,29 @@
 .search {
   display: flex;
   flex-direction: column;
-  padding: 10px;
   height: 22px;
   color: $gray;
 
-  :hover {
+  &:hover {
     color: $linkedinBlue;
   }
 
+  @media only screen and (min-width: $small) {
+    padding: 10px;
+  }
+
   &--hidden {
-    margin-left: 10px;
+    margin-left: 0;
     border-radius: 5px;
     padding: 5px;
     background-color: $lightGray;
 
-    :hover {
-      color: inherit;
+    @media only screen and (min-width: $mobile) {
+      margin-left: 10px;
+    }
+
+    &--dark {
+      background-color: $darkModeLightGray;
     }
   }
 
@@ -30,8 +37,8 @@
     background-color: $lightGray;
     margin-left: 0;
 
-    :hover {
-      color: inherit;
+    &--dark {
+      background-color: $darkModeLightGray;
     }
   }
 
@@ -54,6 +61,15 @@
 
   &__input {
     display: none;
+    width: 215px;
+
+    @media only screen and (min-width: $small) {
+      width: 278px;
+    }
+
+    @media only screen and (min-width: $mobile) {
+      width: 360px;
+    }
 
     &--hidden {
       display: block;

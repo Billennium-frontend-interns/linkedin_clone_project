@@ -1,4 +1,4 @@
-@import "./Breakpoints";
+@import './Breakpoints';
 
 @mixin flexCenter {
   display: flex;
@@ -15,12 +15,10 @@
 @mixin cardStyling {
   max-width: 700px;
   width: 100%;
-  border-top: 1px solid $lightGray;
-  border-bottom: 1px solid $lightGray;
+  border: 1px solid $lightGray;
   background: $white;
-  
-  @media only screen and (min-width: $mobile) {
-    border: 1px solid $lightGray;
+
+  @media only screen and (min-width: $tablet) {
     border-radius: 15px;
   }
 }

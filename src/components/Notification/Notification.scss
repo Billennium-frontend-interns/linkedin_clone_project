@@ -1,0 +1,41 @@
+@import '../../styles/Mixins';
+@import '../../styles/Colors';
+@import '../../styles/Breakpoints';
+
+.notificationCard {
+  display: flex;
+  margin: 5px;
+  word-break: break-all;
+  transition: transform 100ms;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &__avatar {
+    margin-right: 1ch;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    text-decoration: none;
+    cursor: pointer;
+    color: $black;
+
+    &--dark {
+      color: $lightGray;
+    }
+  }
+
+  &__timestamp {
+    margin: 1px;
+  }
+
+  &__action {
+    margin: 1px;
+  }
+}

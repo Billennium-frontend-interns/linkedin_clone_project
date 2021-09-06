@@ -1,18 +1,24 @@
+import * as firebase from 'firebase';
 import { db } from '../firebase';
 import { customToast } from './customToast';
 
-interface FeedPostProps {
+interface SetPostProps {
   ownerUid: string;
   displayName: string;
   avatar?: string;
   content: string;
-  timestamp: string;
 }
 
-export const setPost = ({ ownerUid, content, avatar, timestamp, displayName }: FeedPostProps): void => {
+export const setPost = ({ ownerUid, content, avatar, displayName }: SetPostProps): void => {
   try {
     db.collection('posts')
-      .add({ ownerUid, content, avatar, timestamp, displayName })
+      .add({
+        ownerUid,
+        content,
+        avatar,
+        timestamp: firebase.default.firestore.FieldValue.serverTimestamp(),
+        displayName
+      })
       .then(() => {
         customToast('success', 'Post successfully added', false);
       });

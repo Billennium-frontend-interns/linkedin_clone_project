@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Avatar, Button, Grow } from '@material-ui/core';
 import { followAction } from '../../actions/followAction';
+import { useDarkMode } from '../../context/DarkModeProvider';
 import './UserCard.scss';
 
 interface UserCardProps {
   avatar?: string;
   displayName: string;
+  headline?: string;
   followed?: boolean;
   id: string;
   testid?: string;
 }
 
-export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followed, id, testid }) => {
+export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, headline, followed, id, testid }) => {
   const [isFollowed, setIsFollowed] = useState(followed);
+  const { isDarkMode } = useDarkMode();
 
   const handleClick = () => {
     if (!isFollowed) {
@@ -27,14 +31,28 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followe
 
   return (
     <Grow in timeout={500}>
-      <section className="userCard" data-testid={`${testid}${id}`}>
-        <div className="userCard__info">
+      <section className={classNames('userCard', { 'userCard--dark': isDarkMode })} data-testid={`${testid}${id}`}>
+        <Link
+          className={classNames('userCard__info', { 'userCard__info--dark': isDarkMode })}
+          data-testid={`"userCard__displayName--${testid}`}
+          to={`/user/${id}`}
+        >
           <Avatar className="userCard__avatar" src={avatar} />
-          <Link className="userCard__displayName" data-testid={`"userCard__displayName--${testid}`} to={`/user/${id}`}>
-            <p>{displayName}</p>
-          </Link>
-        </div>
-        <Button onClick={handleClick} variant="outlined" color="primary" className="userCard__button">
+          <div className="userCard__bio">
+            <span className="userCard__displayName">{displayName}</span>
+            <span className="userCard__headline">{headline}</span>
+          </div>
+        </Link>
+        <Button
+          onClick={handleClick}
+          variant={isFollowed ? 'contained' : 'outlined'}
+          color="primary"
+          className={classNames(
+            'userCard__button',
+            { 'userCard__button--darkFollowed': isFollowed && isDarkMode },
+            { 'userCard__button--darkUnfollowed': !isFollowed && isDarkMode }
+          )}
+        >
           {isFollowed ? 'Followed' : 'Follow'}
         </Button>
       </section>
@@ -45,13 +63,15 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, followe
 UserCard.defaultProps = {
   avatar: '',
   followed: false,
-  testid: undefined
+  testid: undefined,
+  headline: ''
 };
 
 UserCard.propTypes = {
   avatar: PropTypes.string,
   displayName: PropTypes.string.isRequired,
   followed: PropTypes.bool,
+  headline: PropTypes.string,
   id: PropTypes.string.isRequired,
   testid: PropTypes.string
 };
