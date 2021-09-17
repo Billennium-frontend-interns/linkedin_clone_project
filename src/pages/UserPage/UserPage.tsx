@@ -46,7 +46,7 @@ export const UserPage: React.FC = () => {
       })
       // eslint-disable-next-line
       .catch(error => console.error(error));
-  }, [ownerUid, isAddField]);
+  }, [ownerUid, isAddField, userData]);
 
   return (
     <>

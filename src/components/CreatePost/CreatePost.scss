@@ -28,13 +28,13 @@
     @include flexCenter;
     width: 100%;
     margin: 0 15px;
+    width: 100%;
 
     &__add-post--dark {
       color: $lightGray !important;
     }
 
     &__text {
-      width: 100%;
       margin: 15px;
 
       &--dark {

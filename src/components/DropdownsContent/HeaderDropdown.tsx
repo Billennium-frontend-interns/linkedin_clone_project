@@ -6,7 +6,7 @@ import Brightness7Icon from '@material-ui/icons/Brightness7';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
-import { signOut } from '../../actions/signOut';
+import { signOut } from '../../actions/signout';
 import { useGetUserData } from '../../actions/useGetUserData';
 import { WithError } from '../WithError/WithError';
 import { WithLoader } from '../WithLoader/WithLoader';
