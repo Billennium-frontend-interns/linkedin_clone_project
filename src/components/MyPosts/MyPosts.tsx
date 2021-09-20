@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { IconButton } from '@material-ui/core';
 import { useGetPosts } from '../../actions/useGetPosts';
-import { postsFilter } from '../../actions/postsFilter';
+import { postsFilter } from '../../actions/PostsFilter';
 import { FeedPost } from '../FeedPost/FeedPost';
 import { WithLoader } from '../WithLoader/WithLoader';
 import { WithError } from '../WithError/WithError';

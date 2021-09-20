@@ -3,7 +3,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { CircularProgress } from '@material-ui/core';
 import { useGetPosts } from '../../actions/useGetPosts';
 import { useGetUserFollows } from '../../actions/useGetUserFollows';
-import { postsFilter } from '../../actions/postsFilter';
+import { postsFilter } from '../../actions/PostsFilter';
 import { FeedPost, FeedPostProps } from '../FeedPost/FeedPost';
 import { WithLoader } from '../WithLoader/WithLoader';
 import { WithError } from '../WithError/WithError';
