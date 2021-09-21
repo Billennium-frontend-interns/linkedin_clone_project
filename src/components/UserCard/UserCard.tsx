@@ -43,18 +43,20 @@ export const UserCard: React.FC<UserCardProps> = ({ avatar, displayName, headlin
             <span className="userCard__headline">{headline}</span>
           </div>
         </Link>
-        <Button
-          onClick={handleClick}
-          variant={isFollowed ? 'contained' : 'outlined'}
-          color="primary"
-          className={classNames(
-            'userCard__button',
-            { 'userCard__button--darkFollowed': isFollowed && isDarkMode },
-            { 'userCard__button--darkUnfollowed': !isFollowed && isDarkMode }
-          )}
-        >
-          {isFollowed ? 'Followed' : 'Follow'}
-        </Button>
+        {followed !== undefined && (
+          <Button
+            onClick={handleClick}
+            variant={isFollowed ? 'contained' : 'outlined'}
+            color="primary"
+            className={classNames(
+              'userCard__button',
+              { 'userCard__button--darkFollowed': isFollowed && isDarkMode },
+              { 'userCard__button--darkUnfollowed': !isFollowed && isDarkMode }
+            )}
+          >
+            {isFollowed ? 'Followed' : 'Follow'}
+          </Button>
+        )}
       </section>
     </Grow>
   );

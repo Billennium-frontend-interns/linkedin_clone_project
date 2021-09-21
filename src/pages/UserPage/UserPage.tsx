@@ -13,6 +13,7 @@ import { WithLoader } from '../../components/WithLoader/WithLoader';
 import { UserPageFieldInterface, fields } from '../../shared/interfaces/ProfileFieldInterfaces';
 import { MyPosts } from '../../components/MyPosts/MyPosts';
 import { useDarkMode } from '../../context/DarkModeProvider';
+import { ShowFollowers } from '../../components/ShowFollowers/ShowFollowers';
 import './UserPage.scss';
 
 type UserPageParams = {
@@ -33,10 +34,10 @@ export const UserPage: React.FC = () => {
     isError: true
   });
   const [isUserPostsShowed, setIsUserPostsShowed] = useState(false);
+  const [showFollowed, setShowFollowed] = useState(false);
   const isOwner = ownerUid === loggedInUser?.uid;
 
   useEffect(() => {
-    setIsUserPostsShowed(false);
     db.collection('users')
       .doc(ownerUid)
       .get()
@@ -63,17 +64,37 @@ export const UserPage: React.FC = () => {
             isUserFollowing={isUserFollowing}
           />
         ) : null}
-        <Button
-          type="button"
-          variant="contained"
-          color={isUserPostsShowed ? 'secondary' : 'primary'}
-          className="userPage__showButton"
-          onClick={() => {
-            setIsUserPostsShowed(!isUserPostsShowed);
-          }}
-        >
-          {isUserPostsShowed ? 'Show user information' : `${isOwner ? 'Show my posts' : 'Show user posts'}`}
-        </Button>
+
+        <div className="userPage__button-wrapper">
+          {!isUserPostsShowed && isOwner && (
+            <Button
+              type="button"
+              variant="contained"
+              color={showFollowed ? 'secondary' : 'primary'}
+              className="userPage__showButton"
+              onClick={() => {
+                setShowFollowed(!showFollowed);
+              }}
+            >
+              {showFollowed ? 'close followers' : 'followers'}
+            </Button>
+          )}
+
+          {!showFollowed && (
+            <Button
+              type="button"
+              variant="contained"
+              color={isUserPostsShowed ? 'secondary' : 'primary'}
+              className="userPage__showButton"
+              onClick={() => {
+                setIsUserPostsShowed(!isUserPostsShowed);
+              }}
+            >
+              {isUserPostsShowed ? 'Close user post' : `${isOwner ? 'Show my posts' : 'Show user posts'}`}
+            </Button>
+          )}
+        </div>
+        {isOwner && showFollowed && <ShowFollowers />}
         {isUserPostsShowed ? (
           <MyPosts userUid={isOwner ? (loggedInUser?.uid as string) : ownerUid} />
         ) : (
@@ -90,7 +111,7 @@ export const UserPage: React.FC = () => {
                 />
               ))}
               {!isAddField && isOwner && <UserPageFieldForm data={isAddField} setter={setIsAddField} />}
-              {isOwner && (
+              {isOwner && !showFollowed && (
                 <span className="userPage__ctaButton">
                   <Button
                     type="button"
