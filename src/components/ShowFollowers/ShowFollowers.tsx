@@ -6,30 +6,42 @@ import { User } from '../../shared/interfaces/UserInterfaces';
 import { UserCard } from '../UserCard/UserCard';
 import { WithError } from '../WithError/WithError';
 import { WithLoader } from '../WithLoader/WithLoader';
+import { useGetUserFollows } from '../../actions/useGetUserFollows';
 
-interface ShowFollowersProps {
-  isUserFollowedBy: boolean;
-}
-
-export const ShowFollowers: React.FC<ShowFollowersProps> = () => {
-  const { userFollows, isLoading: isFollowsLoading, isError: isFollowsError } = useGetUserFollowers();
+export const ShowFollowers: React.FC = () => {
+  const { userFollowers, isLoading: isFollowersLoading, isError: isFollowersError } = useGetUserFollowers();
+  const { userFollows } = useGetUserFollows();
   const { users, isLoading, isError } = useGetUsers();
-  const [followedUsers, setFollowedUsers] = useState<User[]>();
+  const [followersUsers, setFollowersUsers] = useState<User[]>();
 
-  const getFollowedUsersInfo = () => users.filter(user => userFollows.includes(user.id));
+  const getFollowedUsersInfo = () => users.filter(user => userFollowers.includes(user.id));
 
   useEffect(() => {
-    setFollowedUsers(getFollowedUsersInfo());
-  }, [isLoading, isFollowsLoading]);
+    setFollowersUsers(getFollowedUsersInfo());
+  }, [isLoading, isFollowersLoading]);
 
   return (
-    <WithLoader isLoading={isLoading || isFollowsLoading}>
-      <WithError isError={isFollowsError || isError} errorMessage="Error has occurred please try again...">
+    <WithLoader isLoading={isLoading || isFollowersLoading}>
+      <WithError isError={isFollowersError || isError} errorMessage="Error has occurred please try again...">
         <Grow in timeout={500}>
           <div className="followedUsers">
-            {followedUsers?.map(({ displayName, avatar, headline, id }) => (
-              <UserCard key={id} displayName={displayName} avatar={avatar} id={id} headline={headline} followed />
-            ))}
+            {followersUsers?.map(({ displayName, avatar, headline, id }) => {
+              if (userFollows.includes(id)) {
+                return (
+                  <UserCard key={id} displayName={displayName} avatar={avatar} id={id} headline={headline} followed />
+                );
+              }
+              return (
+                <UserCard
+                  key={id}
+                  displayName={displayName}
+                  avatar={avatar}
+                  id={id}
+                  headline={headline}
+                  followed={false}
+                />
+              );
+            })}
           </div>
         </Grow>
       </WithError>

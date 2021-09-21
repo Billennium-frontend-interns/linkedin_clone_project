@@ -3,7 +3,7 @@ import { db } from '../firebase';
 import { AuthContext } from '../context/AuthProvider';
 
 interface GetUserFollows {
-  userFollows: string[];
+  userFollowers: string[];
   isLoading: boolean;
   isError: boolean;
 }
@@ -11,7 +11,7 @@ interface GetUserFollows {
 export const useGetUserFollowers = (): GetUserFollows => {
   const user = useContext(AuthContext);
   const [state, setState] = useState<GetUserFollows>({
-    userFollows: [],
+    userFollowers: [],
     isLoading: true,
     isError: false
   });
@@ -19,8 +19,8 @@ export const useGetUserFollowers = (): GetUserFollows => {
   const getUserFollows = async () => {
     try {
       const snapshot = await db.collection('users').doc(user?.uid).collection('followers').get();
-      const followedIds = snapshot.docs.map(followed => followed.id);
-      setState({ ...state, userFollows: followedIds, isLoading: false });
+      const followedIds = snapshot.docs.map(followers => followers.id);
+      setState({ ...state, userFollowers: followedIds, isLoading: false });
     } catch (error) {
       setState({ ...state, isError: true, isLoading: false });
     }

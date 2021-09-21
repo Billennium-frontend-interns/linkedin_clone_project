@@ -38,7 +38,6 @@ export const UserPage: React.FC = () => {
   const isOwner = ownerUid === loggedInUser?.uid;
 
   useEffect(() => {
-    setIsUserPostsShowed(false);
     db.collection('users')
       .doc(ownerUid)
       .get()
@@ -48,7 +47,7 @@ export const UserPage: React.FC = () => {
       })
       // eslint-disable-next-line
       .catch(error => console.error(error));
-  }, [ownerUid, isAddField]);
+  }, [ownerUid, isAddField, userData]);
 
   return (
     <>
@@ -91,11 +90,11 @@ export const UserPage: React.FC = () => {
                 setIsUserPostsShowed(!isUserPostsShowed);
               }}
             >
-              {isUserPostsShowed ? 'Show user information' : `${isOwner ? 'Show my posts' : 'Show user posts'}`}
+              {isUserPostsShowed ? 'Close user post' : `${isOwner ? 'Show my posts' : 'Show user posts'}`}
             </Button>
           )}
         </div>
-        {isOwner && showFollowed && <ShowFollowers isUserFollowedBy={isUserFollowed} />}
+        {isOwner && showFollowed && <ShowFollowers />}
         {isUserPostsShowed ? (
           <MyPosts userUid={isOwner ? (loggedInUser?.uid as string) : ownerUid} />
         ) : (
