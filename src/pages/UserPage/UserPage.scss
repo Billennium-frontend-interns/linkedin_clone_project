@@ -9,6 +9,13 @@
   min-height: 100vh;
   justify-content: flex-start;
   background: $mainBackground;
+
+  &__button-wrapper{
+    min-width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
   
   &--dark {
     background-color: $darkModeMainBackground;
@@ -19,6 +26,6 @@
   }
 
   &__showButton {
-    margin-bottom: 20px !important;
+    margin: 15px !important;
   }
 }
