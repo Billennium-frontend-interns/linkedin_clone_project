@@ -37,7 +37,7 @@ export const HeaderDropdown: React.FC<HeaderDropdownProps> = ({ testid }) => {
           <li className="headerDropdown__listItem">
             <div className="headerDropdown__info">
               <span className="headerDropdown__name">{userData?.displayName || 'User'}</span>
-              <span>{userData?.headline}</span>
+              <span className="headerDropdown__headline">{userData?.headline}</span>
             </div>
           </li>
           <li className="headerDropdown__listItem">

@@ -1,4 +1,5 @@
 @import '../../styles/FontWeights.scss';
+@import '../../styles/FontSizes.scss';
 @import '../../styles/Colors.scss';
 
 .headerDropdown {
@@ -16,11 +17,15 @@
 
   &__name {
     font-weight: $fontBold;
+    margin-bottom: 3px;
+  }
+  
+  &__headline {
+    font-size: $textFont;
   }
 
   &__listItem {
-    margin-bottom: 10px;
-    width: 100%;
+    margin: 10px;
     display: flex;
     justify-content: center;
   }
