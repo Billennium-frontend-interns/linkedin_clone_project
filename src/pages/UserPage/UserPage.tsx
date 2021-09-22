@@ -90,7 +90,7 @@ export const UserPage: React.FC = () => {
                 setIsUserPostsShowed(!isUserPostsShowed);
               }}
             >
-              {isUserPostsShowed ? 'Close user post' : `${isOwner ? 'Show my posts' : 'Show user posts'}`}
+              {isUserPostsShowed ? 'Close posts' : `${isOwner ? 'Show my posts' : 'Show user posts'}`}
             </Button>
           )}
         </div>
